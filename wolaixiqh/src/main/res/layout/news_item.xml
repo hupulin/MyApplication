@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="175px">
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:id="@+id/select_view"
+                android:layout_width="86px"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/select_image"
+                    android:layout_width="40px"
+                    android:layout_height="40px"
+                    android:layout_centerInParent="true"
+                    android:scaleType="center"
+                    app:layout_auto_basewidth="height" />
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:id="@+id/news_item"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="7px"
+                android:layout_toRightOf="@+id/select_view">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="37px"
+                    android:maxLines="1"
+                    android:text="我是标题"
+                    android:textColor="@color/black"
+                    android:textSize="30px"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/contend"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/title"
+                    android:layout_marginTop="41px"
+                    android:maxLines="1"
+                    android:text="我是内容我是内容我真的是内容"
+                    android:textColor="@color/gray_59"
+                    android:textSize="24px" />
+
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="24px"
+                    android:layout_marginTop="45px"
+                    android:text="2018年10月9日    "
+                    android:textColor="@color/gray_59"
+                    android:textSize="24px" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/gray_c" />
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+    </com.zhy.autolayout.AutoRelativeLayout>
+</layout>

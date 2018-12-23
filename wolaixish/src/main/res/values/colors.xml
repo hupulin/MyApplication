@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="gray_f7">#f7f7f7</color>
+    <color name="gray_f2">#f2f2f2</color>
+    <color name="gray_f">#ffffff</color>
+    <color name="gray_61">#616161</color>
+    <color name="black">#000000</color>
+    <color name="divider_color">#928DFF</color>
+    <color name="app_color">#8273EF</color>
+    <color name="app_bg_color">#7800FF</color>
+    <color name="app_text_color_other">#665EFF</color>
+    <color name="select_sex_text_color">#2E23FF</color>
+    <color name="app_text_color">#5F49E4</color>
+    <color name="text_color_red">#FF0000</color>
+    <color name="gray_b">#BBBBBB</color>
+    <color name="gray_c">#cccccc</color>
+    <color name="withe">#ffffff</color>
+    <color name="gray_f8">#F8F8F8</color>
+    <color name="gray_80">#808080</color>
+    <color name="gray_59">#595959</color>
+    <color name="black_23">#232323</color>
+    <color name="gray_ed">#EDEDED</color>
+    <color name="gray_e6">#e6e6e6</color>
+    <color name="gray_da">#DADADA</color>
+
+</resources>

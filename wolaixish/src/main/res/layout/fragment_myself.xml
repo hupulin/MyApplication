@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+<ScrollView
+    android:id="@+id/scrollView"
+    android:overScrollMode="never"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="514px">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="348px"
+            android:background="@mipmap/my_info_bg" />
+
+        <View
+            android:layout_width="724px"
+            android:layout_height="348px"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="218px"
+            android:background="@mipmap/my_info_image_bg" />
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/head_image"
+            android:layout_width="212px"
+            android:layout_height="212px"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="132px"
+            android:background="@mipmap/user_default_icon"
+            app:layout_auto_basewidth="height"
+            app:riv_oval="true" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/head_image"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50px"
+            android:text="王仁"
+            android:textColor="@color/black"
+            android:textSize="38px"
+            android:textStyle="bold" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/second_layout"
+        android:layout_width="710px"
+        android:layout_height="420px"
+        android:layout_below="@+id/top_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25px"
+        android:background="@mipmap/my_order_bg">
+        <View
+            android:id="@+id/view_01"
+            android:layout_marginTop="87px"
+            android:layout_width="660px"
+            android:layout_centerHorizontal="true"
+            android:layout_height="1px"
+
+            android:background="@color/gray_ed" />
+        <View
+            android:layout_width="660px"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/view_02"
+            android:layout_below="@+id/view_01"
+            android:layout_marginTop="79px"
+            android:layout_height="1px"
+            android:background="@color/gray_ed" />
+        <View
+            android:layout_below="@+id/view_02"
+            android:layout_width="660px"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/view_03"
+            android:layout_marginTop="79px"
+            android:layout_height="1px"
+            android:background="@color/gray_ed" />
+        <View
+            android:layout_width="660px"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/view_03"
+            android:id="@+id/view_04"
+            android:layout_marginTop="79px"
+            android:layout_height="1px"
+            android:background="@color/gray_ed" />
+        <com.zhy.autolayout.AutoLinearLayout
+            android:id="@+id/layout_one"
+
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32px"
+                android:layout_marginTop="118px"
+                android:text="@string/order_today"
+                android:textColor="@color/black"
+                android:textSize="28px" />
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32px"
+                android:layout_marginTop="48px"
+                android:text="@string/order_yesterday"
+                android:textColor="@color/black"
+                android:textSize="28px" />
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32px"
+                android:layout_marginTop="48px"
+                android:text="@string/order_month"
+                android:textColor="@color/black"
+                android:textSize="28px" />
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32px"
+                android:layout_marginTop="48px"
+                android:text="@string/order_last_month"
+                android:textColor="@color/black"
+                android:textSize="28px" />
+
+        </com.zhy.autolayout.AutoLinearLayout>
+        <com.zhy.autolayout.AutoLinearLayout
+            android:id="@+id/layout_two"
+            android:layout_width="260px"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="60px"
+            android:layout_toRightOf="@+id/layout_one"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:textStyle="bold"
+                android:id="@+id/order_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="30px"
+                android:text="@string/order_number"
+                android:textColor="@color/app_text_color_other" />
+            <TextView
+                android:textStyle="bold"
+                android:id="@+id/order_today_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="41px"
+                android:text="1234"
+                android:textColor="@color/app_text_color_other" />
+            <TextView
+                android:textStyle="bold"
+                android:id="@+id/order_yesterday_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="41px"
+                android:text="1324234"
+                android:textColor="@color/app_text_color_other" />
+            <TextView
+                android:textStyle="bold"
+                android:id="@+id/order_month_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="41px"
+                android:text="234"
+                android:textColor="@color/app_text_color_other" />
+            <TextView
+                android:textStyle="bold"
+                android:id="@+id/order_last_month_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="41px"
+                android:text="234444"
+                android:textColor="@color/app_text_color_other" />
+        </com.zhy.autolayout.AutoLinearLayout>
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/layout_two"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:textStyle="bold"
+                android:textColor="@color/text_color_red"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="30px"
+                android:text="订单金额"
+                 />
+            <TextView
+                android:textStyle="bold"
+                android:id="@+id/order_today_pay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="40px"
+                android:text="1234"
+                android:textColor="@color/text_color_red" />
+            <TextView
+                android:textStyle="bold"
+                android:id="@+id/order_yesterday_pay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="40px"
+                android:text="1324234"
+                android:textColor="@color/text_color_red" />
+            <TextView
+                android:textStyle="bold"
+                android:id="@+id/order_month_pay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="40px"
+                android:text="234"
+                android:textColor="@color/text_color_red" />
+            <TextView
+                android:textStyle="bold"
+                android:id="@+id/order_last_month_pay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="40px"
+                android:text="234444"
+                android:textColor="@color/text_color_red" />
+        </com.zhy.autolayout.AutoLinearLayout>
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+        <com.zhy.autolayout.AutoRelativeLayout
+android:id="@+id/find_more"
+            android:layout_marginTop="25px"
+            android:layout_below="@+id/second_layout"
+            android:layout_width="match_parent"
+            android:layout_height="80px">
+            <View
+                android:layout_centerVertical="true"
+
+                android:layout_marginLeft="25px"
+                android:layout_width="5px"
+                android:layout_height="18px"
+                android:background="@color/app_bg_color"/>
+            <TextView
+                android:layout_centerVertical="true"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40px"
+                android:text="已送货订单"
+                android:textColor="@color/black"
+                android:textSize="28px" />
+            <TextView
+                android:layout_toLeftOf="@+id/arrow"
+                android:layout_centerVertical="true"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="36px"
+                android:text="@string/find_more"
+                android:textColor="@color/gray_61"
+                android:textSize="28px" />
+            <View
+                android:id="@+id/arrow"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_width="40px"
+                android:layout_height="40px"
+                android:layout_marginRight="20px"
+                android:background="@mipmap/arrow_right"/>
+        </com.zhy.autolayout.AutoRelativeLayout>
+        <com.github.jdsjlzx.recyclerview.LRecyclerView
+
+            android:overScrollMode="never"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="22px"
+            android:layout_below="@+id/find_more"
+
+            android:id="@+id/recycle_view"
+            />
+        <View
+            android:layout_below="@+id/recycle_view"
+            android:layout_width="match_parent"
+            android:layout_height="70px"/>
+    </com.zhy.autolayout.AutoRelativeLayout>
+</ScrollView>
+</com.zhy.autolayout.AutoRelativeLayout>

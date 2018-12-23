@@ -1,0 +1,36 @@
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/title_layout"/>
+
+    <FrameLayout
+        android:id="@+id/code_container"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/title_layout"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/message_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="860px"
+        android:text="将二维码/条码放入框内，即可自动扫描"
+        android:textColor="@color/white"
+        android:textSize="32px" />
+
+    <TextView
+        android:id="@+id/open_light"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/message_tip"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70px"
+        android:text="点击开启照明"
+        android:textColor="@color/white"
+        android:textSize="32px"
+
+        />
+
+</com.zhy.autolayout.AutoRelativeLayout>

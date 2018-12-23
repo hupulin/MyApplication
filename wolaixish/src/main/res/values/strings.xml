@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">我来洗送货端</string>
+    <string name="finish">完成</string>
+    <string name="confirm">确认</string>
+    <string name="Logout">退出登录</string>
+    <string name="please_input_account_number">请输入您的账号</string>
+    <string name="please_input_original_password">请输入原密码</string>
+    <string name="please_input_new_password">请输入新密码</string>
+    <string name="please_confirm_new_password">请确认新密码</string>
+    <string name="please_input_password">请输入您的密码</string>
+    <string name="login_agree">我已经阅读并同意电子协议内容</string>
+    <string name="main_title">首页</string>
+    <string name="my_info">我的</string>
+    <string name="order_id">订单编号：</string>
+    <string name="order_number">订单笔数</string>
+    <string name="find_more">查看更多</string>
+    <string name="order_pay">订单金额：</string>
+    <string name="order_pay_other">订单金额</string>
+    <string name="order_time">预计送达时间：</string>
+    <string name="appointment_wardrobe">预约衣柜：</string>
+    <string name="address">地址：</string>
+    <string name="order_today">当日订单</string>
+    <string name="order_yesterday">昨日订单</string>
+    <string name="order_last_month">上月订单</string>
+    <string name="order_month">当月订单</string>
+    <string name="sweep_yards">扫码取货</string>
+    <string name="sweep_and_unpack">扫码开箱</string>
+    <string name="feedback_inform">反馈告知</string>
+    <string name="feedback_back">反馈退回</string>
+    <string name="pick_up_goods">确认取货</string>
+    <string name="pick_up_the_goods">通知用户取货</string>
+
+
+</resources>

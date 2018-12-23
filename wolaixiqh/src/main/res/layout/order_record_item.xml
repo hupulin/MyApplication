@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_marginTop="20px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="724px"
+            android:layout_height="343px"
+            android:layout_centerHorizontal="true"
+            android:background="@mipmap/order_list_bg">
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:id="@+id/order_layout"
+                android:layout_width="650px"
+
+                android:layout_height="73px"
+                android:layout_centerHorizontal="true">
+
+                <TextView
+                    android:id="@+id/order_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/order_id"
+                    android:textColor="@color/black"
+                    android:textSize="24px" />
+
+                <TextView
+                    android:id="@+id/order_num_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10px"
+                    android:layout_toRightOf="@+id/order_text"
+                    android:text="123456789"
+                    android:textColor="@color/gray_80"
+                    android:textSize="24px" />
+
+                <TextView
+                    android:id="@+id/order_status_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="36px"
+                    android:text="待收货"
+                    android:textColor="@color/app_color"
+                    android:textSize="24px" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/gray_f8" />
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:id="@+id/info_layout"
+                android:layout_width="650px"
+                android:layout_height="159px"
+                android:layout_below="@+id/order_layout"
+                android:layout_centerHorizontal="true">
+
+                <TextView
+                    android:id="@+id/wardrobe_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="29px"
+                    android:text="@string/appointment_wardrobe"
+                    android:textColor="@color/black"
+                    android:textSize="24px" />
+
+                <TextView
+                    android:id="@+id/order_num_layout"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10px"
+                    android:layout_marginTop="29px"
+                    android:layout_toRightOf="@+id/wardrobe_text"
+                    android:text="1号智能柜"
+                    android:textColor="@color/gray_80"
+                    android:textSize="24px" />
+
+                <TextView
+                    android:id="@+id/address_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/wardrobe_text"
+                    android:layout_marginTop="19px"
+                    android:text="@string/address"
+                    android:textColor="@color/black"
+                    android:textSize="24px" />
+
+                <TextView
+                    android:id="@+id/address_layout"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/wardrobe_text"
+                    android:layout_marginRight="10px"
+                    android:layout_marginTop="19px"
+                    android:layout_toRightOf="@+id/address_text"
+                    android:text="杭州市江干区下沙路699号"
+                    android:textColor="@color/gray_80"
+                    android:textSize="24px" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/gray_f8" />
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/info_layout"
+                android:layout_marginTop="20px">
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:layout_centerHorizontal="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/sweep_yards"
+                    android:layout_width="148px"
+                    android:layout_height="64px"
+                    android:background="@mipmap/shape_bg"
+                    android:gravity="center"
+                    android:text="@string/sweep_yards"
+                    android:textColor="@color/app_color"
+                    android:textSize="26px" />
+
+                <TextView
+                    android:id="@+id/feedback_inform"
+                    android:layout_width="148px"
+                    android:layout_height="64px"
+                    android:layout_marginLeft="19px"
+                    android:layout_toRightOf="@+id/sweep_yards"
+                    android:background="@mipmap/shape_bg"
+                    android:gravity="center"
+                    android:text="@string/feedback_inform"
+                    android:textColor="@color/app_color"
+                    android:textSize="26px" />
+                <TextView
+                    android:id="@+id/pick_up_goods"
+                    android:layout_width="148px"
+                    android:layout_height="64px"
+                    android:layout_marginLeft="19px"
+                    android:layout_toRightOf="@+id/feedback_inform"
+                    android:background="@mipmap/shape_bg"
+                    android:gravity="center"
+                    android:text="@string/pick_up_goods"
+                    android:textColor="@color/app_color"
+                    android:textSize="26px" />
+                <TextView
+                    android:id="@+id/feedback_back"
+                    android:layout_width="148px"
+                    android:layout_height="64px"
+                    android:layout_marginLeft="19px"
+                    android:layout_toRightOf="@+id/pick_up_goods"
+                    android:background="@mipmap/shape_bg"
+                    android:gravity="center"
+                    android:text="@string/feedback_back"
+                    android:textColor="@color/app_color"
+                    android:textSize="26px" />
+            </com.zhy.autolayout.AutoRelativeLayout>
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+    </com.zhy.autolayout.AutoRelativeLayout>
+</layout>

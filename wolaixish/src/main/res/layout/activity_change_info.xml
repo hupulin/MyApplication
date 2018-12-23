@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/withe"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_layout" />
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="162px">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="22px"
+            android:text="头像"
+            android:textColor="@color/black"
+            android:textSize="24px" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/gray_c" />
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/head_image"
+            android:layout_width="110px"
+            android:layout_height="110px"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="39px"
+            android:background="@mipmap/user_default_icon"
+            app:layout_auto_basewidth="height"
+            app:riv_oval="true" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="92px">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="22px"
+            android:text="昵称"
+            android:textColor="@color/black"
+            android:textSize="24px" />
+        <EditText
+            android:layout_marginLeft="300px"
+            android:layout_marginRight="30px"
+            android:id="@+id/new_password_two"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/transparent"
+            android:gravity="right|center_vertical"
+            android:hint="@string/please_confirm_new_password"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray_e6"
+            android:textCursorDrawable="@drawable/my_cursor"
+            android:textSize="24px" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20px"
+        android:background="@color/gray_f2" />
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="92px">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="22px"
+            android:text="性别"
+            android:textColor="@color/black"
+            android:textSize="24px" />
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="148px"
+            android:layout_height="46px"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="22px"
+            android:background="@drawable/sex_select_bg">
+<TextView
+    android:id="@+id/man"
+    android:gravity="center"
+    android:layout_width="73px"
+    android:text="男"
+    android:textSize="24px"
+    android:textColor="@color/select_sex_text_color"
+    android:layout_height="match_parent" />
+            <View
+                android:layout_centerHorizontal="true"
+                android:background="@color/app_text_color_other"
+                android:layout_width="2px"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:id="@+id/women"
+                android:textColor="@color/select_sex_text_color"
+                android:text="女"
+                android:textSize="24px"
+                android:gravity="center"
+                android:layout_alignParentRight="true"
+                android:layout_width="73px"
+                android:layout_height="match_parent" />
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/gray_c" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/birthday"
+        android:layout_width="match_parent"
+        android:layout_height="92px">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="22px"
+            android:text="生日"
+            android:textColor="@color/black"
+            android:textSize="24px" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/gray_c" />
+
+        <View
+            android:id="@+id/arrow_one"
+            android:layout_width="40px"
+            android:layout_height="40px"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20px"
+            android:background="@mipmap/arrow_right" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:id="@+id/change_password"
+        android:layout_width="match_parent"
+        android:layout_height="92px">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="22px"
+            android:text="修改密码"
+            android:textColor="@color/black"
+            android:textSize="24px" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentBottom="true"
+            android:background="@color/gray_c" />
+
+        <View
+            android:id="@+id/arrow_two"
+            android:layout_width="40px"
+            android:layout_height="40px"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20px"
+            android:background="@mipmap/arrow_right" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+    <TextView
+        android:id="@+id/logout"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="560px"
+        android:layout_height="110px"
+        android:layout_marginTop="450px"
+        android:textColor="@color/white"
+        android:text="@string/Logout"
+        android:textSize="32px"
+        android:gravity="center"
+        android:background="@drawable/gradient_bg"
+
+        />
+</com.zhy.autolayout.AutoLinearLayout>
