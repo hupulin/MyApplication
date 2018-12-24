@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MyApplication.iml" filepath="$PROJECT_DIR$/MyApplication.iml" />
       <module fileurl="file://$PROJECT_DIR$/applibrary/applibrary.iml" filepath="$PROJECT_DIR$/applibrary/applibrary.iml" />
-      <module fileurl="file://$PROJECT_DIR$/wolaix/wolaix.iml" filepath="$PROJECT_DIR$/wolaix/wolaix.iml" />
-      <module fileurl="file://$PROJECT_DIR$/wolaix/wolaix.iml" filepath="$PROJECT_DIR$/wolaix/wolaix.iml" />
+      <module fileurl="file://$PROJECT_DIR$/washmall/washmall.iml" filepath="$PROJECT_DIR$/washmall/washmall.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wolaixi.iml" filepath="$PROJECT_DIR$/wolaixi.iml" />
       <module fileurl="file://$PROJECT_DIR$/wolaixiqh/wolaixiqh.iml" filepath="$PROJECT_DIR$/wolaixiqh/wolaixiqh.iml" />
       <module fileurl="file://$PROJECT_DIR$/wolaixish/wolaixish.iml" filepath="$PROJECT_DIR$/wolaixish/wolaixish.iml" />
     </modules>

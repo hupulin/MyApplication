@@ -21,7 +21,7 @@ android {
             // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
         }
         manifestPlaceholders = [
-                JPUSH_PKGNAME: "com.hzxmkuar.wumeihui2",
+                JPUSH_PKGNAME: "com.xmkj.washmall2",
                 JPUSH_APPKEY : "b62b6927fd9c4497a8a63b02",
                 JPUSH_CHANNEL: "developer-default"
         ]
@@ -92,10 +92,9 @@ dependencies {
     })
     compile project(':applibrary')
     compile 'com.zhy:autolayout:1.4.5'
-    compile 'com.github.jdsjlzx:LRecyclerView:1.4.3'
+
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.jakewharton:butterknife:8.6.0'
-    compile 'com.jakewharton:butterknife-compiler:8.6.0'
+
     testCompile 'junit:junit:4.12'
     compile 'com.jzxiang.pickerview:TimePickerDialog:1.0.1'
     compile 'com.bigkoo:convenientbanner:2.0.5'

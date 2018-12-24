@@ -21,7 +21,7 @@ android {
             // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
         }
         manifestPlaceholders = [
-                JPUSH_PKGNAME: "com.hzxmkuar.wumeihui",
+                JPUSH_PKGNAME: "com.xmkj.washmall",
                 JPUSH_APPKEY : "b62b6927fd9c4497a8a63b02",
                 JPUSH_CHANNEL: "developer-default"
         ]
@@ -91,7 +91,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile project(':applibrary')
-    compile 'com.zhy:autolayout:1.4.5'
+
     compile 'com.github.jdsjlzx:LRecyclerView:1.4.3'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.jakewharton:butterknife:8.6.0'
