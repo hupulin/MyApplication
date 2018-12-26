@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+
+    <include layout="@layout/title_layout" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#EDEDED" />
+
+    <util.smart.SmartTabLayout
+        android:id="@+id/tab"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:clipToPadding="false"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        app:stl_defaultTabTextColor="@color/custom_tab"
+        app:stl_defaultTabTextHorizontalPadding="18dp"
+        app:stl_defaultTabTextSize="15dp"
+        app:stl_dividerColor="@color/transparent"
+        app:stl_dividerThickness="0dp"
+        app:stl_indicatorColor="#6452CF"
+
+        app:stl_indicatorGravity="bottom"
+        app:stl_indicatorInterpolation="smart"
+        app:stl_indicatorThickness="1dp"
+        app:stl_underlineColor="@color/transparent"
+        app:stl_underlineThickness="0dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#EDEDED" />
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tab" />
+</com.zhy.autolayout.AutoLinearLayout>

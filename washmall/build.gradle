@@ -25,6 +25,10 @@ android {
         targetCompatibility 1.8
         sourceCompatibility 1.8
     }
+
+    dataBinding {
+        enabled true
+    }
 }
 
 dependencies {
@@ -36,8 +40,14 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
     compile 'com.bigkoo:convenientbanner:2.0.5'
+    compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.github.sd6352051.niftydialogeffects:niftydialogeffects:1.0.0@aar'
     compile 'com.makeramen:roundedimageview:2.3.0'
     compile 'com.jzxiang.pickerview:TimePickerDialog:1.0.1'
+    compile 'com.ruffian.library:RTextView:1.0.10'
+    compile 'com.ogaclejapan.smarttablayout:library:1.6.1@aar'
+    compile 'com.ogaclejapan.smarttablayout:utils-v4:1.6.1@aar'
+    compile 'com.hyman:flowlayout-lib:1.1.2'
+
     compile project(':applibrary')
 }

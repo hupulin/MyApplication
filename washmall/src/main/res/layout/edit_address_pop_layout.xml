@@ -30,7 +30,7 @@
                 android:gravity="center"
                 android:layout_alignParentLeft="true"
                 android:layout_marginRight="15dip"
-				android:textColor="@color/appColor"
+				android:textColor="@color/app_line"
                 android:textSize="13sp" />
 
 
@@ -41,7 +41,7 @@
                 android:layout_alignParentRight="true"
                 android:gravity="center"
                 android:text="完成"
-				android:textColor="@color/appColor"
+				android:textColor="@color/app_line"
 				android:paddingRight="12dp"
                 android:textSize="12sp" />
 

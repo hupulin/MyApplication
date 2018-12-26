@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/parent"
+    android:orientation="vertical">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="380px"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.xmkj.washmall.base.util.PingFangTextView
+                android:id="@+id/cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="21px"
+                android:text="取消"
+                android:textColor="@color/black"
+                android:textSize="30px" />
+
+            <com.xmkj.washmall.base.util.PingFangTextView
+                android:id="@+id/confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="21px"
+                android:text="确定"
+                android:textColor="@color/black"
+                android:textSize="30px" />
+        </com.zhy.autolayout.AutoRelativeLayout>
+       <ScrollView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+
+
+        <GridLayout
+            android:id="@+id/grid_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="1"
+            >
+
+        </GridLayout>
+       </ScrollView>
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoRelativeLayout>

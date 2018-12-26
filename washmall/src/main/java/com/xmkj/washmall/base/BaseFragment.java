@@ -112,7 +112,7 @@ public class BaseFragment<T> extends Fragment {
 
     protected void displayImage(ImageView imageView,String url) {
 
-        Glide.with(appContext).load(url).transform(new GlideCircleTransform(appContext)).into(imageView);
+        Glide.with(appContext).load(url).into(imageView);
 
 
 

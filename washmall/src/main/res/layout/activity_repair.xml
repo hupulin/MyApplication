@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    >
+    <com.zhy.autolayout.AutoRelativeLayout
+
+        android:id="@+id/title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:clipToPadding="true"
+        android:fitsSystemWindows="true">
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="88px">
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:id="@+id/back"
+                android:layout_width="73px"
+                android:layout_height="match_parent">
+
+                <View
+                    android:layout_width="44px"
+                    android:layout_height="44px"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/back_icon" />
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <com.xmkj.washmall.base.util.PingFangTextView
+                android:id="@+id/title_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+
+                android:textColor="@color/black"
+                android:textSize="36px" />
+
+            <TextView
+                android:id="@+id/confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="22px"
+                android:text="确定"
+                android:textColor="@color/black"
+                android:textSize="30px" />
+        </com.zhy.autolayout.AutoRelativeLayout>
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="#ededed" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="600px"
+        android:layout_marginLeft="20px"
+        android:layout_marginRight="20px"
+        android:layout_marginTop="22px"
+        android:background="@drawable/repair_edit_bg"
+        android:textColor="@color/black"
+        android:textSize="24px"
+        android:paddingLeft="24px"
+        android:paddingRight="24px"
+        android:gravity="top"
+        android:paddingTop="32px"
+        android:textColorHint="#B5B5B5"
+        android:paddingBottom="32px"
+        android:hint="请输入具体故障情况..."
+        android:id="@+id/content"
+        />
+</com.zhy.autolayout.AutoLinearLayout>

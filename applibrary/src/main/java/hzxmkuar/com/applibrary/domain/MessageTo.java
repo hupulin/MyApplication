@@ -1,10 +1,6 @@
 package hzxmkuar.com.applibrary.domain;
 
-import com.alibaba.fastjson.JSON;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import hzxmkuar.com.applibrary.domain.main.MainMerchantTo;
 import lombok.Data;
 
 /**

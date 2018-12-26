@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="345px"
+        android:background="@drawable/login_top_bg" />
+
+    <View
+        android:layout_width="212px"
+        android:layout_height="212px"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="222px"
+        android:background="@drawable/ic_launcher"
+        app:layout_auto_basewidth="height" />
+
+    <TextView
+        android:id="@+id/register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="25px"
+        android:layout_marginTop="68px"
+        android:text="注册"
+        android:textColor="@color/white"
+        android:textSize="30px" />
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="544px"
+        android:orientation="vertical">
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="558px"
+            android:layout_height="44px"
+            android:layout_gravity="center_horizontal">
+
+            <View
+                android:layout_width="44px"
+                android:layout_height="44px"
+                android:background="@drawable/login_user_icon"
+                app:layout_auto_basewidth="height" />
+
+            <EditText
+                android:id="@+id/account"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:background="@color/transparent"
+                android:gravity="bottom"
+                android:textColorHint="@color/gray_b"
+                android:hint="请输入您的账号"
+                android:minWidth="100px"
+                android:textColor="@color/black_3"
+                android:textSize="24px" />
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <View
+            android:layout_width="558px"
+            android:layout_height="2px"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="35px"
+            android:background="@color/app_line" />
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="558px"
+            android:layout_height="44px"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="60px">
+
+            <View
+                android:layout_width="44px"
+                android:layout_height="44px"
+                android:background="@drawable/login_lock_icon"
+                app:layout_auto_basewidth="height" />
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:background="@color/transparent"
+                android:gravity="bottom"
+                android:hint="请输入您的密码"
+                android:inputType="textPassword"
+                android:textColorHint="@color/gray_b"
+                android:minWidth="100px"
+                android:textColor="@color/black_3"
+                android:textSize="24px" />
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <View
+            android:layout_width="558px"
+            android:layout_height="2px"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="35px"
+            android:background="@color/app_line" />
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="558px"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="36px">
+
+            <TextView
+                android:id="@+id/verification_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="手机验证码登录"
+                android:textColor="#544AA6"
+                android:textSize="22px" />
+
+            <TextView
+                android:id="@+id/forget_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="忘记密码"
+                android:textColor="#544AA6"
+                android:textSize="22px"
+
+                />
+
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <TextView
+            android:id="@+id/login"
+            android:layout_width="586px"
+            android:layout_height="108px"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="85px"
+            android:text="登录"
+            android:textColor="@color/white"
+            android:textSize="30px"
+
+            android:textStyle="bold"
+            android:gravity="center"
+            android:background="@drawable/login_common_btn" />
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+            <View
+                android:layout_width="44px"
+                android:layout_height="44px"
+                android:background="@drawable/login_select_agreement"
+                app:layout_auto_basewidth="height" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="我已经阅读并同意电子协议内容"
+
+                android:textColor="#232323"
+                android:textSize="22px" />
+        </com.zhy.autolayout.AutoLinearLayout>
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoRelativeLayout>

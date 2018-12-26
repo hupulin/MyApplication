@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="352px"
+        android:background="@drawable/wardrobe_top_bg" />
+
+    <include layout="@layout/white_title_layout" />
+
+    <ImageView
+        android:id="@+id/wardrobe_image"
+        android:layout_width="160px"
+        android:layout_height="160px"
+        android:layout_marginLeft="45px"
+        android:layout_marginTop="148px"
+        android:contentDescription="@string/app_name"
+        app:layout_auto_baseheight="width"
+
+        />
+
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="211px"
+        android:layout_marginTop="170px"
+        android:textColor="@color/white"
+        android:textSize="28px" />
+
+    <com.ruffian.library.RTextView
+        android:layout_width="wrap_content"
+        android:layout_height="48px"
+        android:layout_marginLeft="206px"
+        android:layout_marginTop="230px"
+        android:background="#5654E2"
+        android:gravity="center"
+        app:corner_radius="48px"
+        android:minWidth="174px"
+
+        android:textColor="@color/white"
+        android:id="@+id/wardrobe_name"
+        android:textSize="24px" />
+
+    <com.ruffian.library.RTextView
+        android:layout_width="wrap_content"
+        android:layout_height="48px"
+        android:layout_toRightOf="@+id/wardrobe_name"
+        android:layout_marginTop="230px"
+        android:background="#5654E2"
+        android:gravity="center"
+        android:layout_marginLeft="20px"
+        app:corner_radius="48px"
+        android:minWidth="174px"
+        android:textColor="@color/white"
+        android:id="@+id/wardrobe_num"
+        android:textSize="24px" />
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="360px"
+        >
+
+
+    <util.smart.SmartTabLayout
+        android:id="@+id/tab"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:clipToPadding="false"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        app:stl_defaultTabTextColor="@color/custom_tab"
+        app:stl_defaultTabTextHorizontalPadding="18dp"
+        app:stl_defaultTabTextSize="15dp"
+        app:stl_dividerColor="@color/transparent"
+        app:stl_dividerThickness="0dp"
+        app:stl_indicatorColor="#6452CF"
+
+        app:stl_indicatorGravity="bottom"
+        app:stl_indicatorInterpolation="smart"
+        app:stl_indicatorThickness="1dp"
+        app:stl_underlineColor="@color/transparent"
+        app:stl_underlineThickness="0dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#EDEDED" />
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tab" />
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoRelativeLayout>

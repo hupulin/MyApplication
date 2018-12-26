@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <com.zhy.autolayout.AutoRelativeLayout
+
+        android:id="@+id/title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:clipToPadding="true"
+        android:fitsSystemWindows="true">
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="88px">
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:id="@+id/back"
+                android:layout_width="73px"
+                android:layout_height="match_parent">
+
+                <View
+                    android:layout_width="44px"
+                    android:layout_height="44px"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/back_icon" />
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <com.xmkj.washmall.base.util.PingFangTextView
+                android:id="@+id/title_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+
+                android:textColor="@color/black"
+                android:textSize="36px" />
+
+            <TextView
+                android:id="@+id/rule_des"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="22px"
+                android:text="29'59"
+                android:textColor="@color/black"
+                android:textSize="30px" />
+        </com.zhy.autolayout.AutoRelativeLayout>
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="#ededed" />
+
+    <View
+        android:layout_width="144px"
+        android:layout_height="181px"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="90px"
+        android:background="@drawable/wash_reserve_success"
+        app:layout_auto_baseheight="width" />
+
+    <com.xmkj.washmall.base.util.PingFangTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="24px"
+        android:text="预定成功！"
+        android:textColor="@color/black"
+        android:textSize="30px" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="60px"
+        android:gravity="center"
+        android:text="请在半小时内，带上待洗的衣物，\n
+去找到你预定编号的衣柜吧！"
+        android:textColor="#818181"
+        android:textSize="28px" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="38px"
+        android:text="故障报修"
+        android:id="@+id/repair"
+        android:textColor="#FF0000"
+        android:textSize="28px" />
+
+    <View
+        android:layout_width="586px"
+        android:layout_height="108px"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="98px"
+        android:id="@+id/scan"
+        android:background="@drawable/wash_reserve_sacn" />
+</com.zhy.autolayout.AutoLinearLayout>

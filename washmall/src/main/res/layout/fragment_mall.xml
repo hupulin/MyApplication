@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <com.zhy.autolayout.AutoRelativeLayout
+
+        android:id="@+id/title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40px"
+        android:background="@color/white"
+        android:clipToPadding="true"
+        android:fitsSystemWindows="true">
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="88px">
+
+
+            <com.xmkj.washmall.base.util.PingFangTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="网上商城"
+
+                android:textColor="@color/black"
+                android:textSize="36px" />
+        </com.zhy.autolayout.AutoRelativeLayout>
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="#EDEDED" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <com.bigkoo.convenientbanner.ConvenientBanner
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="27px"
+                android:layout_marginRight="27px"
+                android:layout_height="470px">
+
+            </com.bigkoo.convenientbanner.ConvenientBanner>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20px"
+                android:background="#EFEFEF" />
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70px">
+
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <com.zhy.autolayout.AutoLinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="按价格排序"
+                            android:textColor="@color/black"
+                            android:textSize="24px" />
+
+                        <View
+                            android:layout_width="12px"
+                            android:layout_height="11px"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="8px"
+                            android:background="@drawable/sort_down_icon" />
+                    </com.zhy.autolayout.AutoLinearLayout>
+                </com.zhy.autolayout.AutoRelativeLayout>
+
+                <View
+                    android:layout_width="2px"
+                    android:layout_height="41px"
+                    android:layout_gravity="center_vertical"
+                    android:background="#EFEFEF" />
+
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <com.zhy.autolayout.AutoLinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="按销量排序"
+                            android:textColor="@color/black"
+                            android:textSize="24px" />
+
+                        <View
+                            android:layout_width="12px"
+                            android:layout_height="11px"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="8px"
+                            android:background="@drawable/sort_down_icon" />
+                    </com.zhy.autolayout.AutoLinearLayout>
+                </com.zhy.autolayout.AutoRelativeLayout>
+
+
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2px"
+                android:background="#EFEFEF" />
+
+
+            <GridLayout
+                android:id="@+id/goods_layout"
+                android:layout_width="match_parent"
+                android:layout_height="1000px"
+                android:columnCount="2">
+
+            </GridLayout>
+        </com.zhy.autolayout.AutoLinearLayout>
+    </ScrollView>
+</com.zhy.autolayout.AutoLinearLayout>

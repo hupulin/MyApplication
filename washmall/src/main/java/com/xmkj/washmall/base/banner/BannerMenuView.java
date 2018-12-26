@@ -14,14 +14,14 @@ import com.xmkj.washmall.R;
 
 import java.util.List;
 
-import hzxmkuar.com.applibrary.domain.main.MainBannerTo;
+import hzxmkuar.com.applibrary.domain.main.MainHomeAdTo;
 
 
 /**
  * Created by xzz on 2017/6/25.
  **/
 
-public class BannerMenuView implements Holder<List<MainBannerTo.IndexMenuBean>> {
+public class BannerMenuView implements Holder<List<MainHomeAdTo>> {
 
     private GridLayout gridLayout;
 
@@ -34,7 +34,7 @@ public class BannerMenuView implements Holder<List<MainBannerTo.IndexMenuBean>> 
     }
 
     @Override
-    public void UpdateUI(Context context, int position, List<MainBannerTo.IndexMenuBean> menuList ) {
+    public void UpdateUI(Context context, int position, List<MainHomeAdTo> menuList ) {
 
     }
 }

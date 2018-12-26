@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="40px"
+        android:layout_marginLeft="18px"
+        android:layout_marginRight="18px"
+        android:gravity="center"
+        android:background="@drawable/wash_type_tag_un_select"
+        android:textColor="#8273EF"
+        android:minWidth="112px"
+        android:textSize="22px" />
+</com.zhy.autolayout.AutoRelativeLayout>

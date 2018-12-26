@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="90px">
+
+            <View
+                android:layout_width="47px"
+                android:layout_height="41px"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="26px"
+                android:background="@drawable/select_wash_t_shirt" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="6px"
+                android:textColor="@color/black"
+                android:textSize="24px" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="18px"
+                android:text="数量："
+                android:textColor="@color/black"
+                android:textSize="24px" />
+
+            <TextView
+                android:id="@+id/num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/black"
+                android:textSize="24px"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="40px"
+                android:text="是否需要加香"
+                android:textColor="@color/black"
+                android:textSize="24px" />
+
+            <View
+                android:id="@+id/need_aroma"
+                android:layout_width="71px"
+                android:layout_height="42px"
+                android:layout_marginLeft="20px"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/wash_need_un_select" />
+
+            <View
+                android:id="@+id/un_need_aroma"
+                android:layout_width="71px"
+                android:layout_gravity="center_vertical"
+                android:layout_height="42px"
+                android:background="@drawable/wash_un_need_select"
+
+                />
+
+            <com.xmkj.washmall.base.util.PingFangTextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="40px"
+                android:textColor="#FF0000"
+                android:text="+"
+                android:textSize="24px" />
+            <com.xmkj.washmall.base.util.PingFangTextView
+                android:id="@+id/aroma_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+
+                android:textColor="#FF0000"
+                android:textSize="36px" />
+            <com.xmkj.washmall.base.util.PingFangTextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+
+                android:textColor="#FF0000"
+                android:text="元"
+                android:textSize="24px" />
+        </com.zhy.autolayout.AutoLinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="20px"
+            android:layout_marginRight="20px"
+            android:background="#ECECEC" />
+    </com.zhy.autolayout.AutoLinearLayout>
+</layout>

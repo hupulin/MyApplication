@@ -7,14 +7,14 @@ import android.widget.ImageView;
 import com.bigkoo.convenientbanner.holder.Holder;
 import com.bumptech.glide.Glide;
 
-import hzxmkuar.com.applibrary.domain.main.MainBannerTo;
+import hzxmkuar.com.applibrary.domain.main.MainHomeAdTo;
 
 
 /**
  * Created by xzz on 2017/6/25.
  **/
 
-public class BannerHolderView implements Holder<MainBannerTo.IndexSlideshowBean> {
+public class BannerHolderView implements Holder<MainHomeAdTo> {
     private ImageView imageView;
     private int loadSrc;
     public BannerHolderView(int loadSrc){
@@ -28,7 +28,7 @@ public class BannerHolderView implements Holder<MainBannerTo.IndexSlideshowBean>
     }
 
     @Override
-    public void UpdateUI(Context context, int position, MainBannerTo.IndexSlideshowBean data) {
-        Glide.with(context).load(data.getPic()).placeholder(loadSrc).into(imageView);
+    public void UpdateUI(Context context, int position, MainHomeAdTo data) {
+
     }
 }

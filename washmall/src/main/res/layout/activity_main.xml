@@ -1,13 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<com.zhy.autolayout.AutoLinearLayout
+
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="com.xmkj.washmall.main.MainActivity">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.xmkj.washmall.main.MainActivity">
 
-    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:text="Hello World!" app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="1" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#fafafa"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#f8f8f8"
+        />
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="88px">
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/home_layout"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="54px"
+            >
+            <View
+                android:layout_width="44px"
+                android:layout_height="44px"
+                android:id="@+id/home_icon"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/main_home_select_icon"
+                />
+            <com.xmkj.washmall.base.util.PingFangTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/app_color"
+                android:textSize="18px"
+                android:text="首页"
+                android:id="@+id/home_text"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="4px"
+                />
+        </com.zhy.autolayout.AutoLinearLayout>
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/mall_layout"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="253px"
+            >
+            <View
+                android:layout_width="44px"
+                android:layout_height="44px"
+                android:id="@+id/mall_icon"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/main_mall_un_select"
+                />
+            <com.xmkj.washmall.base.util.PingFangTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="18px"
+                android:text="商城"
+                android:id="@+id/mall_text"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="4px"
+                />
+        </com.zhy.autolayout.AutoLinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="252px"
+            android:id="@+id/car_layout"
+            >
+            <View
+                android:layout_width="44px"
+                android:layout_height="44px"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/car_icon"
+                android:background="@drawable/main_car_un_select"
+                />
+            <com.xmkj.washmall.base.util.PingFangTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="18px"
+                android:text="购物车"
+                android:id="@+id/car_text"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="4px"
+                />
+        </com.zhy.autolayout.AutoLinearLayout>
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+           android:layout_marginRight="52px"
+            android:id="@+id/myself_layout"
+            >
+            <View
+                android:layout_width="44px"
+                android:layout_height="44px"
+                android:id="@+id/myself_icon"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/main_myself_un_select"
+                />
+            <com.xmkj.washmall.base.util.PingFangTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="18px"
+                android:text="商城"
+                android:id="@+id/myself_text"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="4px"
+                />
+        </com.zhy.autolayout.AutoLinearLayout>
+    </com.zhy.autolayout.AutoRelativeLayout>
+</com.zhy.autolayout.AutoLinearLayout>

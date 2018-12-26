@@ -51,7 +51,7 @@
                 android:paddingRight="30px"
                 android:text="确定"
                 android:id="@+id/confirm"
-                android:textColor="@color/appColor"
+                android:textColor="#8273EF"
                 android:textSize="28px"
                 android:textStyle="bold" />
         </com.zhy.autolayout.AutoRelativeLayout>
