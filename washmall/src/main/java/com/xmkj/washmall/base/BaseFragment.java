@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -145,6 +146,29 @@ public class BaseFragment<T> extends Fragment {
 
 
     }
+
+
+    protected void setRecycleView(BaseAdapter adapter, LRecyclerView recycleView, BasePresenter presenter,int count) {
+        this.baseAdapter = adapter;
+        this.mRecycleView = recycleView;
+        recycleView.setLayoutManager(new GridLayoutManager(getActivity(),count));
+        recycleView.setRefreshHeader(new RecycleViewHeadView(appContext));
+        LRecyclerViewAdapter lRecyclerViewAdapter = new LRecyclerViewAdapter(adapter);
+        if (headView!=null)
+            lRecyclerViewAdapter.addHeaderView(headView);
+        recycleView.setAdapter(lRecyclerViewAdapter);
+        recycleView.setPullRefreshEnabled(false);
+        recycleView.setLoadMoreEnabled(false);
+        recycleView.setLoadingMoreProgressStyle(ProgressStyle.BallSpinFadeLoader);
+        recycleView.setFooterViewColor(R.color.appColor, R.color.appColor, R.color.transparent);
+        recycleView.setOnLoadMoreListener(presenter::recycleViewLoadMore);
+        recycleView.setOnRefreshListener(presenter::recycleViewRefresh);
+        lRecyclerViewAdapter.setOnItemClickListener(presenter::recycleItemClick);
+//        recycleView.forceToRefresh();
+
+
+    }
+
     protected void setRecycleView(BaseAdapter adapter, LRecyclerView recycleView, BasePresenter presenter,Boolean refresh) {
         this.baseAdapter = adapter;
         this.mRecycleView = recycleView;

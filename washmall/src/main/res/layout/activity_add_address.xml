@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    >
+<include layout="@layout/title_layout"/>
+<View
+    android:layout_width="match_parent"
+    android:layout_height="2px"
+    android:background="#ededed"
+    />
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="90px"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="24px"
+            android:textColor="@color/black"
+            android:textSize="30px"
+            android:text="收货人"
+            />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="271px"
+            android:textColor="@color/black"
+            android:textSize="30px"
+
+            android:hint="请输入收货人姓名"
+            android:background="@color/transparent"
+            android:textColorHint="#808080"
+            android:id="@+id/contact_name"
+
+            />
+    </com.zhy.autolayout.AutoRelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="#ededed"
+        />
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="90px"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="24px"
+            android:textColor="@color/black"
+            android:textSize="30px"
+            android:text="联系电话"
+            />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="271px"
+            android:textColor="@color/black"
+            android:textSize="30px"
+            android:hint="请输入联系电话"
+            android:background="@color/transparent"
+            android:textColorHint="#808080"
+            android:id="@+id/phone"
+
+            />
+    </com.zhy.autolayout.AutoRelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="#ededed"
+        />
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="90px"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="24px"
+            android:textColor="@color/black"
+            android:textSize="30px"
+            android:text="所在区域"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="271px"
+            android:textColor="@color/black"
+            android:textSize="30px"
+
+            android:hint="请选择所在区域"
+            android:background="@color/transparent"
+            android:textColorHint="#808080"
+            android:id="@+id/select_area"
+            android:gravity="center_vertical"
+
+            />
+        <View
+            android:layout_width="24px"
+            android:layout_height="22px"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="24px"
+            android:background="@drawable/login_address_arrow"
+            />
+    </com.zhy.autolayout.AutoRelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="#ededed"
+        />
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="90px"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="24px"
+            android:textColor="@color/black"
+            android:textSize="30px"
+            android:text="详细地址"
+            />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="271px"
+            android:textColor="@color/black"
+            android:textSize="30px"
+
+            android:hint="请输入详细地址"
+            android:background="@color/transparent"
+            android:textColorHint="#808080"
+            android:id="@+id/detail_address"
+
+            />
+    </com.zhy.autolayout.AutoRelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="#ededed"
+        />
+    <com.xmkj.washmall.base.util.PingFangTextView
+        android:id="@+id/confirm"
+        android:layout_width="586px"
+        android:layout_height="108px"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="90px"
+        android:text="添加"
+        android:textColor="@color/white"
+        android:textSize="30px"
+        android:paddingBottom="10px"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:background="@drawable/login_common_btn" />
+</com.zhy.autolayout.AutoLinearLayout>

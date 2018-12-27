@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/parent"
+    >
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="576px"
+        android:layout_height="446px"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:background="@drawable/dialog_pay_tip_bg">
+
+        <com.xmkj.washmall.base.util.PingFangTextView
+            android:layout_width="match_parent"
+            android:layout_height="133px"
+            android:layout_marginTop="8px"
+            android:gravity="center"
+            android:text="提示"
+            android:textColor="@color/white"
+            android:textSize="36px" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="兑换成功！\n 请耐心等待商品的到来！"
+            android:textSize="30px"
+            android:textColor="@color/black"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="70px"
+
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_weight="1"
+            />
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32px"
+            android:layout_gravity="center_horizontal"
+            >
+            <TextView
+                android:layout_width="230px"
+                android:layout_height="78px"
+                android:background="@drawable/dialog_pay_tip_cancel"
+                android:id="@+id/cancel"
+                android:textSize="34px"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:text="取消"
+                />
+            <TextView
+                android:layout_width="230px"
+                android:layout_height="78px"
+                android:background="@drawable/dialog_pay_tip_confirm"
+                android:id="@+id/confirm"
+                android:textSize="34px"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:text="立即前往"
+                android:layout_marginLeft="24px"
+                />
+        </com.zhy.autolayout.AutoLinearLayout>
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoRelativeLayout>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_layout" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title_layout">
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/goods_image"
+                android:layout_width="match_parent"
+                android:layout_height="440px"
+                android:contentDescription="@string/app_name" />
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="108px">
+
+                <com.xmkj.washmall.base.util.PingFangTextView
+                    android:id="@+id/goods_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="27px"
+                    android:textColor="#FF0000"
+                    android:textSize="46px" />
+
+                <TextView
+                    android:id="@+id/sale_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20px"
+                    android:textColor="#6F6F6F"
+                    android:textSize="24px" />
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2px"
+                android:background="#EDEDED" />
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="151px"
+                android:layout_marginLeft="27px"
+                android:layout_marginRight="27px"
+                android:orientation="vertical">
+
+                <com.xmkj.washmall.base.util.PingFangTextView
+                    android:id="@+id/goods_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="28px"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textSize="28px" />
+
+                <TextView
+                    android:id="@+id/goods_des"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30px"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:textColor="#5B5B5B"
+                    android:textSize="24px" />
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2px"
+                android:background="#EDEDED" />
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="77px">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="24px"
+                    android:text="选择类型"
+                    android:textColor="#5B5B5B"
+                    android:textSize="24px" />
+
+                <TextView
+                    android:id="@+id/select_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="24px"
+                    android:layout_marginRight="40px"
+                    android:gravity="center_vertical|right"
+                    android:minWidth="240px"
+                    android:text="请选择商品类型"
+                    android:textColor="#5B5B5B"
+                    android:textSize="24px" />
+
+                <View
+                    android:layout_width="40px"
+                    android:layout_height="40px"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/goods_detail_right_arrow" />
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20px"
+                android:background="#EDEDED" />
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="79px">
+
+                <View
+                    android:layout_width="382px"
+                    android:layout_height="23px"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/goods_detail_line" />
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <WebView
+                android:id="@+id/web_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </WebView>
+        </com.zhy.autolayout.AutoLinearLayout>
+    </ScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="#EDEDED" />
+
+    <com.xmkj.washmall.base.util.PingFangTextView
+        android:id="@+id/confirm"
+        android:layout_width="586px"
+        android:layout_height="106px"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+
+        android:background="@drawable/login_common_btn"
+
+        android:gravity="center"
+        android:text="立即兑换"
+        android:textColor="@color/white"
+        android:textSize="30px" />
+</com.zhy.autolayout.AutoRelativeLayout>

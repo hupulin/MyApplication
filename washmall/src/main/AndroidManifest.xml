@@ -71,6 +71,42 @@
             android:screenOrientation="portrait"
             />
 
+        <activity android:name=".mall.GoodsSortActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".mall.GoodsDetailActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".mall.ConfirmOrderActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".mall.AddressActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".mall.AddAddressActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".mall.SelectPayActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".mall.IntegralActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".mall.IntegralGoodsDetailActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".mall.ConfirmIntegralOrderActivity"
+            android:screenOrientation="portrait"
+            />
+
         <meta-data
             android:name="design_width"
             android:value="750" />
