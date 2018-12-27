@@ -25,6 +25,7 @@
             android:layout_height="wrap_content"
             android:text="兑换成功！\n 请耐心等待商品的到来！"
             android:textSize="30px"
+            android:gravity="center"
             android:textColor="@color/black"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="70px"

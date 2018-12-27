@@ -6,6 +6,7 @@ import lombok.Data;
 /**
  * Created by Administrator on 2018/9/28.
  */
+
 @Data
 public class ConfirmIntegralParam extends BaseParam {
     private String consignee;

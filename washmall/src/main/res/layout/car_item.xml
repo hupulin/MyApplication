@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="722px"
+            android:layout_height="244px"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20px"
+            android:background="@drawable/car_item_bg">
+
+            <View
+                android:layout_width="40px"
+                android:layout_height="40px"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="18px"
+                android:background="@drawable/address_un_select" />
+
+            <ImageView
+                android:id="@+id/goods_image"
+                android:layout_width="162px"
+                android:layout_height="162px"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="67px"
+                android:contentDescription="@string/app_name" />
+
+            <com.xmkj.washmall.base.util.PingFangTextView
+                android:id="@+id/goods_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="260px"
+                android:layout_marginTop="41px"
+                android:textColor="@color/black"
+                android:textSize="24px" />
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="260px"
+                android:layout_marginTop="126px">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="规格： "
+                    android:textColor="@color/black"
+                    android:textSize="22px" />
+
+                <TextView
+                    android:id="@+id/specification"
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="wrap_content"
+                    android:textColor="#808080"
+                    android:textSize="22px" />
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <com.xmkj.washmall.base.util.PingFangTextView
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="260px"
+                android:layout_marginTop="168px"
+                android:textColor="#FF0000"
+                android:textSize="24px" />
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="39px"
+                android:layout_marginRight="18px">
+
+                <View
+                    android:layout_width="40px"
+                    android:layout_height="40px"
+                    android:background="@drawable/specification_add" />
+
+                <com.xmkj.washmall.base.util.PingFangTextView
+                    android:id="@+id/purchase_num"
+                    android:layout_width="63px"
+                    android:layout_height="40px"
+                    android:background="@drawable/specification_num"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:text="1"
+                    android:textSize="26px" />
+
+                <View
+                    android:layout_width="40px"
+                    android:layout_height="40px"
+                    android:background="@drawable/specification_reduce" />
+            </com.zhy.autolayout.AutoLinearLayout>
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+</layout>

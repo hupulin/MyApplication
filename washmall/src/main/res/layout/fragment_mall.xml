@@ -12,8 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40px"
         android:background="@color/white"
-        android:clipToPadding="true"
-        android:fitsSystemWindows="true">
+  >
 
         <com.zhy.autolayout.AutoRelativeLayout
             android:layout_width="match_parent"

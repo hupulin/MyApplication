@@ -12,8 +12,10 @@ import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.BaseActivity;
 import com.xmkj.washmall.base.util.PingFangTextView;
 import com.xmkj.washmall.base.util.StatueBarUtil;
+import com.xmkj.washmall.main.fragment.CarFragment;
 import com.xmkj.washmall.main.fragment.HomeFragment;
 import com.xmkj.washmall.main.fragment.MallFragment;
+import com.xmkj.washmall.main.fragment.MyselfFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,8 +59,8 @@ public class MainActivity extends BaseActivity {
     private void initFragment() {
         fragmentList.add(new HomeFragment());
         fragmentList.add(new MallFragment());
-        fragmentList.add(new HomeFragment());
-        fragmentList.add(new HomeFragment());
+        fragmentList.add(new CarFragment());
+        fragmentList.add(new MyselfFragment());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -78,7 +80,7 @@ public class MainActivity extends BaseActivity {
                 myselfIcon.setBackgroundResource(position==3?R.drawable.main_myself_select:R.drawable.main_myself_un_select);
                if (position==0)
                     StatueBarUtil.setStatueBarTextWhite(getWindow());
-                if (position==1)
+                if (position==1||position==2)
                     StatueBarUtil.setStatueBarTextBlack(getWindow());
             }
 

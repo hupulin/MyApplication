@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 
 import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.BaseActivity;
+import com.xmkj.washmall.main.MainActivity;
 import com.xmkj.washmall.mall.IntegralActivity;
 
 /**
@@ -20,7 +21,7 @@ public class SplashActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         handler.postDelayed(() ->{
-            Intent intent=new Intent(appContext,IntegralActivity.class);
+            Intent intent=new Intent(appContext,MainActivity.class);
             startActivity(intent);
             goToAnimation(1);
         } ,2500);

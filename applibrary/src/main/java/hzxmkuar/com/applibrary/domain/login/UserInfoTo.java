@@ -15,9 +15,11 @@ public class UserInfoTo implements Serializable {
     private int uid;
     private int face;
     private String hashid;
-    private String username;
+
     private String mobile;
     private String face_url;
+    private String userName="昵称";
+    private String userImg="http://118.190.201.28:8080/img/timg.jpg";
 
 
 
