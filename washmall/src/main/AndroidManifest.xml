@@ -107,6 +107,62 @@
             android:screenOrientation="portrait"
             />
 
+        <activity android:name=".myself.EditUserActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".myself.ModifyPasswordActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".myself.VipCenterActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".myself.ExchangeActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".myself.MyCollectActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".myself.MyCouponActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".myself.IntegralDetailActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".myself.WashOrderActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".myself.MallOrderActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".mall.PayOrderActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".mall.SelectCouponActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".mall.EvaluateActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".myself.FeedBackActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".mall.AbortOrderActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".myself.HelpActivity"
+            android:screenOrientation="portrait"
+            />
+
         <meta-data
             android:name="design_width"
             android:value="750" />

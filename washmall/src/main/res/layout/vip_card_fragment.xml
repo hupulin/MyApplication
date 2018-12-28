@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="726px"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20px">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="358px"
+            android:background="@drawable/vip_card_bg" />
+
+        <View
+            android:id="@+id/exchange"
+            android:layout_width="288px"
+            android:layout_height="98px"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="300px"
+            android:background="@drawable/vip_exchange" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="714px"
+        android:layout_height="306px"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/vip_right_bg"
+        android:layout_marginTop="14px">
+
+        <com.xmkj.washmall.base.util.PingFangTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24px"
+            android:layout_marginTop="26px"
+            android:text="待生效权益"
+            android:textColor="@color/white"
+            android:textSize="24px" />
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="78px">
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="56px"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="80px"
+                    android:layout_height="80px"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/vip_on_sale" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="14px"
+                    android:text="下单9折"
+                    android:textColor="#535353" />
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="74px"
+
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="80px"
+                    android:layout_height="80px"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/vip_right_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="14px"
+                    android:text="会员标识"
+                    android:textColor="#535353" />
+            </com.zhy.autolayout.AutoLinearLayout>
+
+        </com.zhy.autolayout.AutoLinearLayout>
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>

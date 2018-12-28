@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="348px"
+        android:background="@drawable/myself_top_bg" />
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <include layout="@layout/white_title_layout" />
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60px">
+
+            <com.xmkj.washmall.base.util.PingFangTextView
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="白银会员"
+                android:id="@+id/silver"
+                android:textColor="@color/white"
+                android:textSize="30px" />
+
+            <com.xmkj.washmall.base.util.PingFangTextView
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="黄金会员"
+                android:id="@+id/gold"
+                android:textColor="#EEE8FF"
+                android:textSize="30px" />
+
+            <com.xmkj.washmall.base.util.PingFangTextView
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="铂金会员"
+                android:id="@+id/platinum"
+                android:textColor="#EEE8FF"
+                android:textSize="30px" />
+        </com.zhy.autolayout.AutoLinearLayout>
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:id="@+id/move_line"
+            android:layout_width="250px"
+            android:layout_height="4px"
+            android:layout_marginTop="15px">
+
+            <View
+                android:layout_width="100px"
+                android:layout_height="4px"
+                android:layout_centerInParent="true"
+                android:background="@color/white" />
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v4.view.ViewPager>
+
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoRelativeLayout>

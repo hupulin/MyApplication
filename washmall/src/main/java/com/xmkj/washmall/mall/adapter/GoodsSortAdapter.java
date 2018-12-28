@@ -15,7 +15,6 @@ import com.xmkj.washmall.base.adapter.BindingHolder;
 import com.xmkj.washmall.databinding.MallGoodsItemBinding;
 import com.xmkj.washmall.databinding.OrderWashItemBinding;
 
-import hzxmkuar.com.applibrary.domain.integral.GoodsTo;
 import hzxmkuar.com.applibrary.domain.main.MallGoodsTo;
 import hzxmkuar.com.applibrary.domain.order.WashOrderTo;
 

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    >
+  <include layout="@layout/title_layout"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="#ededed" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="448px"
+        android:layout_marginLeft="20px"
+        android:layout_marginRight="20px"
+        android:layout_marginTop="22px"
+        android:background="@drawable/repair_edit_bg"
+        android:textColor="@color/black"
+        android:textSize="24px"
+        android:paddingLeft="24px"
+        android:paddingRight="24px"
+        android:gravity="top"
+        android:paddingTop="32px"
+        android:textColorHint="#B5B5B5"
+        android:paddingBottom="32px"
+        android:hint="请输入具体故障情况..."
+        android:id="@+id/content"
+        />
+
+    <com.xmkj.washmall.base.util.PingFangTextView
+        android:id="@+id/login"
+        android:layout_width="586px"
+        android:layout_height="108px"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="340px"
+        android:text="确认"
+        android:textColor="@color/white"
+        android:textSize="30px"
+        android:paddingBottom="10px"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:background="@drawable/login_common_btn" />
+</com.zhy.autolayout.AutoLinearLayout>

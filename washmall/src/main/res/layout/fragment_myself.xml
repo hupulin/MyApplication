@@ -88,6 +88,7 @@
                     android:layout_width="0px"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:id="@+id/collect_layout"
                     android:orientation="vertical">
 
                     <com.xmkj.washmall.base.util.PingFangTextView
@@ -112,6 +113,7 @@
                     android:layout_width="0px"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:id="@+id/balance_layout"
                     android:orientation="vertical">
 
                     <com.xmkj.washmall.base.util.PingFangTextView
@@ -136,6 +138,7 @@
                     android:layout_width="0px"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:id="@+id/coupon_layout"
                     android:orientation="vertical">
 
                     <com.xmkj.washmall.base.util.PingFangTextView
@@ -226,6 +229,7 @@
             <com.zhy.autolayout.AutoLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40px"
+                android:id="@+id/wash_order_layout"
                 android:layout_marginTop="17px">
 
                 <View
@@ -273,6 +277,7 @@
                     android:layout_width="80px"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="76px"
+                    android:id="@+id/wash_order_1"
                     android:orientation="vertical">
 
 
@@ -295,6 +300,7 @@
                     android:layout_width="80px"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="83px"
+                    android:id="@+id/wash_order_2"
                     android:orientation="vertical">
 
 
@@ -317,6 +323,7 @@
                     android:layout_width="80px"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="83px"
+                    android:id="@+id/wash_order_3"
                     android:orientation="vertical">
 
 
@@ -339,6 +346,7 @@
                     android:layout_width="80px"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="83px"
+                    android:id="@+id/wash_order_4"
                     android:orientation="vertical">
 
 
@@ -376,6 +384,7 @@
             <com.zhy.autolayout.AutoLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40px"
+                android:id="@+id/mall_order_layout"
                 android:layout_marginTop="17px">
 
                 <View
@@ -417,6 +426,7 @@
             <com.zhy.autolayout.AutoLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/mall_order_1"
                 android:layout_marginTop="16px">
 
                 <com.zhy.autolayout.AutoLinearLayout
@@ -445,6 +455,7 @@
                     android:layout_width="80px"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="83px"
+                    android:id="@+id/mall_order_2"
                     android:orientation="vertical">
 
 
@@ -467,6 +478,7 @@
                     android:layout_width="80px"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="83px"
+                    android:id="@+id/mall_order_3"
                     android:orientation="vertical">
 
 
@@ -489,6 +501,7 @@
                     android:layout_width="80px"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="83px"
+                    android:id="@+id/mall_order_4"
                     android:orientation="vertical">
 
 
@@ -559,6 +572,7 @@
                     android:layout_width="80px"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="76px"
+                    android:id="@+id/address"
                     android:orientation="vertical">
 
 
@@ -582,6 +596,7 @@
                     android:layout_width="80px"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="83px"
+                    android:id="@+id/help"
                     android:orientation="vertical">
 
 
@@ -604,6 +619,7 @@
                 <com.zhy.autolayout.AutoLinearLayout
                     android:layout_width="80px"
                     android:layout_height="wrap_content"
+                    android:id="@+id/feed_back"
                     android:layout_marginLeft="83px"
                     android:orientation="vertical">
 
@@ -628,6 +644,7 @@
                     android:layout_width="80px"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="83px"
+                    android:id="@+id/custom_service"
                     android:orientation="vertical">
 
 
@@ -658,6 +675,7 @@
                     android:layout_width="80px"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="76px"
+                    android:id="@+id/platform"
                     android:orientation="vertical">
 
 
@@ -681,6 +699,7 @@
                     android:layout_width="80px"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="83px"
+                    android:id="@+id/about"
                     android:orientation="vertical">
 
 
@@ -688,7 +707,7 @@
                         android:layout_width="70px"
                         android:layout_height="70px"
                         android:layout_gravity="center_horizontal"
-                        android:background="@drawable/myself_help" />
+                        android:background="@drawable/myself_about" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -704,6 +723,7 @@
                     android:layout_width="80px"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="83px"
+                    android:id="@+id/login_out"
                     android:orientation="vertical">
 
 

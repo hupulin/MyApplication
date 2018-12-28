@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <com.xmkj.washmall.base.view.SwipeMenuView
+            android:layout_width="match_parent"
+            android:id="@+id/swipe_view"
+            android:layout_height="204px"
+            android:background="@color/white"
+            >
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="PxUsage"
+                >
+
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="204px"
+
+                    >
+
+                    <ImageView
+                        android:id="@+id/goods_image"
+                        android:layout_width="162px"
+                        android:layout_height="162px"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="38px"
+                        android:contentDescription="@string/app_name" />
+
+                    <com.xmkj.washmall.base.util.PingFangTextView
+                        android:id="@+id/goods_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="228px"
+                        android:layout_marginTop="25px"
+                        android:textColor="@color/black"
+                        android:textSize="24px" />
+
+                    <com.xmkj.washmall.base.util.PingFangTextView
+                        android:id="@+id/collect_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="228px"
+                        android:layout_marginTop="62px"
+                        android:textColor="#808080"
+                        android:textSize="22px" />
+
+                    <com.xmkj.washmall.base.util.PingFangTextView
+                        android:id="@+id/price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="228px"
+                        android:layout_marginTop="148px"
+                        android:textColor="#FF0000"
+                        android:textSize="24px" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2px"
+                        android:background="#ededed"
+                        />
+
+                 </com.zhy.autolayout.AutoRelativeLayout>
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <Button
+                android:id="@+id/btnDelete"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:background="#ff4a57"
+                android:text="删除"
+                android:textColor="@android:color/white"/>
+        </com.xmkj.washmall.base.view.SwipeMenuView>
+    </com.zhy.autolayout.AutoRelativeLayout>
+</layout>

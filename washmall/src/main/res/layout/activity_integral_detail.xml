@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="446px"
+        android:background="@drawable/integral_detail_top_bg"
+        android:orientation="vertical">
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:id="@+id/title_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:clipToPadding="true"
+            android:fitsSystemWindows="true">
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="88px">
+
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:id="@+id/back"
+                    android:layout_width="73px"
+                    android:layout_height="match_parent">
+
+                    <View
+                        android:layout_width="44px"
+                        android:layout_height="44px"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/white_back_icon" />
+                </com.zhy.autolayout.AutoRelativeLayout>
+
+                <com.xmkj.washmall.base.util.PingFangTextView
+                    android:id="@+id/title_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="积分明细"
+                    android:textColor="@color/white"
+                    android:textSize="36px" />
+
+                <TextView
+                    android:id="@+id/rule_des"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="28px"
+                    android:text="积分规则"
+                    android:textColor="@color/white"
+                    android:textSize="30px" />
+            </com.zhy.autolayout.AutoRelativeLayout>
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <com.xmkj.washmall.base.util.PingFangTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="52px"
+            android:text="9999.99"
+            android:textColor="@color/white"
+            android:textSize="93px" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="-10px"
+            android:text="当前积分"
+            android:textColor="@color/white"
+            android:textSize="28px" />
+
+    </com.zhy.autolayout.AutoLinearLayout>
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnCount="1"
+        android:id="@+id/record_layout"
+        >
+
+    </GridLayout>
+</com.zhy.autolayout.AutoLinearLayout>

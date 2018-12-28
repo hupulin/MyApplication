@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    >
+
+    <include layout="@layout/title_layout" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="#ededed" />
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <View
+            android:layout_width="150px"
+            android:layout_height="2px"
+            android:layout_gravity="center_vertical"
+            android:background="#c2c2c2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="可使用红包(2张)"
+            android:textColor="#9F9F9F"
+            android:layout_marginLeft="20px"
+            android:id="@+id/coupon_title"
+            android:layout_marginRight="20px"
+            android:textSize="24px" />
+
+        <View
+            android:layout_width="150px"
+            android:layout_height="2px"
+            android:layout_gravity="center_vertical"
+            android:background="#c2c2c2" />
+    </com.zhy.autolayout.AutoLinearLayout>
+    <com.github.jdsjlzx.recyclerview.LRecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="65px"
+        android:id="@+id/recycler_view"
+        >
+
+    </com.github.jdsjlzx.recyclerview.LRecyclerView>
+</com.zhy.autolayout.AutoLinearLayout>

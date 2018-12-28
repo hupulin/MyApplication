@@ -8,7 +8,9 @@ import android.support.annotation.Nullable;
 import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.BaseActivity;
 import com.xmkj.washmall.main.MainActivity;
+import com.xmkj.washmall.mall.AbortOrderActivity;
 import com.xmkj.washmall.mall.IntegralActivity;
+import com.xmkj.washmall.mall.PayOrderActivity;
 
 /**
  * Created by Administrator on 2018/12/24.

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_layout" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="#EDEDED" />
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="90px">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="24px"
+            android:text="金额"
+            android:textSize="30px" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="24px"
+            android:text="￥188.00"
+            android:textColor="#7800FF"
+            android:textSize="30px" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20px"
+        android:background="#EDEDED" />
+
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="90px"
+        android:id="@+id/select_coupon_layout"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="24px"
+            android:text="优惠券："
+            android:textSize="30px" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/coupon_name"
+            android:layout_marginRight="64px"
+            android:text="2张优惠券"
+            android:textColor="#808080"
+            android:textSize="30px" />
+        <View
+            android:layout_width="40px"
+            android:layout_height="40px"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="12px"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/myself_arrow"
+            />
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20px"
+        android:background="#EDEDED" />
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="90px"
+        android:id="@+id/balance_layout"
+        >
+
+        <View
+            android:layout_width="51px"
+            android:layout_height="51px"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="25px"
+            android:background="@drawable/balance_pay" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="110px"
+            android:textColor="@color/black"
+            android:text="余额支付"
+            android:textSize="30px" />
+
+
+
+        <View
+            android:layout_width="40px"
+            android:layout_height="40px"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/balance_icon"
+            android:layout_marginRight="20px"
+            android:background="@drawable/address_un_select"/>
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="#EDEDED" />
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="90px"
+        android:id="@+id/ali_layout"
+        >
+
+        <View
+            android:layout_width="51px"
+            android:layout_height="51px"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="25px"
+            android:background="@drawable/ali_pay" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="110px"
+            android:text="支付宝支付"
+            android:textColor="@color/black"
+            android:textSize="30px" />
+
+        <View
+            android:layout_width="40px"
+            android:layout_height="40px"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20px"
+            android:id="@+id/ali_icon"
+            android:background="@drawable/address_un_select" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="#EDEDED" />
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="90px"
+        android:id="@+id/wechat_layout"
+        >
+
+        <View
+            android:layout_width="51px"
+            android:layout_height="51px"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="25px"
+            android:background="@drawable/wechat_pay" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="110px"
+            android:text="微信支付"
+            android:textColor="@color/black"
+            android:textSize="30px" />
+
+        <View
+            android:layout_width="40px"
+            android:layout_height="40px"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20px"
+            android:id="@+id/wechat_icon"
+            android:background="@drawable/address_un_select" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="#EDEDED" />
+    <com.xmkj.washmall.base.util.PingFangTextView
+        android:id="@+id/confirm"
+        android:layout_width="586px"
+        android:layout_height="108px"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="70px"
+        android:background="@drawable/login_common_btn"
+        android:gravity="center"
+        android:paddingBottom="10px"
+        android:text="立即支付"
+        android:textColor="@color/white"
+        android:textSize="30px"
+        android:textStyle="bold" />
+</com.zhy.autolayout.AutoLinearLayout>

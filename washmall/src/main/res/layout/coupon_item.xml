@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="713px"
+            android:layout_height="211px"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/coupon_item_bg"
+            android:layout_marginTop="20px">
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="404px"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="18px"
+                android:layout_marginRight="26px">
+
+                <View
+                    android:id="@+id/coupon_icon"
+                    android:layout_width="117px"
+                    android:layout_height="120px"
+                    android:background="@drawable/already_use_icon" />
+
+                <com.xmkj.washmall.base.util.PingFangTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="52px"
+                    android:textColor="#CF67FF"
+                    android:id="@+id/name"
+                    android:textSize="45px" />
+
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="124px"
+                    android:textColor="#4A4A4A"
+                    android:textSize="24px" />
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.xmkj.washmall.base.util.PingFangTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30px"
+                    android:textColor="@color/white"
+                    android:text="￥"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="55px" />
+                <com.xmkj.washmall.base.util.PingFangTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:id="@+id/money"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="90px" />
+            </com.zhy.autolayout.AutoLinearLayout>
+
+        </com.zhy.autolayout.AutoLinearLayout>
+    </com.zhy.autolayout.AutoRelativeLayout>
+</layout>
