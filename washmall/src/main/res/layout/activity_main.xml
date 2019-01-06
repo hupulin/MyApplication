@@ -127,7 +127,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:textSize="18px"
-                android:text="商城"
+                android:text="我的"
                 android:id="@+id/myself_text"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="4px"

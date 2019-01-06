@@ -10,11 +10,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridLayout;
 
+import com.alibaba.fastjson.JSON;
 import com.bigkoo.convenientbanner.ConvenientBanner;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.BaseFragment;
 import com.xmkj.washmall.base.banner.HomeBannerHolderView;
 import com.xmkj.washmall.databinding.MainWardrobeItemBinding;
+import com.xmkj.washmall.main.presenter.MainHomePresenter;
 import com.xmkj.washmall.myself.MyOrderActivity;
 
 import java.util.ArrayList;
@@ -43,29 +47,29 @@ public class HomeFragment extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = View.inflate(container.getContext(), R.layout.fragment_home, null);
         unbinder = ButterKnife.bind(this, rootView);
-        setBanner();
-        setWardrobe();
+        MainHomePresenter presenter=new MainHomePresenter(this);
+
+
         return rootView;
     }
 
-    private void setWardrobe() {
-        for (int i = 0; i < 10; i++) {
+    public void setWardrobe(List<MainWardrobeTo>wardrobeList) {
+           wardrobeList=new Gson().fromJson(JSON.toJSONString(wardrobeList),new TypeToken<List<MainWardrobeTo>>(){}.getType());
+        for (int i = 0; i < wardrobeList.size(); i++) {
             View mView = View.inflate(appContext, R.layout.main_wardrobe_item, null);
-            MainWardrobeTo wardrobeTo = new MainWardrobeTo();
+            MainWardrobeTo wardrobeTo = wardrobeList.get(i);
             MainWardrobeItemBinding bind = DataBindingUtil.bind(mView);
-            bind.address.setText(wardrobeTo.getAddress());
-            bind.name.setText(wardrobeTo.getName());
-            bind.statue.setText(wardrobeTo.getStatue());
-            displayImage(bind.imageView, wardrobeTo.getImageUrl());
+            System.out.println(wardrobeTo+"===");
+            bind.address.setText(wardrobeTo.getDistance());
+            bind.name.setText(wardrobeTo.getWardrobe_name());
+            bind.statue.setText(wardrobeTo.getIs_full());
+            displayImage(bind.imageView, wardrobeTo.getWardrobe_img());
             wardrobeLayout.addView(mView);
         }
     }
 
 
-    public void setBanner() {
-        List<MainHomeAdTo> adList = new ArrayList<>();
-        adList.add(new MainHomeAdTo());
-        adList.add(new MainHomeAdTo());
+    public void setBanner( List<MainHomeAdTo> adList) {
         banner.setPages(HomeBannerHolderView::new, adList).setPageIndicator(new int[]{R.drawable.page_indicate_un_focus, R.drawable.page_indicate_focus});
         banner.startTurning(5000);
     }
@@ -93,4 +97,12 @@ public class HomeFragment extends BaseFragment {
                 break;
         }
     }
+
+    @Override
+    public void loadDataSuccess(Object data) {
+        List<MainHomeAdTo>adList= (List<MainHomeAdTo>) data;
+       setBanner(adList);
+    }
+
+
 }

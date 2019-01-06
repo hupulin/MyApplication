@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="90px"
         android:layout_marginTop="40px"
-        android:text="找回密码"
+        android:text="注册"
         android:textColor="@color/black"
         android:textSize="58px" />
 
@@ -76,6 +76,7 @@
             android:layout_marginLeft="153px"
             android:background="@color/transparent"
             android:gravity="bottom"
+            android:inputType="phone"
             android:hint="请输入您的验证码"
             android:textColor="@color/black_3"
 
@@ -87,6 +88,7 @@
             android:text="发送验证码"
             android:gravity="center"
             app:corner_radius="61px"
+            android:id="@+id/get_verification"
             android:textColor="@color/app_line"
             android:textSize="24px"
             app:border_color_normal="@color/app_line"
@@ -121,6 +123,7 @@
             android:layout_marginLeft="153px"
             android:background="@color/transparent"
             android:gravity="bottom"
+            android:inputType="textPassword"
             android:hint="输入密码"
 
             android:textColor="@color/black_3"
@@ -155,6 +158,7 @@
             android:layout_marginLeft="153px"
             android:background="@color/transparent"
             android:gravity="bottom"
+            android:inputType="textPassword"
             android:hint="确定密码"
 
             android:textColor="@color/black_3"
@@ -281,6 +285,7 @@
             android:layout_marginLeft="153px"
             android:background="@color/transparent"
             android:gravity="bottom"
+            android:inputType="phone"
             android:hint="请输入邀请码（选填）"
 
             android:textColor="@color/black_3"

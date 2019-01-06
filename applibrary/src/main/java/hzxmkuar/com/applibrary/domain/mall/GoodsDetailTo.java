@@ -1,5 +1,7 @@
 package hzxmkuar.com.applibrary.domain.mall;
 
+import java.util.List;
+
 import lombok.Data;
 
 /**
@@ -7,10 +9,34 @@ import lombok.Data;
  */
 @Data
 public class GoodsDetailTo {
-    private String imageUrl="http://118.190.201.28:8080/img/main_ad.png";
-    private String price="￥188.00";
-    private String saleNum="100";
-    private String goodsName="蓝月亮洗衣液家庭装";
-    private String goodsDes="机洗精选套装 轻松搞定衣领、袖口油斑";
 
+
+    /**
+     * goods_id : 17
+     * goods_name : 蜗牛
+     * goods_image : http://xmap18100040.php.hzxmnet.com/uploads/picture/2018-12-17/7a0a90cc71b9e7c8e8c3cae872ebd5c2.png
+     * goods_price : 998.00
+     * goods_desc : 蜗牛蜗牛蜗牛蜗牛蜗牛
+     * goods_content : [{"img_url":"http://xmap18100040.php.hzxmnet.com/uploads/picture/2018-12-17/425f59a25f94e347793e000bb3f1e55d.png"}]
+     */
+
+    private int goods_id;
+    private String goods_name;
+    private String goods_image;
+    private String goods_price;
+    private String goods_desc;
+    private List<GoodsContentBean> goods_content;
+
+
+
+    @Data
+    public static class GoodsContentBean {
+        /**
+         * img_url : http://xmap18100040.php.hzxmnet.com/uploads/picture/2018-12-17/425f59a25f94e347793e000bb3f1e55d.png
+         */
+
+        private String img_url;
+
+
+    }
 }

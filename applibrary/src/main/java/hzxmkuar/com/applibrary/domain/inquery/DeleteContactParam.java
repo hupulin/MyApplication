@@ -9,6 +9,9 @@ import lombok.Data;
 @Data
 public class DeleteContactParam extends BaseParam {
 
+
+
+
     private int id;
 
 }

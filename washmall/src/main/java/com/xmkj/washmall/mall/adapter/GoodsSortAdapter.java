@@ -46,9 +46,9 @@ public class GoodsSortAdapter extends BaseAdapter<MallGoodsTo, MallGoodsItemBind
         super.onBindViewHolder(holder, position);
         MallGoodsItemBinding binding = holder.getBinding();
         MallGoodsTo mode=mList.get(position);
-        binding.goodsName.setText(mode.getGoodsName());
-        binding.price.setText(mode.getPrice());
-        disPlayImage(binding.goodsImage,mode.getImageUrl());
+        binding.goodsName.setText(mode.getGoods_name());
+        binding.price.setText("￥"+mode.getGoods_price());
+        disPlayImage(binding.goodsImage,mode.getGoods_image());
 
     }
 

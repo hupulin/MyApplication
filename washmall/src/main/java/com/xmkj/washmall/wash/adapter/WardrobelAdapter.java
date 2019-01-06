@@ -46,9 +46,9 @@ public class WardrobelAdapter extends BaseAdapter<MainWardrobeTo, WardrobeItemBi
         super.onBindViewHolder(holder, position);
         WardrobeItemBinding binding = holder.getBinding();
         MainWardrobeTo mode=mList.get(position);
-        binding.floor.setText(mode.getFloor());
-        binding.statue.setText(mode.getStatue());
-        binding.position.setText(mode.getFloorName());
+//        binding.floor.setText(mode.getFloor());
+//        binding.statue.setText(mode.getStatue());
+//        binding.position.setText(mode.getFloorName());
 
 
 

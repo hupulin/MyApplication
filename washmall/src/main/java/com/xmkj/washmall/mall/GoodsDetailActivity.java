@@ -1,5 +1,6 @@
 package com.xmkj.washmall.mall;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,10 +9,13 @@ import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
 import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
+import com.google.gson.Gson;
 import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.BaseActivity;
 import com.xmkj.washmall.base.util.PingFangTextView;
+import com.xmkj.washmall.mall.presenter.GoodsDetailPresenter;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
 import com.zhy.view.flowlayout.TagFlowLayout;
@@ -22,6 +26,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import hzxmkuar.com.applibrary.domain.main.MallGoodsTo;
 import hzxmkuar.com.applibrary.domain.mall.GoodsDetailTo;
 import hzxmkuar.com.applibrary.domain.mall.SpecificationTo;
 import rx.Observable;
@@ -43,23 +48,26 @@ public class GoodsDetailActivity extends BaseActivity {
     TextView goodsDes;
     @BindView(R.id.web_view)
     WebView webView;
+    private GoodsDetailTo mode;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goods_detail);
         ButterKnife.bind(this);
-        setTitleName("蓝月亮洗衣液家庭装");
-        setView();
+        setTitleName(((MallGoodsTo)getIntent().getSerializableExtra("GoodsTo")).getGoods_name());
+
+        GoodsDetailPresenter presenter=new GoodsDetailPresenter(this);
     }
 
+    @SuppressLint("SetTextI18n")
     private void setView() {
-        GoodsDetailTo mode = new GoodsDetailTo();
-        displayImage(goodsImage, mode.getImageUrl());
-        goodsPrice.setText(mode.getPrice());
-        saleNum.setText("销量：" + mode.getSaleNum());
-        goodsName.setText(mode.getGoodsName());
-        goodsDes.setText(mode.getGoodsDes());
+
+        displayImage(goodsImage, mode.getGoods_image());
+        goodsPrice.setText("￥"+mode.getGoods_price());
+        saleNum.setText("销量：" + 100);
+        goodsName.setText(mode.getGoods_name());
+        goodsDes.setText(mode.getGoods_desc());
         webView.loadUrl("http://118.190.201.28:8080/img/index.html");
 
     }
@@ -114,5 +122,11 @@ public class GoodsDetailActivity extends BaseActivity {
            return false ;
         } );
         dialog.show();
+    }
+
+    @Override
+    public void loadDataSuccess(Object data) {
+        mode = new Gson().fromJson(JSON.toJSONString(data),GoodsDetailTo.class);
+        setView();
     }
 }

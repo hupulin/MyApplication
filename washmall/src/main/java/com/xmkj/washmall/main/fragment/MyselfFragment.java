@@ -8,12 +8,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.hyphenate.chat.EMClient;
+import com.hyphenate.exceptions.HyphenateException;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.BaseFragment;
 import com.xmkj.washmall.base.WashAlertDialog;
 import com.xmkj.washmall.base.WebActivity;
 import com.xmkj.washmall.base.util.PingFangTextView;
+import com.xmkj.washmall.message.ChatActivity;
 import com.xmkj.washmall.myself.EditUserActivity;
 import com.xmkj.washmall.myself.FeedBackActivity;
 import com.xmkj.washmall.myself.HelpActivity;
@@ -47,6 +50,7 @@ public class MyselfFragment extends BaseFragment {
         View rootView = View.inflate(appContext, R.layout.fragment_myself, null);
         unbinder = ButterKnife.bind(this, rootView);
         setView();
+        chatRegister("15168234206");
         return rootView;
     }
 
@@ -168,6 +172,9 @@ public class MyselfFragment extends BaseFragment {
                 goToAnimation(1);
                 break;
             case R.id.custom_service:
+                intent=new Intent(appContext, ChatActivity.class);
+                startActivity(intent);
+                goToAnimation(1);
                 break;
             case R.id.platform:
                 WashAlertDialog.show(getActivity(),"联系热线","请联系我们，客服电话\n" + "1876810525").setOnClickListener(v -> {
@@ -191,4 +198,17 @@ public class MyselfFragment extends BaseFragment {
 
         }
     }
+
+    private void chatRegister(String phone){
+
+        new Thread(() -> {
+            try {
+                EMClient.getInstance().createAccount(phone, "123456");
+            } catch (HyphenateException e) {
+                e.printStackTrace();
+            }
+        }).start();
+
+    }
+
 }

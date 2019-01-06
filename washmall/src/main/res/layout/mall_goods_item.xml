@@ -18,6 +18,7 @@
                 android:id="@+id/goods_image"
                 android:layout_width="340px"
                 android:layout_height="340px"
+                android:scaleType="fitXY"
                 android:layout_gravity="center_horizontal" />
 
             <TextView

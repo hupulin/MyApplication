@@ -114,7 +114,7 @@ public class ApiClient {
 
 
 
-     String baseUrl ="http://m.wumeihui.net/";
+     String baseUrl ="http://xmap18100040.php.hzxmnet.com/";
 
 
 

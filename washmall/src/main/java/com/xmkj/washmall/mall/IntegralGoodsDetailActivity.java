@@ -56,11 +56,11 @@ public class IntegralGoodsDetailActivity extends BaseActivity {
 
     private void setView() {
         GoodsDetailTo mode = new GoodsDetailTo();
-        displayImage(goodsImage, mode.getImageUrl());
-        goodsPrice.setText(mode.getPrice());
-        saleNum.setText("销量：" + mode.getSaleNum());
-        goodsName.setText(mode.getGoodsName());
-        goodsDes.setText(mode.getGoodsDes());
+        displayImage(goodsImage, mode.getGoods_image());
+        goodsPrice.setText(mode.getGoods_price());
+        saleNum.setText("销量：" + 100);
+        goodsName.setText(mode.getGoods_name());
+        goodsDes.setText(mode.getGoods_desc());
         webView.loadUrl("http://118.190.201.28:8080/img/index.html");
 
     }

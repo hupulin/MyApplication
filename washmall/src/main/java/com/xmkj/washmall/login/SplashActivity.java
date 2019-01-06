@@ -23,9 +23,18 @@ public class SplashActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         handler.postDelayed(() ->{
-            Intent intent=new Intent(appContext,MainActivity.class);
-            startActivity(intent);
-            goToAnimation(1);
+            if (userInfoHelp.getUserLogin()){
+                Intent intent=new Intent(appContext,MainActivity.class);
+                startActivity(intent);
+                finish();
+                goToAnimation(1);
+            }else {
+                Intent intent=new Intent(appContext,LoginActivity.class);
+                startActivity(intent);
+                finish();
+                goToAnimation(1);
+            }
+
         } ,2500);
     }
 }

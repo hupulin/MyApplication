@@ -28,6 +28,6 @@ public class HomeBannerHolderView implements Holder<MainHomeAdTo> {
 
     @Override
     public void UpdateUI(Context context, int position, MainHomeAdTo data) {
-        Glide.with(context).load(data.getImageUrl()).placeholder(loadSrc).transform(new GlideRoundTransform(context,10)).into(imageView);
+        Glide.with(context).load(data.getPic()).placeholder(loadSrc).transform(new GlideRoundTransform(context,10)).into(imageView);
     }
 }

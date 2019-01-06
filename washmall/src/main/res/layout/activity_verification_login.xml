@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <View
@@ -64,36 +64,37 @@
         <View
             android:layout_width="44px"
             android:layout_height="44px"
-            android:layout_marginLeft="93px"
             android:layout_alignParentBottom="true"
+            android:layout_marginLeft="93px"
             android:background="@drawable/login_verification_icon" />
 
         <EditText
             android:id="@+id/verification"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-
             android:layout_marginLeft="153px"
             android:background="@color/transparent"
             android:gravity="bottom"
             android:hint="请输入您的验证码"
+            android:inputType="phone"
             android:textColor="@color/black_3"
 
             android:textColorHint="@color/gray_b"
             android:textSize="24px" />
+
         <com.ruffian.library.RTextView
+            android:id="@+id/get_verification"
             android:layout_width="161px"
             android:layout_height="61px"
-            android:text="发送验证码"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="96px"
             android:gravity="center"
-            app:corner_radius="61px"
+            android:text="发送验证码"
             android:textColor="@color/app_line"
             android:textSize="24px"
             app:border_color_normal="@color/app_line"
             app:border_width_normal="2px"
-            android:layout_alignParentEnd="true"
-            android:layout_marginRight="96px"
-            />
+            app:corner_radius="61px" />
     </com.zhy.autolayout.AutoRelativeLayout>
 
     <View
@@ -110,11 +111,11 @@
         android:layout_height="108px"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="257px"
+        android:background="@drawable/login_common_btn"
+        android:gravity="center"
+        android:paddingBottom="10px"
         android:text="确认"
         android:textColor="@color/white"
         android:textSize="30px"
-        android:paddingBottom="10px"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:background="@drawable/login_common_btn" />
+        android:textStyle="bold" />
 </com.zhy.autolayout.AutoLinearLayout>

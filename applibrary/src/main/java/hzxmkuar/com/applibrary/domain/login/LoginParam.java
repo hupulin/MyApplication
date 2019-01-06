@@ -8,8 +8,8 @@ import lombok.Data;
  */
 @Data
 public class LoginParam extends BaseParam{
-    private String mobile;
-    private String sms_code;
+    private String username;
+    private String password;
     private String jpush_id;
-    private String invite_code;
+
 }

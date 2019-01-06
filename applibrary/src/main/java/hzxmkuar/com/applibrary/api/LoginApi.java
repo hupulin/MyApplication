@@ -1,11 +1,15 @@
 package hzxmkuar.com.applibrary.api;
 
+import hzxmkuar.com.applibrary.LoginTo;
 import hzxmkuar.com.applibrary.domain.BaseParam;
 import hzxmkuar.com.applibrary.domain.MessageTo;
 import hzxmkuar.com.applibrary.domain.VerificationParam;
 import hzxmkuar.com.applibrary.domain.login.BindPhoneParam;
 import hzxmkuar.com.applibrary.domain.login.LoginParam;
+import hzxmkuar.com.applibrary.domain.login.ModifyPasswordParam;
+import hzxmkuar.com.applibrary.domain.login.RegisterParam;
 import hzxmkuar.com.applibrary.domain.login.UploadImageParam;
+import hzxmkuar.com.applibrary.domain.login.VerificationLoginParam;
 import hzxmkuar.com.applibrary.domain.login.WechatLoginParam;
 import hzxmkuar.com.applibrary.domain.login.WechatLoginTo;
 import hzxmkuar.com.applibrary.domain.main.UploadImageTo;
@@ -16,6 +20,7 @@ import retrofit2.http.Field;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
+import retrofit2.http.Query;
 import rx.Observable;
 
 /**
@@ -33,33 +38,41 @@ public interface LoginApi {
      * 微信登录
      */
     @POST("Api/User/oauthLogin")
-    Observable<MessageTo<WechatLoginTo>>wechatLogin(@Body WechatLoginParam param);
+    Observable<MessageTo>wechatLogin(@Body WechatLoginParam param);
     /**
      * 手机号绑定
      */
     @POST("Api/User/mobileSmsBind")
-    Observable<MessageTo<WechatLoginTo>>bindPhone(@Body BindPhoneParam param);
+    Observable<MessageTo>bindPhone(@Body BindPhoneParam param);
     /**
      * 登录
      */
-    @POST("Api/User/mobileSmsLogin")
+    @POST("Api/User/userLogin")
     Observable<MessageTo>login(@Body LoginParam param);
 
+    /**
+     * 验证码登录
+     */
+    @POST("Api/User/mobileSmsLogin")
+    Observable<MessageTo>verificationLogin(@Body VerificationLoginParam param);
+
+ /**
+     * 修改密码
+     */
+    @POST("Api/User/retrieve_password")
+    Observable<MessageTo>modifyPassword(@Body ModifyPasswordParam param);
+
 
     /**
-     * 登录
+     * 注册
      */
-    @Multipart
-    @POST("api/upload/uploadImg")
-    Observable<MessageTo<UploadImageTo>>uploadImage(
-            @Part("time") RequestBody timeBody,
-            @Part("hash") RequestBody hash,
-            @Part("apiId") RequestBody apiId,
-            @Part("terminal") RequestBody terminal,
-            @Part("uid") RequestBody uid,
-            @Part("hashid") RequestBody hashid,
-            @Part("fileName") RequestBody fileName,
-            @Part("tags") RequestBody tags,
-            @Part("description") RequestBody description,
-            @Part MultipartBody.Part file);
+    @POST("Api/User/userRegister")
+    Observable<MessageTo>register(@Body RegisterParam param);
+
+    /**
+     * 绑定手机号
+     */
+    @POST("Api/User/mobileSmsBind")
+    Observable<MessageTo>bindPhone(@Body RegisterParam param);
+
 }

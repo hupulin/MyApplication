@@ -8,8 +8,13 @@ import lombok.Data;
  */
 @Data
 public class BindPhoneParam extends BaseParam{
-    private int oauth_id;
     private String mobile;
     private String sms_code;
+    private String passwd;
+    private String repasswd;
+    private String addr_area;
+    private String addr_detail;
     private String jpush_id;
+    private String invite_code;
+    private int oauth_id;
 }

@@ -34,6 +34,9 @@
         <activity android:name=".login.RegisterActivity"
             android:screenOrientation="portrait"
             />
+        <activity android:name=".login.BindPhoneActivity"
+            android:screenOrientation="portrait"
+            />
         <activity android:name=".main.MainActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan"
@@ -162,6 +165,54 @@
         <activity android:name=".myself.HelpActivity"
             android:screenOrientation="portrait"
             />
+
+        <activity android:name=".message.ChatActivity"
+            android:screenOrientation="portrait"
+            />
+
+    <activity
+        android:name="com.tencent.tauth.AuthActivity"
+        android:noHistory="true"
+        android:launchMode="singleTask" >
+        <intent-filter>
+            <action android:name="android.intent.action.VIEW" />
+            <category android:name="android.intent.category.DEFAULT" />
+            <category android:name="android.intent.category.BROWSABLE" />
+            <data android:scheme="1108049746" />
+        </intent-filter>
+    </activity>
+    <activity
+        android:name="com.tencent.connect.common.AssistActivity"
+        android:configChanges="orientation|keyboardHidden"
+        android:screenOrientation="behind"
+        android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+
+        <!--环信配置-->
+        <meta-data
+            android:name="EASEMOB_APPKEY"
+            android:value="1110181214107256#wlx" />
+        <!-- 声明SDK所需的service SDK核心功能-->
+        <service
+            android:name="com.hyphenate.chat.EMChatService"
+            android:exported="true" />
+        <service
+            android:name="com.hyphenate.chat.EMJobService"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <!-- 声明SDK所需的receiver -->
+        <receiver android:name="com.hyphenate.chat.EMMonitorReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <data android:scheme="package" />
+            </intent-filter>
+            <!-- 可选filter -->
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+
 
         <meta-data
             android:name="design_width"

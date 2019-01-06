@@ -9,7 +9,7 @@ import lombok.Data;
 public class BaseParam {
     private long time=System.nanoTime();
     private String hash;
-    private String apiId="7c13634bef78989a88dc90233f9d40f4";
+    private String apiId="289572c62e642b641e15ff2744aa3308";
     private String terminal="3";
     private int uid;
     private String hashid;

@@ -7,5 +7,20 @@ import lombok.Data;
  */
 @Data
 public class MainHomeAdTo  {
-    private String imageUrl="http://118.190.201.28:8080/img/main_ad.png";
+
+    /**
+     * id : 9
+     * target_module : 0
+     * target_id : aaaaaa
+     * pic : http://xmap18100040.php.hzxmnet.com/uploads/picture/2019-01-04/d7d284a641aa30838db77645df77614b.png
+     * tag : 不跳转
+     */
+
+    private int id;
+    private int target_module;
+    private String target_id;
+    private String pic;
+    private String tag;
+
+
 }

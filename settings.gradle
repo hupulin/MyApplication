@@ -1,1 +1,1 @@
-include ':wolaixish', ':applibrary', ':wolaixiqh', ':washmall'
+include ':wolaixish', ':applibrary', ':wolaixiqh', ':washmall', ':easeui'

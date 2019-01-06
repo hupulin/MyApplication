@@ -22,6 +22,7 @@
                 android:layout_height="104px"
                 android:layout_gravity="center_horizontal"
                 app:layout_auto_baseheight="width"
+                android:scaleType="fitXY"
                 />
 
             <TextView

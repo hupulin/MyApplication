@@ -65,7 +65,7 @@ public class BasePresenter<T> {
             }
         }
         map.put("time",param.getTime()+"");
-        map.put("apiId","7c13634bef78989a88dc90233f9d40f4");
+        map.put("apiId","289572c62e642b641e15ff2744aa3308");
         map.put("terminal","3");
         if (userInfoTo!=null){
             map.put("uid",param.getUid()+"");
@@ -88,7 +88,7 @@ public class BasePresenter<T> {
         }
 
 
-            rawString = rawString+"f6c72c70321c6ddbccbaea829e1c517f";
+            rawString = rawString+"12006413be8df4d5b7dbef7494d5cccc";
 
         System.out.println(rawString+"===========");
         return MD5.getMD5(rawString);
@@ -123,7 +123,7 @@ public class BasePresenter<T> {
             }
         }
         map.put("time",param.getTime()+"");
-        map.put("apiId","7c13634bef78989a88dc90233f9d40f4");
+        map.put("apiId","289572c62e642b641e15ff2744aa3308");
         map.put("terminal","3");
 
 
@@ -143,7 +143,7 @@ public class BasePresenter<T> {
         }
 
 
-        rawString = rawString+"f6c72c70321c6ddbccbaea829e1c517f";
+        rawString = rawString+"12006413be8df4d5b7dbef7494d5cccc";
 
         System.out.println(rawString+"===========");
         return MD5.getMD5(rawString);
