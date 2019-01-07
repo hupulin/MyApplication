@@ -61,4 +61,5 @@ dependencies {
     compile 'com.github.jdsjlzx:LRecyclerView:1.4.3'
     compile 'com.jakewharton:butterknife:8.6.0'
     compile 'com.jakewharton:butterknife-compiler:8.6.0'
+    compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
 }

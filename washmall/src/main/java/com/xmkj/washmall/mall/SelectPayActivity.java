@@ -1,16 +1,42 @@
 package com.xmkj.washmall.mall;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
+import com.alipay.sdk.app.PayTask;
 import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
+import com.google.gson.Gson;
+import com.tencent.mm.opensdk.modelpay.PayReq;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.BaseActivity;
+import com.xmkj.washmall.base.Event;
+import com.xmkj.washmall.myself.presenter.PayPresenter;
+
+import org.greenrobot.eventbus.EventBus;
+import org.json.JSONObject;
+
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import hzxmkuar.com.applibrary.domain.order.OrderResultTo;
+import hzxmkuar.com.applibrary.domain.order.PayInfoTo;
+import hzxmkuar.com.applibrary.domain.order.PayResult;
+import hzxmkuar.com.applibrary.domain.order.WeChatPayTo;
+import rx.Observable;
 
 /**
  * Created by Administrator on 2018/12/27.
@@ -23,6 +49,44 @@ public class SelectPayActivity extends BaseActivity {
     View aliIcon;
     @BindView(R.id.wechat_icon)
     View wechatIcon;
+    @BindView(R.id.money)
+    TextView money;
+    private int payType;
+    private PayPresenter presenter;
+    private OrderResultTo mode;
+    private Handler mHandler = new Handler() {
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case 1: {
+                    if (payType == 1) {
+                        Bundle bundle = msg.getData();
+                        PayResult payResult = new PayResult((Map<String, String>) msg.obj);
+                        // 支付宝返回此次支付结果及加签，建议对支付宝签名信息拿签约时支付宝提供的公钥做验签
+                        String resultStatus = payResult.getResultStatus();
+                        if (TextUtils.equals(resultStatus, "9000")) {
+                            Toast.makeText(appContext, "支付成功", Toast.LENGTH_SHORT).show();
+                            EventBus.getDefault().post(new Event<>("PayResultData", 10));
+
+                        } else {
+                            if (TextUtils.equals(resultStatus, "8000")) {
+                                Toast.makeText(appContext, "支付结果确认中", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(appContext, "支付失败", Toast.LENGTH_SHORT).show();
+
+                            }
+
+                        }
+
+                        break;
+                    }
+
+
+                }
+                default:
+                    break;
+            }
+        }
+    };
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,6 +94,15 @@ public class SelectPayActivity extends BaseActivity {
         setContentView(R.layout.activity_select_pay);
         ButterKnife.bind(this);
         setTitleName("支付");
+        presenter = new PayPresenter(this);
+
+        setView();
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void setView() {
+        mode = (OrderResultTo) getIntent().getSerializableExtra("OrderResultTo");
+        money.setText("￥"+ mode.getTotal_amount());
     }
 
     @OnClick({R.id.balance_layout, R.id.ali_layout, R.id.wechat_layout, R.id.confirm})
@@ -39,28 +112,79 @@ public class SelectPayActivity extends BaseActivity {
                 balanceIcon.setBackgroundResource(R.drawable.address_select);
                 aliIcon.setBackgroundResource(R.drawable.address_un_select);
                 wechatIcon.setBackgroundResource(R.drawable.address_un_select);
+                payType=3;
                 break;
             case R.id.ali_layout:
                 balanceIcon.setBackgroundResource(R.drawable.address_un_select);
                 aliIcon.setBackgroundResource(R.drawable.address_select);
                 wechatIcon.setBackgroundResource(R.drawable.address_un_select);
+                payType=1;
                 break;
             case R.id.wechat_layout:
                 balanceIcon.setBackgroundResource(R.drawable.address_un_select);
                 aliIcon.setBackgroundResource(R.drawable.address_un_select);
                 wechatIcon.setBackgroundResource(R.drawable.address_select);
+                payType=2;
                 break;
             case R.id.confirm:
+                if (payType==3)
                 payBalanceDialog();
+                else
+                    presenter.getPayInfo(mode.getOrder_id(),payType);
                 break;
         }
     }
 
-    private void payBalanceDialog(){
-        NiftyDialogBuilder dialog=NiftyDialogBuilder.getInstance(this);
+    private void payBalanceDialog() {
+        NiftyDialogBuilder dialog = NiftyDialogBuilder.getInstance(this);
         dialog.setContentView(R.layout.dialog_select_pay_balance);
         dialog.findViewById(R.id.cancel).setOnClickListener(v -> dialog.dismiss());
         dialog.findViewById(R.id.parent).setOnClickListener(v -> dialog.dismiss());
+        dialog.findViewById(R.id.confirm).setOnClickListener(v -> {
+            dialog.dismiss();
+
+        });
         dialog.show();
+    }
+
+    @Override
+    public void loadDataSuccess(Object data) {
+       if (payType==1){
+
+           PayInfoTo payInfoTo = new Gson().fromJson(JSON.toJSONString(data),PayInfoTo.class);
+           payMoney(payInfoTo.getAlipay());
+       }
+       if (payType==2){
+           WeChatPayTo payToInfo = new Gson().fromJson(JSON.toJSONString(data),WeChatPayTo.class);
+           WeChatPayTo.WxpayBean payTo = payToInfo.getWxpay();
+           IWXAPI api = WXAPIFactory.createWXAPI(this, "wx34575f0ea7a2a608");
+           PayReq request = new PayReq();
+           request.appId = payTo.getAppid();
+           request.partnerId = payTo.getPartnerid();
+           request.prepayId = payTo.getPrepayid();
+           request.packageValue = payTo.getPackageX();
+           request.nonceStr = payTo.getNoncestr();
+           request.timeStamp = payTo.getTimestamp();
+           request.sign = payTo.getSign();
+           api.sendReq(request);
+       }
+    }
+
+    protected void payMoney(String url) {
+        final String payPartner = url;
+        Runnable payRunnable = () -> {
+            PayTask aliPay = new PayTask(this);
+            Map<String, String> result = aliPay.payV2(payPartner, true);
+            Message msg1 = new Message();
+            msg1.what = 1;
+            msg1.obj = result;
+            Bundle bundle = new Bundle();
+            bundle.putString("OlderSid", url);
+            msg1.setData(bundle);
+            mHandler.sendMessage(msg1);
+        };
+        Thread payThread = new Thread(payRunnable);
+        payThread.start();
+
     }
 }

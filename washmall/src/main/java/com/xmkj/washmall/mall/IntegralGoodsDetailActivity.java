@@ -82,36 +82,36 @@ public class IntegralGoodsDetailActivity extends BaseActivity {
     }
 
     private void specificationDialog() {
-        NiftyDialogBuilder dialog =  NiftyDialogBuilder.getInstance(this);
-        dialog.setContentView(R.layout.dialog_select_specification);
-        TagFlowLayout specificationLayout = dialog.findViewById(R.id.specification_layout);
-        List<SpecificationTo> specificationList = new ArrayList<>();
-        List<TextView> tagList = new ArrayList<>();
-        specificationList.add(new SpecificationTo("薰衣草香", "￥99.00"));
-        specificationList.add(new SpecificationTo("茉莉花香", "￥199.00"));
-        specificationList.add(new SpecificationTo("茉莉花香", "￥299.00"));
-         specificationLayout.setMaxSelectCount(1);
-        ((TextView)dialog.findViewById(R.id.specification_price)).setText("￥188.00");
-        displayImage(dialog.findViewById(R.id.goods_image),"http://118.190.201.28:8080/img/goods_image.png");
-        specificationLayout.setAdapter(new TagAdapter<SpecificationTo>(specificationList) {
-            @Override
-            public View getView(FlowLayout parent, int position, SpecificationTo specificationTo) {
-                View mView = View.inflate(appContext, R.layout.specification_tag_item, null);
-                TextView tagName = mView.findViewById(R.id.name);
-                tagName.setText(specificationTo.getName());
-                tagList.add(tagName);
-                return mView;
-            }
-        });
-        specificationLayout.setOnTagClickListener((view, position, parent) ->{
-            Observable.from(tagList).subscribe(textView -> {
-                textView.setTextColor(Color.parseColor("#6868FF"));
-                textView.setBackgroundResource(R.drawable.specification_un_select);
-            });
-            view.findViewById(R.id.name).setBackgroundResource(R.drawable.specification_select);
-            ((TextView)view.findViewById(R.id.name)).setTextColor(Color.parseColor("#ffffff"));
-           return false ;
-        } );
-        dialog.show();
+//        NiftyDialogBuilder dialog =  NiftyDialogBuilder.getInstance(this);
+//        dialog.setContentView(R.layout.dialog_select_specification);
+//        TagFlowLayout specificationLayout = dialog.findViewById(R.id.specification_layout);
+//        List<SpecificationTo> specificationList = new ArrayList<>();
+//        List<TextView> tagList = new ArrayList<>();
+//        specificationList.add(new SpecificationTo("薰衣草香", "￥99.00"));
+//        specificationList.add(new SpecificationTo("茉莉花香", "￥199.00"));
+//        specificationList.add(new SpecificationTo("茉莉花香", "￥299.00"));
+//         specificationLayout.setMaxSelectCount(1);
+//        ((TextView)dialog.findViewById(R.id.specification_price)).setText("￥188.00");
+//        displayImage(dialog.findViewById(R.id.goods_image),"http://118.190.201.28:8080/img/goods_image.png");
+//        specificationLayout.setAdapter(new TagAdapter<SpecificationTo>(specificationList) {
+//            @Override
+//            public View getView(FlowLayout parent, int position, SpecificationTo specificationTo) {
+//                View mView = View.inflate(appContext, R.layout.specification_tag_item, null);
+//                TextView tagName = mView.findViewById(R.id.name);
+//                tagName.setText(specificationTo.getName());
+//                tagList.add(tagName);
+//                return mView;
+//            }
+//        });
+//        specificationLayout.setOnTagClickListener((view, position, parent) ->{
+//            Observable.from(tagList).subscribe(textView -> {
+//                textView.setTextColor(Color.parseColor("#6868FF"));
+//                textView.setBackgroundResource(R.drawable.specification_un_select);
+//            });
+//            view.findViewById(R.id.name).setBackgroundResource(R.drawable.specification_select);
+//            ((TextView)view.findViewById(R.id.name)).setTextColor(Color.parseColor("#ffffff"));
+//           return false ;
+//        } );
+//        dialog.show();
     }
 }

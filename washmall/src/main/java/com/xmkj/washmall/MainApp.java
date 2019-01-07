@@ -27,6 +27,7 @@ public static Context appContext;
         super.onCreate();
        appContext=this;
         ApiClient.getInstance().init(this);
+
         initIM();
 
     }

@@ -16,13 +16,13 @@ import com.xmkj.washmall.databinding.MallGoodsItemBinding;
 
 import hzxmkuar.com.applibrary.domain.main.ContactTo;
 import hzxmkuar.com.applibrary.domain.main.MallGoodsTo;
-import hzxmkuar.com.applibrary.domain.mall.AddressTo;
+import hzxmkuar.com.applibrary.domain.order.AddressTo;
 
 /**
  * Created by Administrator on 2018/8/28.
  **/
 
-public class AddressAdapter extends BaseAdapter<ContactTo, AddressItemBinding> {
+public class AddressAdapter extends BaseAdapter<AddressTo, AddressItemBinding> {
    public AddressAdapter(Activity context) {
         super(context);
     }
@@ -45,12 +45,40 @@ public class AddressAdapter extends BaseAdapter<ContactTo, AddressItemBinding> {
     public void onBindViewHolder(BindingHolder<AddressItemBinding> holder, int position) {
         super.onBindViewHolder(holder, position);
         AddressItemBinding binding = holder.getBinding();
-        ContactTo mode=mList.get(position);
-        binding.contactName.setText(mode.getContactName());
-        binding.phoneNum.setText(mode.getPhone());
-        binding.detailAddress.setText(mode.getDetailAddress());
+        AddressTo mode=mList.get(position);
+        binding.contactName.setText(mode.getConsignee());
+        binding.phoneNum.setText(mode.getTelephone());
+        binding.detailAddress.setText(mode.getFinaladdress());
+        binding.defaultIcon.setBackgroundResource(mode.getIs_default()==1?R.drawable.address_select:R.drawable.address_un_select);
 
+        binding.defaultLayout.setOnClickListener(v -> {
+            if (listener!=null)
+                listener.setDefaultAddress(mode);
+        });
+
+        binding.deleteLayout.setOnClickListener(v -> {
+            if (listener!=null)
+                listener.deleteAddress(mode);
+        });
+
+        binding.editLayout.setOnClickListener(v -> {
+            if (listener!=null)
+                listener.editAddress(mode);
+        });
     }
 
+    public interface AddressClickListener{
+        void deleteAddress(AddressTo mode);
+
+        void editAddress(AddressTo mode);
+
+        void setDefaultAddress(AddressTo mode);
+    }
+
+    public AddressClickListener listener;
+
+    public void setAddressListener(AddressClickListener listener){
+        this.listener=listener;
+    }
 
 }

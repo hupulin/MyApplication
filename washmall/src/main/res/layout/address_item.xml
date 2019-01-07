@@ -93,26 +93,35 @@
             android:layout_marginBottom="7px"
             android:layout_marginLeft="28px"
             android:layout_marginRight="28px">
-
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:id="@+id/default_layout"
+                android:layout_weight="1"
+                >
             <View
                 android:layout_width="40px"
                 android:layout_height="40px"
                 android:layout_gravity="center_vertical"
-                android:background="@drawable/address_select" />
+                android:id="@+id/default_icon"
+                android:background="@drawable/address_un_select" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="5px"
-                android:layout_weight="1"
+
                 android:text="默认地址"
                 android:textColor="@color/black"
                 android:textSize="22px" />
+                </com.zhy.autolayout.AutoLinearLayout>
             <com.zhy.autolayout.AutoLinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:id="@+id/edit_layout"
                 >
                 <View
                     android:layout_width="40px"
@@ -137,6 +146,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="40px"
                 android:layout_marginRight="20px"
+                android:id="@+id/delete_layout"
                 >
                 <View
                     android:layout_width="40px"

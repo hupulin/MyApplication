@@ -80,4 +80,9 @@ public class OrderFragment extends BaseFragment {
         super.onDestroyView();
         unbinder.unbind();
     }
+
+    @Override
+    public void loadDataSuccess(Object data) {
+        showMessage(data+"");
+    }
 }
