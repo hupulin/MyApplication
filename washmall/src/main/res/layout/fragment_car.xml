@@ -38,6 +38,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="24px"
                 android:text="编辑"
+                android:id="@+id/edit"
                 android:textColor="@color/black"
                 android:textSize="30px" />
         </com.zhy.autolayout.AutoRelativeLayout>
@@ -63,6 +64,7 @@
 
     <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
+        android:id="@+id/all_select_layout"
         android:layout_height="80px">
 
         <View
@@ -70,6 +72,7 @@
             android:layout_height="40px"
             android:layout_centerVertical="true"
             android:layout_marginLeft="32px"
+            android:id="@+id/all_select_icon"
             android:background="@drawable/address_un_select" />
 
         <TextView
@@ -78,6 +81,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="80px"
             android:text="全选"
+            android:id="@+id/all_select_text"
             android:textColor="@color/black"
             android:textSize="24px"
 
@@ -100,9 +104,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="346px"
-            android:layout_toLeftOf="@+id/all_text"
-            android:text="￥9999"
+
+            android:layout_toRightOf="@+id/all_text"
+            android:text="￥0"
             android:textColor="#FF0000"
             android:textSize="24px"
 
@@ -117,6 +121,7 @@
             android:background="@drawable/car_settle_bg"
             android:gravity="center"
             android:text="结算"
+            android:id="@+id/settlement"
             android:textColor="@color/white"
             android:textSize="28px" />
     </com.zhy.autolayout.AutoRelativeLayout>

@@ -44,10 +44,10 @@ public class MyCollectAdapter extends BaseAdapter<GoodsCarTo, MyCollectItemBindi
         super.onBindViewHolder(holder, position);
         MyCollectItemBinding binding = holder.getBinding();
         GoodsCarTo mode=mList.get(position);
-        binding.goodsName.setText(mode.getGoodsName());
-        disPlayImage(binding.goodsImage,mode.getImageUrl());
-        binding.price.setText(mode.getPrice());
-        binding.collectNum.setText(mode.getSaleNum()+"人收藏");
+        binding.goodsName.setText(mode.getGoods_name());
+        disPlayImage(binding.goodsImage,mode.getSpec_image());
+        binding.price.setText(mode.getGoods_price());
+        binding.collectNum.setText(mode.getGoods_num()+"人收藏");
 
 
     }

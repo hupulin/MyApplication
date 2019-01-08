@@ -69,7 +69,7 @@
             android:layout_marginLeft="22px"
             android:text="头像"
             android:textColor="@color/black"
-            android:textSize="24px" />
+            android:textSize="28px" />
 
         <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/head_img"
@@ -96,9 +96,9 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="22px"
-            android:text="头像"
+            android:text="昵称"
             android:textColor="@color/black"
-            android:textSize="24px" />
+            android:textSize="28px" />
 
         <EditText
             android:id="@+id/nick_name"
@@ -108,9 +108,10 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="25px"
             android:hint="请输入您的昵称"
+            android:gravity="end"
             android:background="@color/transparent"
             android:textColor="@color/black"
-            android:textSize="20px" />
+            android:textSize="26px" />
     </com.zhy.autolayout.AutoRelativeLayout>
 
     <View
@@ -129,7 +130,7 @@
             android:layout_marginLeft="22px"
             android:text="绑定邀请码"
             android:textColor="@color/black"
-            android:textSize="24px" />
+            android:textSize="28px" />
 
         <EditText
             android:id="@+id/verification"
@@ -141,7 +142,7 @@
             android:background="@color/transparent"
             android:hint="请输入邀请码"
             android:textColor="@color/black"
-            android:textSize="20px" />
+            android:textSize="26px" />
     </com.zhy.autolayout.AutoRelativeLayout>
 
     <View
@@ -162,7 +163,7 @@
             android:layout_marginLeft="22px"
             android:text="修改密码"
             android:textColor="@color/black"
-            android:textSize="24px" />
+            android:textSize="28px" />
 
         <View
             android:layout_width="40px"

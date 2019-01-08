@@ -17,6 +17,7 @@
                 android:layout_height="40px"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="18px"
+                android:id="@+id/select"
                 android:background="@drawable/address_un_select" />
 
             <ImageView
@@ -79,6 +80,7 @@
                 <View
                     android:layout_width="40px"
                     android:layout_height="40px"
+                    android:id="@+id/add"
                     android:background="@drawable/specification_add" />
 
                 <com.xmkj.washmall.base.util.PingFangTextView
@@ -94,6 +96,7 @@
                 <View
                     android:layout_width="40px"
                     android:layout_height="40px"
+                    android:id="@+id/reduce"
                     android:background="@drawable/specification_reduce" />
             </com.zhy.autolayout.AutoLinearLayout>
         </com.zhy.autolayout.AutoRelativeLayout>

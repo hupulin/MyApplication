@@ -9,746 +9,746 @@
         android:layout_width="match_parent"
         android:layout_height="348px"
         android:background="@drawable/myself_top_bg" />
-   <ScrollView
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content">
 
-
-    <com.zhy.autolayout.AutoLinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="120px"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
 
         <com.zhy.autolayout.AutoLinearLayout
-            android:layout_width="724px"
-            android:layout_height="433px"
-            android:layout_gravity="center_horizontal"
-
-            android:background="@drawable/myself_user_bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="120px"
             android:orientation="vertical">
 
-            <com.zhy.autolayout.AutoRelativeLayout
-                android:layout_width="160px"
-                android:layout_height="160px"
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="724px"
+                android:layout_height="433px"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/myself_head_bg"
 
-                app:layout_auto_baseheight="width">
+                android:background="@drawable/myself_user_bg"
+                android:orientation="vertical">
 
-                <com.makeramen.roundedimageview.RoundedImageView
-                    android:layout_width="140px"
-                    android:layout_height="140px"
-                    android:id="@+id/user_image"
-                    android:layout_centerInParent="true"
-                    app:layout_auto_baseheight="width"
-                    android:scaleType="fitXY"
-                    app:riv_oval="true" />
-            </com.zhy.autolayout.AutoRelativeLayout>
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:layout_width="160px"
+                    android:layout_height="160px"
+                    android:layout_gravity="center_horizontal"
+                    app:layout_auto_baseheight="width">
 
-            <com.zhy.autolayout.AutoRelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        android:id="@+id/user_image"
+                        android:layout_width="140px"
+                        android:layout_height="140px"
+                        android:layout_centerInParent="true"
+                        android:scaleType="fitXY"
+                        app:layout_auto_baseheight="width"
+                        app:riv_oval="true" />
+                </com.zhy.autolayout.AutoRelativeLayout>
 
-                <com.xmkj.washmall.base.util.PingFangTextView
-                    android:id="@+id/user_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:textColor="@color/black"
-                    android:textSize="30px" />
+                <com.zhy.autolayout.AutoRelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <View
-                    android:id="@+id/vip_center"
-                    android:layout_width="145px"
-                    android:layout_height="64px"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="5px"
-                    android:background="@drawable/myself_vip_center" />
+                    <com.xmkj.washmall.base.util.PingFangTextView
+                        android:id="@+id/user_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:textColor="@color/black"
+                        android:textSize="30px" />
 
-                <TextView
-                    android:layout_width="126px"
-                    android:layout_height="34px"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="46px"
-                    android:background="@drawable/myself_vip_bg"
-                    android:gravity="center"
-                    android:text="普通会员"
-                    android:textColor="#B74100"
-                    android:textSize="20px" />
-            </com.zhy.autolayout.AutoRelativeLayout>
+                    <View
+                        android:id="@+id/vip_center"
+                        android:layout_width="145px"
+                        android:layout_height="64px"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="5px"
+                        android:background="@drawable/myself_vip_center" />
 
-            <com.zhy.autolayout.AutoLinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="26px">
+                    <TextView
+                        android:id="@+id/user_tag"
+                        android:layout_width="126px"
+                        android:layout_height="34px"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="46px"
+                        android:background="@drawable/myself_vip_bg"
+                        android:gravity="center"
+                        android:text="普通会员"
+                        android:textColor="#B74100"
+                        android:textSize="20px" />
+                </com.zhy.autolayout.AutoRelativeLayout>
 
                 <com.zhy.autolayout.AutoLinearLayout
-                    android:layout_width="0px"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:id="@+id/collect_layout"
-                    android:orientation="vertical">
+                    android:layout_marginTop="26px">
 
-                    <com.xmkj.washmall.base.util.PingFangTextView
-                        android:layout_width="wrap_content"
+                    <com.zhy.autolayout.AutoLinearLayout
+                        android:id="@+id/collect_layout"
+                        android:layout_width="0px"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="23"
-                        android:textColor="#7800FF"
-                        android:textSize="38px" />
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
-                    <com.xmkj.washmall.base.util.PingFangTextView
-                        android:layout_width="wrap_content"
+                        <com.xmkj.washmall.base.util.PingFangTextView
+                            android:id="@+id/my_collect_num"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="23"
+                            android:textColor="#7800FF"
+                            android:textSize="38px" />
+
+                        <com.xmkj.washmall.base.util.PingFangTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="32px"
+                            android:text="我的收藏"
+                            android:textColor="@color/black"
+                            android:textSize="26px" />
+                    </com.zhy.autolayout.AutoLinearLayout>
+
+                    <com.zhy.autolayout.AutoLinearLayout
+                        android:id="@+id/balance_layout"
+                        android:layout_width="0px"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="32px"
-                        android:text="我的收藏"
-                        android:textColor="@color/black"
-                        android:textSize="26px" />
-                </com.zhy.autolayout.AutoLinearLayout>
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
-                <com.zhy.autolayout.AutoLinearLayout
-                    android:layout_width="0px"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:id="@+id/balance_layout"
-                    android:orientation="vertical">
+                        <com.xmkj.washmall.base.util.PingFangTextView
+                            android:id="@+id/my_score_num"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="23"
+                            android:textColor="#7800FF"
+                            android:textSize="38px" />
 
-                    <com.xmkj.washmall.base.util.PingFangTextView
-                        android:layout_width="wrap_content"
+                        <com.xmkj.washmall.base.util.PingFangTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="32px"
+                            android:text="积分余额"
+                            android:textColor="@color/black"
+                            android:textSize="26px" />
+                    </com.zhy.autolayout.AutoLinearLayout>
+
+                    <com.zhy.autolayout.AutoLinearLayout
+                        android:id="@+id/coupon_layout"
+                        android:layout_width="0px"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="23"
-                        android:textColor="#7800FF"
-                        android:textSize="38px" />
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
-                    <com.xmkj.washmall.base.util.PingFangTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="32px"
-                        android:text="积分余额"
-                        android:textColor="@color/black"
-                        android:textSize="26px" />
-                </com.zhy.autolayout.AutoLinearLayout>
+                        <com.xmkj.washmall.base.util.PingFangTextView
+                            android:id="@+id/my_coupon_num"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="23"
+                            android:textColor="#7800FF"
+                            android:textSize="38px" />
 
-                <com.zhy.autolayout.AutoLinearLayout
-                    android:layout_width="0px"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:id="@+id/coupon_layout"
-                    android:orientation="vertical">
-
-                    <com.xmkj.washmall.base.util.PingFangTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="23"
-                        android:textColor="#7800FF"
-                        android:textSize="38px" />
-
-                    <com.xmkj.washmall.base.util.PingFangTextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="32px"
-                        android:text="优惠券"
-                        android:textColor="@color/black"
-                        android:textSize="26px" />
+                        <com.xmkj.washmall.base.util.PingFangTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="32px"
+                            android:text="优惠券"
+                            android:textColor="@color/black"
+                            android:textSize="26px" />
+                    </com.zhy.autolayout.AutoLinearLayout>
                 </com.zhy.autolayout.AutoLinearLayout>
             </com.zhy.autolayout.AutoLinearLayout>
-        </com.zhy.autolayout.AutoLinearLayout>
-
-        <com.zhy.autolayout.AutoLinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="88px"
-            android:layout_marginLeft="20px"
-            android:layout_marginRight="20px"
-            android:layout_marginTop="8px"
-            android:background="@drawable/myself_balance_bg">
-
-            <com.xmkj.washmall.base.util.PingFangTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="30px"
-                android:text="可用余额:"
-                android:textColor="@color/white"
-                android:textSize="24px" />
-
-            <com.xmkj.washmall.base.util.PingFangTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="16px"
-
-                android:text="10000"
-                android:textColor="@color/white"
-                android:textSize="38px" />
-
-            <com.xmkj.washmall.base.util.PingFangTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:text="元"
-                android:textColor="@color/white"
-                android:textSize="24px"
-
-                />
-
-            <View
-                android:layout_width="37px"
-                android:layout_height="37px"
-                android:layout_gravity="center_vertical"
-                android:background="@drawable/myself_money_icon" />
-
-            <com.xmkj.washmall.base.util.PingFangTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="8px"
-
-                android:layout_marginRight="38px"
-                android:text="立即充值"
-                android:textColor="@color/white"
-                android:textSize="32px" />
-        </com.zhy.autolayout.AutoLinearLayout>
-
-        <com.zhy.autolayout.AutoLinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="217px"
-            android:layout_marginLeft="11px"
-            android:layout_marginRight="11px"
-            android:orientation="vertical"
-            android:layout_marginTop="8px"
-            android:background="@drawable/myself_item_bg">
 
             <com.zhy.autolayout.AutoLinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40px"
-                android:id="@+id/wash_order_layout"
-                android:layout_marginTop="17px">
-
-                <View
-                    android:layout_width="5px"
-                    android:layout_height="18px"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="28px"
-                    android:background="@drawable/myself_divide_icon" />
+                android:layout_height="88px"
+                android:layout_marginLeft="20px"
+                android:layout_marginRight="20px"
+                android:layout_marginTop="8px"
+                android:background="@drawable/myself_balance_bg">
 
                 <com.xmkj.washmall.base.util.PingFangTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="30px"
+                    android:text="可用余额:"
+                    android:textColor="@color/white"
+                    android:textSize="24px" />
 
-                    android:layout_marginLeft="3px"
-                    android:layout_weight="1"
-                    android:text="我俫洗订单"
-                    android:textColor="@color/black"
-                    android:textSize="26px" />
-
-                <TextView
+                <com.xmkj.washmall.base.util.PingFangTextView
+                    android:id="@+id/my_balance_num"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="16px"
+                    android:text="10000"
+                    android:textColor="@color/white"
+                    android:textSize="38px" />
 
-                    android:layout_marginRight="2px"
-                    android:text="查看全部订单"
-                    android:textColor="#616161"
-                    android:textSize="26px" />
+                <com.xmkj.washmall.base.util.PingFangTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:text="元"
+                    android:textColor="@color/white"
+                    android:textSize="24px"
+
+                    />
 
                 <View
-                    android:layout_width="40px"
+                    android:layout_width="37px"
+                    android:layout_height="37px"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/myself_money_icon" />
+
+                <com.xmkj.washmall.base.util.PingFangTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="8px"
+
+                    android:layout_marginRight="38px"
+                    android:text="立即充值"
+                    android:textColor="@color/white"
+                    android:textSize="32px" />
+            </com.zhy.autolayout.AutoLinearLayout>
+
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="217px"
+                android:layout_marginLeft="11px"
+                android:layout_marginRight="11px"
+                android:layout_marginTop="8px"
+                android:background="@drawable/myself_item_bg"
+                android:orientation="vertical">
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:id="@+id/wash_order_layout"
+                    android:layout_width="match_parent"
                     android:layout_height="40px"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginRight="25px"
-                    android:background="@drawable/myself_arrow" />
+                    android:layout_marginTop="17px">
+
+                    <View
+                        android:layout_width="5px"
+                        android:layout_height="18px"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="28px"
+                        android:background="@drawable/myself_divide_icon" />
+
+                    <com.xmkj.washmall.base.util.PingFangTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+
+                        android:layout_marginLeft="3px"
+                        android:layout_weight="1"
+                        android:text="我俫洗订单"
+                        android:textColor="@color/black"
+                        android:textSize="26px" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+
+                        android:layout_marginRight="2px"
+                        android:text="查看全部订单"
+                        android:textColor="#616161"
+                        android:textSize="26px" />
+
+                    <View
+                        android:layout_width="40px"
+                        android:layout_height="40px"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="25px"
+                        android:background="@drawable/myself_arrow" />
+                </com.zhy.autolayout.AutoLinearLayout>
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16px">
+
+                    <com.zhy.autolayout.AutoLinearLayout
+                        android:id="@+id/wash_order_1"
+                        android:layout_width="80px"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="76px"
+                        android:orientation="vertical">
+
+
+                        <View
+                            android:layout_width="80px"
+                            android:layout_height="80px"
+                            android:background="@drawable/myself_pickup" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="7px"
+                            android:text="取货中"
+                            android:textColor="#010101"
+                            android:textSize="20px" />
+                    </com.zhy.autolayout.AutoLinearLayout>
+
+                    <com.zhy.autolayout.AutoLinearLayout
+                        android:id="@+id/wash_order_2"
+                        android:layout_width="80px"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="83px"
+                        android:orientation="vertical">
+
+
+                        <View
+                            android:layout_width="80px"
+                            android:layout_height="80px"
+                            android:background="@drawable/myself_in_wash" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="7px"
+                            android:text="清洗中"
+                            android:textColor="#010101"
+                            android:textSize="20px" />
+                    </com.zhy.autolayout.AutoLinearLayout>
+
+                    <com.zhy.autolayout.AutoLinearLayout
+                        android:id="@+id/wash_order_3"
+                        android:layout_width="80px"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="83px"
+                        android:orientation="vertical">
+
+
+                        <View
+                            android:layout_width="80px"
+                            android:layout_height="80px"
+                            android:background="@drawable/myself_send_icon" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="7px"
+                            android:text="送货中"
+                            android:textColor="#010101"
+                            android:textSize="20px" />
+                    </com.zhy.autolayout.AutoLinearLayout>
+
+                    <com.zhy.autolayout.AutoLinearLayout
+                        android:id="@+id/wash_order_4"
+                        android:layout_width="80px"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="83px"
+                        android:orientation="vertical">
+
+
+                        <View
+                            android:layout_width="80px"
+                            android:layout_height="80px"
+                            android:background="@drawable/myself_waite_pickup" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="7px"
+                            android:text="待取货"
+                            android:textColor="#010101"
+                            android:textSize="20px" />
+                    </com.zhy.autolayout.AutoLinearLayout>
+
+                </com.zhy.autolayout.AutoLinearLayout>
+
+
             </com.zhy.autolayout.AutoLinearLayout>
+
 
             <com.zhy.autolayout.AutoLinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16px">
+                android:layout_height="217px"
+                android:layout_marginLeft="11px"
+                android:layout_marginRight="11px"
+                android:layout_marginTop="8px"
+                android:background="@drawable/myself_item_bg"
+                android:orientation="vertical">
 
                 <com.zhy.autolayout.AutoLinearLayout
-                    android:layout_width="80px"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="76px"
-                    android:id="@+id/wash_order_1"
-                    android:orientation="vertical">
-
-
-                    <View
-                        android:layout_width="80px"
-                        android:layout_height="80px"
-                        android:background="@drawable/myself_pickup" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="7px"
-                        android:textColor="#010101"
-                        android:text="取货中"
-                        android:textSize="20px" />
-                </com.zhy.autolayout.AutoLinearLayout>
-
-                <com.zhy.autolayout.AutoLinearLayout
-                    android:layout_width="80px"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="83px"
-                    android:id="@+id/wash_order_2"
-                    android:orientation="vertical">
-
-
-                    <View
-                        android:layout_width="80px"
-                        android:layout_height="80px"
-                        android:background="@drawable/myself_in_wash" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="7px"
-                        android:textColor="#010101"
-                        android:text="清洗中"
-                        android:textSize="20px" />
-                </com.zhy.autolayout.AutoLinearLayout>
-
-                <com.zhy.autolayout.AutoLinearLayout
-                    android:layout_width="80px"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="83px"
-                    android:id="@+id/wash_order_3"
-                    android:orientation="vertical">
-
-
-                    <View
-                        android:layout_width="80px"
-                        android:layout_height="80px"
-                        android:background="@drawable/myself_send_icon" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="7px"
-                        android:textColor="#010101"
-                        android:text="送货中"
-                        android:textSize="20px" />
-                </com.zhy.autolayout.AutoLinearLayout>
-
-                <com.zhy.autolayout.AutoLinearLayout
-                    android:layout_width="80px"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="83px"
-                    android:id="@+id/wash_order_4"
-                    android:orientation="vertical">
-
-
-                    <View
-                        android:layout_width="80px"
-                        android:layout_height="80px"
-                        android:background="@drawable/myself_waite_pickup" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="7px"
-                        android:textColor="#010101"
-                        android:text="待取货"
-                        android:textSize="20px" />
-                </com.zhy.autolayout.AutoLinearLayout>
-
-            </com.zhy.autolayout.AutoLinearLayout>
-
-
-
-        </com.zhy.autolayout.AutoLinearLayout>
-
-
-        <com.zhy.autolayout.AutoLinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="217px"
-            android:layout_marginLeft="11px"
-            android:layout_marginRight="11px"
-            android:orientation="vertical"
-            android:layout_marginTop="8px"
-            android:background="@drawable/myself_item_bg">
-
-            <com.zhy.autolayout.AutoLinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40px"
-                android:id="@+id/mall_order_layout"
-                android:layout_marginTop="17px">
-
-                <View
-                    android:layout_width="5px"
-                    android:layout_height="18px"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="28px"
-                    android:background="@drawable/myself_divide_icon" />
-
-                <com.xmkj.washmall.base.util.PingFangTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-
-                    android:layout_marginLeft="3px"
-                    android:layout_weight="1"
-                    android:text="商城订单"
-                    android:textColor="@color/black"
-                    android:textSize="26px" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-
-                    android:layout_marginRight="2px"
-                    android:text="查看全部订单"
-                    android:textColor="#616161"
-                    android:textSize="26px" />
-
-                <View
-                    android:layout_width="40px"
+                    android:id="@+id/mall_order_layout"
+                    android:layout_width="match_parent"
                     android:layout_height="40px"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginRight="25px"
-                    android:background="@drawable/myself_arrow" />
+                    android:layout_marginTop="17px">
+
+                    <View
+                        android:layout_width="5px"
+                        android:layout_height="18px"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="28px"
+                        android:background="@drawable/myself_divide_icon" />
+
+                    <com.xmkj.washmall.base.util.PingFangTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+
+                        android:layout_marginLeft="3px"
+                        android:layout_weight="1"
+                        android:text="商城订单"
+                        android:textColor="@color/black"
+                        android:textSize="26px" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+
+                        android:layout_marginRight="2px"
+                        android:text="查看全部订单"
+                        android:textColor="#616161"
+                        android:textSize="26px" />
+
+                    <View
+                        android:layout_width="40px"
+                        android:layout_height="40px"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginRight="25px"
+                        android:background="@drawable/myself_arrow" />
+                </com.zhy.autolayout.AutoLinearLayout>
+
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:id="@+id/mall_order_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16px">
+
+                    <com.zhy.autolayout.AutoLinearLayout
+                        android:layout_width="80px"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="76px"
+                        android:orientation="vertical">
+
+
+                        <View
+                            android:layout_width="80px"
+                            android:layout_height="80px"
+                            android:background="@drawable/myself_waite_progress" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="7px"
+                            android:text="待处理"
+                            android:textColor="#010101"
+                            android:textSize="20px" />
+                    </com.zhy.autolayout.AutoLinearLayout>
+
+                    <com.zhy.autolayout.AutoLinearLayout
+                        android:id="@+id/mall_order_2"
+                        android:layout_width="80px"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="83px"
+                        android:orientation="vertical">
+
+
+                        <View
+                            android:layout_width="80px"
+                            android:layout_height="80px"
+                            android:background="@drawable/myself_waite_send" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="7px"
+                            android:text="待发货"
+                            android:textColor="#010101"
+                            android:textSize="20px" />
+                    </com.zhy.autolayout.AutoLinearLayout>
+
+                    <com.zhy.autolayout.AutoLinearLayout
+                        android:id="@+id/mall_order_3"
+                        android:layout_width="80px"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="83px"
+                        android:orientation="vertical">
+
+
+                        <View
+                            android:layout_width="80px"
+                            android:layout_height="80px"
+                            android:background="@drawable/myself_already_send" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="7px"
+                            android:text="已发货"
+                            android:textColor="#010101"
+                            android:textSize="20px" />
+                    </com.zhy.autolayout.AutoLinearLayout>
+
+                    <com.zhy.autolayout.AutoLinearLayout
+                        android:id="@+id/mall_order_4"
+                        android:layout_width="80px"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="83px"
+                        android:orientation="vertical">
+
+
+                        <View
+                            android:layout_width="80px"
+                            android:layout_height="80px"
+                            android:background="@drawable/myself_finish" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="7px"
+                            android:text="已完成"
+                            android:textColor="#010101"
+                            android:textSize="20px" />
+                    </com.zhy.autolayout.AutoLinearLayout>
+
+                </com.zhy.autolayout.AutoLinearLayout>
+
+
             </com.zhy.autolayout.AutoLinearLayout>
+
 
             <com.zhy.autolayout.AutoLinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/mall_order_1"
-                android:layout_marginTop="16px">
+                android:layout_height="440px"
+                android:layout_marginBottom="140px"
+                android:layout_marginLeft="11px"
+                android:layout_marginRight="11px"
+                android:layout_marginTop="8px"
+                android:background="@drawable/myself_item_bg"
+                android:orientation="vertical">
 
                 <com.zhy.autolayout.AutoLinearLayout
-                    android:layout_width="80px"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="76px"
-                    android:orientation="vertical">
-
+                    android:layout_width="match_parent"
+                    android:layout_height="40px"
+                    android:layout_marginTop="28px">
 
                     <View
-                        android:layout_width="80px"
-                        android:layout_height="80px"
-                        android:background="@drawable/myself_waite_progress" />
+                        android:layout_width="5px"
+                        android:layout_height="18px"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="28px"
+                        android:background="@drawable/myself_divide_icon" />
 
-                    <TextView
+                    <com.xmkj.washmall.base.util.PingFangTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="7px"
-                        android:textColor="#010101"
-                        android:text="待处理"
-                        android:textSize="20px" />
+                        android:layout_gravity="center_vertical"
+
+                        android:layout_marginLeft="3px"
+                        android:layout_weight="1"
+                        android:text="更多功能"
+                        android:textColor="@color/black"
+                        android:textSize="26px" />
+
+
                 </com.zhy.autolayout.AutoLinearLayout>
 
                 <com.zhy.autolayout.AutoLinearLayout
-                    android:layout_width="80px"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="83px"
-                    android:id="@+id/mall_order_2"
-                    android:orientation="vertical">
+                    android:layout_marginTop="16px">
 
-
-                    <View
+                    <com.zhy.autolayout.AutoLinearLayout
+                        android:id="@+id/address"
                         android:layout_width="80px"
-                        android:layout_height="80px"
-                        android:background="@drawable/myself_waite_send" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="7px"
-                        android:textColor="#010101"
-                        android:text="待发货"
-                        android:textSize="20px" />
+                        android:layout_marginLeft="76px"
+                        android:orientation="vertical">
+
+
+                        <View
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@drawable/myself_address" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="15px"
+                            android:text="收货地址"
+                            android:textColor="#010101"
+                            android:textSize="20px" />
+                    </com.zhy.autolayout.AutoLinearLayout>
+
+                    <com.zhy.autolayout.AutoLinearLayout
+                        android:id="@+id/help"
+                        android:layout_width="80px"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="83px"
+                        android:orientation="vertical">
+
+
+                        <View
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@drawable/myself_help" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="15px"
+                            android:text="帮助中心"
+                            android:textColor="#010101"
+                            android:textSize="20px" />
+                    </com.zhy.autolayout.AutoLinearLayout>
+
+                    <com.zhy.autolayout.AutoLinearLayout
+                        android:id="@+id/feed_back"
+                        android:layout_width="80px"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="83px"
+                        android:orientation="vertical">
+
+
+                        <View
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@drawable/myself_feedback" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="15px"
+                            android:text="意见反馈"
+                            android:textColor="#010101"
+                            android:textSize="20px" />
+                    </com.zhy.autolayout.AutoLinearLayout>
+
+                    <com.zhy.autolayout.AutoLinearLayout
+                        android:id="@+id/custom_service"
+                        android:layout_width="80px"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="83px"
+                        android:orientation="vertical">
+
+
+                        <View
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@drawable/myself_custom_service" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="15px"
+                            android:text="在线客服"
+                            android:textColor="#010101"
+                            android:textSize="20px" />
+                    </com.zhy.autolayout.AutoLinearLayout>
+
                 </com.zhy.autolayout.AutoLinearLayout>
 
                 <com.zhy.autolayout.AutoLinearLayout
-                    android:layout_width="80px"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="83px"
-                    android:id="@+id/mall_order_3"
-                    android:orientation="vertical">
+                    android:layout_marginTop="36px">
 
-
-                    <View
+                    <com.zhy.autolayout.AutoLinearLayout
+                        android:id="@+id/platform"
                         android:layout_width="80px"
-                        android:layout_height="80px"
-                        android:background="@drawable/myself_already_send" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="7px"
-                        android:textColor="#010101"
-                        android:text="已发货"
-                        android:textSize="20px" />
-                </com.zhy.autolayout.AutoLinearLayout>
-
-                <com.zhy.autolayout.AutoLinearLayout
-                    android:layout_width="80px"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="83px"
-                    android:id="@+id/mall_order_4"
-                    android:orientation="vertical">
+                        android:layout_marginLeft="76px"
+                        android:orientation="vertical">
 
 
-                    <View
+                        <View
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@drawable/myself_phone" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="15px"
+                            android:text="平台热线"
+                            android:textColor="#010101"
+                            android:textSize="20px" />
+                    </com.zhy.autolayout.AutoLinearLayout>
+
+                    <com.zhy.autolayout.AutoLinearLayout
+                        android:id="@+id/about"
                         android:layout_width="80px"
-                        android:layout_height="80px"
-                        android:background="@drawable/myself_finish" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="7px"
-                        android:textColor="#010101"
-                        android:text="已完成"
-                        android:textSize="20px" />
+                        android:layout_marginLeft="83px"
+                        android:orientation="vertical">
+
+
+                        <View
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@drawable/myself_about" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="15px"
+                            android:text="关于我们"
+                            android:textColor="#010101"
+                            android:textSize="20px" />
+                    </com.zhy.autolayout.AutoLinearLayout>
+
+                    <com.zhy.autolayout.AutoLinearLayout
+                        android:id="@+id/login_out"
+                        android:layout_width="80px"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="83px"
+                        android:orientation="vertical">
+
+
+                        <View
+                            android:layout_width="70px"
+                            android:layout_height="70px"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@drawable/myself_login_out" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="15px"
+                            android:text="退出登录"
+                            android:textColor="#010101"
+                            android:textSize="20px" />
+                    </com.zhy.autolayout.AutoLinearLayout>
+
+
                 </com.zhy.autolayout.AutoLinearLayout>
 
             </com.zhy.autolayout.AutoLinearLayout>
-
-
 
         </com.zhy.autolayout.AutoLinearLayout>
-
-
-        <com.zhy.autolayout.AutoLinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="440px"
-            android:layout_marginLeft="11px"
-            android:layout_marginRight="11px"
-            android:orientation="vertical"
-            android:layout_marginBottom="140px"
-            android:layout_marginTop="8px"
-            android:background="@drawable/myself_item_bg">
-
-            <com.zhy.autolayout.AutoLinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40px"
-                android:layout_marginTop="28px">
-
-                <View
-                    android:layout_width="5px"
-                    android:layout_height="18px"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="28px"
-                    android:background="@drawable/myself_divide_icon" />
-
-                <com.xmkj.washmall.base.util.PingFangTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-
-                    android:layout_marginLeft="3px"
-                    android:layout_weight="1"
-                    android:text="更多功能"
-                    android:textColor="@color/black"
-                    android:textSize="26px" />
-
-
-            </com.zhy.autolayout.AutoLinearLayout>
-
-            <com.zhy.autolayout.AutoLinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16px">
-
-                <com.zhy.autolayout.AutoLinearLayout
-                    android:layout_width="80px"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="76px"
-                    android:id="@+id/address"
-                    android:orientation="vertical">
-
-
-                    <View
-                        android:layout_width="70px"
-                        android:layout_height="70px"
-                        android:layout_gravity="center_horizontal"
-                        android:background="@drawable/myself_address" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="15px"
-                        android:textColor="#010101"
-                        android:text="收货地址"
-                        android:textSize="20px" />
-                </com.zhy.autolayout.AutoLinearLayout>
-
-                <com.zhy.autolayout.AutoLinearLayout
-                    android:layout_width="80px"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="83px"
-                    android:id="@+id/help"
-                    android:orientation="vertical">
-
-
-                    <View
-                        android:layout_width="70px"
-                        android:layout_height="70px"
-                        android:layout_gravity="center_horizontal"
-                        android:background="@drawable/myself_help" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="15px"
-                        android:textColor="#010101"
-                        android:text="帮助中心"
-                        android:textSize="20px" />
-                </com.zhy.autolayout.AutoLinearLayout>
-
-                <com.zhy.autolayout.AutoLinearLayout
-                    android:layout_width="80px"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/feed_back"
-                    android:layout_marginLeft="83px"
-                    android:orientation="vertical">
-
-
-                    <View
-                        android:layout_width="70px"
-                        android:layout_height="70px"
-                        android:layout_gravity="center_horizontal"
-                        android:background="@drawable/myself_feedback" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="15px"
-                        android:textColor="#010101"
-                        android:text="意见反馈"
-                        android:textSize="20px" />
-                </com.zhy.autolayout.AutoLinearLayout>
-
-                <com.zhy.autolayout.AutoLinearLayout
-                    android:layout_width="80px"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="83px"
-                    android:id="@+id/custom_service"
-                    android:orientation="vertical">
-
-
-                    <View
-                        android:layout_width="70px"
-                        android:layout_height="70px"
-                        android:layout_gravity="center_horizontal"
-                        android:background="@drawable/myself_custom_service" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="15px"
-                        android:textColor="#010101"
-                        android:text="在线客服"
-                        android:textSize="20px" />
-                </com.zhy.autolayout.AutoLinearLayout>
-
-            </com.zhy.autolayout.AutoLinearLayout>
-
-            <com.zhy.autolayout.AutoLinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="36px">
-
-                <com.zhy.autolayout.AutoLinearLayout
-                    android:layout_width="80px"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="76px"
-                    android:id="@+id/platform"
-                    android:orientation="vertical">
-
-
-                    <View
-                        android:layout_width="70px"
-                        android:layout_height="70px"
-                        android:layout_gravity="center_horizontal"
-                        android:background="@drawable/myself_phone" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="15px"
-                        android:textColor="#010101"
-                        android:text="平台热线"
-                        android:textSize="20px" />
-                </com.zhy.autolayout.AutoLinearLayout>
-
-                <com.zhy.autolayout.AutoLinearLayout
-                    android:layout_width="80px"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="83px"
-                    android:id="@+id/about"
-                    android:orientation="vertical">
-
-
-                    <View
-                        android:layout_width="70px"
-                        android:layout_height="70px"
-                        android:layout_gravity="center_horizontal"
-                        android:background="@drawable/myself_about" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="15px"
-                        android:textColor="#010101"
-                        android:text="关于我们"
-                        android:textSize="20px" />
-                </com.zhy.autolayout.AutoLinearLayout>
-
-                <com.zhy.autolayout.AutoLinearLayout
-                    android:layout_width="80px"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="83px"
-                    android:id="@+id/login_out"
-                    android:orientation="vertical">
-
-
-                    <View
-                        android:layout_width="70px"
-                        android:layout_height="70px"
-                        android:layout_gravity="center_horizontal"
-                        android:background="@drawable/myself_login_out" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="15px"
-                        android:textColor="#010101"
-                        android:text="退出登录"
-                        android:textSize="20px" />
-                </com.zhy.autolayout.AutoLinearLayout>
-
-
-
-            </com.zhy.autolayout.AutoLinearLayout>
-
-        </com.zhy.autolayout.AutoLinearLayout>
-
-    </com.zhy.autolayout.AutoLinearLayout>
-   </ScrollView>
+    </ScrollView>
 </com.zhy.autolayout.AutoRelativeLayout>

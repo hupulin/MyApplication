@@ -9,7 +9,7 @@ import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.BaseActivity;
 import com.xmkj.washmall.main.MainActivity;
 import com.xmkj.washmall.mall.AbortOrderActivity;
-import com.xmkj.washmall.mall.IntegralActivity;
+
 import com.xmkj.washmall.mall.PayOrderActivity;
 
 /**

@@ -82,6 +82,14 @@
                 android:textColor="#FF0000"
                 android:textSize="22px" />
         </com.zhy.autolayout.AutoLinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="37px"
+            android:layout_marginRight="37px"
+            android:layout_marginTop="22px"
+            android:background="@color/f8" />
     </com.zhy.autolayout.AutoRelativeLayout>
 </com.zhy.autolayout.AutoRelativeLayout>
 </layout>

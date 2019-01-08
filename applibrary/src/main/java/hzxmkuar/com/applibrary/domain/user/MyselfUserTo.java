@@ -8,77 +8,81 @@ import lombok.Data;
 @Data
 public class MyselfUserTo {
 
-    /**
-     * uid : 88
-     * face_url : http://xmap18070031.php.hzxmnet.com/uploads/picture/2018-05-29/30bfc5eb7862333d1995f020d9f356da.jpg
-     * is_store : 1
-     * is_member : 0
-     * account : 0.00
-     * user_tag : 青铜
-     * username : helloworld
-     * kf_tel : 0571-66555555
-     * my_enquiry : {"enquiry_yes":1,"enquiry_no":2}
-     * my_order : {"unevaluate":1,"unpay":2,"uncomfirm":1,"unpay_retainage":1,"unservice":2}
-     * my_wmgroup : {"published":1,"collected":2,"recent_browse":2}
-     */
 
-    private int uid;
-    private String face_url;
-    private int is_store;
-    private int is_member;
-    private String account;
-    private String user_tag;
-    private String username;
-    private String kf_tel;
-    private MyEnquiryBean my_enquiry;
-    private MyOrderBean my_order;
-    private MyWmgroupBean my_wmgroup;
+    private UserInfoBean user_info;
+    private MyWashOrderBean my_wash_order;
+    private MyMallOrderBean my_mall_order;
+    private MoreServiceBean more_service;
+
 
     @Data
-
-    public static class MyEnquiryBean {
+    public static class UserInfoBean {
         /**
-         * enquiry_yes : 1
-         * enquiry_no : 2
+         * uid : 2
+         * face_url :
+         * is_member : 0
+         * user_tag : 普通会员
+         * account : 0.00
+         * score : 0.00
+         * collection_num : 0
+         * coupon_num : 0
+         * username : Coo.Ddk
          */
 
-        private int enquiry_yes;
-        private int enquiry_no;
+        private int uid;
+        private String face_url;
+        private int is_member;
+        private String user_tag;
+        private String account;
+        private String score;
+        private String collection_num;
+        private String coupon_num;
+        private String username;
 
 
     }
 
     @Data
-    public static class MyOrderBean {
+    public static class MyWashOrderBean {
         /**
-         * unevaluate : 1
-         * unpay : 2
-         * uncomfirm : 1
-         * unpay_retainage : 1
-         * unservice : 2
+         * order1 : 0
+         * order2 : 0
+         * order3 : 0
+         * order4 : 0
          */
 
-        private int unevaluate;
-        private int unpay;
-        private int uncomfirm;
-        private int unpay_retainage;
-        private int unservice;
+        private String order1;
+        private String order2;
+        private String order3;
+        private String order4;
 
 
     }
 
     @Data
-    public static class MyWmgroupBean {
+    public static class MyMallOrderBean {
         /**
-         * published : 1
-         * collected : 2
-         * recent_browse : 2
+         * order1 : 0
+         * order2 : 0
+         * order3 : 0
+         * order4 : 0
          */
 
-        private int published;
-        private int collected;
-        private int recent_browse;
+        private String order1;
+        private String order2;
+        private String order3;
+        private String order4;
 
+
+    }
+
+    @Data
+    public static class MoreServiceBean {
+        /**
+         * kf_tel : 13516717556
+         */
+
+        private String kf_tel;
 
     }
 }

@@ -16,6 +16,7 @@ import java.util.List;
 
 import hzxmkuar.com.applibrary.api.ApiClient;
 import hzxmkuar.com.applibrary.api.LoginApi;
+import hzxmkuar.com.applibrary.api.UserApi;
 import hzxmkuar.com.applibrary.domain.MessageTo;
 import hzxmkuar.com.applibrary.domain.login.UploadImageParam;
 import hzxmkuar.com.applibrary.domain.main.UploadImageTo;
@@ -81,17 +82,17 @@ public class UploadImageModel extends BasePresenter {
         RequestBody face = RequestBody.create(MediaType.parse("text/plain"), param.getTags() + "");
 
 
-//        ApiClient.create(LoginApi.class).uploadImage(time, hash, apiId, terminal, uid, hashId, fileName, face, description, body).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
-//                new MyObserver<MessageTo>(this) {
-//                    @Override
-//                    public void onNext(MessageTo msg) {
-//                        System.out.println(msg + "msg");
-//                    }
-//
-//
-//                }
-//
-//        );
+        ApiClient.create(UserApi.class).uploadImage(time, hash, apiId, terminal, uid, hashId, fileName, face, description, body).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
+                new MyObserver<MessageTo>(this) {
+                    @Override
+                    public void onNext(MessageTo msg) {
+                        System.out.println(msg + "msg");
+                    }
+
+
+                }
+
+        );
     }
 
     public void uploadImage(ArrayList<String> imagePathList, UploadImagePathListener listener) {
@@ -126,24 +127,24 @@ public class UploadImageModel extends BasePresenter {
             RequestBody face = RequestBody.create(MediaType.parse("text/plain"), param.getTags() + "");
 
 
-//            ApiClient.create(LoginApi.class).uploadImage(time, hash, apiId, terminal, uid, hashId, fileName, face, description, body).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
-//                    new MyObserver<MessageTo<UploadImageTo>>(this) {
-//                        @Override
-//                        public void onNext(MessageTo<UploadImageTo> msg) {
-//                            if (msg.getCode() == 0) {
-//                                uploadCount++;
-//                                pathKey = pathKey + msg.getData().getId() + ",";
-//                                pathString=pathString+ msg.getData().getUrl() + ",";
-//                                if (uploadCount == imagePathList.size()) {
-//                                    listener.uploadImageSuccess(pathString.substring(0,pathString.length()-1),pathKey.substring(0, pathKey.length() - 1));
-//                                }
-//                            }
-//                        }
-//
-//
-//                    }
-//
-//            );
+            ApiClient.create(UserApi.class).uploadImage(time, hash, apiId, terminal, uid, hashId, fileName, face, description, body).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
+                    new MyObserver<MessageTo<UploadImageTo>>(this) {
+                        @Override
+                        public void onNext(MessageTo<UploadImageTo> msg) {
+                            if (msg.getCode() == 0) {
+                                uploadCount++;
+                                pathKey = pathKey + msg.getData().getId() + ",";
+                                pathString=pathString+ msg.getData().getUrl() + ",";
+                                if (uploadCount == imagePathList.size()) {
+                                    listener.uploadImageSuccess(pathString.substring(0,pathString.length()-1),pathKey.substring(0, pathKey.length() - 1));
+                                }
+                            }
+                        }
+
+
+                    }
+
+            );
         }
     }
     public void uploadImage(ArrayList<String> imagePathList, UploadImageListener listener) {
@@ -176,24 +177,24 @@ public class UploadImageModel extends BasePresenter {
             RequestBody fileName = RequestBody.create(MediaType.parse("text/plain"), param.getFileName() + "");
             RequestBody face = RequestBody.create(MediaType.parse("text/plain"), param.getTags() + "");
 
-//
-//            ApiClient.create(LoginApi.class).uploadImage(time, hash, apiId, terminal, uid, hashId, fileName, face, description, body).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
-//                    new MyObserver<MessageTo<UploadImageTo>>(this) {
-//                        @Override
-//                        public void onNext(MessageTo<UploadImageTo> msg) {
-//                            if (msg.getCode() == 0) {
-//                                uploadCount++;
-//                                pathKey = pathKey + msg.getData().getId() + ",";
-//                                if (uploadCount == imagePathList.size()) {
-//                                    listener.uploadImageSuccess(pathKey.substring(0, pathKey.length() - 1));
-//                                }
-//                            }
-//                        }
-//
-//
-//                    }
-//
-//            );
+
+            ApiClient.create(UserApi.class).uploadImage(time, hash, apiId, terminal, uid, hashId, fileName, face, description, body).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
+                    new MyObserver<MessageTo<UploadImageTo>>(this) {
+                        @Override
+                        public void onNext(MessageTo<UploadImageTo> msg) {
+                            if (msg.getCode() == 0) {
+                                uploadCount++;
+                                pathKey = pathKey + msg.getData().getId() + ",";
+                                if (uploadCount == imagePathList.size()) {
+                                    listener.uploadImageSuccess(pathKey.substring(0, pathKey.length() - 1));
+                                }
+                            }
+                        }
+
+
+                    }
+
+            );
         }
     }
 
@@ -227,20 +228,20 @@ public class UploadImageModel extends BasePresenter {
         RequestBody face = RequestBody.create(MediaType.parse("text/plain"), param.getTags() + "");
 
 
-//        ApiClient.create(LoginApi.class).uploadImage(time, hash, apiId, terminal, uid, hashId, fileName, face, description, body).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
-//                new MyObserver<MessageTo<UploadImageTo>>(this) {
-//                    @Override
-//                    public void onNext(MessageTo<UploadImageTo> msg) {
-//                        if (msg.getCode() == 0) {
-//
-//                            listener.uploadImageSuccess(msg.getData().getUrl(), msg.getData().getId());
-//                        }
-//                    }
-//
-//
-//                }
-//
-//        );
+        ApiClient.create(UserApi.class).uploadImage(time, hash, apiId, terminal, uid, hashId, fileName, face, description, body).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
+                new MyObserver<MessageTo<UploadImageTo>>(this) {
+                    @Override
+                    public void onNext(MessageTo<UploadImageTo> msg) {
+                        if (msg.getCode() == 0) {
+
+                            listener.uploadImageSuccess(msg.getData().getUrl(), msg.getData().getId());
+                        }
+                    }
+
+
+                }
+
+        );
 
     }
 

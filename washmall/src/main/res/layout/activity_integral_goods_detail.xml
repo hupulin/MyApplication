@@ -136,13 +136,15 @@
                     android:layout_centerInParent="true"
                     android:background="@drawable/goods_detail_line" />
             </com.zhy.autolayout.AutoRelativeLayout>
-
-            <WebView
-                android:id="@+id/web_view"
+            <GridLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent"
+                android:id="@+id/goods_image_layout"
+                android:columnCount="1"
+                >
 
-            </WebView>
+            </GridLayout>
+
         </com.zhy.autolayout.AutoLinearLayout>
     </ScrollView>
 

@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.xmkj.washmall">
 <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="WAKE_LOCK"/>
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -98,11 +99,11 @@
             android:screenOrientation="portrait"
             />
 
-        <activity android:name=".mall.IntegralActivity"
+        <activity android:name=".integral.IntegralActivity"
             android:screenOrientation="portrait"
             />
 
-        <activity android:name=".mall.IntegralGoodsDetailActivity"
+        <activity android:name=".integral.IntegralGoodsDetailActivity"
             android:screenOrientation="portrait"
             />
 
@@ -169,6 +170,9 @@
         <activity android:name=".message.ChatActivity"
             android:screenOrientation="portrait"
             />
+        <activity android:name=".integral.IntegralOrderActivity"
+            android:screenOrientation="portrait"
+            />
 
         <activity
             android:name=".wxapi.WXPayEntryActivity"
@@ -176,6 +180,10 @@
             android:launchMode="singleTop"
 
             />
+
+        <activity
+            android:name="com.soundcloud.android.crop.CropImageActivity"
+            android:screenOrientation="portrait" />
 
     <activity
         android:name="com.tencent.tauth.AuthActivity"

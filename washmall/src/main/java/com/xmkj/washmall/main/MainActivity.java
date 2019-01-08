@@ -16,6 +16,7 @@ import com.xmkj.washmall.main.fragment.CarFragment;
 import com.xmkj.washmall.main.fragment.HomeFragment;
 import com.xmkj.washmall.main.fragment.MallFragment;
 import com.xmkj.washmall.main.fragment.MyselfFragment;
+import com.xmkj.washmall.main.presenter.MainPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,6 +55,7 @@ public class MainActivity extends BaseActivity {
         StatueBarUtil.setStatueBarTextWhite(getWindow());
         ButterKnife.bind(this);
         initFragment();
+        MainPresenter presenter=new MainPresenter(this);
     }
 
     private void initFragment() {
