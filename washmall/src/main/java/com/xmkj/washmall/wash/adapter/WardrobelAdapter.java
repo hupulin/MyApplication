@@ -17,12 +17,13 @@ import com.xmkj.washmall.databinding.WardrobeItemBinding;
 
 import hzxmkuar.com.applibrary.domain.main.MainWardrobeTo;
 import hzxmkuar.com.applibrary.domain.order.MallOrderTo;
+import hzxmkuar.com.applibrary.domain.wardrobe.WardrobeDetailTo;
 
 /**
  * Created by Administrator on 2018/8/28.
  **/
 
-public class WardrobelAdapter extends BaseAdapter<MainWardrobeTo, WardrobeItemBinding> {
+public class WardrobelAdapter extends BaseAdapter<WardrobeDetailTo.GridListBean, WardrobeItemBinding> {
    public WardrobelAdapter(Activity context) {
         super(context);
     }
@@ -45,10 +46,10 @@ public class WardrobelAdapter extends BaseAdapter<MainWardrobeTo, WardrobeItemBi
     public void onBindViewHolder(BindingHolder<WardrobeItemBinding> holder, int position) {
         super.onBindViewHolder(holder, position);
         WardrobeItemBinding binding = holder.getBinding();
-        MainWardrobeTo mode=mList.get(position);
-//        binding.floor.setText(mode.getFloor());
-//        binding.statue.setText(mode.getStatue());
-//        binding.position.setText(mode.getFloorName());
+        WardrobeDetailTo.GridListBean mode=mList.get(position);
+        binding.floor.setText(mode.getFloor_no()+"层");
+        binding.statue.setText(mode.getIs_full()==0?"空闲":"使用中");
+        binding.position.setText(mode.getGrid_title());
 
 
 

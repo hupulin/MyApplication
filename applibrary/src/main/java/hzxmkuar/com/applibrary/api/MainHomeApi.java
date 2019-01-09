@@ -5,6 +5,7 @@ import hzxmkuar.com.applibrary.domain.MessageListTo;
 import hzxmkuar.com.applibrary.domain.MessageTo;
 import hzxmkuar.com.applibrary.domain.main.MainAdParent;
 import hzxmkuar.com.applibrary.domain.main.MainWardrobeParam;
+import hzxmkuar.com.applibrary.domain.wardrobe.WardrobeDetailParam;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
 import rx.Observable;
@@ -26,4 +27,10 @@ public interface MainHomeApi  {
      */
     @POST("Api/Wardrobe/get_list")
     Observable<MessageListTo>getWardrobeList(@Body MainWardrobeParam param);
+
+    /**
+     *获取柜子详情
+     */
+    @POST("Api/Wardrobe/get_detail")
+    Observable<MessageTo>getWardrobeDetail(@Body WardrobeDetailParam param);
 }

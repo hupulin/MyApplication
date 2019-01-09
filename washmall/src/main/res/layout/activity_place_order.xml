@@ -119,9 +119,10 @@
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
             android:background="@color/transparent"
-            android:gravity="center_vertical"
+            android:gravity="center_vertical|end"
             android:hint="请输入衣服的款式等信息"
             android:textColorHint="#808080"
+
             android:textColor="@color/black"
             android:textSize="24px" />
 

@@ -6,10 +6,10 @@ import com.xmkj.washmall.base.MyObserver;
 
 import hzxmkuar.com.applibrary.api.ApiClient;
 import hzxmkuar.com.applibrary.api.IntegralApi;
+import hzxmkuar.com.applibrary.domain.BaseParam;
+import hzxmkuar.com.applibrary.domain.MessageListTo;
 import hzxmkuar.com.applibrary.domain.MessageTo;
-import hzxmkuar.com.applibrary.domain.integral.AddIntegralOrderParam;
-import hzxmkuar.com.applibrary.domain.integral.IntegralGoodsTo;
-import hzxmkuar.com.applibrary.domain.mall.GoodsIdParam;
+import hzxmkuar.com.applibrary.domain.integral.PageParam;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -17,20 +17,21 @@ import rx.schedulers.Schedulers;
  * Created by Administrator on 2019/1/8.
  */
 
-public class IntegralOrderPresenter extends BasePresenter {
-    public IntegralOrderPresenter(BaseActivity activity){
+public class IntegralDetailPresenter extends BasePresenter {
+
+    public IntegralDetailPresenter(BaseActivity activity){
         initContext(activity);
-        getOrderInfo();
+        getScoreDetail();
+        getScoreRecord();
     }
 
-    private void getOrderInfo(){
-        GoodsIdParam param=new GoodsIdParam();
+    private void getScoreDetail(){
+        BaseParam param=new BaseParam();
         param.setUid(userInfoTo.getUid());
         param.setHashid(userInfoTo.getHashid());
-        param.setGoods_id(activity.getIntent().getIntExtra("GoodsId",0));
-        param.setHash(getHashString(GoodsIdParam.class,param));
+        param.setHash(getHashString(BaseParam.class,param));
         showLoadingDialog();
-        ApiClient.create(IntegralApi.class).confirmOrder(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
+        ApiClient.create(IntegralApi.class).getIntegralDetail(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
                 new MyObserver<MessageTo>(this) {
                     @Override
                     public void onNext(MessageTo msg) {
@@ -43,21 +44,18 @@ public class IntegralOrderPresenter extends BasePresenter {
         );
     }
 
-    public void addOrder(String remark,int addressId){
-        AddIntegralOrderParam param=new AddIntegralOrderParam();
+    private void getScoreRecord(){
+        PageParam param=new PageParam();
         param.setUid(userInfoTo.getUid());
         param.setHashid(userInfoTo.getHashid());
-        param.setGoods_id(activity.getIntent().getIntExtra("GoodsId",0));
-
-        param.setAddress_id(addressId);
-        param.setHash(getHashString(AddIntegralOrderParam.class,param));
+        param.setHash(getHashString(PageParam.class,param));
         showLoadingDialog();
-        ApiClient.create(IntegralApi.class).addOrder(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
-                new MyObserver<MessageTo>(this) {
+        ApiClient.create(IntegralApi.class).getIntegralRecord(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
+                new MyObserver<MessageListTo>(this) {
                     @Override
-                    public void onNext(MessageTo msg) {
+                    public void onNext(MessageListTo msg) {
                         if (msg.getCode()==0)
-                            showMessage("提交成功");
+                            submitDataSuccess(msg.getData());
                         else
                             showMessage(msg.getMsg());
                     }

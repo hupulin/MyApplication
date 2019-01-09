@@ -20,6 +20,8 @@ import com.xmkj.washmall.base.banner.HomeBannerHolderView;
 import com.xmkj.washmall.databinding.MainWardrobeItemBinding;
 import com.xmkj.washmall.main.presenter.MainHomePresenter;
 import com.xmkj.washmall.myself.MyOrderActivity;
+import com.xmkj.washmall.wash.SelectWashActivity;
+import com.xmkj.washmall.wash.WardrobeActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,12 +61,17 @@ public class HomeFragment extends BaseFragment {
             View mView = View.inflate(appContext, R.layout.main_wardrobe_item, null);
             MainWardrobeTo wardrobeTo = wardrobeList.get(i);
             MainWardrobeItemBinding bind = DataBindingUtil.bind(mView);
-            System.out.println(wardrobeTo+"===");
             bind.address.setText(wardrobeTo.getDistance());
             bind.name.setText(wardrobeTo.getWardrobe_name());
             bind.statue.setText(wardrobeTo.getIs_full());
             displayImage(bind.imageView, wardrobeTo.getWardrobe_img());
             wardrobeLayout.addView(mView);
+            mView.setOnClickListener(v -> {
+                Intent intent=new Intent(appContext, WardrobeActivity.class);
+                intent.putExtra("WardrobeId",wardrobeTo.getId());
+                startActivity(intent);
+                goToAnimation(1);
+            });
         }
     }
 
@@ -84,7 +91,9 @@ public class HomeFragment extends BaseFragment {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.wash:
-                Intent intent=new Intent();
+                Intent intent=new Intent(appContext, SelectWashActivity.class);
+                startActivity(intent);
+                goToAnimation(1);
                 break;
             case R.id.recharge:
                 break;

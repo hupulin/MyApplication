@@ -71,7 +71,7 @@
                 android:textColor="@color/white"
                 android:textSize="24px" />
 
-            <TextView
+            <com.xmkj.washmall.base.util.PingFangTextView
                 android:id="@+id/money"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -79,7 +79,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:textColor="@color/white"
-                android:textSize="24px" />
+                android:textSize="40px" />
 
             <TextView
                 android:layout_width="wrap_content"

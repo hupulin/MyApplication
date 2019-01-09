@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.BaseActivity;
 import com.xmkj.washmall.myself.fragment.CouponFragment;
+import com.xmkj.washmall.myself.presenter.CouponPresenter;
 import com.zhy.autolayout.AutoRelativeLayout;
 
 import java.util.ArrayList;
@@ -46,6 +47,7 @@ public class MyCouponActivity extends BaseActivity {
         ButterKnife.bind(this);
         setTitleName("优惠券");
         initFragment();
+        CouponPresenter presenter=new CouponPresenter(this);
     }
 
     private void initFragment() {

@@ -8,9 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
+import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
 import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.BaseFragment;
+import com.xmkj.washmall.wash.WardrobeActivity;
 import com.xmkj.washmall.wash.adapter.WardrobelAdapter;
+import com.xmkj.washmall.wash.presenter.WardrobeFragmentPresenter;
 import com.xmkj.washmall.wash.presenter.WardrobePresenter;
 
 
@@ -21,6 +24,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import hzxmkuar.com.applibrary.domain.main.MainWardrobeTo;
+import rx.Observable;
 
 
 /**
@@ -68,7 +72,8 @@ public class WardrobeFragment extends BaseFragment {
 
             isUiVisible = false;
             isViewCreate = false;
-            setRecycleView(new WardrobelAdapter(getActivity()),recyclerView, new WardrobePresenter(this));
+
+            setRecycleView(new WardrobelAdapter(getActivity()),recyclerView, new WardrobeFragmentPresenter(this));
 
 
         }

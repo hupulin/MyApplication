@@ -41,6 +41,7 @@
             <View
                 android:layout_width="36px"
                 android:layout_height="32px"
+                android:id="@+id/add"
                 android:background="@drawable/select_wash_add" />
 
             <TextView
@@ -48,13 +49,15 @@
                 android:layout_height="32px"
                 android:background="@drawable/select_wash_number"
                 android:gravity="center"
-                android:text="1"
+                android:text="0"
+                android:id="@+id/num"
                 android:textColor="@color/black"
                 android:textSize="26px" />
 
             <View
                 android:layout_width="36px"
                 android:layout_height="32px"
+                android:id="@+id/reduce"
                 android:background="@drawable/select_wash_reduce" />
         </com.zhy.autolayout.AutoLinearLayout>
     </com.zhy.autolayout.AutoLinearLayout>

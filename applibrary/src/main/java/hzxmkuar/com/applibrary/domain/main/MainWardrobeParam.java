@@ -11,4 +11,5 @@ public class MainWardrobeParam extends BaseParam {
     private int lat=1;
     private int lng=1;
     private int page=1;
+    private int pos_city=934;
 }

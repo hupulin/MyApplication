@@ -3,7 +3,9 @@ package com.xmkj.washmall.wash;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +13,10 @@ import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
 import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.jzxiang.pickerview.TimePickerDialog;
 import com.jzxiang.pickerview.data.Type;
 import com.jzxiang.pickerview.listener.OnDateSetListener;
@@ -21,6 +26,7 @@ import com.xmkj.washmall.base.WebActivity;
 import com.xmkj.washmall.base.util.DateUtil;
 import com.xmkj.washmall.base.util.PingFangTextView;
 import com.xmkj.washmall.base.util.TimePickerExpect;
+import com.xmkj.washmall.wash.presenter.PlaceOrderPresenter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,6 +35,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import hzxmkuar.com.applibrary.domain.main.MainWardrobeTo;
 import rx.Observable;
 
 /**
@@ -45,6 +52,7 @@ public class PlaceOrderActivity extends BaseActivity implements OnDateSetListene
     TextView pickupTime;
     @BindView(R.id.pickup_wardrobe)
     TextView pickupWardrobe;
+    private PlaceOrderPresenter presenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -52,6 +60,7 @@ public class PlaceOrderActivity extends BaseActivity implements OnDateSetListene
         setContentView(R.layout.activity_place_order);
         ButterKnife.bind(this);
         setTitleName("下单");
+        presenter = new PlaceOrderPresenter(this);
     }
 
     @OnClick({R.id.pickup_time, R.id.pickup_wardrobe, R.id.confirm,R.id.save_wardrobe,R.id.rule_des})
@@ -65,25 +74,39 @@ public class PlaceOrderActivity extends BaseActivity implements OnDateSetListene
                 goToAnimation(1);
                 break;
             case R.id.save_wardrobe:
-                selectWardRobeDialog(saveWardrobe);
+                presenter.getWardrobeList(saveWardrobe);
                 break;
             case R.id.pickup_time:
                 initTimeDialog();
                 break;
             case R.id.pickup_wardrobe:
-                selectWardRobeDialog(pickupWardrobe);
+                presenter.getWardrobeList(pickupWardrobe);
                 break;
             case R.id.confirm:
+                if (TextUtils.isEmpty(saveWardrobe.getText().toString())){
+                    showMessage("请选择存货衣柜");
+                    return;
+                }
+                if (TextUtils.isEmpty(pickupTime.getText().toString())){
+                    showMessage("请选择取货时间");
+                    return;
+                }
+                if (TextUtils.isEmpty(pickupWardrobe.getText().toString())){
+                    showMessage("请选择取货衣柜");
+                    return;
+                }
+                presenter.addOrder((int)saveWardrobe.getTag(),(int)pickupWardrobe.getTag(),pickupTime.getText().toString(),remark.getText().toString());
                 break;
         }
     }
 
-    private void selectWardRobeDialog(TextView selectText){
-        List<String>wardList=new ArrayList<>(Arrays.asList("1号柜","2号柜","3号柜","4号柜"));
+    public void selectWardRobeDialog(TextView selectText,List<MainWardrobeTo> wardrobeList){
+
+
         NiftyDialogBuilder dialog=NiftyDialogBuilder.getInstance(this);
         dialog.setContentView(R.layout.dialog_select_wardrobe);
         GridLayout gridLayout=dialog.findViewById(R.id.grid_view);
-        Observable.from(wardList).subscribe(s -> {
+        Observable.from(wardrobeList).subscribe(wardrobeTo -> {
             PingFangTextView textView=new PingFangTextView(appContext);
             GridLayout.LayoutParams layoutParams=new GridLayout.LayoutParams();
             layoutParams.height= ViewGroup.LayoutParams.WRAP_CONTENT;
@@ -91,13 +114,14 @@ public class PlaceOrderActivity extends BaseActivity implements OnDateSetListene
             layoutParams.bottomMargin=18*getScreenWidth()/750;
             layoutParams.topMargin=18*getScreenWidth()/750;
             textView.setLayoutParams(layoutParams);
-            textView.setText(s);
+            textView.setText(wardrobeTo.getWardrobe_name());
             textView.setGravity(Gravity.CENTER);
             textView.setTextColor(Color.parseColor("#000000"));
             textView.setTextSize(10*getScreenWidth()/750);
             textView.setOnClickListener(v -> {
                 dialog.dismiss();
-                selectText.setText(s);
+                selectText.setText(wardrobeTo.getWardrobe_name());
+                selectText.setTag(wardrobeTo.getId());
             });
             gridLayout.addView(textView);
         });
@@ -127,5 +151,18 @@ public class PlaceOrderActivity extends BaseActivity implements OnDateSetListene
     @Override
     public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
          pickupTime.setText(DateUtil.longToString(millseconds,DateUtil.mFormatDateString));
+    }
+
+    @Override
+    public void loadDataSuccess(Object data) {
+    }
+
+    @Override
+    protected void submitDataSuccess(Object data) {
+
+            Intent intent=new Intent(appContext,ReserveSuccessActivity.class);
+            startActivity(intent);
+            goToAnimation(1);
+
     }
 }

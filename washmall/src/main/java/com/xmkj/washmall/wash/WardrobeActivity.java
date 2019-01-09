@@ -6,6 +6,8 @@ import android.support.v4.view.ViewPager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
+import com.google.gson.Gson;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 import com.ruffian.library.RTextView;
@@ -13,12 +15,14 @@ import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.BaseActivity;
 import com.xmkj.washmall.base.util.StatueBarUtil;
 import com.xmkj.washmall.wash.fragment.WardrobeFragment;
+import com.xmkj.washmall.wash.presenter.WardrobePresenter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import hzxmkuar.com.applibrary.domain.wash.WardrobeTo;
+import hzxmkuar.com.applibrary.domain.wardrobe.WardrobeDetailTo;
 import rx.Observable;
 import util.smart.SmartTabLayout;
 
@@ -39,7 +43,9 @@ public class WardrobeActivity extends BaseActivity {
     SmartTabLayout tab;
     @BindView(R.id.view_pager)
     ViewPager viewPager;
-    private WardrobeTo wardrobeTo;
+    public WardrobeDetailTo mode;
+    public List<String> tagList;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,21 +54,21 @@ public class WardrobeActivity extends BaseActivity {
         ButterKnife.bind(this);
         StatueBarUtil.setStatueBarTextWhite(getWindow());
         setTitleName("1号智能柜");
-        wardrobeTo = new WardrobeTo();
-        setView();
-        setTab(wardrobeTo.getTagList());
+
+        WardrobePresenter presenter = new WardrobePresenter(this);
+
     }
 
     private void setView() {
-        displayImage(wardrobeImage,wardrobeTo.getImageUrl());
-        address.setText(wardrobeTo.getAddress());
-        wardrobeNum.setText(wardrobeTo.getNum());
-        wardrobeName.setText(wardrobeTo.getName());
+        displayImage(wardrobeImage,mode.getWardrobe_img());
+        address.setText(mode.getAddress());
+        wardrobeNum.setText("数量"+mode.getGrid_list().size());
+        wardrobeName.setText(mode.getWardrobe_name());
 
     }
 
 
-    public void setTab(List<String> paymentTypeList) {
+    public void setTab(List<String>  paymentTypeList) {
 
         FragmentPagerItems.Creator creator = FragmentPagerItems.with(this);
         Observable.from(paymentTypeList).subscribe(paymentTypeTo -> {
@@ -76,5 +82,18 @@ public class WardrobeActivity extends BaseActivity {
         tab.setViewPager(viewPager);
 
 
+    }
+
+    @Override
+    public void loadDataSuccess(Object data) {
+        mode = new Gson().fromJson(JSON.toJSONString(data),WardrobeDetailTo.class);
+        setView();
+        tagList = new ArrayList<>();
+        tagList.add("全部");
+        Observable.from(mode.getGrid_list()).subscribe(gridListBean -> {
+            if (!tagList.contains(gridListBean.getFloor_no()+"层"))
+                tagList.add(gridListBean.getFloor_no()+"层");
+        });
+        setTab(tagList);
     }
 }

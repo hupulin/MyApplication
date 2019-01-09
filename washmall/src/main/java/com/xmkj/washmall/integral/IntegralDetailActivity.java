@@ -1,4 +1,4 @@
-package com.xmkj.washmall.myself;
+package com.xmkj.washmall.integral;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
@@ -7,11 +7,16 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.GridLayout;
 
+import com.alibaba.fastjson.JSON;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.BaseActivity;
 import com.xmkj.washmall.base.WebActivity;
+import com.xmkj.washmall.base.util.PingFangTextView;
 import com.xmkj.washmall.base.util.StatueBarUtil;
 import com.xmkj.washmall.databinding.IntegralRecordItemBinding;
+import com.xmkj.washmall.integral.presenter.IntegralDetailPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +24,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import hzxmkuar.com.applibrary.domain.myself.IntegralRecordTo;
+import hzxmkuar.com.applibrary.domain.integral.IntegralInfoTo;
+import hzxmkuar.com.applibrary.domain.integral.IntegralRecordTo;
 
 /**
  * Created by Administrator on 2018/12/28.
@@ -28,6 +34,9 @@ import hzxmkuar.com.applibrary.domain.myself.IntegralRecordTo;
 public class IntegralDetailActivity extends BaseActivity {
     @BindView(R.id.record_layout)
     GridLayout recordLayout;
+    @BindView(R.id.score)
+    PingFangTextView score;
+    private IntegralDetailPresenter presenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -36,22 +45,18 @@ public class IntegralDetailActivity extends BaseActivity {
         ButterKnife.bind(this);
         StatueBarUtil.setStatueBarTextWhite(getWindow());
         setTitleName("积分明细");
-        setRecordLayout();
+        presenter = new IntegralDetailPresenter(this);
     }
 
-    private void setRecordLayout() {
-        List<IntegralRecordTo> recordList = new ArrayList<>();
-        IntegralRecordTo recordTo = new IntegralRecordTo();
-        recordList.add(recordTo);
-        recordList.add(recordTo);
-        recordList.add(recordTo);
+    private void setRecordLayout(List<IntegralRecordTo> recordList) {
+
         for (int i = 0; i < recordList.size(); i++) {
             IntegralRecordTo mode = recordList.get(i);
             View mView = View.inflate(appContext, R.layout.integral_record_item, null);
             IntegralRecordItemBinding binding = DataBindingUtil.bind(mView);
-            binding.recordName.setText(mode.getRecordName());
-            binding.recordTime.setText(mode.getTime());
-            binding.recordScore.setText(mode.getRecordScore());
+            binding.recordName.setText(mode.getRfrom_text());
+            binding.recordTime.setText(mode.getDateline());
+            binding.recordScore.setText(mode.getScore());
             recordLayout.addView(mView);
         }
 
@@ -59,9 +64,21 @@ public class IntegralDetailActivity extends BaseActivity {
 
     @OnClick(R.id.rule_des)
     public void onViewClicked() {
-        Intent intent=new Intent(appContext, WebActivity.class);
-        intent.putExtra("Type",1);
+        Intent intent = new Intent(appContext, WebActivity.class);
+        intent.putExtra("Type", 1);
         startActivity(intent);
         goToAnimation(1);
+    }
+
+    @Override
+    public void loadDataSuccess(Object data) {
+        IntegralInfoTo infoTo = new Gson().fromJson(JSON.toJSONString(data), IntegralInfoTo.class);
+        score.setText(infoTo.getScore() + "");
+    }
+
+    @Override
+    protected void submitDataSuccess(Object data) {
+        List<IntegralRecordTo>recordList=new Gson().fromJson(JSON.toJSONString(data),new TypeToken<List<IntegralRecordTo>>(){}.getType());
+        setRecordLayout(recordList);
     }
 }

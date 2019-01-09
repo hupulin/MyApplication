@@ -46,14 +46,14 @@ public class OrderWashAdapter extends BaseAdapter<WashOrderTo, OrderWashItemBind
         super.onBindViewHolder(holder, position);
         OrderWashItemBinding binding = holder.getBinding();
         WashOrderTo mode=mList.get(position);
-        binding.wardrobe.setText(mode.getWardrobe());
+        binding.wardrobe.setText(mode.getWardrobe_title());
         binding.address.setText(mode.getAddress());
-        binding.orderNumber.setText(mode.getOrderNo());
-        binding.statue.setText(mode.getStatueStr());
-        binding.pay.setText(mode.getPayStr());
-        binding.pay.setVisibility((mode.getType()==3||mode.getType()==2)? View.GONE:View.VISIBLE);
-        binding.money.setText(mode.getMoney());
-        binding.moneyLayout.setVisibility(mode.getType()==1?View.INVISIBLE:View.VISIBLE);
+        binding.orderNumber.setText(mode.getOrder_sn());
+        binding.statue.setText(mode.getStatus_txt());
+//        binding.pay.setText(mode.getPayStr());
+//        binding.pay.setVisibility((mode.getType()==3||mode.getType()==2)? View.GONE:View.VISIBLE);
+        binding.money.setText(mode.getOrder_amount());
+//        binding.moneyLayout.setVisibility(mode.getType()==1?View.INVISIBLE:View.VISIBLE);
 
     }
 

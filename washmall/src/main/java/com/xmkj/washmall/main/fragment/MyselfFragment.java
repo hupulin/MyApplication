@@ -18,12 +18,12 @@ import com.xmkj.washmall.base.WashAlertDialog;
 import com.xmkj.washmall.base.WebActivity;
 import com.xmkj.washmall.base.util.PingFangTextView;
 import com.xmkj.washmall.integral.IntegralActivity;
+import com.xmkj.washmall.integral.IntegralDetailActivity;
 import com.xmkj.washmall.main.presenter.MyselfPresenter;
 import com.xmkj.washmall.message.ChatActivity;
 import com.xmkj.washmall.myself.EditUserActivity;
 import com.xmkj.washmall.myself.FeedBackActivity;
 import com.xmkj.washmall.myself.HelpActivity;
-import com.xmkj.washmall.myself.IntegralDetailActivity;
 import com.xmkj.washmall.myself.MallOrderActivity;
 import com.xmkj.washmall.myself.MyCollectActivity;
 import com.xmkj.washmall.myself.MyCouponActivity;
@@ -102,7 +102,7 @@ public class MyselfFragment extends BaseFragment {
                 goToAnimation(1);
                 break;
             case R.id.balance_layout:
-                intent = new Intent(appContext, IntegralActivity.class);
+                intent = new Intent(appContext, IntegralDetailActivity.class);
                 startActivity(intent);
                 goToAnimation(1);
                 break;

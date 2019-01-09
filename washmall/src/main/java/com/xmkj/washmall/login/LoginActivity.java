@@ -10,16 +10,22 @@ import android.widget.EditText;
 import com.alibaba.fastjson.JSON;
 import com.google.gson.Gson;
 import com.tencent.connect.common.Constants;
+import com.tencent.mm.opensdk.modelmsg.SendAuth;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import com.tencent.open.utils.HttpUtils;
 import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.Tencent;
 import com.tencent.tauth.UiError;
 import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.BaseActivity;
+import com.xmkj.washmall.base.Event;
 import com.xmkj.washmall.base.util.StatueBarUtil;
 import com.xmkj.washmall.login.presenter.LoginPresenter;
 import com.xmkj.washmall.main.MainActivity;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -31,6 +37,7 @@ import butterknife.OnClick;
 import hzxmkuar.com.applibrary.domain.login.QQUserTo;
 import hzxmkuar.com.applibrary.domain.login.UserInfoTo;
 import hzxmkuar.com.applibrary.domain.login.WechatLoginTo;
+import hzxmkuar.com.applibrary.domain.login.WechatUserInfoTo;
 import hzxmkuar.com.applibrary.domain.tecent.QQResultTo;
 
 /**
@@ -69,6 +76,7 @@ public class LoginActivity extends BaseActivity {
         StatueBarUtil.setStatueBarTextWhite(getWindow());
         ButterKnife.bind(this);
         presenter = new LoginPresenter(this);
+        EventBus.getDefault().register(this);
 
     }
 
@@ -103,6 +111,7 @@ public class LoginActivity extends BaseActivity {
 
                 break;
             case R.id.wechat_login:
+                wechatLogin();
                 break;
             case R.id.qq_login:
                 qqLogin();
@@ -174,4 +183,27 @@ public class LoginActivity extends BaseActivity {
             goToAnimation(1);
         }
     }
+
+    public void wechatLogin() {
+        IWXAPI api = WXAPIFactory.createWXAPI(appContext, "wx34575f0ea7a2a608", false);
+        api.registerApp("wx34575f0ea7a2a608");
+        SendAuth.Req req = new SendAuth.Req();
+        req.scope = "snsapi_userinfo";
+        api.sendReq(req);
+
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe
+    public void wechatLoginData(Event<WechatUserInfoTo> event) {
+        if ("WechatLoginSuccess".equals(event.getType())) {
+            WechatUserInfoTo wechatUserInfoTo=event.getData();
+     presenter.thirdPartLogin(wechatUserInfoTo.getOpenid(),wechatUserInfoTo.getNickname(),wechatUserInfoTo.getHeadimgurl(),wechatUserInfoTo.getSex(),2);
+        }
+    }
+
 }
