@@ -7,8 +7,22 @@ import lombok.Data;
  */
 @Data
 public class CouponTo {
-    private String name="无门槛现金券";
-    private String time="2018.11.11-2018.11.12";
-    private String money="20";
-    private int type;
+
+    /**
+     * id : 3
+     * amount : 50.00
+     * cate_name : 50元优惠券
+     * cate_desc : 50元优惠券
+     * start_time : 1537249872
+     * end_time : 1537509072
+     */
+
+    private int id;
+    private String amount;
+    private String cate_name;
+    private String cate_desc;
+    private int start_time;
+    private int end_time;
+
+
 }

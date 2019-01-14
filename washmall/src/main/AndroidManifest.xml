@@ -192,6 +192,10 @@
             android:name="com.soundcloud.android.crop.CropImageActivity"
             android:screenOrientation="portrait" />
 
+        <activity android:name=".integral.IntegralRecordActivity"
+            android:screenOrientation="portrait"
+            />
+
     <activity
         android:name="com.tencent.tauth.AuthActivity"
         android:noHistory="true"

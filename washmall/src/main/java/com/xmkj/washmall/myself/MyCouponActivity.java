@@ -10,6 +10,8 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
+import com.google.gson.Gson;
 import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.BaseActivity;
 import com.xmkj.washmall.myself.fragment.CouponFragment;
@@ -22,6 +24,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import hzxmkuar.com.applibrary.domain.myself.CouponParentTo;
 
 /**
  * Created by Administrator on 2018/12/28.
@@ -46,14 +49,14 @@ public class MyCouponActivity extends BaseActivity {
         setContentView(R.layout.activity_my_coupon);
         ButterKnife.bind(this);
         setTitleName("优惠券");
-        initFragment();
+
         CouponPresenter presenter=new CouponPresenter(this);
     }
 
-    private void initFragment() {
-        fragmentList.add(new CouponFragment(1));
-        fragmentList.add(new CouponFragment(2));
-        fragmentList.add(new CouponFragment(3));
+    private void initFragment(CouponParentTo couponParentTo) {
+        fragmentList.add(new CouponFragment(1,couponParentTo.getUnuse_list()));
+        fragmentList.add(new CouponFragment(2,couponParentTo.getUsed_list()));
+        fragmentList.add(new CouponFragment(3,couponParentTo.getExpired_list()));
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -103,5 +106,10 @@ public class MyCouponActivity extends BaseActivity {
                 viewPager.setCurrentItem(2);
                 break;
         }
+    }
+
+    @Override
+    public void loadDataSuccess(Object data) {
+      initFragment(new Gson().fromJson(JSON.toJSONString(data), CouponParentTo.class));
     }
 }

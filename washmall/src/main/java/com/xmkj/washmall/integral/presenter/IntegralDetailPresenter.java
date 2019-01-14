@@ -22,7 +22,6 @@ public class IntegralDetailPresenter extends BasePresenter {
     public IntegralDetailPresenter(BaseActivity activity){
         initContext(activity);
         getScoreDetail();
-        getScoreRecord();
     }
 
     private void getScoreDetail(){
@@ -44,22 +43,5 @@ public class IntegralDetailPresenter extends BasePresenter {
         );
     }
 
-    private void getScoreRecord(){
-        PageParam param=new PageParam();
-        param.setUid(userInfoTo.getUid());
-        param.setHashid(userInfoTo.getHashid());
-        param.setHash(getHashString(PageParam.class,param));
-        showLoadingDialog();
-        ApiClient.create(IntegralApi.class).getIntegralRecord(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
-                new MyObserver<MessageListTo>(this) {
-                    @Override
-                    public void onNext(MessageListTo msg) {
-                        if (msg.getCode()==0)
-                            submitDataSuccess(msg.getData());
-                        else
-                            showMessage(msg.getMsg());
-                    }
-                }
-        );
-    }
+
 }

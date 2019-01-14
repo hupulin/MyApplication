@@ -15,6 +15,7 @@ import hzxmkuar.com.applibrary.api.MallApi;
 import hzxmkuar.com.applibrary.domain.MessageListTo;
 import hzxmkuar.com.applibrary.domain.MessageTo;
 import hzxmkuar.com.applibrary.domain.main.MallGoodsTo;
+import hzxmkuar.com.applibrary.domain.mall.GoodsDetailTo;
 import hzxmkuar.com.applibrary.domain.mall.GoodsIdParam;
 import hzxmkuar.com.applibrary.domain.mall.PurchaseParam;
 import hzxmkuar.com.applibrary.domain.mall.SpecificationTo;
@@ -35,8 +36,10 @@ public class GoodsDetailPresenter extends BasePresenter {
 
     private void getGoodsDetail(){
         GoodsIdParam param=new GoodsIdParam();
+        param.setHashid(userInfoTo.getHashid());
+        param.setUid(userInfoTo.getUid());
         param.setGoods_id(((MallGoodsTo)activity.getIntent().getSerializableExtra("GoodsTo")).getGoods_id());
-        param.setHash(getHashStringNoUser(GoodsIdParam.class,param));
+        param.setHash(getHashString(GoodsIdParam.class,param));
         ApiClient.create(MallApi.class).getGoodsDetail(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
                 new MyObserver<MessageTo>(this) {
                     @Override
@@ -107,6 +110,26 @@ public class GoodsDetailPresenter extends BasePresenter {
                         }else
                             showMessage(msg.getMsg());
 
+                    }
+                }
+        );
+    }
+
+    public void collect(GoodsDetailTo mode){
+      GoodsIdParam param=new GoodsIdParam();
+        param.setGoods_id(mode.getGoods_id());
+        param.setUid(userInfoTo.getUid());
+        param.setHashid(userInfoTo.getHashid());
+        param.setHash(getHashString(GoodsIdParam.class,param));
+        showLoadingDialog();
+        ApiClient.create(MallApi.class).collect(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
+                new MyObserver<MessageTo>(this) {
+                    @Override
+                    public void onNext(MessageTo msg) {
+                        if (msg.getCode()==0){
+                            ((GoodsDetailActivity)activity).collectSuccess();
+                        }else
+                            showMessage(msg.getMsg());
                     }
                 }
         );

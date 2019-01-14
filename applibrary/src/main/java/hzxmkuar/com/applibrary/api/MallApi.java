@@ -52,4 +52,10 @@ public interface MallApi {
      */
     @POST("Api/Cart/add_cart")
     Observable<MessageTo>addCar(@Body PurchaseParam param);
+
+    /**
+     * 收藏
+     */
+    @POST("Api/Goods/collect_goods")
+    Observable<MessageTo>collect(@Body GoodsIdParam param);
 }

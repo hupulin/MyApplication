@@ -16,7 +16,7 @@ import rx.schedulers.Schedulers;
 
 /**
  * Created by Administrator on 2019/1/8.
- */
+ **/
 
 public class IntegralGoodsDetailPresenter extends BasePresenter {
     public IntegralGoodsDetailPresenter(BaseActivity activity){

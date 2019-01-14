@@ -50,6 +50,8 @@ public class GoodsDetailActivity extends BaseActivity {
     TextView goodsDes;
     @BindView(R.id.goods_image_layout)
     GridLayout goodsImageLayout;
+    @BindView(R.id.collect_icon)
+    View collectIcon;
     private GoodsDetailTo mode;
     private GoodsDetailPresenter presenter;
     private int selectPosition;
@@ -70,20 +72,22 @@ public class GoodsDetailActivity extends BaseActivity {
 
         displayImage(goodsImage, mode.getGoods_image());
         goodsPrice.setText("￥" + mode.getGoods_price());
-        saleNum.setText("销量：" + 100);
+        saleNum.setText("销量：" + mode.getSale_num());
         goodsName.setText(mode.getGoods_name());
         goodsDes.setText(mode.getGoods_desc());
         setImageLayout(mode.getGoods_content());
+        collectIcon.setBackgroundResource(mode.getIs_collected()==1?R.drawable.goods_collect_select:R.drawable.goods_collect_un_select);
+
 
     }
 
-    public void setImageLayout(List<GoodsDetailTo.GoodsContentBean>imageList){
-        for (int i=0;i<imageList.size();i++) {
+    public void setImageLayout(List<GoodsDetailTo.GoodsContentBean> imageList) {
+        for (int i = 0; i < imageList.size(); i++) {
             ImageView imageView = new ImageView(appContext);
             GridLayout.LayoutParams layoutParams = new GridLayout.LayoutParams();
             layoutParams.width = getScreenWidth();
             imageView.setLayoutParams(layoutParams);
-            displayImage(imageView,imageList.get(i).getImg_url());
+            displayImage(imageView, imageList.get(i).getImg_url());
             goodsImageLayout.addView(imageView);
         }
     }
@@ -93,11 +97,12 @@ public class GoodsDetailActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.select_type:
-               presenter.getGoodsSpecification();
+                presenter.getGoodsSpecification();
                 break;
             case R.id.custom_service:
                 break;
             case R.id.car:
+                presenter.collect(mode);
                 break;
             case R.id.add_car:
                 break;
@@ -109,7 +114,7 @@ public class GoodsDetailActivity extends BaseActivity {
     @SuppressLint("SetTextI18n")
     public void specificationDialog(List<SpecificationTo> specificationList) {
 
-        if (specificationList==null||specificationList.size()==0)
+        if (specificationList == null || specificationList.size() == 0)
             return;
         dialog = NiftyDialogBuilder.getInstance(this);
         dialog.setContentView(R.layout.dialog_select_specification);
@@ -117,7 +122,7 @@ public class GoodsDetailActivity extends BaseActivity {
         List<TextView> tagList = new ArrayList<>();
         specificationLayout.setMaxSelectCount(1);
         TextView purchaseNum = dialog.findViewById(R.id.purchase_num);
-        specificationLayout.setTag(specificationList.get(0).getSpec_id()+"");
+        specificationLayout.setTag(specificationList.get(0).getSpec_id() + "");
         ((TextView) dialog.findViewById(R.id.specification_price)).setText("￥188.00");
         displayImage(dialog.findViewById(R.id.goods_image), specificationList.get(0).getSpec_image());
         specificationLayout.setAdapter(new TagAdapter<SpecificationTo>(specificationList) {
@@ -132,10 +137,10 @@ public class GoodsDetailActivity extends BaseActivity {
         });
         specificationLayout.setOnTagClickListener((view, position, parent) -> {
             Observable.from(tagList).subscribe(textView -> {
-                specificationLayout.setTag(specificationList.get(position).getSpec_id()+"");
+                specificationLayout.setTag(specificationList.get(position).getSpec_id() + "");
                 textView.setTextColor(Color.parseColor("#6868FF"));
                 textView.setBackgroundResource(R.drawable.specification_un_select);
-                selectPosition=position;
+                selectPosition = position;
             });
             view.findViewById(R.id.name).setBackgroundResource(R.drawable.specification_select);
             ((TextView) view.findViewById(R.id.name)).setTextColor(Color.parseColor("#ffffff"));
@@ -145,24 +150,24 @@ public class GoodsDetailActivity extends BaseActivity {
         tagList.get(0).setBackgroundResource(R.drawable.specification_select);
         dialog.show();
         dialog.findViewById(R.id.purchase).setOnClickListener(v -> {
-            presenter.purchase(mode.getGoods_id()+"",(String) specificationLayout.getTag(),purchaseNum.getText().toString());
+            presenter.purchase(mode.getGoods_id() + "", (String) specificationLayout.getTag(), purchaseNum.getText().toString());
         });
         dialog.findViewById(R.id.add_car).setOnClickListener(v -> {
-            presenter.addCar(mode.getGoods_id()+"",(String) specificationLayout.getTag(),purchaseNum.getText().toString());
+            presenter.addCar(mode.getGoods_id() + "", (String) specificationLayout.getTag(), purchaseNum.getText().toString());
         });
         dialog.findViewById(R.id.add).setOnClickListener(v -> {
-            if (Integer.valueOf(purchaseNum.getText().toString())>=specificationList.get(selectPosition).getSpec_stock()){
+            if (Integer.valueOf(purchaseNum.getText().toString()) >= specificationList.get(selectPosition).getSpec_stock()) {
                 showMessage("库存不足");
                 return;
             }
-            purchaseNum.setText(Integer.valueOf(purchaseNum.getText().toString())+1+"");
+            purchaseNum.setText(Integer.valueOf(purchaseNum.getText().toString()) + 1 + "");
         });
         dialog.findViewById(R.id.reduce).setOnClickListener(v -> {
-         if (Integer.valueOf(purchaseNum.getText().toString())<=1){
-             showMessage("不能少于一件");
-             return;
-         }
-         purchaseNum.setText(Integer.valueOf(purchaseNum.getText().toString())-1+"");
+            if (Integer.valueOf(purchaseNum.getText().toString()) <= 1) {
+                showMessage("不能少于一件");
+                return;
+            }
+            purchaseNum.setText(Integer.valueOf(purchaseNum.getText().toString()) - 1 + "");
         });
     }
 
@@ -176,15 +181,21 @@ public class GoodsDetailActivity extends BaseActivity {
     @Override
     protected void submitDataSuccess(Object data) {
         dialog.dismiss();
-        SettlementIdTo settlementIdTo=new Gson().fromJson(JSON.toJSONString(data),SettlementIdTo.class);
-        Intent intent=new Intent(appContext,ConfirmOrderActivity.class);
-        intent.putExtra("SettlementId",settlementIdTo.getSettlement_ids());
+        SettlementIdTo settlementIdTo = new Gson().fromJson(JSON.toJSONString(data), SettlementIdTo.class);
+        Intent intent = new Intent(appContext, ConfirmOrderActivity.class);
+        intent.putExtra("SettlementId", settlementIdTo.getSettlement_ids());
         startActivity(intent);
         goToAnimation(1);
     }
 
-    public void addCarSuccess(){
+    public void addCarSuccess() {
         showMessage("添加购物车成功");
         dialog.dismiss();
+    }
+
+    public void collectSuccess() {
+        mode.setIs_collected(mode.getIs_collected()==1?0:1);
+        collectIcon.setBackgroundResource(mode.getIs_collected()==1?R.drawable.goods_collect_select:R.drawable.goods_collect_un_select);
+
     }
 }

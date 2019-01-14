@@ -27,8 +27,10 @@ import hzxmkuar.com.applibrary.domain.myself.CouponTo;
  **/
 
 public class CouponAdapter extends BaseAdapter<CouponTo, CouponItemBinding> {
-   public CouponAdapter(Activity context) {
+    private int type;
+   public CouponAdapter(Activity context,int type) {
         super(context);
+       this.type=type;
     }
 
 
@@ -50,11 +52,11 @@ public class CouponAdapter extends BaseAdapter<CouponTo, CouponItemBinding> {
         super.onBindViewHolder(holder, position);
         CouponItemBinding binding = holder.getBinding();
         CouponTo mode=mList.get(position);
-        binding.time.setText(mode.getTime());
-        binding.name.setText(mode.getName());
-        binding.money.setText(mode.getMoney());
-        binding.couponIcon.setBackgroundResource(mode.getType()==2?R.drawable.already_use_icon:R.drawable.out_time_icon);
-        binding.couponIcon.setVisibility(mode.getType()==1? View.GONE:View.VISIBLE);
+        binding.time.setText(mode.getEnd_time()+"");
+        binding.name.setText(mode.getCate_name());
+        binding.money.setText(mode.getAmount());
+        binding.couponIcon.setBackgroundResource(type==2?R.drawable.already_use_icon:R.drawable.out_time_icon);
+        binding.couponIcon.setVisibility(type==1? View.GONE:View.VISIBLE);
         setTextViewStyles(binding.name);
 
     }

@@ -44,5 +44,5 @@ public interface WashApi {
      * 优惠券列表
      */
     @POST("Api/Coupon/all_list")
-    Observable<MessageListTo>getOrderList(@Body MyWashOrderParam param);
+    Observable<MessageTo>getCouponList(@Body BaseParam param);
 }

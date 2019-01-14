@@ -25,6 +25,8 @@ public class GoodsDetailTo {
     private String goods_image;
     private String goods_price;
     private String goods_desc;
+    private int sale_num;
+    private int is_collected;
     private List<GoodsContentBean> goods_content;
 
 

@@ -9,6 +9,7 @@ import hzxmkuar.com.applibrary.domain.integral.PageParam;
 import hzxmkuar.com.applibrary.domain.mall.GoodsIdParam;
 import hzxmkuar.com.applibrary.domain.mall.MallGoodsListParam;
 import hzxmkuar.com.applibrary.domain.order.AddOrderParam;
+import hzxmkuar.com.applibrary.domain.order.MyOrderParam;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
 import rx.Observable;
@@ -54,4 +55,12 @@ public interface IntegralApi {
      */
     @POST("Api/Integralgoods/integral_usage_record")
     Observable<MessageListTo>getIntegralRecord(@Body PageParam param);
+
+    /**
+     * 订单记录
+     */
+    @POST("Api/Integralgoods/order_list")
+    Observable<MessageListTo>getOrderList(@Body MyOrderParam param);
+
+
 }

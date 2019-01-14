@@ -190,7 +190,8 @@
                 android:layout_width="40px"
                 android:layout_height="40px"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/goods_detail_car"
+                android:id="@+id/collect_icon"
+                android:background="@drawable/goods_collect_un_select"
                 app:layout_auto_baseheight="width" />
 
             <TextView
@@ -198,7 +199,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="2px"
-                android:text="购物车"
+                android:text="收藏"
                 android:textColor="#5B5B5B"
                 android:textSize="18px" />
         </com.zhy.autolayout.AutoLinearLayout>

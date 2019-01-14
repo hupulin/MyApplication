@@ -48,7 +48,7 @@ public class IntegralOrderPresenter extends BasePresenter {
         param.setUid(userInfoTo.getUid());
         param.setHashid(userInfoTo.getHashid());
         param.setGoods_id(activity.getIntent().getIntExtra("GoodsId",0));
-
+        param.setRemarks(remark);
         param.setAddress_id(addressId);
         param.setHash(getHashString(AddIntegralOrderParam.class,param));
         showLoadingDialog();

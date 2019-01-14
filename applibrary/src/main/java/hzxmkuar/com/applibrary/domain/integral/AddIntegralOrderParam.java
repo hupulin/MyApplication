@@ -10,5 +10,6 @@ import lombok.Data;
 public class AddIntegralOrderParam extends BaseParam{
     private int goods_id;
     private int address_id;
+    private String remarks;
 
 }

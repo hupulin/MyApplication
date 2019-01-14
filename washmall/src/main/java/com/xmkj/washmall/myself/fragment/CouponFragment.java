@@ -4,19 +4,28 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.GridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
+import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
+import com.github.jdsjlzx.recyclerview.ProgressStyle;
 import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.BaseFragment;
+import com.xmkj.washmall.base.BasePresenter;
+import com.xmkj.washmall.base.adapter.BaseAdapter;
+import com.xmkj.washmall.base.view.RecycleViewHeadView;
 import com.xmkj.washmall.myself.adapter.CouponAdapter;
 import com.xmkj.washmall.myself.presenter.CouponPresenter;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import hzxmkuar.com.applibrary.domain.myself.CouponTo;
 
 /**
  * Created by Administrator on 2018/12/25.
@@ -30,9 +39,12 @@ public class CouponFragment extends BaseFragment {
     private boolean isViewCreate;
     private boolean isUiVisible;
     private int type;
+    private CouponAdapter adapter;
+    List<CouponTo>couponList;
 
-    public CouponFragment(int type){
+    public CouponFragment(int type, List<CouponTo>couponList){
         this.type=type;
+        this.couponList=couponList;
     }
 
     @Nullable
@@ -66,10 +78,9 @@ public class CouponFragment extends BaseFragment {
 
             isUiVisible = false;
             isViewCreate = false;
-            CouponAdapter adapter=new CouponAdapter(getActivity());
-            CouponPresenter presenter=new CouponPresenter(this);
-            presenter.getCouponList(type);
-            setRecycleView(adapter,recyclerView,presenter);
+            adapter = new CouponAdapter(getActivity(),type);
+
+            setMRecycleView();
         }
 
 
@@ -79,5 +90,23 @@ public class CouponFragment extends BaseFragment {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    protected void setMRecycleView() {
+
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),1));
+        recyclerView.setRefreshHeader(new RecycleViewHeadView(appContext));
+        LRecyclerViewAdapter lRecyclerViewAdapter = new LRecyclerViewAdapter(adapter);
+
+        recyclerView.setAdapter(lRecyclerViewAdapter);
+        recyclerView.setPullRefreshEnabled(false);
+        recyclerView.setLoadMoreEnabled(false);
+        adapter.setList(couponList);
+        recyclerView.setLoadingMoreProgressStyle(ProgressStyle.BallSpinFadeLoader);
+        recyclerView.setFooterViewColor(R.color.appColor, R.color.appColor, R.color.transparent);
+
+
+
+
     }
 }

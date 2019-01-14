@@ -33,7 +33,7 @@ public class SelectCouponActivity extends BaseActivity {
         ButterKnife.bind(this);
         setTitleName("选择优惠券");
         SelectCouponPresenter presenter = new SelectCouponPresenter(this);
-        setRecycleView(new CouponAdapter(this),recyclerView,presenter);
+//        setRecycleView(new CouponAdapter(this),recyclerView,presenter);
         presenter.getCouponList(2);
     }
 
@@ -41,7 +41,7 @@ public class SelectCouponActivity extends BaseActivity {
     public void recycleItemClick(View view, int position, Object data) {
         CouponTo couponTo= (CouponTo) data;
         Intent intent=new Intent();
-        intent.putExtra("Discount",couponTo.getMoney());
+//        intent.putExtra("Discount",couponTo.getMoney());
         setResult(20,intent);
         finish();
     }

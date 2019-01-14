@@ -22,7 +22,7 @@ public class SelectCouponPresenter extends BasePresenter {
     }
     public void getCouponList(int type){
         CouponTo couponTo=new CouponTo();
-        couponTo.setType(type);
+//        couponTo.setType(type);
         couponList.add(couponTo);
         couponList.add(couponTo);
         couponList.add(couponTo);
