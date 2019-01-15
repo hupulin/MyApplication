@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -137,11 +138,14 @@ public class BaseFragment<T> extends Fragment {
        if (headView!=null)
            lRecyclerViewAdapter.addHeaderView(headView);
         recycleView.setAdapter(lRecyclerViewAdapter);
-        recycleView.setPullRefreshEnabled(false);
-        recycleView.setLoadMoreEnabled(false);
+        recycleView.setPullRefreshEnabled(true);
+        recycleView.setLoadMoreEnabled(true);
         recycleView.setLoadingMoreProgressStyle(ProgressStyle.BallSpinFadeLoader);
         recycleView.setFooterViewColor(R.color.appColor, R.color.appColor, R.color.transparent);
-        recycleView.setOnLoadMoreListener(presenter::recycleViewLoadMore);
+        recycleView.setOnLoadMoreListener(() -> {
+
+            presenter.recycleViewLoadMore();
+        });
         recycleView.setOnRefreshListener(presenter::recycleViewRefresh);
         lRecyclerViewAdapter.setOnItemClickListener(presenter::recycleItemClick);
 //        recycleView.forceToRefresh();

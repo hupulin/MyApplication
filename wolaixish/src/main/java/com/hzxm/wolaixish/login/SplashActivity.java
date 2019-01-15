@@ -26,7 +26,10 @@ public class SplashActivity extends BaseActivity{
             if (userInfoHelp.getUserLogin()){
 
                     Intent intent = new Intent(appContext, MainActivity.class);
-                    intent.putExtra("IsSplash",true);
+//                Intent intent=new Intent(appContext,LoginActivity.class);
+
+
+                intent.putExtra("IsSplash",true);
                     startActivity(intent);
 
 

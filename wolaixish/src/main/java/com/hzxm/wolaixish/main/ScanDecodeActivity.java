@@ -18,11 +18,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import hzxmkuar.com.applibrary.impl.PermissionListener;
-
-import com.hzxm.wolaixish.base.util.zxing.activity.CaptureFragment;
-import com.hzxm.wolaixish.base.util.zxing.activity.CodeUtils;
-import com.hzxm.wolaixish.base.util.zxing.activity.ZXingLibrary;
-import com.hzxm.wolaixish.base.util.zxing.camera.CameraManager;
+import util.zxing.activity.CaptureFragment;
+import util.zxing.activity.CodeUtils;
+import util.zxing.activity.ZXingLibrary;
+import util.zxing.camera.CameraManager;
 
 /**
  * Created by xzz on 2018/7/22.

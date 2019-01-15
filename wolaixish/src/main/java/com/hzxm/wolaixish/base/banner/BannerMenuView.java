@@ -14,14 +14,14 @@ import com.hzxm.wolaixish.R;
 
 import java.util.List;
 
-import hzxmkuar.com.applibrary.domain.main.MainBannerTo;
+import hzxmkuar.com.applibrary.domain.main.MainHomeAdTo;
 
 
 /**
  * Created by xzz on 2017/6/25.
  **/
 
-public class BannerMenuView implements Holder<List<MainBannerTo.IndexMenuBean>> {
+public class BannerMenuView implements Holder<List<MainHomeAdTo>> {
 
     private GridLayout gridLayout;
 
@@ -34,12 +34,12 @@ public class BannerMenuView implements Holder<List<MainBannerTo.IndexMenuBean>> 
     }
 
     @Override
-    public void UpdateUI(Context context, int position, List<MainBannerTo.IndexMenuBean> menuList ) {
+    public void UpdateUI(Context context, int position, List<MainHomeAdTo> menuList ) {
         for (int i = 0; i < menuList.size(); i++) {
-            MainBannerTo.IndexMenuBean menu = menuList.get(i);
+            MainHomeAdTo menu = menuList.get(i);
             View mView = View.inflate(context, R.layout.menu_layout, null);
-            ((TextView) mView.findViewById(R.id.menu_name)).setText(menu.getService_name());
-            Glide.with(context).load(menu.getService_img()).into((ImageView) mView.findViewById(R.id.menu_image));
+//            ((TextView) mView.findViewById(R.id.menu_name)).setText(menu.getService_name());
+//            Glide.with(context).load(menu.getService_img()).into((ImageView) mView.findViewById(R.id.menu_image));
 
             gridLayout.addView(mView);
             mView.setOnClickListener(view -> {
