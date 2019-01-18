@@ -46,11 +46,12 @@
 
                 <TextView
                     android:id="@+id/contend"
-
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/title"
+                    android:layout_marginRight="24px"
                     android:layout_marginTop="41px"
+                    android:ellipsize="end"
                     android:maxLines="1"
                     android:text="我是内容我是内容我真的是内容"
                     android:textColor="@color/gray_59"

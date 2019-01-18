@@ -129,4 +129,12 @@ public class MainActivity extends BaseActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        initFragment();
+        fragmentLayout.setCurrentItem(getIntent().getIntExtra("Index",1));
+
+    }
 }

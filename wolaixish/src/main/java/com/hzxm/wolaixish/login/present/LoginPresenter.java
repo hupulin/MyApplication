@@ -5,7 +5,7 @@ import com.hzxm.wolaixish.base.BasePresenter;
 import com.hzxm.wolaixish.base.MyObserver;
 
 import hzxmkuar.com.applibrary.api.ApiClient;
-import hzxmkuar.com.applibrary.api.deliveryApi;
+import hzxmkuar.com.applibrary.api.DeliveryApi;
 import hzxmkuar.com.applibrary.domain.MessageTo;
 import hzxmkuar.com.applibrary.domain.delivery.login.LoginShopUserParam;
 import rx.android.schedulers.AndroidSchedulers;
@@ -28,7 +28,7 @@ public class LoginPresenter extends BasePresenter {
         param.setRole_id(2);
         param.setHash(getHashStringNoUser(LoginShopUserParam.class,param));
         showLoadingDialog();
-        ApiClient.create(deliveryApi.class).shopUserLogin(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
+        ApiClient.create(DeliveryApi.class).shopUserLogin(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
                 new MyObserver<MessageTo>(this) {
                     @Override
                     public void onNext(MessageTo msg) {

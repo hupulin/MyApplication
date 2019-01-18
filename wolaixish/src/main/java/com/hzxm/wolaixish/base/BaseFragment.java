@@ -33,7 +33,7 @@ import com.tbruyelle.rxpermissions.RxPermissions;
 import java.util.List;
 
 import hzxmkuar.com.applibrary.domain.MessageTo;
-import hzxmkuar.com.applibrary.domain.login.UserInfoTo;
+import hzxmkuar.com.applibrary.domain.delivery.main.UserInfoTo;
 import hzxmkuar.com.applibrary.impl.PermissionListener;
 
 /**
@@ -141,7 +141,7 @@ public class BaseFragment<T> extends Fragment {
         recycleView.setPullRefreshEnabled(true);
         recycleView.setLoadMoreEnabled(true);
         recycleView.setLoadingMoreProgressStyle(ProgressStyle.BallSpinFadeLoader);
-        recycleView.setFooterViewColor(R.color.appColor, R.color.appColor, R.color.transparent);
+        recycleView.setFooterViewColor(R.color.app_color, R.color.app_color, R.color.transparent);
         recycleView.setOnLoadMoreListener(() -> {
 
             presenter.recycleViewLoadMore();
@@ -171,7 +171,7 @@ public class BaseFragment<T> extends Fragment {
 
     }
 
-    protected void setRecycleViewNoScroll(BaseAdapter adapter, LRecyclerView recycleView) {
+    protected void setRecycleViewNoScroll(BaseAdapter adapter, LRecyclerView recycleView,BasePresenter presenter) {
         this.baseAdapter = adapter;
         this.mRecycleView = recycleView;
         recycleView.setLayoutManager(new CustomLinearLayoutManager(getActivity()));
@@ -184,8 +184,11 @@ public class BaseFragment<T> extends Fragment {
         recycleView.setLoadMoreEnabled(false);
         recycleView.setLoadingMoreProgressStyle(ProgressStyle.BallSpinFadeLoader);
         recycleView.setFooterViewColor(R.color.appColor, R.color.appColor, R.color.transparent);
+        recycleView.setLoadMoreEnabled(false);
+        recycleView.setOnLoadMoreListener(presenter::recycleViewLoadMore);
+        recycleView.setOnRefreshListener(presenter::recycleViewRefresh);
         lRecyclerViewAdapter.setOnItemClickListener((View view, int position) -> {
-            startActivity(new Intent(appContext, ScanDecodeActivity.class));
+//            startActivity(new Intent(appContext, ScanDecodeActivity.class));
         });
 //        recycleView.forceToRefresh();
 

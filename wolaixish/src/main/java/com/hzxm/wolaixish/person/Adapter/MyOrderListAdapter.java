@@ -13,13 +13,14 @@ import com.hzxm.wolaixish.base.adapter.BindingHolder;
 import com.hzxm.wolaixish.databinding.MyOrderDeliveryItemBinding;
 import com.hzxm.wolaixish.databinding.OrderDeliveryItemBinding;
 
+import hzxmkuar.com.applibrary.domain.delivery.main.DeLiveryOrderListTo;
 import hzxmkuar.com.applibrary.domain.order.OrderInfoTo;
 
 /**
- *  Created by Administrator on 2018/12/17.
+ *  Created by Administrator on 2018/12/17. 我的订单adapter
  */
 
-public class MyOrderListAdapter extends BaseAdapter<OrderInfoTo,MyOrderDeliveryItemBinding> {
+public class MyOrderListAdapter extends BaseAdapter<DeLiveryOrderListTo.ListsEntity,MyOrderDeliveryItemBinding> {
     public MyOrderListAdapter(Activity context) {
         super(context);
     }
@@ -40,11 +41,14 @@ public class MyOrderListAdapter extends BaseAdapter<OrderInfoTo,MyOrderDeliveryI
     public void onBindViewHolder(BindingHolder<MyOrderDeliveryItemBinding> holder, int position) {
         super.onBindViewHolder(holder, position);
         MyOrderDeliveryItemBinding binding = holder.getBinding();
-
+        DeLiveryOrderListTo.ListsEntity mode = mList.get(position);
+        binding.addressLayout.setText(mode.getAddress());
+        binding.orderStatusText.setText(mode.getStatus_txt());
+        binding.orderNumText.setText(mode.getOrder_sn());
+        binding.orderPayLayout.setText("￥"+mode.getOrder_amount());
+        binding.orderTimeLayout.setText(mode.getExpect_delivery_time());
+        binding.orderNumLayout.setText(mode.getWardrobe_title());
     }
 
-    @Override
-    public int getItemCount() {
-        return 20;
-    }
+
 }

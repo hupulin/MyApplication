@@ -7,7 +7,7 @@
         android:id="@+id/item_layout"
         android:layout_below="@+id/find_more"
         android:layout_width="710px"
-        android:layout_height="310px"
+        android:layout_height="220px"
         android:layout_marginTop="6px"
         android:layout_centerHorizontal="true"
         android:background="@mipmap/order_list_bg"
@@ -61,7 +61,7 @@
         <com.zhy.autolayout.AutoRelativeLayout
             android:id="@+id/info_layout"
             android:layout_width="650px"
-            android:layout_height="218px"
+            android:layout_height="132px"
             android:layout_below="@+id/order_layout"
             android:layout_centerHorizontal="true">
 
@@ -107,51 +107,7 @@
                 android:text="杭州市江干区下沙路699号"
                 android:textColor="@color/gray_80"
                 android:textSize="24px" />
-            <TextView
-                android:id="@+id/order_pay_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/address_text"
-                android:layout_marginTop="19px"
-                android:text="@string/order_pay"
-                android:textColor="@color/black"
-                android:textSize="24px" />
-            <TextView
-                android:id="@+id/address_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/address_text"
-                android:layout_marginRight="10px"
-                android:layout_marginTop="19px"
-                android:layout_toRightOf="@+id/order_pay_text"
-                android:text="￥199.00"
-                android:textColor="@color/gray_80"
-                android:textSize="24px" />
-            <TextView
-                android:id="@+id/order_time_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/order_pay_text"
-                android:layout_marginTop="19px"
-                android:text="@string/order_time"
-                android:textColor="@color/black"
-                android:textSize="24px" />
-            <TextView
-                android:id="@+id/order_time_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/order_pay_text"
-                android:layout_marginRight="10px"
-                android:layout_marginTop="19px"
-                android:layout_toRightOf="@+id/order_time_text"
-                android:text="2018年11月19日.00"
-                android:textColor="@color/gray_80"
-                android:textSize="24px" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:layout_alignParentBottom="true"
-                android:background="@color/gray_f8" />
+
         </com.zhy.autolayout.AutoRelativeLayout>
 
 

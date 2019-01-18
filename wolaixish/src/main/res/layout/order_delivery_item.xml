@@ -154,24 +154,20 @@
                     android:background="@color/gray_f8" />
             </com.zhy.autolayout.AutoRelativeLayout>
 
-            <com.zhy.autolayout.AutoRelativeLayout
-                android:layout_width="match_parent"
+            <com.zhy.autolayout.AutoLinearLayout
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/info_layout"
                 android:layout_marginTop="20px">
-
-
-
-
                     <TextView
                         android:id="@+id/sweep_and_unpack"
                         android:layout_width="148px"
                         android:layout_height="64px"
-                        android:layout_marginLeft="19px"
-                        android:layout_marginRight="34px"
-                        android:layout_toLeftOf="@+id/pick_up_the_goods"
                         android:background="@drawable/shape_bg"
                         android:gravity="center"
+                        android:layout_marginRight="30px"
+
                         android:text="@string/sweep_and_unpack"
                         android:textColor="@color/app_color"
                         android:textSize="26px" />
@@ -181,14 +177,13 @@
                         android:layout_alignParentRight="true"
                         android:id="@+id/pick_up_the_goods"
                         android:layout_width="193px"
-
                         android:layout_height="64px"
                         android:background="@drawable/shape_bg"
                         android:gravity="center"
                         android:text="@string/pick_up_the_goods"
                         android:textColor="@color/app_color"
                         android:textSize="26px" />
-            </com.zhy.autolayout.AutoRelativeLayout>
+            </com.zhy.autolayout.AutoLinearLayout>
 
         </com.zhy.autolayout.AutoRelativeLayout>
     </com.zhy.autolayout.AutoRelativeLayout>

@@ -51,6 +51,10 @@
             android:name=".login.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name="com.soundcloud.android.crop.CropImageActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name=".main.MainActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -67,6 +71,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".news.NewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".news.NewsDetailActivity"
             android:screenOrientation="portrait" />
         <meta-data
             android:name="design_width"

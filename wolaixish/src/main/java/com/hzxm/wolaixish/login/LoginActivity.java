@@ -21,7 +21,7 @@ import org.greenrobot.eventbus.Subscribe;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import hzxmkuar.com.applibrary.domain.login.UserInfoTo;
+import hzxmkuar.com.applibrary.domain.delivery.main.UserInfoTo;
 import hzxmkuar.com.applibrary.domain.login.WechatLoginTo;
 import hzxmkuar.com.applibrary.domain.login.WechatUserInfoTo;
 
@@ -69,13 +69,12 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void submitDataSuccess(Object data) {
-        WechatLoginTo loginTo= new Gson().fromJson(JSON.toJSONString(data), WechatLoginTo.class);
+        UserInfoTo userInfoTo= new Gson().fromJson(JSON.toJSONString(data), UserInfoTo.class);
         Intent intent = new Intent(appContext, MainActivity.class);
         intent.putExtra("IsSplash", true);
         userInfoHelp.saveUserLogin(true);
-        UserInfoTo userInfoTo = new UserInfoTo();
-        userInfoTo.setUid(loginTo.getUid());
-        userInfoTo.setHashid(loginTo.getHashid());
+//        userInfoTo.setUid(loginTo.getUid());
+//        userInfoTo.setHashid(loginTo.getHashid());
         userInfoHelp.saveUserInfo(userInfoTo);
         startActivity(intent);
         finish();

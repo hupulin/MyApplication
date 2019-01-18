@@ -1,6 +1,5 @@
 package com.hzxm.wolaixish.base;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -17,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 import hzxmkuar.com.applibrary.domain.BaseParam;
-import hzxmkuar.com.applibrary.domain.login.UserInfoTo;
+import hzxmkuar.com.applibrary.domain.delivery.main.UserInfoTo;
 import util.MD5;
 
 /**

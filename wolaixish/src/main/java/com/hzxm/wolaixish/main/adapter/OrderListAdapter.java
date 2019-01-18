@@ -17,9 +17,10 @@ import com.hzxm.wolaixish.databinding.OrderDeliveryItemBinding;
 import com.hzxm.wolaixish.main.ScanDecodeActivity;
 
 import hzxmkuar.com.applibrary.domain.delivery.main.DeLiveryOrderListTo;
+import hzxmkuar.com.applibrary.domain.order.OrderInfoTo;
 
 /**
- * Created by Administrator on 2018/12/16.
+ * Created by Administrator on 2018/12/15. 取货员首页adapter
  */
 
 public class OrderListAdapter extends BaseAdapter<DeLiveryOrderListTo.ListsEntity, OrderDeliveryItemBinding> {
@@ -32,7 +33,6 @@ public class OrderListAdapter extends BaseAdapter<DeLiveryOrderListTo.ListsEntit
     @Override
     public BindingHolder<OrderDeliveryItemBinding> onCreateViewHolder(ViewGroup parent, int viewType) {
         OrderDeliveryItemBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.order_delivery_item, parent, false);
-
         BindingHolder<OrderDeliveryItemBinding> holder = new BindingHolder<>(binding.getRoot());
         holder.setBinding(binding);
 
@@ -51,6 +51,8 @@ public class OrderListAdapter extends BaseAdapter<DeLiveryOrderListTo.ListsEntit
         binding.orderPayLayout.setText("￥"+mode.getOrder_amount());
         binding.orderTimeLayout.setText(mode.getExpect_delivery_time());
         binding.orderNumLayout.setText(mode.getWardrobe_title());
+        binding.sweepAndUnpack.setVisibility(mode.getButton_list().getSmkx_btn()==1?View.VISIBLE:View.GONE);
+        binding.pickUpTheGoods.setVisibility(mode.getButton_list().getTzqh_btn()==1?View.VISIBLE:View.GONE);
         binding.sweepAndUnpack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,7 +60,24 @@ public class OrderListAdapter extends BaseAdapter<DeLiveryOrderListTo.ListsEntit
 
             }
         });
+        binding.pickUpTheGoods.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pickUpTheGoodsListener .onPickUpTheGoods(mode.getOrder_id());
+            }
+        });
 
     }
+    public  interface PickUpTheGoodsListener {
+        // true add; false cancel
+        public void onPickUpTheGoods(int id); //传递boolean类型数据给activity
+    }
 
+    // add click callback
+    PickUpTheGoodsListener  pickUpTheGoodsListener;
+
+    public void setOnAddSelectListener(PickUpTheGoodsListener pickUpTheGoodsListener) {
+        this.pickUpTheGoodsListener = pickUpTheGoodsListener;
+
+    }
 }
