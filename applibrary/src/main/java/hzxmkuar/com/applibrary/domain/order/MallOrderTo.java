@@ -56,7 +56,7 @@ public class MallOrderTo {
         private int spec_id;
         private String goods_name;
         private String spec_name;
-        private int spec_image;
+        private String spec_image;
         private int goods_num;
 
     }

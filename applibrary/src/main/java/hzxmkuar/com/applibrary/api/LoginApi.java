@@ -9,6 +9,7 @@ import hzxmkuar.com.applibrary.domain.login.LoginParam;
 import hzxmkuar.com.applibrary.domain.login.ModifyPasswordParam;
 import hzxmkuar.com.applibrary.domain.login.RegisterParam;
 import hzxmkuar.com.applibrary.domain.login.UploadImageParam;
+import hzxmkuar.com.applibrary.domain.login.UserLoginParam;
 import hzxmkuar.com.applibrary.domain.login.VerificationLoginParam;
 import hzxmkuar.com.applibrary.domain.login.WechatLoginParam;
 import hzxmkuar.com.applibrary.domain.login.WechatLoginTo;
@@ -75,4 +76,9 @@ public interface LoginApi {
     @POST("Api/User/mobileSmsBind")
     Observable<MessageTo>bindPhone(@Body RegisterParam param);
 
+    /**
+     * 登录
+     */
+    @POST("Api/Shopuser/passwdLogin")
+    Observable<MessageTo>userLogin(@Body UserLoginParam param);
 }

@@ -44,12 +44,16 @@
                 android:id="@+id/statue"
                 />
         </com.zhy.autolayout.AutoLinearLayout>
-        <View
+        <TextView
             android:layout_width="135px"
             android:layout_height="51px"
             android:background="@drawable/main_wardrobe_type"
             android:layout_marginTop="32px"
             android:layout_marginRight="7px"
+            android:gravity="center"
+            android:id="@+id/wardrobe_work"
+            android:textColor="#b900ff"
+            android:textSize="28px"
             android:layout_alignParentEnd="true"
             />
         <com.zhy.autolayout.AutoLinearLayout

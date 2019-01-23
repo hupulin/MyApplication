@@ -64,6 +64,7 @@ public class HomeFragment extends BaseFragment {
             bind.address.setText(wardrobeTo.getDistance());
             bind.name.setText(wardrobeTo.getWardrobe_name());
             bind.statue.setText(wardrobeTo.getIs_full());
+            bind.wardrobeWork.setText(wardrobeTo.getStatus_txt());
             displayImage(bind.imageView, wardrobeTo.getWardrobe_img());
             wardrobeLayout.addView(mView);
             mView.setOnClickListener(v -> {

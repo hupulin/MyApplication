@@ -69,7 +69,7 @@ public class OrderFragment extends BaseFragment {
             OrderMallAdapter adapter=new OrderMallAdapter(getActivity());
             MyOrderPresenter presenter=new MyOrderPresenter(this);
             presenter.getOrderList(type);
-            setRecycleView(adapter,recyclerView,presenter);
+            setRecycleView(adapter,recyclerView,presenter,false);
         }
 
 

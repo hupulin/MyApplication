@@ -27,11 +27,13 @@ import rx.schedulers.Schedulers;
 
 public class MyOrderPresenter extends BasePresenter {
      private List<MallOrderTo>orderList=new ArrayList<>();
+     private int type;
     public MyOrderPresenter(BaseFragment fragment){
         initContext(fragment);
     }
 
     public void getOrderList(int index){
+        type=index;
         MyOrderParam param=new MyOrderParam();
         param.setPage(recyclePageIndex);
         param.setOtype(index);
@@ -55,5 +57,11 @@ public class MyOrderPresenter extends BasePresenter {
                 }
         );
 
+    }
+
+    @Override
+    public void recycleViewRefresh() {
+        super.recycleViewRefresh();
+        getOrderList(type);
     }
 }

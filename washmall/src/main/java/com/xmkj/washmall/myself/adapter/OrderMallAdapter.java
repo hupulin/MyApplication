@@ -70,7 +70,7 @@ public class OrderMallAdapter extends BaseAdapter<MallOrderTo, MyOrderMallItemBi
               bind.goodsName.setText(goodsTo.getGoods_name());
               bind.goodsNum.setText("x"+goodsTo.getGoods_num());
               bind.specification.setText(goodsTo.getSpec_name());
-//              disPlayRoundImage(bind.orderImage,goodsTo.);
+              disPlayImage(bind.orderImage,goodsTo.getSpec_image());
 
               goodsLayout.addView(mView);
           }

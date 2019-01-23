@@ -243,7 +243,5 @@ public class BasePresenter<T> {
         recyclePageIndex++;
     }
 
-    public void recyclerViewRefresh(){
-        recyclePageIndex=1;
-    }
+
 }
