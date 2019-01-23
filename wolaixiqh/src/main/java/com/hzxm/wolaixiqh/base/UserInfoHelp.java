@@ -6,7 +6,8 @@ import com.alibaba.fastjson.JSON;
 import com.google.gson.Gson;
 import com.hzxm.wolaixiqh.base.util.SpUtil;
 
-import hzxmkuar.com.applibrary.domain.login.UserInfoTo;
+import hzxmkuar.com.applibrary.domain.delivery.main.UserInfoTo;
+
 
 /**
  * Created by Administrator on 2018/9/11.

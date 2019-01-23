@@ -23,4 +23,23 @@
         <item name="android:windowBackground">@mipmap/splash_bg</item>
         <item name="android:windowNoTitle">true</item>
     </style>
+    <style name="DialogDown">
+        <item name="android:windowAnimationStyle">@style/DialogAnimDown</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <!-- 除去title -->
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <!-- 除去背景色 -->
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:background">@color/transparent</item>
+    </style>
+    <style name="DialogAnimDown">
+        <item name="android:windowExitAnimation">@anim/dialog_share_in</item>
+        <item name="android:windowEnterAnimation">@anim/dialog_share_out</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
 </resources>

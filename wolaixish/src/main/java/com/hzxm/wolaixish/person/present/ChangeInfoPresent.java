@@ -1,0 +1,82 @@
+package com.hzxm.wolaixish.person.present;
+
+import com.hzxm.wolaixish.base.BaseActivity;
+import com.hzxm.wolaixish.base.BasePresenter;
+import com.hzxm.wolaixish.base.MyObserver;
+import com.hzxm.wolaixish.base.impl.UploadImageModel;
+import com.hzxm.wolaixish.base.impl.UploadImagePathListener;
+import com.hzxm.wolaixish.person.ChangeInfoActivity;
+
+import java.util.ArrayList;
+
+import hzxmkuar.com.applibrary.api.ApiClient;
+import hzxmkuar.com.applibrary.api.DeliveryApi;
+import hzxmkuar.com.applibrary.api.UserApi;
+import hzxmkuar.com.applibrary.domain.MessageTo;
+import hzxmkuar.com.applibrary.domain.delivery.login.updateUserPasswdParam;
+import hzxmkuar.com.applibrary.domain.delivery.main.updateUserInfoParam;
+import hzxmkuar.com.applibrary.domain.user.ModifyImageParam;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
+
+/**
+ * Created by Administrator on 2019/1/17.
+ */
+
+public class ChangeInfoPresent extends BasePresenter implements UploadImagePathListener {
+   private String key;
+    public ChangeInfoPresent(BaseActivity activity) {
+        initContext(activity);
+    }
+    public void modifyImage(String imagePaths){
+        ArrayList<String> imageList=new ArrayList<>();
+        imageList.add(imagePaths);
+        UploadImageModel model=new UploadImageModel();
+        model.uploadImage(imageList,this);
+
+
+    }
+
+    @Override
+    public void uploadImageSuccess(String path, String key) {
+        ((ChangeInfoActivity)activity).uploadImageSuccess(path);
+this.key=key;
+//        ModifyImageParam param=new ModifyImageParam();
+//        param.setFace(key);
+//        param.setHash(getHashString(ModifyImageParam.class,param));
+//        showLoadingDialog();
+//        ApiClient.create(UserApi.class).modifyHead(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
+//                new MyObserver<MessageTo>(this) {
+//                    @Override
+//                    public void onNext(MessageTo msg) {
+//                        ((EditUserActivity)activity).uploadImageSuccess(path);
+//                    }
+//                }
+//        );
+    }
+    public void updateUserInfo  (String nickname,String gender,String birthday){
+        updateUserInfoParam param=new updateUserInfoParam();
+        param.setUid(userInfoTo.getUid());
+        param.setHashid(userInfoTo.getHashid());
+        param.setFace(key);
+        param.setNickname(nickname);
+        param.setBirthday(birthday);
+        param.setGender(gender);
+        param.setHash(getHashString(updateUserInfoParam.class,param));
+
+        showLoadingDialog();
+        ApiClient.create(DeliveryApi.class).updateUserInfo(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
+                new MyObserver<MessageTo>(this) {
+                    @Override
+                    public void onNext(MessageTo msg) {
+                        if (msg.getCode()==0){
+                            showMessage("修改个人资料成功");
+                            submitDataSuccess(msg.getData());
+                        }else {
+                            showMessage(msg.getMsg());
+                        }
+                    }
+                }
+        );
+    }
+}

@@ -1,26 +1,37 @@
 package com.hzxm.wolaixish.main.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
+import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 import com.hzxm.wolaixish.R;
+import com.hzxm.wolaixish.base.ActivityManager;
 import com.hzxm.wolaixish.base.BaseActivity;
 import com.hzxm.wolaixish.base.BaseFragment;
+import com.hzxm.wolaixish.login.LoginActivity;
 import com.hzxm.wolaixish.main.adapter.OrderListAdapter;
+import com.hzxm.wolaixish.main.present.MainPresenter;
 import com.hzxm.wolaixish.news.NewActivity;
 import com.hzxm.wolaixish.person.ChangeInfoActivity;
 import com.hzxm.wolaixish.person.MyOrderListActivity;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import hzxmkuar.com.applibrary.domain.MessageTo;
+import rx.Observable;
 
 /**
  * Created by Administrator on 2018/12/16.
@@ -31,6 +42,9 @@ public class MainFragment extends BaseFragment {
     @BindView(R.id.recycle_view)
     LRecyclerView recycleView;
     private BaseActivity baseActivity;
+    private MainPresenter presenter;
+    private OrderListAdapter adapter;
+//    private Context context;
     public MainFragment(BaseActivity activity) {
         this.baseActivity = activity;
     }
@@ -41,13 +55,34 @@ public class MainFragment extends BaseFragment {
         View mView = View.inflate(appContext, R.layout.fragment_main, null);
         unbinder = ButterKnife.bind(this, mView);
         userInfoTo = userInfoHelp.getUserInfo();
-//        presenter = new MySelfPresenter(this);
-//        MobSDK.init(appContext);
-        setRecycleView(new OrderListAdapter(baseActivity),recycleView);
-
+        presenter = new MainPresenter(this);
+        presenter.getOrderList(1);
+        adapter=new OrderListAdapter(baseActivity);
+        setRecycleView(adapter,recycleView,presenter);
+        adapter.setOnAddSelectListener(new OrderListAdapter.PickUpTheGoodsListener() {
+            @Override
+            public void onPickUpTheGoods(int id) {
+                showDialog(id);
+            }
+        });
         return mView;
     }
 
+    private void showDialog(int id){
+        NiftyDialogBuilder dialog = NiftyDialogBuilder.getInstance(baseActivity);
+        dialog.setContentView(R.layout.my_dialog_comment_layout);
+        TextView title =dialog.findViewById(R.id.title);
+        title.setText("确定要取消订单吗？");
+        dialog.show();
+        dialog.findViewById(R.id.confirm).setOnClickListener(view1 -> {
+            Log.i("222", "showDialog: "+id);
+            presenter.notifyUserPickup(id);
+            dialog.dismiss();
+
+        });
+        dialog.findViewById(R.id.parent).setOnClickListener(view1 -> dialog.dismiss());
+        dialog.findViewById(R.id.cancel).setOnClickListener(view1 -> dialog.dismiss());
+    }
     @OnClick({R.id.news_layout})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -57,4 +92,7 @@ public class MainFragment extends BaseFragment {
                 break;
         }
     }
+
+
+
 }

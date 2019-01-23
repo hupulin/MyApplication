@@ -35,7 +35,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hzxmkuar.com.applibrary.domain.MessageTo;
-import hzxmkuar.com.applibrary.domain.login.UserInfoTo;
+import hzxmkuar.com.applibrary.domain.delivery.main.UserInfoTo;
 import hzxmkuar.com.applibrary.impl.FragmentPermissionListener;
 import hzxmkuar.com.applibrary.impl.PermissionListener;
 import util.photopick.PhotoPickerActivity;
@@ -384,7 +384,7 @@ public class BaseActivity<T> extends FragmentActivity implements FragmentPermiss
     }
     protected void disPlayRoundImage(ImageView imageView) {
 
-        Glide.with(appContext).load(R.drawable.post_image_default).transform(new GlideCircleTransform(appContext)).into(imageView);
+        Glide.with(appContext).load(R.mipmap.user_default_icon).transform(new GlideCircleTransform(appContext)).into(imageView);
          imageView.setTag(null);
 
 
@@ -478,8 +478,10 @@ public class BaseActivity<T> extends FragmentActivity implements FragmentPermiss
            lRecyclerViewAdapter.addHeaderView(headView);
         recycleView.setRefreshHeader(new RecycleViewHeadView(appContext));
         recycleView.setAdapter(lRecyclerViewAdapter);
+        recycleView.setPullRefreshEnabled(true);
+        recycleView.setLoadMoreEnabled(true);
         recycleView.setLoadingMoreProgressStyle(ProgressStyle.BallSpinFadeLoader);
-        recycleView.setFooterViewColor(R.color.appColor, R.color.appColor, R.color.transparent);
+        recycleView.setFooterViewColor(R.color.app_color, R.color.app_color, R.color.transparent);
         recycleView.setOnLoadMoreListener(presenter::recycleViewLoadMore);
         recycleView.setOnRefreshListener(presenter::recycleViewRefresh);
         lRecyclerViewAdapter.setOnItemClickListener(presenter::recycleItemClick);

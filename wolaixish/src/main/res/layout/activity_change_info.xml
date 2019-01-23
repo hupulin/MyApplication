@@ -27,7 +27,7 @@
             android:layout_alignParentBottom="true"
             android:background="@color/gray_c" />
 
-        <com.makeramen.roundedimageview.RoundedImageView
+        <ImageView
             android:id="@+id/head_image"
             android:layout_width="110px"
             android:layout_height="110px"
@@ -54,12 +54,12 @@
         <EditText
             android:layout_marginLeft="300px"
             android:layout_marginRight="30px"
-            android:id="@+id/new_password_two"
+            android:id="@+id/nickname"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/transparent"
             android:gravity="right|center_vertical"
-            android:hint="@string/please_confirm_new_password"
+            android:hint="@string/please_input_nickname"
             android:textColor="@color/black"
             android:textColorHint="@color/gray_e6"
             android:textCursorDrawable="@drawable/my_cursor"

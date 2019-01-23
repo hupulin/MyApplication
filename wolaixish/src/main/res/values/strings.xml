@@ -8,6 +8,7 @@
     <string name="please_input_new_password">请输入新密码</string>
     <string name="please_confirm_new_password">请确认新密码</string>
     <string name="please_input_password">请输入您的密码</string>
+    <string name="please_input_nickname">请输入您的昵称</string>
     <string name="login_agree">我已经阅读并同意电子协议内容</string>
     <string name="main_title">首页</string>
     <string name="my_info">我的</string>
@@ -29,6 +30,7 @@
     <string name="feedback_back">反馈退回</string>
     <string name="pick_up_goods">确认取货</string>
     <string name="pick_up_the_goods">通知用户取货</string>
-
+    <string name="capture_take_photo">拍照</string>
+    <string name="album_upload">相册</string>
 
 </resources>

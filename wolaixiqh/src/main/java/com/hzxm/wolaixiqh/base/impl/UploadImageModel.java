@@ -16,6 +16,7 @@ import java.util.List;
 
 import hzxmkuar.com.applibrary.api.ApiClient;
 import hzxmkuar.com.applibrary.api.LoginApi;
+import hzxmkuar.com.applibrary.api.UserApi;
 import hzxmkuar.com.applibrary.domain.MessageTo;
 import hzxmkuar.com.applibrary.domain.login.UploadImageParam;
 import hzxmkuar.com.applibrary.domain.main.UploadImageTo;
@@ -81,7 +82,7 @@ public class UploadImageModel extends BasePresenter {
         RequestBody face = RequestBody.create(MediaType.parse("text/plain"), param.getTags() + "");
 
 
-        ApiClient.create(LoginApi.class).uploadImage(time, hash, apiId, terminal, uid, hashId, fileName, face, description, body).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
+        ApiClient.create(UserApi.class).uploadImage(time, hash, apiId, terminal, uid, hashId, fileName, face, description, body).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
                 new MyObserver<MessageTo>(this) {
                     @Override
                     public void onNext(MessageTo msg) {
@@ -126,7 +127,7 @@ public class UploadImageModel extends BasePresenter {
             RequestBody face = RequestBody.create(MediaType.parse("text/plain"), param.getTags() + "");
 
 
-            ApiClient.create(LoginApi.class).uploadImage(time, hash, apiId, terminal, uid, hashId, fileName, face, description, body).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
+            ApiClient.create(UserApi.class).uploadImage(time, hash, apiId, terminal, uid, hashId, fileName, face, description, body).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
                     new MyObserver<MessageTo<UploadImageTo>>(this) {
                         @Override
                         public void onNext(MessageTo<UploadImageTo> msg) {
@@ -177,7 +178,7 @@ public class UploadImageModel extends BasePresenter {
             RequestBody face = RequestBody.create(MediaType.parse("text/plain"), param.getTags() + "");
 
 
-            ApiClient.create(LoginApi.class).uploadImage(time, hash, apiId, terminal, uid, hashId, fileName, face, description, body).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
+            ApiClient.create(UserApi.class).uploadImage(time, hash, apiId, terminal, uid, hashId, fileName, face, description, body).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
                     new MyObserver<MessageTo<UploadImageTo>>(this) {
                         @Override
                         public void onNext(MessageTo<UploadImageTo> msg) {
@@ -227,7 +228,7 @@ public class UploadImageModel extends BasePresenter {
         RequestBody face = RequestBody.create(MediaType.parse("text/plain"), param.getTags() + "");
 
 
-        ApiClient.create(LoginApi.class).uploadImage(time, hash, apiId, terminal, uid, hashId, fileName, face, description, body).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
+        ApiClient.create(UserApi.class).uploadImage(time, hash, apiId, terminal, uid, hashId, fileName, face, description, body).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
                 new MyObserver<MessageTo<UploadImageTo>>(this) {
                     @Override
                     public void onNext(MessageTo<UploadImageTo> msg) {

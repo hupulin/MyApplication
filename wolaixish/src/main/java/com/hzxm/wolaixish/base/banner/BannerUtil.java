@@ -4,14 +4,14 @@ import com.bigkoo.convenientbanner.ConvenientBanner;
 
 import java.util.List;
 
-import hzxmkuar.com.applibrary.domain.main.MainBannerTo;
+import hzxmkuar.com.applibrary.domain.main.MainHomeAdTo;
 
 /**
  * Created by xzz on 2017/6/25.
  **/
 
 public class BannerUtil {
-    public static void setBanner(ConvenientBanner banner, List<MainBannerTo.IndexSlideshowBean> adList, int loadSrc) {
+    public static void setBanner(ConvenientBanner banner, List<MainHomeAdTo> adList, int loadSrc) {
 
         banner.setPages(() -> new BannerHolderView(loadSrc), adList);
         //设置两个点图片作为翻页指示器，不设置则没有指示器，可以根据自己需求自行配合自己的指示器,不需要圆点指示器可用不设

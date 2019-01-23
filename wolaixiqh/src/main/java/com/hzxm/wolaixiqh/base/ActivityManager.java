@@ -3,6 +3,8 @@ package com.hzxm.wolaixiqh.base;
 
 
 
+import com.hzxm.wolaixiqh.main.ScanDecodeActivity;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +15,7 @@ import java.util.List;
 public class ActivityManager {
     public static List<BaseActivity>activityList=new ArrayList<>();
     public static List<BaseActivity>merchantEnterList=new ArrayList<>();
-//    public static MainActivity mainActivity;
+    public static ScanDecodeActivity scanDecodeActivity;
 //    public static PersonOrderActivity personOrderActivity;
 //    public static MyOrderActivity myOrderActivity;
 //    public static SelectDemandActivity demandActivity;
