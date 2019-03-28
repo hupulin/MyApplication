@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.ActivityManager;
 import com.xmkj.washmall.base.BaseActivity;
+import com.xmkj.washmall.base.util.SpUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -47,7 +48,7 @@ public class ScanActivity extends BaseActivity implements PermissionListener {
         ButterKnife.bind(this);
         setTitleName("扫一扫");
         getPermission(Manifest.permission.CAMERA,this);
-
+        SpUtil
     }
 
     private void setView() {
@@ -121,4 +122,6 @@ public class ScanActivity extends BaseActivity implements PermissionListener {
             open = false;
         }
     }
+
+
 }

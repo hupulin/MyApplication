@@ -15,6 +15,7 @@ import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 import com.google.gson.Gson;
 import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.BaseActivity;
+import com.xmkj.washmall.base.util.DateUtil;
 import com.xmkj.washmall.base.util.PingFangTextView;
 import com.xmkj.washmall.mall.presenter.GoodsDetailPresenter;
 import com.zhy.view.flowlayout.FlowLayout;
@@ -117,6 +118,7 @@ public class GoodsDetailActivity extends BaseActivity {
         if (specificationList == null || specificationList.size() == 0)
             return;
         dialog = NiftyDialogBuilder.getInstance(this);
+        DateUtil
         dialog.setContentView(R.layout.dialog_select_specification);
         TagFlowLayout specificationLayout = dialog.findViewById(R.id.specification_layout);
         List<TextView> tagList = new ArrayList<>();
