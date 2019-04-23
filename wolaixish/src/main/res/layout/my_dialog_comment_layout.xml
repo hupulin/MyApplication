@@ -20,6 +20,7 @@
             android:text="提示"
             android:layout_marginTop="62px"
             android:textSize="40px"
+
             android:textColor="@color/white"
             android:textStyle="bold"
             />
@@ -30,6 +31,8 @@
             android:layout_marginTop="102px"
             android:text="确定要取消订单吗？"
             android:layout_weight="1"
+            android:layout_marginLeft="58px"
+            android:layout_marginRight="58px"
             android:layout_gravity="center_horizontal"
             android:textColor="@color/black"
             android:textSize="30px"

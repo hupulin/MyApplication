@@ -139,15 +139,15 @@ public class BaseActivity<T> extends FragmentActivity implements FragmentPermiss
 
         itemImageLayout.removeAllViews();
 
-        for (int i = 0; i < (imagePaths.size() == 4 ? 4 : imagePaths.size() + 1) && i < 4; i++) {
+        for (int i = 0; i < (imagePaths.size() == 3? 3 : imagePaths.size() + 1) && i < 3; i++) {
             View mView = View.inflate(appContext, R.layout.circle_post_image_item, null);
             RoundedImageView imageView = mView.findViewById(R.id.image_view);
             mView.findViewById(R.id.delete_image).setVisibility((imagePaths.size() == 0 || imagePaths.size() == i) ? View.GONE : View.VISIBLE);
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             Glide.with(appContext).load(i < imagePaths.size() ? imagePaths.get(i) : R.drawable.post_image_default).into(imageView);
             GridLayout.LayoutParams layoutParams = new GridLayout.LayoutParams();
-            layoutParams.width = (int) (150.0 / 750 * getScreenWidth());
-            layoutParams.height = (int) (150.0 / 750 * getScreenWidth());
+            layoutParams.width = (int) (200.0 / 750 * getScreenWidth());
+            layoutParams.height = (int) (200.0 / 750 * getScreenWidth());
             layoutParams.setMarginStart((int) (24.0 / 750 * getScreenWidth()));
             mView.setLayoutParams(layoutParams);
             mView.setTag(i);

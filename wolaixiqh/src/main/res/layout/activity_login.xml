@@ -46,7 +46,7 @@
             android:hint="@string/please_input_account_number"
             android:inputType="phone"
             android:maxLength="11"
-            android:textColor="@color/gray_b"
+            android:textColor="@color/black_23"
             android:textColorHint="@color/gray_b"
             android:textCursorDrawable="@drawable/my_cursor"
             android:textSize="30px" />
@@ -73,6 +73,7 @@
             android:background="@mipmap/password_bg" />
 
         <EditText
+
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -83,8 +84,9 @@
             android:background="@color/transparent"
             android:gravity="center"
             android:hint="@string/please_input_password"
-            android:inputType="phone"
-            android:textColor="@color/gray_b"
+            android:inputType="textPassword"
+
+            android:textColor="@color/black_23"
             android:textColorHint="@color/gray_b"
             android:textSize="30px" />
 

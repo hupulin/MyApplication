@@ -13,11 +13,20 @@ import android.widget.TextView;
 import com.hzxm.wolaixish.R;
 import com.hzxm.wolaixish.base.ActivityManager;
 import com.hzxm.wolaixish.base.BaseActivity;
+import com.hzxm.wolaixish.base.MyObserver;
+import com.hzxm.wolaixish.main.present.OpenDoorPresenter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import hzxmkuar.com.applibrary.api.ApiClient;
+import hzxmkuar.com.applibrary.api.DeliveryApi;
+import hzxmkuar.com.applibrary.domain.MessageTo;
+import hzxmkuar.com.applibrary.domain.delivery.main.IdParam;
+import hzxmkuar.com.applibrary.domain.delivery.main.OpenDoorParam;
 import hzxmkuar.com.applibrary.impl.PermissionListener;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 import util.zxing.activity.CaptureFragment;
 import util.zxing.activity.CodeUtils;
 import util.zxing.activity.ZXingLibrary;
@@ -35,9 +44,10 @@ public class ScanDecodeActivity extends BaseActivity {
     @BindView(R.id.open_light)
     TextView openLight;
 
-    private int type; //0 扫描快递 1录入快递 2 访客验证
+    private int type;
+    private int id;
     private boolean open;
-
+    OpenDoorPresenter openDoorPresent;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +56,8 @@ public class ScanDecodeActivity extends BaseActivity {
         ButterKnife.bind(this);
         setTitleName("扫一扫");
         getPermission(Manifest.permission.CAMERA,this);
-
+        id=  getIntent().getIntExtra("id",0);
+         openDoorPresent=new OpenDoorPresenter(this);
     }
 
     private void setView() {
@@ -70,11 +81,12 @@ public class ScanDecodeActivity extends BaseActivity {
         @Override
         public void onAnalyzeSuccess(Bitmap mBitmap, String result) {
             if (type == 1) {
-//                Intent intent = new Intent(appContext, VerifyResultActivity.class);
+//                Intent intent = new Intent(appContext, MainActivity.class);
 //                intent.putExtra("Result", result);
 //                startActivity(intent);
-                finish();
-                goToAnimation(1);
+//                finish();
+//                goToAnimation(1);
+                openDoorPresent.OpenDoorPresent(id,result);
             }
         }
 
@@ -90,6 +102,12 @@ public class ScanDecodeActivity extends BaseActivity {
             finish();
         }
     };
+
+    @Override
+    protected void submitDataSuccess(Object data) {
+        super.submitDataSuccess(data);
+        finish();
+    }
 
     @OnClick({R.id.open_light})
     public void onViewClicked(View view) {
@@ -120,4 +138,5 @@ public class ScanDecodeActivity extends BaseActivity {
             open = false;
         }
     }
+
 }

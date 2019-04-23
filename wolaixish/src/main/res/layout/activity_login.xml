@@ -35,6 +35,7 @@
             android:background="@mipmap/account_number_bg" />
 
         <EditText
+
             android:layout_marginBottom="12px"
             android:id="@+id/account_number"
             android:layout_width="match_parent"
@@ -46,7 +47,7 @@
             android:hint="@string/please_input_account_number"
             android:inputType="phone"
             android:maxLength="11"
-            android:textColor="@color/gray_b"
+            android:textColor="@color/black_23"
             android:textColorHint="@color/gray_b"
             android:textCursorDrawable="@drawable/my_cursor"
             android:textSize="30px" />
@@ -78,13 +79,13 @@
             android:layout_height="match_parent"
             android:layout_marginRight="45px"
             android:textCursorDrawable="@drawable/my_cursor"
+            android:inputType="textPassword"
 
             android:layout_toRightOf="@+id/icon_password"
             android:background="@color/transparent"
             android:gravity="center"
             android:hint="@string/please_input_password"
-            android:inputType="phone"
-            android:textColor="@color/gray_b"
+            android:textColor="@color/black_23"
             android:textColorHint="@color/gray_b"
             android:textSize="30px" />
 

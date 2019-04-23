@@ -118,7 +118,6 @@ public class GoodsDetailActivity extends BaseActivity {
         if (specificationList == null || specificationList.size() == 0)
             return;
         dialog = NiftyDialogBuilder.getInstance(this);
-        DateUtil
         dialog.setContentView(R.layout.dialog_select_specification);
         TagFlowLayout specificationLayout = dialog.findViewById(R.id.specification_layout);
         List<TextView> tagList = new ArrayList<>();

@@ -56,28 +56,29 @@ public class OrderListAdapter extends BaseAdapter<DeLiveryOrderListTo.ListsEntit
         binding.sweepAndUnpack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mContext.startActivity(new Intent(mContext, ScanDecodeActivity.class));
+                listen.onScanDecode(mode.getOrder_id());
 
             }
         });
         binding.pickUpTheGoods.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                pickUpTheGoodsListener .onPickUpTheGoods(mode.getOrder_id());
+                listen .onPickUpTheGoods(mode.getOrder_id());
             }
         });
 
     }
     public  interface PickUpTheGoodsListener {
         // true add; false cancel
-        public void onPickUpTheGoods(int id); //传递boolean类型数据给activity
+         void onPickUpTheGoods(int id); //传递boolean类型数据给activity
+         void onScanDecode(int id); //
     }
 
     // add click callback
-    PickUpTheGoodsListener  pickUpTheGoodsListener;
+    PickUpTheGoodsListener  listen;
 
     public void setOnAddSelectListener(PickUpTheGoodsListener pickUpTheGoodsListener) {
-        this.pickUpTheGoodsListener = pickUpTheGoodsListener;
+        this.listen = pickUpTheGoodsListener;
 
     }
 }

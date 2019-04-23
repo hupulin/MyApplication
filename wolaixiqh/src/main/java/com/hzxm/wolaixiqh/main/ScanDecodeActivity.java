@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.hzxm.wolaixiqh.R;
 import com.hzxm.wolaixiqh.base.ActivityManager;
 import com.hzxm.wolaixiqh.base.BaseActivity;
+import com.hzxm.wolaixiqh.main.present.OpenDoorPresenter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,7 +38,8 @@ public class ScanDecodeActivity extends BaseActivity {
 
     private int type; //0 扫描快递 1录入快递 2 访客验证
     private boolean open;
-
+    private int id;
+    OpenDoorPresenter openDoorPresent;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +48,15 @@ public class ScanDecodeActivity extends BaseActivity {
         ButterKnife.bind(this);
         setTitleName("扫一扫");
         getPermission(Manifest.permission.CAMERA,this);
+        id=  getIntent().getIntExtra("id",0);
+        openDoorPresent=new OpenDoorPresenter(this);
 
+
+    }
+
+    @Override
+    protected void submitDataSuccess(Object data) {
+        finish();
     }
 
     private void setView() {
@@ -73,8 +83,10 @@ public class ScanDecodeActivity extends BaseActivity {
 //                Intent intent = new Intent(appContext, VerifyResultActivity.class);
 //                intent.putExtra("Result", result);
 //                startActivity(intent);
-                finish();
-                goToAnimation(1);
+//                finish();
+//                goToAnimation(1);
+                openDoorPresent.OpenDoorPresent(id,result);
+
             }
         }
 

@@ -12,6 +12,7 @@ import com.google.gson.Gson;
 import com.hzxm.wolaixiqh.R;
 import com.hzxm.wolaixiqh.base.BaseActivity;
 import com.hzxm.wolaixiqh.login.present.LoginPresenter;
+import com.hzxm.wolaixiqh.main.EvaluateActivity;
 import com.hzxm.wolaixiqh.main.MainActivity;
 
 import org.greenrobot.eventbus.EventBus;
@@ -59,6 +60,8 @@ public class LoginActivity extends BaseActivity {
                     return;
                 }
                 presenter.login(account.getText().toString(),password.getText().toString());
+//                startActivity(new Intent(this,EvaluateActivity.class));
+
                 break;
         }
     }

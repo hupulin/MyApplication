@@ -1,5 +1,6 @@
 package com.hzxm.wolaixish.main.fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import com.hzxm.wolaixish.base.ActivityManager;
 import com.hzxm.wolaixish.base.BaseActivity;
 import com.hzxm.wolaixish.base.BaseFragment;
 import com.hzxm.wolaixish.login.LoginActivity;
+import com.hzxm.wolaixish.main.ScanDecodeActivity;
 import com.hzxm.wolaixish.main.adapter.OrderListAdapter;
 import com.hzxm.wolaixish.main.present.MainPresenter;
 import com.hzxm.wolaixish.news.NewActivity;
@@ -37,6 +39,7 @@ import rx.Observable;
  * Created by Administrator on 2018/12/16.
  */
 
+@SuppressLint("ValidFragment")
 public class MainFragment extends BaseFragment {
     Unbinder unbinder;
     @BindView(R.id.recycle_view)
@@ -64,6 +67,16 @@ public class MainFragment extends BaseFragment {
             public void onPickUpTheGoods(int id) {
                 showDialog(id);
             }
+
+            @Override
+            public void onScanDecode(int id) {
+             Intent intent=   new Intent(getActivity(), ScanDecodeActivity.class);
+                intent.putExtra("id",id);
+                startActivity(intent);
+
+            }
+
+
         });
         return mView;
     }
@@ -72,10 +85,10 @@ public class MainFragment extends BaseFragment {
         NiftyDialogBuilder dialog = NiftyDialogBuilder.getInstance(baseActivity);
         dialog.setContentView(R.layout.my_dialog_comment_layout);
         TextView title =dialog.findViewById(R.id.title);
-        title.setText("确定要取消订单吗？");
+        title.setText("确认已将衣物放置完成，\n" +
+                "请用户前来提取衣物！？");
         dialog.show();
         dialog.findViewById(R.id.confirm).setOnClickListener(view1 -> {
-            Log.i("222", "showDialog: "+id);
             presenter.notifyUserPickup(id);
             dialog.dismiss();
 

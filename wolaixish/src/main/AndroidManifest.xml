@@ -61,6 +61,11 @@
             android:name=".main.ScanDecodeActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".main.EvaluateActivity"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden"
+
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".person.ChangeInfoActivity"
             android:screenOrientation="portrait" />
         <activity

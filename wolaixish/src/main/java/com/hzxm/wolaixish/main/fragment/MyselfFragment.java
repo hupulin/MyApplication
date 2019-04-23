@@ -1,5 +1,6 @@
 package com.hzxm.wolaixish.main.fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -33,6 +34,7 @@ import hzxmkuar.com.applibrary.domain.delivery.main.UserInfoTo;
  *  Created by Administrator on 2018/12/15.
  */
 
+@SuppressLint("ValidFragment")
 public class MyselfFragment extends BaseFragment {
     Unbinder unbinder;
     @BindView(R.id.recycle_view)

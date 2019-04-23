@@ -6,6 +6,7 @@ import hzxmkuar.com.applibrary.domain.delivery.login.LoginShopUserParam;
 import hzxmkuar.com.applibrary.domain.delivery.login.updateUserPasswdParam;
 import hzxmkuar.com.applibrary.domain.delivery.main.DeLiveryOrderListTo;
 import hzxmkuar.com.applibrary.domain.delivery.main.IdParam;
+import hzxmkuar.com.applibrary.domain.delivery.main.OpenDoorParam;
 import hzxmkuar.com.applibrary.domain.delivery.main.PageParam;
 import hzxmkuar.com.applibrary.domain.delivery.main.UserInfoTo;
 import hzxmkuar.com.applibrary.domain.delivery.main.updateUserInfoParam;
@@ -70,6 +71,21 @@ public interface DeliveryApi {
      */
     @POST("Api/Shopuser/notify_user_pickup")
     Observable<MessageTo> notifyUserPickup(@Body IdParam param);
+    /**
+     *【取货员 确认取货
+     */
+    @POST("Api/Shopuser/pickup_confirm_out")
+    Observable<MessageTo> pickupConfirm(@Body IdParam param);
+    /**
+     *【送货员】开门
+     */
+    @POST("Api/Shopuser/delivery_openwardrobe")
+    Observable<MessageTo> openDoorDelivery(@Body OpenDoorParam param);
+    /**
+     *【取货员】开门
+     */
+    @POST("Api/Shopuser/pickup_openwardrobe")
+    Observable<MessageTo> openDoorpPickup(@Body OpenDoorParam param);
     /**
      *修改个人资料
      */

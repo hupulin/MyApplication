@@ -48,7 +48,6 @@ public class ScanActivity extends BaseActivity implements PermissionListener {
         ButterKnife.bind(this);
         setTitleName("扫一扫");
         getPermission(Manifest.permission.CAMERA,this);
-        SpUtil
     }
 
     private void setView() {

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    >
+    <include layout="@layout/title_layout" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="#ededed" />
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="22px"
+        android:minHeight="600px"
+android:orientation="vertical"
+        android:layout_marginLeft="20px"
+        android:layout_marginRight="20px"
+        android:layout_height="wrap_content">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="380px"
+            android:minHeight="600px"
+
+            android:background="#FFFAFAFA"
+            android:textColor="@color/black"
+            android:textSize="24px"
+            android:paddingLeft="24px"
+            android:paddingRight="24px"
+            android:gravity="top"
+            android:paddingTop="32px"
+            android:textColorHint="#B5B5B5"
+            android:paddingBottom="32px"
+            android:hint="请输入退回原因..."
+            android:id="@+id/content"
+            />
+
+        <GridLayout
+            android:minHeight="200px"
+            android:id="@+id/image_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="22px"
+            android:layout_marginRight="22px"
+            android:columnCount="3"
+            >
+
+        </GridLayout>
+    </com.zhy.autolayout.AutoLinearLayout>
+
+</com.zhy.autolayout.AutoLinearLayout>

@@ -50,14 +50,14 @@ public class MainPresenter extends BasePresenter {
         );
     }
 
-    public void notifyUserPickup(int id) {
+    public void pickupConfirm(int id) {
         IdParam param = new IdParam();
         param.setUid(userInfoTo.getUid());
         param.setHashid(userInfoTo.getHashid());
         param.setOrder_id(id);
         param.setHash(getHashString(IdParam.class, param));
         showLoadingDialog();
-        ApiClient.create(DeliveryApi.class).notifyUserPickup(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
+        ApiClient.create(DeliveryApi.class).pickupConfirm(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
                 new MyObserver<MessageTo>(this) {
                     @Override
                     public void onNext(MessageTo msg) {

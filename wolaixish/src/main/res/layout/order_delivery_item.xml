@@ -172,17 +172,17 @@
                         android:textColor="@color/app_color"
                         android:textSize="26px" />
 
-                    <TextView
-                        android:layout_marginRight="15px"
-                        android:layout_alignParentRight="true"
-                        android:id="@+id/pick_up_the_goods"
-                        android:layout_width="193px"
-                        android:layout_height="64px"
-                        android:background="@drawable/shape_bg"
-                        android:gravity="center"
-                        android:text="@string/pick_up_the_goods"
-                        android:textColor="@color/app_color"
-                        android:textSize="26px" />
+                <TextView
+                    android:id="@+id/pick_up_the_goods"
+                    android:layout_width="193px"
+                    android:layout_height="64px"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="15px"
+                    android:background="@drawable/shape_bg"
+                    android:gravity="center"
+                    android:text="@string/pick_up_the_goods"
+                    android:textColor="@color/app_color"
+                    android:textSize="26px" />
             </com.zhy.autolayout.AutoLinearLayout>
 
         </com.zhy.autolayout.AutoRelativeLayout>
