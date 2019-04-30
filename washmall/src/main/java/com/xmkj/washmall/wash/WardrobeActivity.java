@@ -62,7 +62,7 @@ public class WardrobeActivity extends BaseActivity {
     private void setView() {
         displayImage(wardrobeImage,mode.getWardrobe_img());
         address.setText(mode.getAddress());
-        wardrobeNum.setText("数量"+mode.getGrid_list().size());
+        wardrobeNum.setText("数量：  "+mode.getGrid_list().size());
         wardrobeName.setText(mode.getWardrobe_name());
 
     }

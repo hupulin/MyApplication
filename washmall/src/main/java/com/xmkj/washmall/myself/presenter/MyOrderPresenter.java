@@ -16,6 +16,7 @@ import hzxmkuar.com.applibrary.api.ApiClient;
 import hzxmkuar.com.applibrary.api.OrderApi;
 import hzxmkuar.com.applibrary.domain.MessageListTo;
 import hzxmkuar.com.applibrary.domain.MessageTo;
+import hzxmkuar.com.applibrary.domain.mall.OrderIdParam;
 import hzxmkuar.com.applibrary.domain.order.MallOrderTo;
 import hzxmkuar.com.applibrary.domain.order.MyOrderParam;
 import rx.android.schedulers.AndroidSchedulers;
@@ -63,5 +64,28 @@ public class MyOrderPresenter extends BasePresenter {
     public void recycleViewRefresh() {
         super.recycleViewRefresh();
         getOrderList(type);
+    }
+
+    public void send(){
+
+    }
+
+    public void confirmReceiver(String orderId){
+    showLoadingDialog();
+        OrderIdParam param=new OrderIdParam();
+        param.setOrder_id(orderId);
+        param.setHash(getHashString(OrderIdParam.class,param));
+        ApiClient.create(OrderApi.class).confirmReceiver(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
+                new MyObserver<MessageTo>(this) {
+                    @Override
+                    public void onNext(MessageTo msg) {
+                        if (msg.getCode()==0){
+                            showMessage("确认收货成功");
+                            getOrderList(type);
+                        }else
+                            showMessage(msg.getMsg());
+                    }
+                }
+        );
     }
 }

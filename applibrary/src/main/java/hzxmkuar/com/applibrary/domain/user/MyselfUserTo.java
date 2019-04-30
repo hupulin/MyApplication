@@ -1,12 +1,14 @@
 package hzxmkuar.com.applibrary.domain.user;
 
+import java.io.Serializable;
+
 import lombok.Data;
 
 /**
  * Created by Administrator on 2018/10/15.
  */
 @Data
-public class MyselfUserTo {
+public class MyselfUserTo implements Serializable{
 
 
     private UserInfoBean user_info;
@@ -16,7 +18,7 @@ public class MyselfUserTo {
 
 
     @Data
-    public static class UserInfoBean {
+    public static class UserInfoBean implements Serializable{
         /**
          * uid : 2
          * face_url :
@@ -43,7 +45,7 @@ public class MyselfUserTo {
     }
 
     @Data
-    public static class MyWashOrderBean {
+    public static class MyWashOrderBean implements Serializable{
         /**
          * order1 : 0
          * order2 : 0
@@ -60,7 +62,7 @@ public class MyselfUserTo {
     }
 
     @Data
-    public static class MyMallOrderBean {
+    public static class MyMallOrderBean implements Serializable{
         /**
          * order1 : 0
          * order2 : 0
@@ -77,7 +79,7 @@ public class MyselfUserTo {
     }
 
     @Data
-    public static class MoreServiceBean {
+    public static class MoreServiceBean implements Serializable{
         /**
          * kf_tel : 13516717556
          */

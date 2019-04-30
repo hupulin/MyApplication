@@ -20,6 +20,7 @@ import com.tencent.tauth.UiError;
 import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.BaseActivity;
 import com.xmkj.washmall.base.Event;
+import com.xmkj.washmall.base.WebActivity;
 import com.xmkj.washmall.base.util.StatueBarUtil;
 import com.xmkj.washmall.login.presenter.LoginPresenter;
 import com.xmkj.washmall.main.MainActivity;
@@ -49,6 +50,8 @@ public class LoginActivity extends BaseActivity {
     EditText account;
     @BindView(R.id.password)
     EditText password;
+    @BindView(R.id.select_icon)
+    View selectIcon;
     private LoginPresenter presenter;
     private Tencent mTencent;
     private IUiListener listener = new IUiListener() {
@@ -77,6 +80,7 @@ public class LoginActivity extends BaseActivity {
         ButterKnife.bind(this);
         presenter = new LoginPresenter(this);
         EventBus.getDefault().register(this);
+        selectIcon.setSelected(true);
 
     }
 
@@ -103,18 +107,39 @@ public class LoginActivity extends BaseActivity {
 
                 if (!checkPhone(account.getText().toString()))
                     return;
-                if (TextUtils.isEmpty(password.getText().toString())){
+                if (TextUtils.isEmpty(password.getText().toString())) {
                     showMessage("请填写密码");
                     return;
                 }
-                presenter.login(account.getText().toString(),password.getText().toString());
+                if (!selectIcon.isSelected()){
+                    showMessage("请同意服务协议");
+                    return;
+                }
+                presenter.login(account.getText().toString(), password.getText().toString());
 
                 break;
             case R.id.wechat_login:
+                if (!selectIcon.isSelected()){
+                    showMessage("请同意服务协议");
+                    return;
+                }
                 wechatLogin();
                 break;
             case R.id.qq_login:
+                if (!selectIcon.isSelected()){
+                    showMessage("请同意服务协议");
+                    return;
+                }
                 qqLogin();
+                break;
+            case R.id.agree:
+                intent=new Intent(appContext, WebActivity.class);
+                startActivity(intent);
+                goToAnimation(1);
+                break;
+            case R.id.select_icon:
+                selectIcon.setSelected(!selectIcon.isSelected());
+                selectIcon.setBackgroundResource(selectIcon.isSelected()?R.drawable.login_select_agreement:R.drawable.address_un_select);
                 break;
         }
     }
@@ -141,15 +166,15 @@ public class LoginActivity extends BaseActivity {
                 } catch (IOException | HttpUtils.NetworkUnavailableException | HttpUtils.HttpStatusException | JSONException e) {
                     e.printStackTrace();
                 }
-                QQUserTo qqUserTo=new Gson().fromJson(json+"",QQUserTo.class);
-                runOnUiThread(() -> presenter.thirdPartLogin(resultTo.getOpenid(),qqUserTo.getNickname(),qqUserTo.getFigureurl_qq_2(),"男".equals(qqUserTo.getGender())?1:2,1));
+                QQUserTo qqUserTo = new Gson().fromJson(json + "", QQUserTo.class);
+                runOnUiThread(() -> presenter.thirdPartLogin(resultTo.getOpenid(), qqUserTo.getNickname(), qqUserTo.getFigureurl_qq_2(), "男".equals(qqUserTo.getGender()) ? 1 : 2, 1));
             }
         }.start();
     }
 
     @Override
     protected void submitDataSuccess(Object data) {
-        WechatLoginTo loginTo= new Gson().fromJson(JSON.toJSONString(data), WechatLoginTo.class);
+        WechatLoginTo loginTo = new Gson().fromJson(JSON.toJSONString(data), WechatLoginTo.class);
         Intent intent = new Intent(appContext, MainActivity.class);
         intent.putExtra("IsSplash", true);
         userInfoHelp.saveUserLogin(true);
@@ -164,13 +189,13 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     public void loadDataSuccess(Object data) {
-        WechatLoginTo wechatTo=new Gson().fromJson(JSON.toJSONString(data),WechatLoginTo.class);
-        if (wechatTo.getUid()==0){
-            Intent intent=new Intent(appContext,BindPhoneActivity.class);
-            intent.putExtra("OauthId",wechatTo.getOauth_id());
+        WechatLoginTo wechatTo = new Gson().fromJson(JSON.toJSONString(data), WechatLoginTo.class);
+        if (wechatTo.getUid() == 0) {
+            Intent intent = new Intent(appContext, BindPhoneActivity.class);
+            intent.putExtra("OauthId", wechatTo.getOauth_id());
             startActivity(intent);
             goToAnimation(1);
-        }else {
+        } else {
             Intent intent = new Intent(appContext, MainActivity.class);
             intent.putExtra("IsSplash", true);
             userInfoHelp.saveUserLogin(true);
@@ -192,6 +217,7 @@ public class LoginActivity extends BaseActivity {
         api.sendReq(req);
 
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -201,8 +227,9 @@ public class LoginActivity extends BaseActivity {
     @Subscribe
     public void wechatLoginData(Event<WechatUserInfoTo> event) {
         if ("WechatLoginSuccess".equals(event.getType())) {
-            WechatUserInfoTo wechatUserInfoTo=event.getData();
-     presenter.thirdPartLogin(wechatUserInfoTo.getOpenid(),wechatUserInfoTo.getNickname(),wechatUserInfoTo.getHeadimgurl(),wechatUserInfoTo.getSex(),2);
+
+            WechatUserInfoTo wechatUserInfoTo = event.getData();
+            presenter.thirdPartLogin(wechatUserInfoTo.getOpenid(), wechatUserInfoTo.getNickname(), wechatUserInfoTo.getHeadimgurl(), wechatUserInfoTo.getSex(), 2);
         }
     }
 

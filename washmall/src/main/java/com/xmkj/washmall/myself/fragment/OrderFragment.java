@@ -1,6 +1,7 @@
 package com.xmkj.washmall.myself.fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,12 +12,16 @@ import android.view.ViewGroup;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.BaseFragment;
+import com.xmkj.washmall.base.WashAlertDialog;
+import com.xmkj.washmall.mall.SelectPayActivity;
+import com.xmkj.washmall.myself.OrderDetailActivity;
 import com.xmkj.washmall.myself.adapter.OrderMallAdapter;
 import com.xmkj.washmall.myself.presenter.MyOrderPresenter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import hzxmkuar.com.applibrary.domain.order.MallOrderTo;
 
 /**
  * Created by Administrator on 2018/12/25.
@@ -30,6 +35,8 @@ public class OrderFragment extends BaseFragment {
     private boolean isViewCreate;
     private boolean isUiVisible;
     private int type;
+    private OrderMallAdapter adapter;
+    private MyOrderPresenter presenter;
 
     public OrderFragment(int type){
         this.type=type;
@@ -66,13 +73,42 @@ public class OrderFragment extends BaseFragment {
 
             isUiVisible = false;
             isViewCreate = false;
-            OrderMallAdapter adapter=new OrderMallAdapter(getActivity());
-            MyOrderPresenter presenter=new MyOrderPresenter(this);
+            adapter = new OrderMallAdapter(getActivity());
+            presenter = new MyOrderPresenter(this);
             presenter.getOrderList(type);
-            setRecycleView(adapter,recyclerView,presenter,false);
+            setRecycleView(adapter,recyclerView, presenter,false);
+            setAdapterListener();
         }
 
 
+    }
+
+    private void setAdapterListener() {
+        adapter.setOrderMallAdapterListener(new OrderMallAdapter.OrderMallAdapterListener() {
+            @Override
+            public void pay(MallOrderTo mode) {
+                Intent intent=new Intent(appContext, SelectPayActivity.class);
+                intent.putExtra("OrderId",mode.getId());
+                intent.putExtra("Money",mode.getTotal_amount());
+                startActivity(intent);
+                goToAnimation(1);
+            }
+
+            @Override
+            public void send(MallOrderTo mode) {
+                WashAlertDialog.show(getActivity(),"提示","催发货").setOnClickListener(view -> {
+                    WashAlertDialog.dismiss();
+                });
+            }
+
+            @Override
+            public void confirmReceiver(MallOrderTo mode) {
+                WashAlertDialog.show(getActivity(),"提示","确认收货").setOnClickListener(view -> {
+                    WashAlertDialog.dismiss();
+                    presenter.confirmReceiver(mode.getId()+"");
+                });
+            }
+        });
     }
 
     @Override
@@ -83,6 +119,17 @@ public class OrderFragment extends BaseFragment {
 
     @Override
     public void loadDataSuccess(Object data) {
-        showMessage(data+"");
+
     }
+
+    @Override
+    public void recycleItemClick(View view, int position, Object data) {
+        MallOrderTo mode= (MallOrderTo) data;
+        Intent intent=new Intent(appContext, OrderDetailActivity.class);
+        intent.putExtra("OrderId",mode.getId()+"");
+        startActivity(intent);
+        goToAnimation(1);
+    }
+
+
 }

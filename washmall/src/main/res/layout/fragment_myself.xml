@@ -170,6 +170,7 @@
                 android:layout_marginLeft="20px"
                 android:layout_marginRight="20px"
                 android:layout_marginTop="8px"
+                android:id="@+id/exchange_layout"
                 android:background="@drawable/myself_balance_bg">
 
                 <com.xmkj.washmall.base.util.PingFangTextView
@@ -571,15 +572,16 @@
 
                     <com.zhy.autolayout.AutoLinearLayout
                         android:id="@+id/address"
-                        android:layout_width="80px"
+                        android:layout_width="100px"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="76px"
+                        android:layout_marginLeft="66px"
                         android:orientation="vertical">
 
 
                         <View
                             android:layout_width="70px"
                             android:layout_height="70px"
+                            app:layout_auto_basewidth="height"
                             android:layout_gravity="center_horizontal"
                             android:background="@drawable/myself_address" />
 
@@ -595,15 +597,16 @@
 
                     <com.zhy.autolayout.AutoLinearLayout
                         android:id="@+id/help"
-                        android:layout_width="80px"
+                        android:layout_width="100px"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="83px"
+                        android:layout_marginLeft="63px"
                         android:orientation="vertical">
 
 
                         <View
                             android:layout_width="70px"
                             android:layout_height="70px"
+                            app:layout_auto_basewidth="height"
                             android:layout_gravity="center_horizontal"
                             android:background="@drawable/myself_help" />
 
@@ -619,15 +622,16 @@
 
                     <com.zhy.autolayout.AutoLinearLayout
                         android:id="@+id/feed_back"
-                        android:layout_width="80px"
+                        android:layout_width="100px"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="83px"
+                        android:layout_marginLeft="63px"
                         android:orientation="vertical">
 
 
                         <View
                             android:layout_width="70px"
                             android:layout_height="70px"
+                            app:layout_auto_basewidth="height"
                             android:layout_gravity="center_horizontal"
                             android:background="@drawable/myself_feedback" />
 
@@ -643,9 +647,9 @@
 
                     <com.zhy.autolayout.AutoLinearLayout
                         android:id="@+id/custom_service"
-                        android:layout_width="80px"
+                        android:layout_width="100px"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="83px"
+                        android:layout_marginLeft="73px"
                         android:orientation="vertical">
 
 
@@ -653,6 +657,7 @@
                             android:layout_width="70px"
                             android:layout_height="70px"
                             android:layout_gravity="center_horizontal"
+                            app:layout_auto_basewidth="height"
                             android:background="@drawable/myself_custom_service" />
 
                         <TextView
@@ -674,15 +679,16 @@
 
                     <com.zhy.autolayout.AutoLinearLayout
                         android:id="@+id/platform"
-                        android:layout_width="80px"
+                        android:layout_width="100px"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="76px"
+                        android:layout_marginLeft="66px"
                         android:orientation="vertical">
 
 
                         <View
                             android:layout_width="70px"
                             android:layout_height="70px"
+                            app:layout_auto_basewidth="height"
                             android:layout_gravity="center_horizontal"
                             android:background="@drawable/myself_phone" />
 
@@ -698,15 +704,16 @@
 
                     <com.zhy.autolayout.AutoLinearLayout
                         android:id="@+id/about"
-                        android:layout_width="80px"
+                        android:layout_width="100px"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="83px"
+                        android:layout_marginLeft="63px"
                         android:orientation="vertical">
 
 
                         <View
                             android:layout_width="70px"
                             android:layout_height="70px"
+                            app:layout_auto_basewidth="height"
                             android:layout_gravity="center_horizontal"
                             android:background="@drawable/myself_about" />
 
@@ -722,15 +729,16 @@
 
                     <com.zhy.autolayout.AutoLinearLayout
                         android:id="@+id/login_out"
-                        android:layout_width="80px"
+                        android:layout_width="100px"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="83px"
+                        android:layout_marginLeft="63px"
                         android:orientation="vertical">
 
 
                         <View
                             android:layout_width="70px"
                             android:layout_height="70px"
+                            app:layout_auto_basewidth="height"
                             android:layout_gravity="center_horizontal"
                             android:background="@drawable/myself_login_out" />
 

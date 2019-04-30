@@ -57,7 +57,7 @@ public class MainPresenter extends BasePresenter {
                 new MyObserver<MessageTo>(this) {
             @Override
             public void onNext(MessageTo msg) {
-                showMessage(msg+"");
+
             }
         });
     }

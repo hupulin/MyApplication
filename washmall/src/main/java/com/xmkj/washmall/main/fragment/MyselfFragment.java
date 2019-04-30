@@ -1,5 +1,6 @@
 package com.xmkj.washmall.main.fragment;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,15 +14,19 @@ import com.hyphenate.chat.EMClient;
 import com.hyphenate.exceptions.HyphenateException;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.xmkj.washmall.R;
+import com.xmkj.washmall.base.ActivityManager;
 import com.xmkj.washmall.base.BaseFragment;
 import com.xmkj.washmall.base.WashAlertDialog;
 import com.xmkj.washmall.base.WebActivity;
 import com.xmkj.washmall.base.util.PingFangTextView;
 import com.xmkj.washmall.integral.IntegralActivity;
 import com.xmkj.washmall.integral.IntegralDetailActivity;
+import com.xmkj.washmall.login.LoginActivity;
 import com.xmkj.washmall.main.presenter.MyselfPresenter;
+import com.xmkj.washmall.mall.AddressActivity;
 import com.xmkj.washmall.message.ChatActivity;
 import com.xmkj.washmall.myself.EditUserActivity;
+import com.xmkj.washmall.myself.ExchangeActivity;
 import com.xmkj.washmall.myself.FeedBackActivity;
 import com.xmkj.washmall.myself.HelpActivity;
 import com.xmkj.washmall.myself.MallOrderActivity;
@@ -34,8 +39,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
-import hzxmkuar.com.applibrary.domain.login.UserInfoTo;
 import hzxmkuar.com.applibrary.domain.user.MyselfUserTo;
+import rx.Observable;
 
 /**
  * Created by Administrator on 2018/12/27.
@@ -86,7 +91,7 @@ public class MyselfFragment extends BaseFragment {
 
     @OnClick({R.id.user_image, R.id.user_name, R.id.vip_center, R.id.collect_layout, R.id.balance_layout, R.id.coupon_layout,
             R.id.wash_order_layout, R.id.wash_order_1, R.id.wash_order_2, R.id.wash_order_3, R.id.wash_order_4, R.id.mall_order_layout, R.id.mall_order_1, R.id.mall_order_2, R.id.mall_order_3, R.id.mall_order_4,
-            R.id.address, R.id.help, R.id.feed_back, R.id.custom_service, R.id.platform, R.id.about, R.id.login_out
+            R.id.address, R.id.help, R.id.feed_back, R.id.custom_service, R.id.platform, R.id.about, R.id.login_out,R.id.exchange_layout
     })
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -178,6 +183,10 @@ public class MyselfFragment extends BaseFragment {
                 goToAnimation(1);
                 break;
             case R.id.address:
+                intent = new Intent(appContext, AddressActivity.class);
+                intent.putExtra("Index", 4);
+                startActivity(intent);
+                goToAnimation(1);
                 break;
             case R.id.help:
                 intent = new Intent(appContext, HelpActivity.class);
@@ -210,8 +219,20 @@ public class MyselfFragment extends BaseFragment {
             case R.id.login_out:
                 WashAlertDialog.show(getActivity(), "退出登录", "是否退出当前账号").setOnClickListener(v -> {
                     WashAlertDialog.dismiss();
+                    userInfoHelp.saveUserInfo(null);
+                    userInfoHelp.saveUserLogin(false);
+                    Observable.from(ActivityManager.activityList).subscribe(Activity::finish);
+                    Intent intent1=new Intent(appContext, LoginActivity.class);
+                    startActivity(intent1);
+                    goToAnimation(2);
+
 
                 });
+                break;
+            case R.id.exchange_layout:
+                intent = new Intent(appContext, ExchangeActivity.class);
+                startActivity(intent);
+                goToAnimation(1);
                 break;
 
         }
@@ -233,6 +254,9 @@ public class MyselfFragment extends BaseFragment {
     public void loadDataSuccess(Object data) {
         mode = (MyselfUserTo) data;
         userName.setText(mode.getUser_info().getUsername());
+        userInfoTo=userInfoHelp.getUserInfo();
+        userInfoTo.setMyselfTo(mode);
+        userInfoHelp.saveUserInfo(userInfoTo);
         disPlayRoundImage(userImage, mode.getUser_info().getFace_url());
         userTag.setText(mode.getUser_info().getUser_tag());
         myBalanceNum.setText(mode.getUser_info().getAccount());

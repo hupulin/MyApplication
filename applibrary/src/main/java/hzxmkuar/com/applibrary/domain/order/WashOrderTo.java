@@ -22,31 +22,23 @@ public class WashOrderTo {
     private String address;
     private String order_amount;
     private String status_txt;
+    private ButtonInfoTo button_list;
+
+    /**
+     * qxdd_btn : 0
+     * smch_btn : 0
+     * smqh_btn : 0
+     * qpj_btn : 0
+     */
 
 
+    @Data
+    public static class ButtonInfoTo {
+        private int qxdd_btn;
+        private int smch_btn;
+        private int smqh_btn;
+        private int qpj_btn;
+    }
 
 
-//    public String getStatueStr(){
-//        if (type==1)
-//            return "待处理";
-//        if (type==2)
-//            return "待发货";
-//        if (type==3)
-//            return "已发货";
-//        if (type==4)
-//            return "已完成";
-//        return "状态";
-//    }
-//
-//    public String getPayStr(){
-//        if (type==1)
-//            return "去评价";
-//        if (type==2)
-//            return "催发货";
-//        if (type==3)
-//            return "确认收货";
-//        if (type==4)
-//            return "扫码取货";
-//        return "取消订单";
-//    }
 }

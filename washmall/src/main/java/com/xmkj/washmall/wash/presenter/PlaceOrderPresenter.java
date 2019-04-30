@@ -20,6 +20,8 @@ import hzxmkuar.com.applibrary.domain.MessageListTo;
 import hzxmkuar.com.applibrary.domain.MessageTo;
 import hzxmkuar.com.applibrary.domain.main.MainWardrobeParam;
 import hzxmkuar.com.applibrary.domain.main.MainWardrobeTo;
+import hzxmkuar.com.applibrary.domain.mall.OrderIdTo;
+import hzxmkuar.com.applibrary.domain.mall.OrderInfoTo;
 import hzxmkuar.com.applibrary.domain.wash.AddWashOrderParam;
 import hzxmkuar.com.applibrary.domain.wash.WashJsonParam;
 import rx.android.schedulers.AndroidSchedulers;
@@ -89,7 +91,7 @@ public class PlaceOrderPresenter extends BasePresenter{
                     @Override
                     public void onNext(MessageTo msg) {
                         if (msg.getCode()==0){
-                            submitDataSuccess(msg.getData());
+                            submitDataSuccess(new Gson().fromJson(JSON.toJSONString(msg.getData()), OrderIdTo.class));
                         }else
                             showMessage(msg.getMsg());
                     }

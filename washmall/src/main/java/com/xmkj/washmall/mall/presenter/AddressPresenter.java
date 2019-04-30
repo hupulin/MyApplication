@@ -84,7 +84,7 @@ public class AddressPresenter extends BasePresenter {
         param.setUid(userInfoTo.getUid());
         param.setHash(getHashString(IdParam.class,param));
         showLoadingDialog();
-        ApiClient.create(OrderApi.class).deleteAddress(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
+        ApiClient.create(OrderApi.class).setDefaultAddress(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
                 new MyObserver<MessageTo>(this) {
                     @Override
                     public void onNext(MessageTo msg) {

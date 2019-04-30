@@ -152,6 +152,7 @@
             <View
                 android:layout_width="44px"
                 android:layout_height="44px"
+                android:id="@+id/select_icon"
                 android:background="@drawable/login_select_agreement"
                 app:layout_auto_basewidth="height" />
 
@@ -160,7 +161,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:text="我已经阅读并同意电子协议内容"
-
+               android:id="@+id/agree"
                 android:textColor="#232323"
                 android:textSize="22px" />
         </com.zhy.autolayout.AutoLinearLayout>

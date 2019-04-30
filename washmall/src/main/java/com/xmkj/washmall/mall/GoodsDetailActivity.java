@@ -106,8 +106,10 @@ public class GoodsDetailActivity extends BaseActivity {
                 presenter.collect(mode);
                 break;
             case R.id.add_car:
+                presenter.getGoodsSpecification();
                 break;
             case R.id.purchase:
+                presenter.getGoodsSpecification();
                 break;
         }
     }
@@ -199,4 +201,6 @@ public class GoodsDetailActivity extends BaseActivity {
         collectIcon.setBackgroundResource(mode.getIs_collected()==1?R.drawable.goods_collect_select:R.drawable.goods_collect_un_select);
 
     }
+
+
 }

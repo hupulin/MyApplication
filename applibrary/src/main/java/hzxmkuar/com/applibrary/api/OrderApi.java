@@ -4,6 +4,7 @@ import hzxmkuar.com.applibrary.IdParam;
 import hzxmkuar.com.applibrary.domain.BaseParam;
 import hzxmkuar.com.applibrary.domain.MessageListTo;
 import hzxmkuar.com.applibrary.domain.MessageTo;
+import hzxmkuar.com.applibrary.domain.mall.OrderIdParam;
 import hzxmkuar.com.applibrary.domain.mall.SettlementIdParam;
 import hzxmkuar.com.applibrary.domain.message.IdsParam;
 import hzxmkuar.com.applibrary.domain.order.AddAddressParam;
@@ -76,4 +77,11 @@ public interface OrderApi {
      */
     @POST("Api/Order/orderList")
     Observable<MessageListTo>myMallOrderList(@Body MyOrderParam param);
+
+
+    /**
+     * 确认收货
+     */
+    @POST("Api/Order/confirmCompletedForUser")
+    Observable<MessageTo>confirmReceiver(@Body OrderIdParam param);
 }

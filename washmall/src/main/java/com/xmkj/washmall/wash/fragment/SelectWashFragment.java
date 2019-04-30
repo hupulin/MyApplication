@@ -35,6 +35,7 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import hzxmkuar.com.applibrary.domain.wash.WashInfoTo;
 import hzxmkuar.com.applibrary.domain.wash.WashJsonDetailTo;
+import hzxmkuar.com.applibrary.domain.wash.WashJsonParentParam;
 import rx.Observable;
 
 /**
@@ -213,7 +214,10 @@ public class SelectWashFragment extends BaseFragment {
         }
 
         Intent intent=new Intent(appContext, PlaceOrderActivity.class);
-        intent.putExtra("WashJson", JSON.toJSONString(jsonDetailList));
+        WashJsonParentParam param=new WashJsonParentParam();
+        param.setClassid("1");
+        param.setService_data(jsonDetailList);
+        intent.putExtra("WashJson", JSON.toJSONString(param));
         startActivity(intent);
         goToAnimation(1);
     }

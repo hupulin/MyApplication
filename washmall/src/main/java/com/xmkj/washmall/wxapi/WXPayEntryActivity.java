@@ -16,9 +16,10 @@ import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.Event;
 
+
 import org.greenrobot.eventbus.EventBus;
 
-import hzxmkuar.com.applibrary.domain.order.WeChatPayTo;
+
 
 public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
 
@@ -28,18 +29,9 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        WeChatPayTo.WxpayBean payTo = (WeChatPayTo.WxpayBean) getIntent().getSerializableExtra("PayInfoTo");
         api = WXAPIFactory.createWXAPI(this, "wx34575f0ea7a2a608");
         api.handleIntent(getIntent(), this);
-//        PayReq request = new PayReq();
-//        request.appId = payTo.getAppid();
-//        request.partnerId = payTo.getPartnerid();
-//        request.prepayId= payTo.getPrepayid();
-//        request.packageValue =payTo.getPackageX();
-//        request.nonceStr= payTo.getNoncestr();
-//        request.timeStamp= payTo.getTimestamp();
-//        request.sign= payTo.getSign();
-//        api.sendReq(request);
+
     }
 
     @Override

@@ -3,7 +3,14 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 28
     buildToolsVersion "28.0.2"
-
+    signingConfigs {
+        release {
+            keyAlias 'wolaixi'
+            keyPassword '123456'
+            storeFile file('D:/xzz/jks/wash.jks')
+            storePassword '123456'
+        }
+    }
     defaultConfig {
         applicationId "com.xmkj.washmall"
         minSdkVersion 19
@@ -25,6 +32,10 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {

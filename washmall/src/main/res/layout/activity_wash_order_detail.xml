@@ -157,8 +157,8 @@
             android:layout_centerVertical="true"
             android:background="@color/transparent"
             android:hint="请输入您需要备注的信息"
-            android:gravity="center_vertical|end"
             android:textColor="@color/black"
+            android:gravity="end"
             android:textColorHint="#C7C7C7"
             android:textSize="24px" />
     </com.zhy.autolayout.AutoRelativeLayout>
@@ -173,6 +173,7 @@
     <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="78px"
+        android:visibility="gone"
         android:layout_marginLeft="20px"
         android:layout_marginRight="20px">
 
@@ -205,6 +206,7 @@
         android:layout_width="match_parent"
         android:layout_height="78px"
         android:layout_marginLeft="20px"
+        android:visibility="gone"
         android:layout_marginRight="20px">
 
         <TextView
@@ -278,6 +280,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/confirm"
-            android:background="@drawable/goods_detail_purchase" />
+            android:background="@drawable/integral_exchange_icon" />
     </com.zhy.autolayout.AutoLinearLayout>
 </com.zhy.autolayout.AutoLinearLayout>

@@ -15,6 +15,7 @@ import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.ActivityManager;
 import com.xmkj.washmall.base.BaseActivity;
 import com.xmkj.washmall.base.util.SpUtil;
+import com.xmkj.washmall.wash.presenter.ScanPresenter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -39,6 +40,7 @@ public class ScanActivity extends BaseActivity implements PermissionListener {
 
     private int type; //0 扫描快递 1录入快递 2 访客验证
     private boolean open;
+    private ScanPresenter presenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,7 +49,10 @@ public class ScanActivity extends BaseActivity implements PermissionListener {
         setContentView(R.layout.activity_scan);
         ButterKnife.bind(this);
         setTitleName("扫一扫");
+        presenter = new ScanPresenter(this);
+
         getPermission(Manifest.permission.CAMERA,this);
+
     }
 
     private void setView() {
@@ -70,13 +75,15 @@ public class ScanActivity extends BaseActivity implements PermissionListener {
     CodeUtils.AnalyzeCallback analyzeCallback = new CodeUtils.AnalyzeCallback() {
         @Override
         public void onAnalyzeSuccess(Bitmap mBitmap, String result) {
-            if (type == 1) {
+
 //                Intent intent = new Intent(appContext, VerifyResultActivity.class);
 //                intent.putExtra("Result", result);
 //                startActivity(intent);
+
+                presenter.openWardrobe(result);
                 finish();
                 goToAnimation(1);
-            }
+
         }
 
         @Override
@@ -88,7 +95,7 @@ public class ScanActivity extends BaseActivity implements PermissionListener {
             bundle.putString(CodeUtils.RESULT_STRING, "");
             resultIntent.putExtras(bundle);
             setResult(RESULT_OK, resultIntent);
-            finish();
+//            finish();
         }
     };
 

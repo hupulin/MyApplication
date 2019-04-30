@@ -239,9 +239,7 @@ public class BasePresenter<T> {
             activity.baseAdapter.notifyDataSetChanged();
         }
     }
-    public void recyclerViewLoadMore(){
-        recyclePageIndex++;
-    }
+
 
 
 }

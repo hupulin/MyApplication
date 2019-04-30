@@ -70,6 +70,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="110px"
             android:layout_marginRight="90px"
+            android:id="@+id/account"
             android:text="当前可用余额：100.00"
             android:textColor="#808080"
             android:textSize="30px" />

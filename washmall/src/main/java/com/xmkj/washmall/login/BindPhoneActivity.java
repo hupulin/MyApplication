@@ -19,8 +19,8 @@ import com.ruffian.library.RTextView;
 import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.BaseActivity;
 import com.xmkj.washmall.base.CommonDialog;
+import com.xmkj.washmall.base.util.PingFangTextView;
 import com.xmkj.washmall.login.presenter.BindPhonePresenter;
-import com.xmkj.washmall.login.presenter.RegisterPresenter;
 import com.xmkj.washmall.main.MainActivity;
 
 import java.util.HashMap;
@@ -55,12 +55,13 @@ public class BindPhoneActivity extends BaseActivity {
     EditText invitationCode;
     @BindView(R.id.get_verification)
     RTextView getVerification;
+    @BindView(R.id.main_title)
+    PingFangTextView mainTitle;
     private BindPhonePresenter presenter;
     private String[] provinceData;
     private String[][] cityData;
     private HashMap<String, String[]> areaMap = new HashMap<>();
     private int countTime;
-
 
 
     @Override
@@ -70,6 +71,7 @@ public class BindPhoneActivity extends BaseActivity {
         ButterKnife.bind(this);
         presenter = new BindPhonePresenter(this);
         setTitleName("绑定手机号");
+        mainTitle.setText("绑定手机号");
     }
 
     private void showPopWindow() {
@@ -125,33 +127,33 @@ public class BindPhoneActivity extends BaseActivity {
                 break;
             case R.id.login:
                 if (!checkPhone(phone.getText().toString()))
-                   return;
-                if (TextUtils.isEmpty(verification.getText().toString())){
+                    return;
+                if (TextUtils.isEmpty(verification.getText().toString())) {
                     showMessage("请填写验证码");
                     return;
                 }
-                if (TextUtils.isEmpty(password.getText().toString())){
+                if (TextUtils.isEmpty(password.getText().toString())) {
                     showMessage("请填写密码");
                     return;
                 }
-                if (TextUtils.isEmpty(confirmPassword.getText().toString())){
+                if (TextUtils.isEmpty(confirmPassword.getText().toString())) {
                     showMessage("请填写确认密码");
                     return;
                 }
-                if (!password.getText().toString().equals(confirmPassword.getText().toString())){
+                if (!password.getText().toString().equals(confirmPassword.getText().toString())) {
                     showMessage("两次密码不相同");
                     return;
                 }
-                if (TextUtils.isEmpty(address.getText().toString())){
+                if (TextUtils.isEmpty(address.getText().toString())) {
                     showMessage("请选择地址");
                     return;
                 }
-                if (TextUtils.isEmpty(detailAddress.getText().toString())){
+                if (TextUtils.isEmpty(detailAddress.getText().toString())) {
                     showMessage("请填写详细地址");
                     return;
                 }
 
-                presenter.bindPhone(phone.getText().toString(),verification.getText().toString(),password.getText().toString(),confirmPassword.getText().toString(), (String) address.getTag(),detailAddress.getText().toString(),invitationCode.getText().toString());
+                presenter.bindPhone(phone.getText().toString(), verification.getText().toString(), password.getText().toString(), confirmPassword.getText().toString(), (String) address.getTag(), detailAddress.getText().toString(), invitationCode.getText().toString());
                 break;
         }
     }
@@ -188,22 +190,22 @@ public class BindPhoneActivity extends BaseActivity {
 
     @Override
     public void loadDataSuccess(Object data) {
-        showMessage("发送验证码成功"+data);
+        showMessage("发送验证码成功" + data);
         getVerification.setEnabled(false);
-      new Thread(() -> {
-          for (int i=60;i>=0;i--){
-              countTime=i;
-              SystemClock.sleep(1000);
-              runOnUiThread(() -> getVerification.setText(countTime==0?"重发验证码":(countTime+"秒后重发")));
-              if (countTime==0)
-                 runOnUiThread(() ->  getVerification.setEnabled(true));
-          }
-      }).start();
+        new Thread(() -> {
+            for (int i = 60; i >= 0; i--) {
+                countTime = i;
+                SystemClock.sleep(1000);
+                runOnUiThread(() -> getVerification.setText(countTime == 0 ? "重发验证码" : (countTime + "秒后重发")));
+                if (countTime == 0)
+                    runOnUiThread(() -> getVerification.setEnabled(true));
+            }
+        }).start();
     }
 
     @Override
     protected void submitDataSuccess(Object data) {
-        WechatLoginTo loginTo= new Gson().fromJson(JSON.toJSONString(data), WechatLoginTo.class);
+        WechatLoginTo loginTo = new Gson().fromJson(JSON.toJSONString(data), WechatLoginTo.class);
         Intent intent = new Intent(appContext, MainActivity.class);
         intent.putExtra("IsSplash", true);
         userInfoHelp.saveUserLogin(true);

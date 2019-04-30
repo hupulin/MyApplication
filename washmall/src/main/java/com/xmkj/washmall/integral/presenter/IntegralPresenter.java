@@ -46,6 +46,8 @@ private List<IntegralGoodsTo>goodsList=new ArrayList<>();
                     @Override
                     public void onNext(MessageListTo msg) {
                         if (msg.getCode() == 0) {
+                            if (recyclePageIndex==1)
+                                goodsList.clear();
                             goodsList.addAll(new Gson().fromJson(JSON.toJSONString(msg.getDataList()), new TypeToken<List<IntegralGoodsTo>>() {
                             }.getType()));
                             setRecycleList(goodsList);
@@ -55,5 +57,17 @@ private List<IntegralGoodsTo>goodsList=new ArrayList<>();
                 }
         );
 
+    }
+
+    @Override
+    public void recycleViewLoadMore() {
+        super.recycleViewLoadMore();
+        getGoodsList();
+    }
+
+    @Override
+    public void recycleViewRefresh() {
+        super.recycleViewRefresh();
+        getGoodsList();
     }
 }

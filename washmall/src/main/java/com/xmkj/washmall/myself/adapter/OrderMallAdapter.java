@@ -25,7 +25,7 @@ import hzxmkuar.com.applibrary.domain.order.MallOrderTo;
  **/
 
 public class OrderMallAdapter extends BaseAdapter<MallOrderTo, MyOrderMallItemBinding> {
-   public OrderMallAdapter(Activity context) {
+    public OrderMallAdapter(Activity context) {
         super(context);
     }
 
@@ -47,33 +47,62 @@ public class OrderMallAdapter extends BaseAdapter<MallOrderTo, MyOrderMallItemBi
     public void onBindViewHolder(BindingHolder<MyOrderMallItemBinding> holder, int position) {
         super.onBindViewHolder(holder, position);
         MyOrderMallItemBinding binding = holder.getBinding();
-        MallOrderTo mode=mList.get(position);
+        MallOrderTo mode = mList.get(position);
 
-        binding.orderMoney.setText("￥ "+mode.getTotal_amount());
+        binding.orderMoney.setText("￥ " + mode.getTotal_amount());
 
         binding.remark.setText(mode.getRemarks());
         binding.orderNumber.setText(mode.getOrder_sn());
         binding.statue.setText(mode.getStatus_txt());
-        setGoodsLayout(binding.goodsLayout,mode.getGoods_list());
-        binding.pay.setText(mode.getPayStr());
-        binding.pay.setVisibility(mode.getNew_status()==4? View.GONE:View.VISIBLE);
+        setGoodsLayout(binding.goodsLayout, mode.getGoods_list());
+        binding.pay.setVisibility(mode.getButton_list().getFk_btn() == 1 ? View.VISIBLE : View.GONE);
+        binding.send.setVisibility(mode.getButton_list().getCfh_btn() == 1 ? View.VISIBLE : View.GONE);
+        binding.confirmReceiver.setVisibility(mode.getButton_list().getQrsh_btn() == 1 ? View.VISIBLE : View.GONE);
 
+        binding.pay.setOnClickListener(view -> {
+            if (listener!=null)
+                listener.pay(mode);
+        });
+        binding.send.setOnClickListener(view -> {
+            if (listener!=null)
+                listener.send(mode);
+        });
 
+        binding.confirmReceiver.setOnClickListener(view -> {
+            if (listener!=null)
+                listener.confirmReceiver(mode);
+        });
 
     }
-      private void setGoodsLayout(GridLayout goodsLayout, List<MallOrderTo.GoodsListBean>goodsList){
-          goodsLayout.removeAllViews();
-          for (int i=0;i<goodsList.size();i++) {
-              MallOrderTo.GoodsListBean goodsTo = goodsList.get(i);
-              View mView = View.inflate(mContext, R.layout.mall_order_goods_item, null);
-              MallOrderGoodsItemBinding bind=DataBindingUtil.bind(mView);
-              bind.goodsName.setText(goodsTo.getGoods_name());
-              bind.goodsNum.setText("x"+goodsTo.getGoods_num());
-              bind.specification.setText(goodsTo.getSpec_name());
-              disPlayImage(bind.orderImage,goodsTo.getSpec_image());
 
-              goodsLayout.addView(mView);
-          }
-      }
+    private void setGoodsLayout(GridLayout goodsLayout, List<MallOrderTo.GoodsListBean> goodsList) {
+        goodsLayout.removeAllViews();
+        for (int i = 0; i < goodsList.size(); i++) {
+            MallOrderTo.GoodsListBean goodsTo = goodsList.get(i);
+            View mView = View.inflate(mContext, R.layout.mall_order_goods_item, null);
+            MallOrderGoodsItemBinding bind = DataBindingUtil.bind(mView);
+            bind.goodsName.setText(goodsTo.getGoods_name());
+            bind.goodsNum.setText("x" + goodsTo.getGoods_num());
+            bind.specification.setText(goodsTo.getSpec_name());
+            disPlayImage(bind.orderImage, goodsTo.getSpec_image());
+
+            goodsLayout.addView(mView);
+        }
+    }
+
+    public interface  OrderMallAdapterListener{
+
+        void pay(MallOrderTo mode);
+
+        void send(MallOrderTo mode);
+
+        void confirmReceiver(MallOrderTo mode);
+    }
+
+    private OrderMallAdapterListener listener;
+
+    public void setOrderMallAdapterListener(OrderMallAdapterListener listener){
+        this.listener=listener;
+    }
 
 }

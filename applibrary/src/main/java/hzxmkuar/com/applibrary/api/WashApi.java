@@ -3,7 +3,9 @@ package hzxmkuar.com.applibrary.api;
 import hzxmkuar.com.applibrary.domain.BaseParam;
 import hzxmkuar.com.applibrary.domain.MessageListTo;
 import hzxmkuar.com.applibrary.domain.MessageTo;
+import hzxmkuar.com.applibrary.domain.mall.OrderIdParam;
 import hzxmkuar.com.applibrary.domain.order.MyOrderParam;
+import hzxmkuar.com.applibrary.domain.wardrobe.OpenWardrobeParam;
 import hzxmkuar.com.applibrary.domain.wash.AddWashOrderParam;
 import hzxmkuar.com.applibrary.domain.wash.MyWashOrderParam;
 import hzxmkuar.com.applibrary.domain.wash.WashJsonParam;
@@ -45,4 +47,16 @@ public interface WashApi {
      */
     @POST("Api/Coupon/all_list")
     Observable<MessageTo>getCouponList(@Body BaseParam param);
+
+    /**
+     * 开箱
+     */
+    @POST("Api/Wash/customer_openwardrobe")
+    Observable<MessageTo>openWardrobe(@Body OpenWardrobeParam param);
+
+    /**
+     * 开箱
+     */
+    @POST("Api/Wash/cancel_order")
+    Observable<MessageTo>cancelOrder(@Body OrderIdParam param);
 }

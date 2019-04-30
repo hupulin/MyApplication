@@ -8,20 +8,25 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="352px"
-        android:background="@drawable/wardrobe_top_bg" />
+        android:background="@drawable/wardrobe_top_bg"
+        android:id="@+id/view" />
 
     <include layout="@layout/white_title_layout" />
 
-    <ImageView
+    <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/wardrobe_image"
-        android:layout_width="160px"
-        android:layout_height="160px"
+        android:layout_width="150px"
+        android:layout_height="150px"
         android:layout_marginLeft="45px"
-        android:layout_marginTop="148px"
+        app:riv_oval="true"
+        app:riv_corner_radius="150px"
+        app:layout_auto_basewidth="height"
         android:contentDescription="@string/app_name"
         app:layout_auto_baseheight="width"
 
-        />
+        android:layout_alignBottom="@+id/view"
+
+        android:layout_marginBottom="22dp" />
 
     <TextView
         android:id="@+id/address"
@@ -39,6 +44,8 @@
         android:layout_marginTop="230px"
         android:background="#5654E2"
         android:gravity="center"
+        android:paddingLeft="24px"
+        android:paddingRight="24px"
         app:corner_radius="48px"
         android:minWidth="174px"
 
@@ -53,6 +60,8 @@
         android:layout_marginTop="230px"
         android:background="#5654E2"
         android:gravity="center"
+        android:paddingLeft="24px"
+        android:paddingRight="24px"
         android:layout_marginLeft="20px"
         app:corner_radius="48px"
         android:minWidth="174px"

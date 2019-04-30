@@ -50,12 +50,33 @@ public class OrderWashAdapter extends BaseAdapter<WashOrderTo, OrderWashItemBind
         binding.address.setText(mode.getAddress());
         binding.orderNumber.setText(mode.getOrder_sn());
         binding.statue.setText(mode.getStatus_txt());
-//        binding.pay.setText(mode.getPayStr());
-//        binding.pay.setVisibility((mode.getType()==3||mode.getType()==2)? View.GONE:View.VISIBLE);
         binding.money.setText(mode.getOrder_amount());
-//        binding.moneyLayout.setVisibility(mode.getType()==1?View.INVISIBLE:View.VISIBLE);
+        binding.pay.setVisibility(mode.getButton_list().getQxdd_btn()==1?View.VISIBLE:View.GONE);
+        binding.scan.setVisibility(mode.getButton_list().getSmqh_btn()==1?View.VISIBLE:View.GONE);
+
+       binding.pay.setOnClickListener(view -> {
+           if (listener!=null)
+               listener.cancelOrder(mode);
+       });
+
+        binding.scan.setOnClickListener(view -> {
+            if (listener!=null)
+                listener.scan(mode);
+        });
+    }
+
+    public interface  OrderWashAdapterListener{
+
+        void scan(WashOrderTo mode);
+
+        void cancelOrder(WashOrderTo mode);
 
     }
 
+    private OrderWashAdapterListener listener;
+
+    public void setOrderWashAdapterListener(OrderWashAdapterListener listener){
+        this.listener=listener;
+    }
 
 }

@@ -66,6 +66,7 @@
                 android:layout_width="225px"
                 android:layout_height="225px"
                 android:layout_marginLeft="22px"
+                android:id="@+id/first_layout"
                 android:background="@drawable/exchange_un_select"
                 android:orientation="vertical">
 
@@ -88,6 +89,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
                         android:text="200"
+                        android:id="@+id/money1"
                         android:textColor="#6E34FF"
                         android:textSize="40px" />
 
@@ -106,6 +108,7 @@
                      android:layout_gravity="center_horizontal"
                     android:layout_marginTop="12px"
                     android:text="送50"
+                    android:id="@+id/send1"
                     android:textColor="@color/black"
                     android:textSize="32px" />
 
@@ -115,6 +118,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="24px"
                     android:text="送9折特权"
+                    android:id="@+id/discount1"
                     android:gravity="center"
                     android:background="@drawable/exchange_sale_icon"
                     android:textColor="@color/black"
@@ -126,7 +130,8 @@
                 android:layout_width="225px"
                 android:layout_height="225px"
                 android:layout_marginLeft="20px"
-                android:background="@drawable/exchange_select"
+                android:id="@+id/second_layout"
+                android:background="@drawable/exchange_un_select"
                 android:orientation="vertical">
 
                 <com.zhy.autolayout.AutoLinearLayout
@@ -148,6 +153,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
                         android:text="500"
+                        android:id="@+id/money2"
                         android:textColor="#6E34FF"
                         android:textSize="40px" />
 
@@ -166,6 +172,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="12px"
                     android:text="送180"
+                    android:id="@+id/send2"
                     android:textColor="@color/black"
                     android:textSize="32px" />
 
@@ -175,6 +182,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="24px"
                     android:text="送8折特权"
+                    android:id="@+id/discount2"
                     android:gravity="center"
                     android:background="@drawable/exchange_sale_icon"
                     android:textColor="@color/black"
@@ -186,6 +194,7 @@
                 android:layout_width="225px"
                 android:layout_height="225px"
                 android:layout_marginLeft="22px"
+                android:id="@+id/third_layout"
                 android:background="@drawable/exchange_un_select"
                 android:orientation="vertical">
 
@@ -208,6 +217,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
                         android:text="1000"
+                        android:id="@+id/money3"
                         android:textColor="#6E34FF"
                         android:textSize="40px" />
 
@@ -226,6 +236,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="12px"
                     android:text="送350"
+                    android:id="@+id/send3"
                     android:textColor="@color/black"
                     android:textSize="32px" />
 
@@ -236,6 +247,7 @@
                     android:layout_marginTop="24px"
                     android:text="送7折特权"
                     android:gravity="center"
+                    android:id="@+id/discount3"
                     android:background="@drawable/exchange_sale_icon"
                     android:textColor="@color/black"
                     android:textSize="24px" />
@@ -262,6 +274,7 @@
             android:layout_height="51px"
             android:layout_centerVertical="true"
             android:layout_marginLeft="25px"
+            android:id="@+id/ali_view"
             android:background="@drawable/ali_pay" />
 
         <TextView
@@ -280,7 +293,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="20px"
-            android:background="@drawable/address_un_select" />
+            android:background="@drawable/address_select" />
     </com.zhy.autolayout.AutoRelativeLayout>
 
     <View
@@ -298,6 +311,7 @@
             android:layout_height="51px"
             android:layout_centerVertical="true"
             android:layout_marginLeft="25px"
+            android:id="@+id/wechat_view"
             android:background="@drawable/wechat_pay" />
 
         <TextView

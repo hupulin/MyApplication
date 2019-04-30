@@ -2,6 +2,7 @@ package hzxmkuar.com.applibrary.domain.login;
 
 import java.io.Serializable;
 
+import hzxmkuar.com.applibrary.domain.user.MyselfUserTo;
 import lombok.Data;
 
 /**
@@ -20,6 +21,7 @@ public class UserInfoTo implements Serializable {
     private String face_url;
     private String username;
 
+    private MyselfUserTo myselfTo;
 
 
 

@@ -36,6 +36,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import hzxmkuar.com.applibrary.domain.main.MainWardrobeTo;
+import hzxmkuar.com.applibrary.domain.mall.OrderIdTo;
 import rx.Observable;
 
 /**
@@ -63,13 +64,13 @@ public class PlaceOrderActivity extends BaseActivity implements OnDateSetListene
         presenter = new PlaceOrderPresenter(this);
     }
 
-    @OnClick({R.id.pickup_time, R.id.pickup_wardrobe, R.id.confirm,R.id.save_wardrobe,R.id.rule_des})
+    @OnClick({R.id.pickup_time, R.id.pickup_wardrobe, R.id.confirm, R.id.save_wardrobe, R.id.rule_des})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.rule_des:
-                Intent intent=new Intent(appContext, WebActivity.class);
-                intent.putExtra("Type",1);
-                intent.putExtra("Title","规则");
+                Intent intent = new Intent(appContext, WebActivity.class);
+                intent.putExtra("Type", 1);
+                intent.putExtra("Title", "规则");
                 startActivity(intent);
                 goToAnimation(1);
                 break;
@@ -83,41 +84,41 @@ public class PlaceOrderActivity extends BaseActivity implements OnDateSetListene
                 presenter.getWardrobeList(pickupWardrobe);
                 break;
             case R.id.confirm:
-                if (TextUtils.isEmpty(saveWardrobe.getText().toString())){
+                if (TextUtils.isEmpty(saveWardrobe.getText().toString())) {
                     showMessage("请选择存货衣柜");
                     return;
                 }
-                if (TextUtils.isEmpty(pickupTime.getText().toString())){
+                if (TextUtils.isEmpty(pickupTime.getText().toString())) {
                     showMessage("请选择取货时间");
                     return;
                 }
-                if (TextUtils.isEmpty(pickupWardrobe.getText().toString())){
+                if (TextUtils.isEmpty(pickupWardrobe.getText().toString())) {
                     showMessage("请选择取货衣柜");
                     return;
                 }
-                presenter.addOrder((int)saveWardrobe.getTag(),(int)pickupWardrobe.getTag(),pickupTime.getText().toString(),remark.getText().toString());
+                presenter.addOrder((int) saveWardrobe.getTag(), (int) pickupWardrobe.getTag(), pickupTime.getText().toString(), remark.getText().toString());
                 break;
         }
     }
 
-    public void selectWardRobeDialog(TextView selectText,List<MainWardrobeTo> wardrobeList){
+    public void selectWardRobeDialog(TextView selectText, List<MainWardrobeTo> wardrobeList) {
 
 
-        NiftyDialogBuilder dialog=NiftyDialogBuilder.getInstance(this);
+        NiftyDialogBuilder dialog = NiftyDialogBuilder.getInstance(this);
         dialog.setContentView(R.layout.dialog_select_wardrobe);
-        GridLayout gridLayout=dialog.findViewById(R.id.grid_view);
+        GridLayout gridLayout = dialog.findViewById(R.id.grid_view);
         Observable.from(wardrobeList).subscribe(wardrobeTo -> {
-            PingFangTextView textView=new PingFangTextView(appContext);
-            GridLayout.LayoutParams layoutParams=new GridLayout.LayoutParams();
-            layoutParams.height= ViewGroup.LayoutParams.WRAP_CONTENT;
-            layoutParams.width=getScreenWidth();
-            layoutParams.bottomMargin=18*getScreenWidth()/750;
-            layoutParams.topMargin=18*getScreenWidth()/750;
+            PingFangTextView textView = new PingFangTextView(appContext);
+            GridLayout.LayoutParams layoutParams = new GridLayout.LayoutParams();
+            layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+            layoutParams.width = getScreenWidth();
+            layoutParams.bottomMargin = 18 * getScreenWidth() / 750;
+            layoutParams.topMargin = 18 * getScreenWidth() / 750;
             textView.setLayoutParams(layoutParams);
             textView.setText(wardrobeTo.getWardrobe_name());
             textView.setGravity(Gravity.CENTER);
             textView.setTextColor(Color.parseColor("#000000"));
-            textView.setTextSize(10*getScreenWidth()/750);
+            textView.setTextSize(10 * getScreenWidth() / 750);
             textView.setOnClickListener(v -> {
                 dialog.dismiss();
                 selectText.setText(wardrobeTo.getWardrobe_name());
@@ -150,7 +151,7 @@ public class PlaceOrderActivity extends BaseActivity implements OnDateSetListene
 
     @Override
     public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
-         pickupTime.setText(DateUtil.longToString(millseconds,DateUtil.mFormatDateString));
+        pickupTime.setText(DateUtil.longToString(millseconds, DateUtil.mFormatDateString));
     }
 
     @Override
@@ -159,10 +160,11 @@ public class PlaceOrderActivity extends BaseActivity implements OnDateSetListene
 
     @Override
     protected void submitDataSuccess(Object data) {
-
-            Intent intent=new Intent(appContext,ReserveSuccessActivity.class);
-            startActivity(intent);
-            goToAnimation(1);
+        OrderIdTo orderIdTo = (OrderIdTo) data;
+        Intent intent = new Intent(appContext, ReserveSuccessActivity.class);
+        intent.putExtra("OrderId",orderIdTo.getOrder_id());
+        startActivity(intent);
+        goToAnimation(1);
 
     }
 }

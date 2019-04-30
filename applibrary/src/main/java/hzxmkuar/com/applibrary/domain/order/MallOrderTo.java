@@ -34,9 +34,20 @@ public class MallOrderTo {
     @Data
     public static class ButtonListBean {
 
+
+        /**
+         * qxdd_btn : 1
+         * fk_btn : 1
+         * cfh_btn : 0
+         * qrsh_btn : 0
+         * qpj_btn : 0
+         */
+
+        private int qxdd_btn;
         private int fk_btn;
         private int cfh_btn;
         private int qrsh_btn;
+        private int qpj_btn;
 
 
     }

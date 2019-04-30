@@ -10,6 +10,7 @@ import com.bigkoo.convenientbanner.holder.Holder;
 import com.bumptech.glide.Glide;
 import com.xmkj.washmall.R;
 import com.xmkj.washmall.databinding.MallBannerItemBinding;
+import com.xmkj.washmall.integral.IntegralActivity;
 import com.xmkj.washmall.mall.GoodsSortActivity;
 
 import java.util.List;
@@ -44,10 +45,17 @@ public class MallBannerView implements Holder<List<MallTypeTo>> {
             binding.name.setText(mallBannerTo.getCate_name());
             Glide.with(context).load(mallBannerTo.getCate_img()).into(binding.image);
             mView.setOnClickListener(v -> {
-                Intent intent=new Intent(context, GoodsSortActivity.class);
-                intent.putExtra("CateId",mallBannerTo.getCate_id());
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intent);
+                if (mallBannerTo.getCate_id()!=1000000) {
+                    Intent intent = new Intent(context, GoodsSortActivity.class);
+                    intent.putExtra("CateId", mallBannerTo.getCate_id());
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }else {
+                    Intent intent = new Intent(context, IntegralActivity.class);
+                    intent.putExtra("CateId", mallBannerTo.getCate_id());
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }
 
             });
             gridLayout.addView(mView);

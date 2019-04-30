@@ -33,6 +33,7 @@ public class ReserveSuccessActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.rule_des:
+
                 break;
             case R.id.repair:
                 Intent intent=new Intent(appContext,RepairActivity.class);
@@ -41,8 +42,10 @@ public class ReserveSuccessActivity extends BaseActivity {
                 break;
             case R.id.scan:
                 intent=new Intent(appContext,ScanActivity.class);
+                intent.putExtra("OrderId",getIntent().getStringExtra("OrderId"));
                 startActivity(intent);
                 goToAnimation(1);
+
                 break;
         }
     }
