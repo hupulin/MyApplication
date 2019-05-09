@@ -229,6 +229,8 @@ public class BasePresenter<T> {
                 mFragment.mRecycleView.setNoMore(true);
             mFragment.baseAdapter.notifyDataSetChanged();
 
+            if (dataList==null||dataList.size()==0)
+                mFragment.setNoData();
 
         } else {
             activity.mRecycleView.refreshComplete(10);

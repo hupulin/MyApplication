@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<com.zhy.autolayout.AutoLinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/no_data_layout_recycler"
+android:visibility="gone"
+    >
+    <View
+        android:layout_width="376px"
+        android:layout_height="271px"
+        android:layout_marginTop="48px"
+        android:background="@drawable/no_data_icon"
+        android:layout_gravity="center_horizontal"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30px"
+        android:textColor="@color/gray_9"
+        android:text="暂无信息"
+        android:layout_marginBottom="48px"
+        android:layout_marginTop="34px"
+        android:layout_gravity="center_horizontal"
+        />
+</com.zhy.autolayout.AutoLinearLayout>
+</layout>

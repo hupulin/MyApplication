@@ -3,6 +3,7 @@ package hzxmkuar.com.applibrary.api;
 import hzxmkuar.com.applibrary.domain.BaseParam;
 import hzxmkuar.com.applibrary.domain.MessageListTo;
 import hzxmkuar.com.applibrary.domain.MessageTo;
+import hzxmkuar.com.applibrary.domain.mall.CatePidParam;
 import hzxmkuar.com.applibrary.domain.mall.GoodsIdParam;
 import hzxmkuar.com.applibrary.domain.mall.MallGoodsListParam;
 import hzxmkuar.com.applibrary.domain.mall.PurchaseParam;
@@ -58,4 +59,10 @@ public interface MallApi {
      */
     @POST("Api/Goods/collect_goods")
     Observable<MessageTo>collect(@Body GoodsIdParam param);
+
+    /**
+     * 获取二级分类
+     */
+    @POST("Api/Goods/get_child_catelist")
+    Observable<MessageListTo>getTitleList(@Body CatePidParam param);
 }

@@ -1,5 +1,7 @@
 package com.xmkj.washmall.login.presenter;
 
+import com.alibaba.fastjson.JSON;
+import com.google.gson.Gson;
 import com.xmkj.washmall.base.BaseActivity;
 import com.xmkj.washmall.base.BasePresenter;
 import com.xmkj.washmall.base.MyObserver;
@@ -8,11 +10,15 @@ import com.xmkj.washmall.base.MyObserver;
 import hzxmkuar.com.applibrary.LoginTo;
 import hzxmkuar.com.applibrary.api.ApiClient;
 import hzxmkuar.com.applibrary.api.LoginApi;
+import hzxmkuar.com.applibrary.api.UserApi;
+import hzxmkuar.com.applibrary.domain.BaseParam;
 import hzxmkuar.com.applibrary.domain.MessageTo;
 import hzxmkuar.com.applibrary.domain.VerificationParam;
 import hzxmkuar.com.applibrary.domain.login.LoginParam;
+import hzxmkuar.com.applibrary.domain.login.UserInfoTo;
 import hzxmkuar.com.applibrary.domain.login.WechatLoginParam;
 import hzxmkuar.com.applibrary.domain.login.WechatLoginTo;
+import hzxmkuar.com.applibrary.domain.user.MyselfUserTo;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -61,10 +67,35 @@ public class LoginPresenter extends BasePresenter{
                 new MyObserver<MessageTo>(this) {
                     @Override
                     public void onNext(MessageTo msg) {
-                    if (msg.getCode()==0)
-                        submitDataSuccess(msg.getData());
+                    if (msg.getCode()==0) {
+                        WechatLoginTo loginTo = new Gson().fromJson(JSON.toJSONString(msg.getData()), WechatLoginTo.class);
+                        UserInfoTo userInfoTo = new UserInfoTo();
+                        userInfoTo.setUid(loginTo.getUid());
+                        userInfoTo.setHashid(loginTo.getHashid());
+                        userInfoHelp.saveUserInfo(userInfoTo);
+                        getUserInfo();
+                    }
                         else
                             showMessage(msg.getMsg());
+                    }
+                }
+        );
+    }
+
+    private void getUserInfo(){
+        BaseParam param=new BaseParam();
+        userInfoTo=userInfoHelp.getUserInfo();
+        param.setUid(userInfoTo.getUid());
+        param.setHashid(userInfoTo.getHashid());
+        param.setHash(getHashString(BaseParam.class,param));
+        showLoadingDialog();
+        ApiClient.create(UserApi.class).getMyselfUserInfo(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
+                new MyObserver<MessageTo<MyselfUserTo>>(this) {
+                    @Override
+                    public void onNext(MessageTo<MyselfUserTo> msg) {
+                        if (msg.getCode()==0){
+                            submitDataSuccess(msg.getData());
+                        }
                     }
                 }
         );

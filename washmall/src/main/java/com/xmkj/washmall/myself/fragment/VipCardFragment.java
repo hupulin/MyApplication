@@ -8,11 +8,13 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.BaseFragment;
 import com.xmkj.washmall.myself.ExchangeActivity;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
@@ -25,9 +27,17 @@ import butterknife.Unbinder;
 public class VipCardFragment extends BaseFragment {
 
     Unbinder unbinder;
+    @BindView(R.id.vip_bg)
+    View vipBg;
+    @BindView(R.id.discount)
+    TextView discount;
     private boolean isViewCreate;
     private boolean isUiVisible;
 
+    private int type;
+    public VipCardFragment(int type){
+        this.type=type;
+    }
 
     @Nullable
     @Override
@@ -59,6 +69,8 @@ public class VipCardFragment extends BaseFragment {
 
             isUiVisible = false;
             isViewCreate = false;
+          vipBg.setBackgroundResource(type==1?R.drawable.vip_card_bg:type==2?R.drawable.vip_card_gold_bg:R.drawable.vip_card_masonry_bg);
+            discount.setText(type==1?"下单9折":type==2?"下单8折":"下单7折");
 
         }
 
@@ -73,7 +85,7 @@ public class VipCardFragment extends BaseFragment {
 
     @OnClick(R.id.exchange)
     public void onViewClicked() {
-        Intent intent=new Intent(appContext, ExchangeActivity.class);
+        Intent intent = new Intent(appContext, ExchangeActivity.class);
         startActivity(intent);
         goToAnimation(1);
     }

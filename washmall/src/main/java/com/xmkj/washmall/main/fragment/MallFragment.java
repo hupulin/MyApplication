@@ -116,7 +116,6 @@ public class MallFragment extends BaseFragment {
 
             @Override
             public void onScrolled(int distanceX, int distanceY) {
-                System.out.println(distanceY + "y============");
                 if (distanceY*750/getScreenWidth()>470)
                     typeLayout.setVisibility(View.VISIBLE);
                 else

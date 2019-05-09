@@ -49,9 +49,9 @@ public class VipCenterActivity extends BaseActivity {
     }
 
     private void initFragment() {
-        fragmentList.add(new VipCardFragment());
-        fragmentList.add(new VipCardFragment());
-        fragmentList.add(new VipCardFragment());
+        fragmentList.add(new VipCardFragment(1));
+        fragmentList.add(new VipCardFragment(2));
+        fragmentList.add(new VipCardFragment(3));
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override

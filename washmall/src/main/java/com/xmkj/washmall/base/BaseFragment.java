@@ -44,6 +44,7 @@ public class BaseFragment<T> extends Fragment {
     protected UserInfoHelp userInfoHelp=new UserInfoHelp();
     protected UserInfoTo userInfoTo;
     protected View headView;
+    protected View rootView;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -276,5 +277,13 @@ public class BaseFragment<T> extends Fragment {
                 permissionListener.refuse(permission);
 
         });
+    }
+
+    public void setNoData(){
+
+        View noDataLayout = rootView.findViewById(R.id.no_data_layout_recycler);
+
+        if (noDataLayout!=null)
+            noDataLayout.setVisibility(View.VISIBLE);
     }
 }

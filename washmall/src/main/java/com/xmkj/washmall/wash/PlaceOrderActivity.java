@@ -88,6 +88,10 @@ public class PlaceOrderActivity extends BaseActivity implements OnDateSetListene
                     showMessage("请选择存货衣柜");
                     return;
                 }
+                if (TextUtils.isEmpty(remark.getText().toString())) {
+                    showMessage("请填写备注");
+                    return;
+                }
                 if (TextUtils.isEmpty(pickupTime.getText().toString())) {
                     showMessage("请选择取货时间");
                     return;

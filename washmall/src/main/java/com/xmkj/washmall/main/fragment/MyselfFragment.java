@@ -1,7 +1,9 @@
 package com.xmkj.washmall.main.fragment;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -18,6 +20,7 @@ import com.xmkj.washmall.base.ActivityManager;
 import com.xmkj.washmall.base.BaseFragment;
 import com.xmkj.washmall.base.WashAlertDialog;
 import com.xmkj.washmall.base.WebActivity;
+import com.xmkj.washmall.base.util.AppUtil;
 import com.xmkj.washmall.base.util.PingFangTextView;
 import com.xmkj.washmall.integral.IntegralActivity;
 import com.xmkj.washmall.integral.IntegralDetailActivity;
@@ -40,6 +43,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import hzxmkuar.com.applibrary.domain.user.MyselfUserTo;
+import hzxmkuar.com.applibrary.impl.PermissionListener;
 import rx.Observable;
 
 /**
@@ -204,10 +208,7 @@ public class MyselfFragment extends BaseFragment {
                 goToAnimation(1);
                 break;
             case R.id.platform:
-                WashAlertDialog.show(getActivity(), "联系热线", "请联系我们，客服电话\n" + mode.getMore_service().getKf_tel()).setOnClickListener(v -> {
-                    WashAlertDialog.dismiss();
-
-                });
+               setCall();
                 break;
             case R.id.about:
                 intent = new Intent(appContext, WebActivity.class);
@@ -265,6 +266,26 @@ public class MyselfFragment extends BaseFragment {
         myScoreNum.setText(mode.getUser_info().getScore().contains(".")? mode.getUser_info().getScore().split(".")[0]: mode.getUser_info().getScore());
         myCouponNum.setText(mode.getUser_info().getCoupon_num());
     }
+    public void setCall() {
+        WashAlertDialog.show(getActivity(), "联系热线", "请联系我们，客服电话\n" + userInfoTo.getMyselfTo().getMore_service().getKf_tel()).setOnClickListener(v -> {
+            WashAlertDialog.dismiss();
+            if (!AppUtil.readSIMCard(appContext, getActivity())) return;
+            getPermission(Manifest.permission.CALL_PHONE, new PermissionListener() {
+                @Override
+                public void accept(String permission) {
+                    Intent intent = new Intent(Intent.ACTION_CALL);
+                    Uri data = Uri.parse("tel:" + userInfoTo.getMyselfTo().getMore_service().getKf_tel());
+                    intent.setData(data);
+                    startActivity(intent);
 
+                }
+
+                @Override
+                public void refuse(String permission) {
+
+                }
+            });
+        });
+    }
 
 }

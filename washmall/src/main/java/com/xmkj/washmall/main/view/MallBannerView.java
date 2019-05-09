@@ -53,6 +53,7 @@ public class MallBannerView implements Holder<List<MallTypeTo>> {
                 if (mallBannerTo.getCate_id() != 1000000) {
                     Intent intent = new Intent(context, GoodsSortActivity.class);
                     intent.putExtra("CateId", mallBannerTo.getCate_id());
+                    intent.putExtra("Title",mallBannerTo.getCate_name());
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
                 } else {

@@ -126,7 +126,10 @@ public class SelectPayActivity extends BaseActivity {
                 payType = 2;
                 break;
             case R.id.confirm:
-
+                 if (payType==0){
+                     showMessage("请选择支付方式");
+                     return;
+                 }
                     presenter.getPayInfo(mode==null?getIntent().getIntExtra("OrderId",0):mode.getOrder_id(), payType);
                 break;
         }

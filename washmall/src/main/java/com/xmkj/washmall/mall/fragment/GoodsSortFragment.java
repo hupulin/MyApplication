@@ -8,16 +8,21 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
+import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
 import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.BaseFragment;
+import com.xmkj.washmall.mall.GoodsSortActivity;
 import com.xmkj.washmall.mall.adapter.GoodsSortAdapter;
 import com.xmkj.washmall.mall.presenter.GoodsSortPresenter;
 import com.xmkj.washmall.wash.adapter.WardrobelAdapter;
 import com.xmkj.washmall.wash.presenter.WardrobePresenter;
 
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import hzxmkuar.com.applibrary.domain.mall.MallChildTypeTo;
 
 
 /**
@@ -37,7 +42,7 @@ public class GoodsSortFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = View.inflate(appContext, R.layout.common_fragment_recyclerview, null);
+       rootView = View.inflate(appContext, R.layout.common_fragment_recyclerview, null);
 
         unbinder = ButterKnife.bind(this, rootView);
         isViewCreate = true;
@@ -65,7 +70,10 @@ public class GoodsSortFragment extends BaseFragment {
 
             isUiVisible = false;
             isViewCreate = false;
-            setRecycleView(new GoodsSortAdapter(getActivity()),recyclerView, new GoodsSortPresenter(this),2);
+            List<MallChildTypeTo> categoryList = ((GoodsSortActivity) getActivity()).categoryList;
+            GoodsSortPresenter presenter = new GoodsSortPresenter(this);
+            presenter.getGoodsList(categoryList.get(FragmentPagerItem.getPosition(getArguments())).getCate_id());
+            setRecycleView(new GoodsSortAdapter(getActivity()),recyclerView,presenter ,2);
 
 
         }

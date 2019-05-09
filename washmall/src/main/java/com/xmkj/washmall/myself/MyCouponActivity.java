@@ -1,5 +1,6 @@
 package com.xmkj.washmall.myself;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,6 +15,7 @@ import com.alibaba.fastjson.JSON;
 import com.google.gson.Gson;
 import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.BaseActivity;
+import com.xmkj.washmall.base.WebActivity;
 import com.xmkj.washmall.myself.fragment.CouponFragment;
 import com.xmkj.washmall.myself.presenter.CouponPresenter;
 import com.zhy.autolayout.AutoRelativeLayout;
@@ -95,6 +97,9 @@ public class MyCouponActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.save:
+               Intent intent=new Intent(appContext, WebActivity.class);
+                startActivity(intent);
+                goToAnimation(1);
                 break;
             case R.id.un_use:
                 viewPager.setCurrentItem(0);

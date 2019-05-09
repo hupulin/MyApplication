@@ -40,6 +40,7 @@ import hzxmkuar.com.applibrary.domain.login.UserInfoTo;
 import hzxmkuar.com.applibrary.domain.login.WechatLoginTo;
 import hzxmkuar.com.applibrary.domain.login.WechatUserInfoTo;
 import hzxmkuar.com.applibrary.domain.tecent.QQResultTo;
+import hzxmkuar.com.applibrary.domain.user.MyselfUserTo;
 
 /**
  * Created by Administrator on 2018/12/24.
@@ -174,14 +175,14 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void submitDataSuccess(Object data) {
-        WechatLoginTo loginTo = new Gson().fromJson(JSON.toJSONString(data), WechatLoginTo.class);
+        MyselfUserTo myselfUserTo= (MyselfUserTo) data;
         Intent intent = new Intent(appContext, MainActivity.class);
         intent.putExtra("IsSplash", true);
-        userInfoHelp.saveUserLogin(true);
-        UserInfoTo userInfoTo = new UserInfoTo();
-        userInfoTo.setUid(loginTo.getUid());
-        userInfoTo.setHashid(loginTo.getHashid());
+        UserInfoTo userInfoTo=userInfoHelp.getUserInfo();
+        userInfoTo.setMyselfTo(myselfUserTo);
         userInfoHelp.saveUserInfo(userInfoTo);
+        userInfoHelp.saveUserLogin(true);
+
         startActivity(intent);
         finish();
         goToAnimation(1);

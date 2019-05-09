@@ -14,7 +14,8 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="358px"
-            android:background="@drawable/vip_card_bg" />
+            android:id="@+id/vip_bg"
+         />
 
         <View
             android:id="@+id/exchange"
@@ -65,6 +66,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="14px"
                     android:text="下单9折"
+                    android:id="@+id/discount"
                     android:textColor="#535353" />
             </com.zhy.autolayout.AutoLinearLayout>
 

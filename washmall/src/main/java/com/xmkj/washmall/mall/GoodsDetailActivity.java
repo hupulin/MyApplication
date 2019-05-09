@@ -1,8 +1,10 @@
 package com.xmkj.washmall.mall;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -15,6 +17,8 @@ import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 import com.google.gson.Gson;
 import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.BaseActivity;
+import com.xmkj.washmall.base.WashAlertDialog;
+import com.xmkj.washmall.base.util.AppUtil;
 import com.xmkj.washmall.base.util.DateUtil;
 import com.xmkj.washmall.base.util.PingFangTextView;
 import com.xmkj.washmall.mall.presenter.GoodsDetailPresenter;
@@ -32,6 +36,7 @@ import hzxmkuar.com.applibrary.domain.main.MallGoodsTo;
 import hzxmkuar.com.applibrary.domain.mall.GoodsDetailTo;
 import hzxmkuar.com.applibrary.domain.mall.SettlementIdTo;
 import hzxmkuar.com.applibrary.domain.mall.SpecificationTo;
+import hzxmkuar.com.applibrary.impl.PermissionListener;
 import rx.Observable;
 
 /**
@@ -101,6 +106,7 @@ public class GoodsDetailActivity extends BaseActivity {
                 presenter.getGoodsSpecification();
                 break;
             case R.id.custom_service:
+                setCall();
                 break;
             case R.id.car:
                 presenter.collect(mode);
@@ -202,5 +208,25 @@ public class GoodsDetailActivity extends BaseActivity {
 
     }
 
+    public void setCall() {
+        WashAlertDialog.show(this, "联系热线", "请联系我们，客服电话\n" + userInfoTo.getMyselfTo().getMore_service().getKf_tel()).setOnClickListener(v -> {
+            WashAlertDialog.dismiss();
+            if (!AppUtil.readSIMCard(appContext,this)) return;
+            getPermission(Manifest.permission.CALL_PHONE, new PermissionListener() {
+                @Override
+                public void accept(String permission) {
+                    Intent intent = new Intent(Intent.ACTION_CALL);
+                    Uri data = Uri.parse("tel:" + userInfoTo.getMyselfTo().getMore_service().getKf_tel());
+                    intent.setData(data);
+                    startActivity(intent);
 
+                }
+
+                @Override
+                public void refuse(String permission) {
+
+                }
+            });
+        });
+    }
 }

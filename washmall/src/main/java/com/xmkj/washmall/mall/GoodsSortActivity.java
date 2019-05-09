@@ -9,6 +9,7 @@ import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
 import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.BaseActivity;
 import com.xmkj.washmall.mall.fragment.GoodsSortFragment;
+import com.xmkj.washmall.mall.presenter.SortTitlePresenter;
 import com.xmkj.washmall.wash.fragment.SelectWashFragment;
 
 import java.io.Serializable;
@@ -18,6 +19,8 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import hzxmkuar.com.applibrary.domain.mall.MallChildTypeTo;
+import hzxmkuar.com.applibrary.domain.mall.MallTypeTo;
 import rx.Observable;
 import util.smart.SmartTabLayout;
 
@@ -30,23 +33,23 @@ public class GoodsSortActivity extends BaseActivity {
     SmartTabLayout tab;
     @BindView(R.id.view_pager)
     ViewPager viewPager;
-
+    public List<MallChildTypeTo> categoryList;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goods_sort);
         ButterKnife.bind(this);
-        setTitleName("洗衣液");
-        setTab(new ArrayList<>(Arrays.asList("全部", "桶装洗衣液", "袋装洗衣液", "儿童")));
+        setTitleName(getIntent().getStringExtra("Title"));
+        SortTitlePresenter presenter=new SortTitlePresenter(this);
     }
 
-    public void setTab(List<String> paymentTypeList) {
+    public void setTab(List<MallChildTypeTo> paymentTypeList) {
 
         FragmentPagerItems.Creator creator = FragmentPagerItems.with(this);
         Observable.from(paymentTypeList).subscribe(paymentTypeTo -> {
             Bundle bundle = new Bundle();
             bundle.putSerializable("TypeList", (Serializable) paymentTypeList);
-            creator.add(paymentTypeTo, GoodsSortFragment.class, bundle);
+            creator.add(paymentTypeTo.getTitle(), GoodsSortFragment.class, bundle);
 
         });
         FragmentPagerItemAdapter adapter = new FragmentPagerItemAdapter(getSupportFragmentManager(), creator.create());
@@ -54,5 +57,12 @@ public class GoodsSortActivity extends BaseActivity {
         tab.setViewPager(viewPager);
 
 
+    }
+
+    @Override
+    public void loadDataSuccess(Object data) {
+        List<MallChildTypeTo>typeList= (List<MallChildTypeTo>) data;
+        categoryList=typeList;
+        setTab(typeList);
     }
 }

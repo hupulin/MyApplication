@@ -194,7 +194,7 @@ public class BindPhoneActivity extends BaseActivity {
 
     @Override
     public void loadDataSuccess(Object data) {
-        showMessage("发送验证码成功" + data);
+        showMessage("发送验证码成功" );
         getVerification.setEnabled(false);
         new Thread(() -> {
             for (int i = 60; i >= 0; i--) {

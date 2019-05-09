@@ -29,14 +29,14 @@ public class GoodsSortPresenter extends BasePresenter {
 
     public GoodsSortPresenter(BaseFragment fragment) {
         initContext(fragment);
-        getGoodsList();
+
     }
 
-    public void getGoodsList() {
+    public void getGoodsList(int typeId) {
 
 
         MallGoodsListParam param = new MallGoodsListParam();
-        param.setCate_id(mFragment.getActivity().getIntent().getIntExtra("CateId",0));
+        param.setCate_id(typeId);
         param.setHash(getHashStringNoUser(MallGoodsListParam.class, param));
         ApiClient.create(MallApi.class).getGoodsList(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
                 new MyObserver<MessageListTo>(this) {
