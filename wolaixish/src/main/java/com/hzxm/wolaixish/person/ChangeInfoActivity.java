@@ -127,8 +127,10 @@ public class ChangeInfoActivity extends BaseActivity implements OnDateSetListene
 
                 NiftyDialogBuilder dialog = NiftyDialogBuilder.getInstance(this);
                 dialog.setContentView(R.layout.my_dialog_comment_layout);
+                TextView content = dialog.findViewById(R.id.content);
                 TextView title = dialog.findViewById(R.id.title);
-                title.setText("确定退出登录");
+                title.setText("退出登录");
+                content.setText("是否退出当前账号");
                 dialog.show();
                 dialog.findViewById(R.id.confirm).setOnClickListener(view1 -> {
                     Intent out = new Intent(appContext, LoginActivity.class);

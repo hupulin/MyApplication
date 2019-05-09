@@ -94,8 +94,8 @@ public class MainFragment extends BaseFragment {
     private void showDialog(int id){
         NiftyDialogBuilder dialog = NiftyDialogBuilder.getInstance(baseActivity);
         dialog.setContentView(R.layout.my_dialog_comment_layout);
-        TextView title =dialog.findViewById(R.id.title);
-        title.setText("取货成功后，请关上柜门");
+        TextView content =dialog.findViewById(R.id.content);
+        content.setText("取货成功后，请关上柜门");
         dialog.show();
         dialog.findViewById(R.id.confirm).setOnClickListener(view1 -> {
             Log.i("222", "showDialog: "+id);

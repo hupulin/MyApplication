@@ -84,8 +84,8 @@ public class MainFragment extends BaseFragment {
     private void showDialog(int id){
         NiftyDialogBuilder dialog = NiftyDialogBuilder.getInstance(baseActivity);
         dialog.setContentView(R.layout.my_dialog_comment_layout);
-        TextView title =dialog.findViewById(R.id.title);
-        title.setText("确认已将衣物放置完成，\n" +
+        TextView content =dialog.findViewById(R.id.content);
+        content.setText("确认已将衣物放置完成，\n" +
                 "请用户前来提取衣物！？");
         dialog.show();
         dialog.findViewById(R.id.confirm).setOnClickListener(view1 -> {

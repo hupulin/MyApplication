@@ -18,13 +18,15 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="提示"
+            android:id="@+id/title"
+
             android:layout_marginTop="62px"
             android:textSize="40px"
             android:textColor="@color/white"
             android:textStyle="bold"
             />
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="102px"
