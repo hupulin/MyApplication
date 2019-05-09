@@ -61,16 +61,16 @@ public class IntegralGoodsDetailActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_integral_goods_detail);
         ButterKnife.bind(this);
-        setTitleName("蓝月亮洗衣液家庭装");
+        setTitleName("");
         IntegralGoodsDetailPresenter presenter=new IntegralGoodsDetailPresenter(this);
     }
 
     @SuppressLint("SetTextI18n")
     private void setView() {
-
+        setTitleName(mode.getGoods_name());
         displayImage(goodsImage, mode.getGoods_image());
         goodsPrice.setText( mode.getGoods_integral()+"积分");
-        saleNum.setText("销量：" + 100);
+        saleNum.setText("销量：" + mode.getExchange_num());
         goodsName.setText(mode.getGoods_name());
         goodsDes.setText(mode.getDesc());
         setImageLayout(mode.getGoods_content());

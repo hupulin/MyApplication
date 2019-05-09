@@ -112,7 +112,7 @@ public class MyselfFragment extends BaseFragment {
                 goToAnimation(1);
                 break;
             case R.id.collect_layout:
-                intent = new Intent(appContext, IntegralActivity.class);
+                intent = new Intent(appContext, MyCollectActivity.class);
                 startActivity(intent);
                 goToAnimation(1);
                 break;

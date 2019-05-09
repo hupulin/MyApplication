@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:ignore="PxUsage">
+
+    <com.zhy.autolayout.AutoRelativeLayout
+
+
+        android:id="@+id/title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:clipToPadding="true"
+        android:fitsSystemWindows="true">
+
+        <com.zhy.autolayout.AutoRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="88px">
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:id="@+id/back"
+                android:layout_width="73px"
+                android:layout_height="match_parent">
+
+                <View
+                    android:layout_width="29px"
+                    android:layout_height="29px"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/position_close" />
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <com.xmkj.washmall.base.util.PingFangTextView
+                android:id="@+id/title_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+
+                android:textColor="@color/black"
+                android:textSize="36px" />
+
+            <TextView
+                android:id="@+id/right_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="16px"
+                android:textColor="@color/black"
+                android:textSize="32px" />
+        </com.zhy.autolayout.AutoRelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#EDEDED" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="710px"
+        android:layout_height="60px"
+        android:layout_marginLeft="20px"
+        android:layout_marginTop="10px"
+        android:layout_marginRight="20px"
+        android:background="@drawable/position_search_bg">
+
+        <TextView
+            android:id="@+id/city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30px"
+            android:text=""
+            android:layout_gravity="center_vertical"
+            android:textColor="#474747"
+            android:textSize="24px" />
+
+        <View
+            android:layout_width="2px"
+            android:layout_height="32px"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="56px"
+            android:background="#A9A9A9" />
+
+        <View
+            android:layout_width="44px"
+            android:layout_height="42px"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="15px"
+            android:background="@drawable/position_search" />
+
+        <EditText
+            android:id="@+id/search"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="18px"
+            android:background="@color/transparent"
+            android:hint="小区/写字楼/学校等"
+            android:textColor="@color/black_3"
+            android:textSize="24px" />
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20px"
+        android:layout_marginTop="30px"
+        android:text="当前定位"
+        android:textColor="#a4a4a4"
+        android:textSize="24px" />
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30px"
+        android:layout_marginTop="24px"
+        android:layout_marginRight="10px">
+
+        <View
+            android:layout_width="29px"
+            android:layout_height="29px"
+            android:layout_centerVertical="true"
+            android:background="@drawable/position_guide" />
+
+        <TextView
+            android:id="@+id/current_position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginLeft="31px"
+            android:text=""
+            android:textColor="#a4a4a4"
+            android:textSize="24px" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/re_locate"
+            android:text="重新定位"
+            android:textColor="#2994D9"
+            android:textSize="24px"
+
+            />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10px"
+        android:background="#F5F5F5"
+        android:layout_marginTop="34px"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20px"
+        android:layout_marginTop="30px"
+        android:text="周边位置"
+        android:textColor="#a4a4a4"
+        android:textSize="24px" />
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="1"
+        android:layout_marginTop="5px"
+        android:id="@+id/around_layout"
+        >
+
+    </GridLayout>
+</com.zhy.autolayout.AutoLinearLayout>

@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="24px"
-            android:text="金额"
+            android:text="可用余额"
             android:textSize="30px" />
 
         <TextView
@@ -31,6 +31,7 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="24px"
             android:text="￥188.00"
+            android:id="@+id/amount"
             android:textColor="#7800FF"
             android:textSize="30px" />
     </com.zhy.autolayout.AutoRelativeLayout>
@@ -51,7 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="25px"
             android:layout_marginTop="38px"
-            android:text="余额支付"
+            android:text="选择充值金额"
             android:textColor="@color/black"
             android:textSize="26px" />
 

@@ -82,4 +82,17 @@ public class MyWashOrderPresenter extends BasePresenter {
                 }
         );
     }
+
+    @Override
+    public void recycleViewLoadMore() {
+        super.recycleViewLoadMore();
+        getOrderList(index);
+    }
+
+    @Override
+    public void recycleViewRefresh() {
+        super.recycleViewRefresh();
+        getOrderList(index);
+    }
+
 }

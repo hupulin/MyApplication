@@ -1,51 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    android:orientation="vertical">
-
-    <com.zhy.autolayout.AutoRelativeLayout
-
-        android:id="@+id/title_layout"
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40px"
-        android:background="@color/white">
-
-        <com.zhy.autolayout.AutoRelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="88px">
+        android:orientation="vertical">
 
 
-            <com.xmkj.washmall.base.util.PingFangTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="网上商城"
+    <com.bigkoo.convenientbanner.ConvenientBanner
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="27px"
+        android:layout_marginRight="27px"
+        android:layout_height="470px">
 
-                android:textColor="@color/black"
-                android:textSize="36px" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2px"
-                android:layout_alignParentBottom="true"
-                android:background="#EDEDED" />
-        </com.zhy.autolayout.AutoRelativeLayout>
+    </com.bigkoo.convenientbanner.ConvenientBanner>
 
-    </com.zhy.autolayout.AutoRelativeLayout>
-
-
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20px"
+        android:background="#EFEFEF" />
 
     <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70px"
-        android:id="@+id/type_layout"
-        android:visibility="gone"
-        android:layout_below="@+id/title_layout"
-        >
+        android:layout_height="70px">
 
         <com.zhy.autolayout.AutoRelativeLayout
             android:layout_width="0px"
@@ -108,15 +85,9 @@
 
     </com.zhy.autolayout.AutoLinearLayout>
 
-    <com.github.jdsjlzx.recyclerview.LRecyclerView
-        android:id="@+id/recycler_view"
+    <View
         android:layout_width="match_parent"
-        android:layout_below="@+id/title_layout"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-    </com.github.jdsjlzx.recyclerview.LRecyclerView>
-
-
-</com.zhy.autolayout.AutoRelativeLayout>
+        android:layout_height="2px"
+        android:background="#EFEFEF" />
+    </com.zhy.autolayout.AutoLinearLayout>
+</layout>

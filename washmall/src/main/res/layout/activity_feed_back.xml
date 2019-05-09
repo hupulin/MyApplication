@@ -31,7 +31,7 @@
         />
 
     <com.xmkj.washmall.base.util.PingFangTextView
-        android:id="@+id/login"
+        android:id="@+id/confirm"
         android:layout_width="586px"
         android:layout_height="108px"
         android:layout_gravity="center_horizontal"

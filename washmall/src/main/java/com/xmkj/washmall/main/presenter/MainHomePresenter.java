@@ -24,7 +24,7 @@ public class MainHomePresenter extends BasePresenter {
     public MainHomePresenter(BaseFragment fragment){
         initContext(fragment);
         getMainAd();
-        getWardrobeList();
+
     }
 
     private void getMainAd(){
@@ -44,8 +44,11 @@ public class MainHomePresenter extends BasePresenter {
         );
     }
 
-    private void getWardrobeList(){
+    public void getWardrobeList(String lat,String lng,String search){
         MainWardrobeParam param=new MainWardrobeParam();
+        param.setLat(lat);
+        param.setLng(lng);
+        param.setKeywords(search);
         param.setHashid(userInfoTo.getHashid());
         param.setUid(userInfoTo.getUid());
         param.setHash(getHashString(MainWardrobeParam.class,param));

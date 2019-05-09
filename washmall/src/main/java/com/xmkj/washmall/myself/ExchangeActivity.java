@@ -69,9 +69,11 @@ public class ExchangeActivity extends BaseActivity {
     AutoLinearLayout secondLayout;
     @BindView(R.id.third_layout)
     AutoLinearLayout thirdLayout;
+    @BindView(R.id.amount)
+    TextView amount;
     private List<ExchangeInfoTo> exchangeList;
-    private ExchangeInfoTo selectExchange=new ExchangeInfoTo();
-    private int payType=1;
+    private ExchangeInfoTo selectExchange = new ExchangeInfoTo();
+    private int payType = 1;
 
     private Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
@@ -127,50 +129,51 @@ public class ExchangeActivity extends BaseActivity {
     @SuppressLint("SetTextI18n")
     private void setView() {
         money1.setText(exchangeList.get(0).getRecharge_amount());
-        send1.setText("送"+exchangeList.get(0).getGive_amount());
+        send1.setText("送" + exchangeList.get(0).getGive_amount());
         discount1.setText(exchangeList.get(0).getTips());
         money2.setText(exchangeList.get(1).getRecharge_amount());
-        send2.setText("送"+exchangeList.get(1).getGive_amount());
+        send2.setText("送" + exchangeList.get(1).getGive_amount());
         discount2.setText(exchangeList.get(1).getTips());
         money3.setText(exchangeList.get(2).getRecharge_amount());
-        send3.setText("送"+exchangeList.get(2).getGive_amount());
+        send3.setText("送" + exchangeList.get(2).getGive_amount());
         discount3.setText(exchangeList.get(2).getTips());
+        amount.setText("￥"+userInfoTo.getMyselfTo().getUser_info().getAccount());
     }
 
-    @OnClick({R.id.ali_layout, R.id.wechat_layout, R.id.confirm,R.id.first_layout,R.id.second_layout,R.id.third_layout})
+    @OnClick({R.id.ali_layout, R.id.wechat_layout, R.id.confirm, R.id.first_layout, R.id.second_layout, R.id.third_layout})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ali_layout:
                 aliIcon.setBackgroundResource(R.drawable.address_select);
                 wechatIcon.setBackgroundResource(R.drawable.address_un_select);
-                payType=1;
+                payType = 1;
                 break;
             case R.id.wechat_layout:
                 aliIcon.setBackgroundResource(R.drawable.address_un_select);
                 wechatIcon.setBackgroundResource(R.drawable.address_select);
-                payType=2;
+                payType = 2;
                 break;
             case R.id.confirm:
-                if (selectExchange.getPackage_id()==0){
-                    showMessage("请选择优惠方式");
+                if (selectExchange.getPackage_id() == 0) {
+                    showMessage("选择充值金额");
                     return;
                 }
-                presenter.pay(selectExchange.getPackage_id()+"",payType);
+                presenter.pay(selectExchange.getPackage_id() + "", payType);
                 break;
             case R.id.first_layout:
-                selectExchange=exchangeList.get(0);
+                selectExchange = exchangeList.get(0);
                 firstLayout.setBackgroundResource(R.drawable.exchange_select);
                 secondLayout.setBackgroundResource(R.drawable.exchange_un_select);
                 thirdLayout.setBackgroundResource(R.drawable.exchange_un_select);
                 break;
             case R.id.second_layout:
-                selectExchange=exchangeList.get(1);
+                selectExchange = exchangeList.get(1);
                 secondLayout.setBackgroundResource(R.drawable.exchange_select);
                 firstLayout.setBackgroundResource(R.drawable.exchange_un_select);
                 thirdLayout.setBackgroundResource(R.drawable.exchange_un_select);
                 break;
             case R.id.third_layout:
-                selectExchange=exchangeList.get(2);
+                selectExchange = exchangeList.get(2);
                 thirdLayout.setBackgroundResource(R.drawable.exchange_select);
                 secondLayout.setBackgroundResource(R.drawable.exchange_un_select);
                 firstLayout.setBackgroundResource(R.drawable.exchange_un_select);

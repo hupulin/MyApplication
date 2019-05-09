@@ -15,12 +15,13 @@ import com.xmkj.washmall.databinding.CarItemBinding;
 import com.xmkj.washmall.databinding.MyCollectItemBinding;
 
 import hzxmkuar.com.applibrary.domain.car.GoodsCarTo;
+import hzxmkuar.com.applibrary.domain.myself.CollectTo;
 
 /**
  * Created by Administrator on 2018/8/28.
  **/
 
-public class MyCollectAdapter extends BaseAdapter<GoodsCarTo, MyCollectItemBinding> {
+public class MyCollectAdapter extends BaseAdapter<CollectTo, MyCollectItemBinding> {
    public MyCollectAdapter(Activity context) {
         super(context);
     }
@@ -43,13 +44,29 @@ public class MyCollectAdapter extends BaseAdapter<GoodsCarTo, MyCollectItemBindi
     public void onBindViewHolder(BindingHolder<MyCollectItemBinding> holder, int position) {
         super.onBindViewHolder(holder, position);
         MyCollectItemBinding binding = holder.getBinding();
-        GoodsCarTo mode=mList.get(position);
+        CollectTo mode=mList.get(position);
         binding.goodsName.setText(mode.getGoods_name());
-        disPlayImage(binding.goodsImage,mode.getSpec_image());
-        binding.price.setText(mode.getGoods_price());
-        binding.collectNum.setText(mode.getGoods_num()+"人收藏");
+        disPlayImage(binding.goodsImage,mode.getGoods_image());
+        binding.price.setText("￥"+mode.getGoods_price());
+        binding.collectNum.setText(mode.getCollected()+"人收藏");
+        binding.btnDelete.setOnClickListener(view -> {
+            if (listener!=null)
+                listener.deleteCollect(mode);
+        });
 
 
+    }
+
+
+    public interface MyCollectAdapterListener{
+
+        void deleteCollect(CollectTo mode);
+    }
+
+    private MyCollectAdapterListener listener;
+
+    public void setMyCollectAdapterListener(MyCollectAdapterListener listener){
+        this.listener=listener;
     }
 
 

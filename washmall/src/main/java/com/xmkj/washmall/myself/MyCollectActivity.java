@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.BaseActivity;
+import com.xmkj.washmall.base.WashAlertDialog;
 import com.xmkj.washmall.myself.adapter.MyCollectAdapter;
 import com.xmkj.washmall.myself.presenter.MyCollectPresenter;
 
@@ -19,6 +20,8 @@ import butterknife.ButterKnife;
 public class MyCollectActivity extends BaseActivity {
     @BindView(R.id.recycler_view)
     LRecyclerView recyclerView;
+    private MyCollectPresenter presenter;
+    private MyCollectAdapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -26,6 +29,18 @@ public class MyCollectActivity extends BaseActivity {
         setContentView(R.layout.common_recycler_view);
         ButterKnife.bind(this);
         setTitleName("我的收藏");
-        setRecycleView(new MyCollectAdapter(this),recyclerView,new MyCollectPresenter(this));
+        presenter = new MyCollectPresenter(this);
+        adapter = new MyCollectAdapter(this);
+        setRecycleView(adapter,recyclerView,presenter);
+        setAdapterListener();
+    }
+
+    private void setAdapterListener() {
+        adapter.setMyCollectAdapterListener(mode -> {
+            WashAlertDialog.show(this,"提示","确定删除收藏").setOnClickListener(view -> {
+                WashAlertDialog.dismiss();
+                presenter.deleteCollect(mode.getCollect_id());
+            });
+        });
     }
 }

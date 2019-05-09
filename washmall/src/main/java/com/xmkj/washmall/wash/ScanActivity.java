@@ -1,10 +1,12 @@
 package com.xmkj.washmall.wash;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.hardware.Camera;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -21,6 +23,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import hzxmkuar.com.applibrary.impl.PermissionListener;
+import rx.Observable;
 import util.zxing.activity.CaptureFragment;
 import util.zxing.activity.CodeUtils;
 import util.zxing.activity.ZXingLibrary;
@@ -76,13 +79,10 @@ public class ScanActivity extends BaseActivity implements PermissionListener {
         @Override
         public void onAnalyzeSuccess(Bitmap mBitmap, String result) {
 
-//                Intent intent = new Intent(appContext, VerifyResultActivity.class);
-//                intent.putExtra("Result", result);
-//                startActivity(intent);
 
+                showMessage("开柜中");
                 presenter.openWardrobe(result);
-                finish();
-                goToAnimation(1);
+
 
         }
 
@@ -129,5 +129,11 @@ public class ScanActivity extends BaseActivity implements PermissionListener {
         }
     }
 
-
+    @Override
+    protected void submitDataSuccess(Object data) {
+        new Handler().postDelayed(() -> {
+            Observable.from(ActivityManager.activityList).subscribe(Activity::finish);
+            goToAnimation(2);
+        },2500);
+    }
 }

@@ -3,8 +3,9 @@ package com.xmkj.washmall.base;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import android.webkit.WebView;
 
+
+import com.tencent.smtt.sdk.WebView;
 import com.xmkj.washmall.MainApp;
 import com.xmkj.washmall.R;
 

@@ -12,6 +12,18 @@
         android:layout_width="match_parent"
         android:layout_height="2px"
         android:background="#EDEDED" />
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:scrollbars="none"
+    android:layout_weight="1"
+    >
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
 
     <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="match_parent"
@@ -236,7 +248,9 @@
         android:layout_width="match_parent"
         android:layout_height="0px"
         android:layout_weight="1" />
+    </com.zhy.autolayout.AutoLinearLayout>
 
+</ScrollView>
     <View
         android:layout_width="match_parent"
         android:layout_height="2px"

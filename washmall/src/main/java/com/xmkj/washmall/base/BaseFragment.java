@@ -147,6 +147,48 @@ public class BaseFragment<T> extends Fragment {
 
     }
 
+    protected void setRecycleView(BaseAdapter adapter, LRecyclerView recycleView, BasePresenter presenter,boolean refresh) {
+        this.baseAdapter = adapter;
+        this.mRecycleView = recycleView;
+        recycleView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recycleView.setRefreshHeader(new RecycleViewHeadView(appContext));
+        LRecyclerViewAdapter lRecyclerViewAdapter = new LRecyclerViewAdapter(adapter);
+        if (headView!=null)
+            lRecyclerViewAdapter.addHeaderView(headView);
+        recycleView.setAdapter(lRecyclerViewAdapter);
+        recycleView.setPullRefreshEnabled(refresh);
+        recycleView.setLoadMoreEnabled(false);
+        recycleView.setLoadingMoreProgressStyle(ProgressStyle.BallSpinFadeLoader);
+        recycleView.setFooterViewColor(R.color.appColor, R.color.appColor, R.color.transparent);
+        recycleView.setOnLoadMoreListener(presenter::recycleViewLoadMore);
+        recycleView.setOnRefreshListener(presenter::recycleViewRefresh);
+        lRecyclerViewAdapter.setOnItemClickListener(presenter::recycleItemClick);
+//        recycleView.forceToRefresh();
+
+
+    }
+
+
+    protected void setRecycleView(BaseAdapter adapter, LRecyclerView recycleView, BasePresenter presenter,boolean refresh,boolean loadMore) {
+        this.baseAdapter = adapter;
+        this.mRecycleView = recycleView;
+        recycleView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recycleView.setRefreshHeader(new RecycleViewHeadView(appContext));
+        LRecyclerViewAdapter lRecyclerViewAdapter = new LRecyclerViewAdapter(adapter);
+        if (headView!=null)
+            lRecyclerViewAdapter.addHeaderView(headView);
+        recycleView.setAdapter(lRecyclerViewAdapter);
+        recycleView.setPullRefreshEnabled(refresh);
+        recycleView.setLoadMoreEnabled(loadMore);
+        recycleView.setLoadingMoreProgressStyle(ProgressStyle.BallSpinFadeLoader);
+        recycleView.setFooterViewColor(R.color.appColor, R.color.appColor, R.color.transparent);
+        recycleView.setOnLoadMoreListener(presenter::recycleViewLoadMore);
+        recycleView.setOnRefreshListener(presenter::recycleViewRefresh);
+        lRecyclerViewAdapter.setOnItemClickListener(presenter::recycleItemClick);
+//        recycleView.forceToRefresh();
+
+
+    }
 
     protected void setRecycleView(BaseAdapter adapter, LRecyclerView recycleView, BasePresenter presenter,int count) {
         this.baseAdapter = adapter;
@@ -159,6 +201,27 @@ public class BaseFragment<T> extends Fragment {
         recycleView.setAdapter(lRecyclerViewAdapter);
         recycleView.setPullRefreshEnabled(false);
         recycleView.setLoadMoreEnabled(false);
+        recycleView.setLoadingMoreProgressStyle(ProgressStyle.BallSpinFadeLoader);
+        recycleView.setFooterViewColor(R.color.appColor, R.color.appColor, R.color.transparent);
+        recycleView.setOnLoadMoreListener(presenter::recycleViewLoadMore);
+        recycleView.setOnRefreshListener(presenter::recycleViewRefresh);
+        lRecyclerViewAdapter.setOnItemClickListener(presenter::recycleItemClick);
+//        recycleView.forceToRefresh();
+
+
+    }
+
+    protected void setRecycleView(BaseAdapter adapter, LRecyclerView recycleView, BasePresenter presenter,int count,boolean refresh,boolean loadMore) {
+        this.baseAdapter = adapter;
+        this.mRecycleView = recycleView;
+        recycleView.setLayoutManager(new GridLayoutManager(getActivity(),count));
+        recycleView.setRefreshHeader(new RecycleViewHeadView(appContext));
+        LRecyclerViewAdapter lRecyclerViewAdapter = new LRecyclerViewAdapter(adapter);
+        if (headView!=null)
+            lRecyclerViewAdapter.addHeaderView(headView);
+        recycleView.setAdapter(lRecyclerViewAdapter);
+        recycleView.setPullRefreshEnabled(refresh);
+        recycleView.setLoadMoreEnabled(loadMore);
         recycleView.setLoadingMoreProgressStyle(ProgressStyle.BallSpinFadeLoader);
         recycleView.setFooterViewColor(R.color.appColor, R.color.appColor, R.color.transparent);
         recycleView.setOnLoadMoreListener(presenter::recycleViewLoadMore);

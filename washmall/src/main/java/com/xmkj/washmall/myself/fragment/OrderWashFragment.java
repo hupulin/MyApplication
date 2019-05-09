@@ -78,7 +78,7 @@ public class OrderWashFragment extends BaseFragment {
             adapter = new OrderWashAdapter(getActivity());
             presenter = new MyWashOrderPresenter(this);
             presenter.getOrderList(type);
-            setRecycleView(adapter,recyclerView, presenter);
+            setRecycleView(adapter,recyclerView, presenter,true,true);
             setAdapterListener();
         }
 

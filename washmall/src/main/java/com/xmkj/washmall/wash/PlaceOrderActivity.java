@@ -164,6 +164,7 @@ public class PlaceOrderActivity extends BaseActivity implements OnDateSetListene
         Intent intent = new Intent(appContext, ReserveSuccessActivity.class);
         intent.putExtra("OrderId",orderIdTo.getOrder_id());
         startActivity(intent);
+        finish();
         goToAnimation(1);
 
     }

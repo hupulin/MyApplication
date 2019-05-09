@@ -121,4 +121,10 @@ public class CarPresenter extends BasePresenter {
                 }
         );
     }
+
+    @Override
+    public void recycleViewRefresh() {
+        super.recycleViewRefresh();
+        getGoodsList();
+    }
 }

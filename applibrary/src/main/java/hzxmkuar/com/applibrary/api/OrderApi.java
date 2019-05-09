@@ -84,4 +84,10 @@ public interface OrderApi {
      */
     @POST("Api/Order/confirmCompletedForUser")
     Observable<MessageTo>confirmReceiver(@Body OrderIdParam param);
+
+    /**
+     * 我的订单详情
+     */
+    @POST("Api/Order/orderDetailForUser")
+    Observable<MessageTo>orderDetail(@Body OrderIdParam param);
 }

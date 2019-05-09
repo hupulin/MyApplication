@@ -8,7 +8,8 @@
 
         <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="724px"
-            android:layout_height="499px"
+            android:layout_height="wrap_content"
+            android:minHeight="499px"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="22px"
             android:background="@drawable/my_order_mall_bg"
@@ -121,6 +122,7 @@
                 app:border_width_normal="2px"
                 app:corner_radius="58px"
                 android:text="付款"
+                android:layout_marginBottom="30px"
                 android:textSize="26px"
                 android:id="@+id/pay"
                 android:visibility="gone"
@@ -137,6 +139,7 @@
                 app:corner_radius="58px"
                 android:text="催发货"
                 android:textSize="26px"
+                android:layout_marginBottom="30px"
                 android:id="@+id/send"
                 android:visibility="gone"
                 android:layout_marginTop="18px"
@@ -152,6 +155,7 @@
                 app:border_width_normal="2px"
                 app:corner_radius="58px"
                 android:text="确认收货"
+                android:layout_marginBottom="30px"
                 android:textSize="26px"
                 android:id="@+id/confirm_receiver"
                 android:visibility="gone"

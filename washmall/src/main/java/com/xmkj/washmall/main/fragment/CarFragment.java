@@ -62,7 +62,7 @@ public class CarFragment extends BaseFragment {
         unbinder = ButterKnife.bind(this, mView);
         adapter = new CarAdapter(getActivity());
         presenter = new CarPresenter(this);
-        setRecycleView(adapter, recyclerView, presenter);
+        setRecycleView(adapter, recyclerView, presenter,true);
         setAdapter();
         return mView;
     }

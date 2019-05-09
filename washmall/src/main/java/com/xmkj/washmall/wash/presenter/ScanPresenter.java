@@ -33,6 +33,7 @@ public class ScanPresenter extends BasePresenter {
                     public void onNext(MessageTo msg) {
                         if (msg.getCode()==0){
                             showMessage("开箱成功");
+                            submitDataSuccess(msg.getData());
                         }else
                             showMessage(msg.getMsg());
                     }

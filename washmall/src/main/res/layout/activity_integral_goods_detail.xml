@@ -26,7 +26,9 @@
 
             <com.zhy.autolayout.AutoRelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="108px">
+                android:layout_height="wrap_content"
+                android:minHeight="108px"
+                >
 
                 <com.xmkj.washmall.base.util.PingFangTextView
                     android:id="@+id/goods_price"
@@ -55,7 +57,8 @@
 
             <com.zhy.autolayout.AutoLinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="151px"
+                android:layout_height="wrap_content"
+                android:minHeight="151px"
                 android:layout_marginLeft="27px"
                 android:layout_marginRight="27px"
                 android:orientation="vertical">
@@ -76,7 +79,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30px"
                     android:ellipsize="end"
-                    android:maxLines="2"
+                    android:layout_marginBottom="24px"
+
                     android:textColor="#5B5B5B"
                     android:textSize="24px" />
             </com.zhy.autolayout.AutoLinearLayout>
@@ -88,7 +92,9 @@
 
             <com.zhy.autolayout.AutoRelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="77px">
+                android:layout_height="77px"
+                android:visibility="gone"
+                >
 
                 <TextView
                     android:layout_width="wrap_content"

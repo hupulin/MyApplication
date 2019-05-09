@@ -4,9 +4,12 @@
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:name="MainApp"
@@ -199,7 +202,11 @@
             android:name=".integral.IntegralRecordActivity"
             android:screenOrientation="portrait" />
 
-        <activity android:name=".myself.OrderDetailActivity"
+        <activity
+            android:name=".myself.OrderDetailActivity"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".main.SelectPositionActivity"
             android:screenOrientation="portrait"
             />
 
@@ -248,6 +255,14 @@
             </intent-filter>
         </receiver>
 
+
+        <service android:name="com.amap.api.location.APSService" />
+
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="ca927aa14f3d57f02bfca791c14ea9d0">
+
+        </meta-data>
 
         <meta-data
             android:name="design_width"
