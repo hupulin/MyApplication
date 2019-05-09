@@ -7,7 +7,7 @@ android {
         release {
             keyAlias 'wolaixi'
             keyPassword '123456'
-            storeFile file('D:/xzz/jks/wash.jks')
+            storeFile file('D:/wolaixi/washmall/wash.jks')
             storePassword '123456'
         }
     }

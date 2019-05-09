@@ -133,8 +133,10 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-        initFragment();
-        fragmentLayout.setCurrentItem(getIntent().getIntExtra("Index",1));
+//        initFragment();
+//        fragmentLayout.setCurrentItem(getIntent().getIntExtra("Index",1));
 
     }
+
+
 }

@@ -39,6 +39,7 @@ import java.text.ParseException;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import hzxmkuar.com.applibrary.domain.delivery.main.MainUserInfo;
 import rx.Observable;
 
 /**
@@ -50,6 +51,8 @@ public class ChangeInfoActivity extends BaseActivity implements OnDateSetListene
     TextView man;
     @BindView(R.id.women)
     TextView women;
+    @BindView(R.id.tv_birthday)
+    TextView tvBirthday;
     @BindView(R.id.head_image)
     ImageView headImage;
     @BindView(R.id.nickname)
@@ -68,12 +71,12 @@ public class ChangeInfoActivity extends BaseActivity implements OnDateSetListene
         setContentView(R.layout.activity_change_info);
         ButterKnife.bind(this);
         presenter = new ChangeInfoPresent(this);
+        presenter.  getUserInfo();
         setView();
     }
 
     private void setView() {
-        headImageUrl = getIntent().getStringExtra("headImageUrl");
-        disPlayRoundImage(headImage, headImageUrl);
+//        headImageUrl =userInfoTo.getUser_info().getNickname();
         setRightAndTitleText("保存", "编辑个人资料");
 
     }
@@ -140,7 +143,7 @@ public class ChangeInfoActivity extends BaseActivity implements OnDateSetListene
                 setCancelStringId(Constant.CANCEL).
                 setTitleStringId(Constant.CHOOSING_BIRTHDAY).
                 setSureStringId(Constant.CONFIRM).
-                setMonthText(Constant.MONTH).setDayText(Constant.DAY).setMinMillseconds(System.currentTimeMillis() - tenYears).setMaxMillseconds(System.currentTimeMillis() + oneYears).setCurrentMillseconds(System.currentTimeMillis()).
+                setMonthText(Constant.MONTH).setDayText(Constant.DAY).setMinMillseconds(System.currentTimeMillis() - tenYears).setMaxMillseconds(System.currentTimeMillis()).setCurrentMillseconds(System.currentTimeMillis()).
                 setCyclic(false).setThemeColor(Color.parseColor("#6d75a4")).setType(Type.YEAR_MONTH_DAY).setWheelItemTextNormalColor(R.color.timetimepicker_default_text_color).setWheelItemTextSelectorColor(R.color.timepicker_toolbar_bg).setWheelItemTextSize(12).build();
         mDialogAll.show(getSupportFragmentManager(), "");
 
@@ -286,5 +289,26 @@ public class ChangeInfoActivity extends BaseActivity implements OnDateSetListene
     protected void submitDataSuccess(Object data) {
         super.submitDataSuccess(data);
         finish();
+    }
+
+    @Override
+    public void loadDataSuccess(Object data) {
+        MainUserInfo mode=(MainUserInfo)data;
+        if(mode.getGender()==1){
+            man.setTextColor(Color.parseColor("#000000"));
+            man.setBackground(getResources().getDrawable(R.drawable.select_man_bg));
+            women.setBackground(getResources().getDrawable(R.drawable.transparent));
+            women.setTextColor(Color.parseColor("#2E23FF"));
+            gender="男";
+        }else{
+            women.setTextColor(Color.parseColor("#000000"));
+            women.setBackground(getResources().getDrawable(R.drawable.select_women_bg));
+            man.setTextColor(Color.parseColor("#2E23FF"));
+            man.setBackground(getResources().getDrawable(R.drawable.transparent));
+            gender="女";
+        }
+        disPlayRoundImage(headImage, mode.getFace_url());
+        nickname.setText(mode.getNickname());
+        tvBirthday.setText(mode.getBirthday());
     }
 }

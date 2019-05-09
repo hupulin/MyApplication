@@ -62,6 +62,8 @@ public class MainPresenter extends BasePresenter {
                     @Override
                     public void onNext(MessageTo msg) {
                         if (msg.getCode() == 0) {
+                            showMessage("已确认取货");
+                        }else{
                             showMessage(msg.getMsg());
                         }
                     }

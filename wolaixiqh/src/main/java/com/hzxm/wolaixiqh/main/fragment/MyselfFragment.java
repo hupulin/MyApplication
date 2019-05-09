@@ -1,5 +1,6 @@
 package com.hzxm.wolaixiqh.main.fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -16,6 +17,7 @@ import com.google.gson.Gson;
 import com.hzxm.wolaixiqh.R;
 import com.hzxm.wolaixiqh.base.BaseActivity;
 import com.hzxm.wolaixiqh.base.BaseFragment;
+import com.hzxm.wolaixiqh.base.UserInfoHelp;
 import com.hzxm.wolaixiqh.main.adapter.DeliveredOrderlAdapter;
 import com.hzxm.wolaixiqh.main.present.MyselfPresent;
 import com.hzxm.wolaixiqh.person.ChangeInfoActivity;
@@ -32,6 +34,7 @@ import hzxmkuar.com.applibrary.domain.delivery.main.UserInfoTo;
  *  Created by Administrator on 2018/12/15.
  */
 
+@SuppressLint("ValidFragment")
 public class MyselfFragment extends BaseFragment {
     Unbinder unbinder;
     @BindView(R.id.recycle_view)
@@ -61,7 +64,6 @@ public class MyselfFragment extends BaseFragment {
 
     private BaseActivity baseActivity;
     private MyselfPresent myselfPresent;
-    private UserInfoTo mode;
     public MyselfFragment(BaseActivity activity) {
         this.baseActivity = activity;
     }
@@ -93,7 +95,7 @@ public class MyselfFragment extends BaseFragment {
         switch (view.getId()) {
             case R.id.head_image:
                 Intent intent=new Intent(baseActivity, ChangeInfoActivity.class);
-                intent.putExtra("headImageUrl",mode.getUser_info().getFace_url());
+//                intent.putExtra("headImageUrl",userInfoTo.getUser_info().getFace_url());
                 startActivity(intent);
                 goToAnimation(1);
                 break;
@@ -106,9 +108,11 @@ public class MyselfFragment extends BaseFragment {
 
     @Override
     protected void submitDataSuccess(Object data) {
-        mode = new Gson().fromJson(JSON.toJSONString(data), UserInfoTo.class);
+        UserInfoTo mode = new Gson().fromJson(JSON.toJSONString(data), UserInfoTo.class);
         disPlayRoundImage(headImage,mode.getUser_info().getFace_url());
         name.setText(mode.getUser_info().getNickname());
+//        UserInfoHelp userInfoHelp=new UserInfoHelp();
+//        userInfoHelp.saveUserInfo(mode);
         orderTodayt.setText(mode.getOrder_statistics().getToday().getOrder_number()+"");
         orderTodayAmount.setText(mode.getOrder_statistics().getToday().getOrder_amount()+"");
         orderYesterday.setText(mode.getOrder_statistics().getYesterday().getOrder_number()+"");

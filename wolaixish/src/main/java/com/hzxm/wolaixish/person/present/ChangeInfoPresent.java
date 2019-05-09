@@ -12,8 +12,10 @@ import java.util.ArrayList;
 import hzxmkuar.com.applibrary.api.ApiClient;
 import hzxmkuar.com.applibrary.api.DeliveryApi;
 import hzxmkuar.com.applibrary.api.UserApi;
+import hzxmkuar.com.applibrary.domain.BaseParam;
 import hzxmkuar.com.applibrary.domain.MessageTo;
 import hzxmkuar.com.applibrary.domain.delivery.login.updateUserPasswdParam;
+import hzxmkuar.com.applibrary.domain.delivery.main.MainUserInfo;
 import hzxmkuar.com.applibrary.domain.delivery.main.updateUserInfoParam;
 import hzxmkuar.com.applibrary.domain.user.ModifyImageParam;
 import rx.android.schedulers.AndroidSchedulers;
@@ -58,8 +60,14 @@ this.key=key;
         updateUserInfoParam param=new updateUserInfoParam();
         param.setUid(userInfoTo.getUid());
         param.setHashid(userInfoTo.getHashid());
-        param.setFace(key);
+        if (key == null)
+            param.setFace("");
+        else
+            param.setFace(key);
         param.setNickname(nickname);
+        if(birthday==null)
+        param.setBirthday("");
+        else
         param.setBirthday(birthday);
         param.setGender(gender);
         param.setHash(getHashString(updateUserInfoParam.class,param));
@@ -72,6 +80,27 @@ this.key=key;
                         if (msg.getCode()==0){
                             showMessage("修改个人资料成功");
                             submitDataSuccess(msg.getData());
+                        }else {
+                            showMessage(msg.getMsg());
+                        }
+                    }
+                }
+        );
+    }
+    public void getUserInfo  (){
+        BaseParam param=new BaseParam();
+        param.setUid(userInfoTo.getUid());
+        param.setHashid(userInfoTo.getHashid());
+
+        param.setHash(getHashString(updateUserInfoParam.class,param));
+
+        showLoadingDialog();
+        ApiClient.create(DeliveryApi.class).getUserInfo(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
+                new MyObserver<MessageTo<MainUserInfo>>(this) {
+                    @Override
+                    public void onNext(MessageTo<MainUserInfo> msg) {
+                        if (msg.getCode()==0){
+                            getDataSuccess(msg.getData());
                         }else {
                             showMessage(msg.getMsg());
                         }

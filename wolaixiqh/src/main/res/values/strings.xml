@@ -18,7 +18,7 @@
     <string name="order_pay">订单金额：</string>
     <string name="order_pay_other">订单金额</string>
     <string name="order_time">预计送达时间：</string>
-    <string name="appointment_wardrobe">预约衣柜：</string>
+    <string name="appointment_wardrobe">预约存柜：</string>
     <string name="address">地址：</string>
     <string name="order_today">当日订单</string>
     <string name="order_yesterday">昨日订单</string>

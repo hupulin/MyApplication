@@ -17,6 +17,7 @@ import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.ActivityManager;
 import com.xmkj.washmall.base.BaseActivity;
 import com.xmkj.washmall.base.util.SpUtil;
+import com.xmkj.washmall.main.MainActivity;
 import com.xmkj.washmall.wash.presenter.ScanPresenter;
 
 import butterknife.BindView;
@@ -80,7 +81,7 @@ public class ScanActivity extends BaseActivity implements PermissionListener {
         public void onAnalyzeSuccess(Bitmap mBitmap, String result) {
 
 
-                showMessage("开柜中");
+//                showMessage("开柜中");
                 presenter.openWardrobe(result);
 
 
@@ -132,8 +133,11 @@ public class ScanActivity extends BaseActivity implements PermissionListener {
     @Override
     protected void submitDataSuccess(Object data) {
         new Handler().postDelayed(() -> {
+            Intent intent=new Intent(ScanActivity.this,MainActivity.class);
+            startActivity(intent);
             Observable.from(ActivityManager.activityList).subscribe(Activity::finish);
+          finish();
             goToAnimation(2);
-        },2500);
+        },1500);
     }
 }

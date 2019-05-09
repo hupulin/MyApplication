@@ -43,14 +43,19 @@ public class MallBannerView implements Holder<List<MallTypeTo>> {
             View mView = View.inflate(context, R.layout.mall_banner_item, null);
             MallBannerItemBinding binding = DataBindingUtil.bind(mView);
             binding.name.setText(mallBannerTo.getCate_name());
-            Glide.with(context).load(mallBannerTo.getCate_img()).into(binding.image);
+            if (mallBannerTo.getCate_id() != 1000000) {
+                Glide.with(context).load(mallBannerTo.getCate_img()).into(binding.image);
+            } else {
+                Glide.with(context).load(R.drawable.integral_mall).into(binding.image);
+
+            }
             mView.setOnClickListener(v -> {
-                if (mallBannerTo.getCate_id()!=1000000) {
+                if (mallBannerTo.getCate_id() != 1000000) {
                     Intent intent = new Intent(context, GoodsSortActivity.class);
                     intent.putExtra("CateId", mallBannerTo.getCate_id());
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
-                }else {
+                } else {
                     Intent intent = new Intent(context, IntegralActivity.class);
                     intent.putExtra("CateId", mallBannerTo.getCate_id());
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

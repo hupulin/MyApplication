@@ -34,7 +34,7 @@ public class MyOderListPresent extends BasePresenter {
         param.setPage(page);
         param.setHash(getHashString(PageParam.class, param));
         showLoadingDialog();
-        ApiClient.create(DeliveryApi.class).getDeliveryOrderlist(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
+        ApiClient.create(DeliveryApi.class).getPickupOrderlist(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
                 new MyObserver<MessageTo<DeLiveryOrderListTo>>(this) {
                     @Override
                     public void onNext(MessageTo<DeLiveryOrderListTo> msg) {

@@ -139,7 +139,7 @@ public class BaseActivity<T> extends FragmentActivity implements FragmentPermiss
 
         itemImageLayout.removeAllViews();
 
-        for (int i = 0; i < (imagePaths.size() == 3? 3 : imagePaths.size() + 1) && i < 3; i++) {
+        for (int i = 0; i < (imagePaths.size() == 1? 1 : imagePaths.size() + 1) && i < 1; i++) {
             View mView = View.inflate(appContext, R.layout.circle_post_image_item, null);
             RoundedImageView imageView = mView.findViewById(R.id.image_view);
             mView.findViewById(R.id.delete_image).setVisibility((imagePaths.size() == 0 || imagePaths.size() == i) ? View.GONE : View.VISIBLE);
@@ -273,7 +273,7 @@ public class BaseActivity<T> extends FragmentActivity implements FragmentPermiss
                 PhotoPickerIntent intent = new PhotoPickerIntent(appContext);
                 intent.setSelectModel(SelectModel.MULTI);
                 intent.setShowCarema(true); // 是否显示拍照
-                intent.setMaxTotal(maxNum==0?4:maxNum); // 最多选择照片数量，默认为6
+                intent.setMaxTotal(maxNum==0?1:maxNum); // 最多选择照片数量，默认为6
                 intent.setSelectedPaths(imagePaths); // 已选中的照片地址， 用于回显选中状态
                 startActivityForResult(intent,10);
             } else {

@@ -5,7 +5,9 @@ import hzxmkuar.com.applibrary.domain.MessageTo;
 import hzxmkuar.com.applibrary.domain.delivery.login.LoginShopUserParam;
 import hzxmkuar.com.applibrary.domain.delivery.login.updateUserPasswdParam;
 import hzxmkuar.com.applibrary.domain.delivery.main.DeLiveryOrderListTo;
+import hzxmkuar.com.applibrary.domain.delivery.main.FeedBackParam;
 import hzxmkuar.com.applibrary.domain.delivery.main.IdParam;
+import hzxmkuar.com.applibrary.domain.delivery.main.MainUserInfo;
 import hzxmkuar.com.applibrary.domain.delivery.main.OpenDoorParam;
 import hzxmkuar.com.applibrary.domain.delivery.main.PageParam;
 import hzxmkuar.com.applibrary.domain.delivery.main.UserInfoTo;
@@ -32,6 +34,11 @@ public interface DeliveryApi {
     @POST("Api/Shopuser/delivery_orderlist")
     Observable<MessageTo<DeLiveryOrderListTo>> getDeliveryOrderlist(@Body PageParam param);
     /**
+     *【取货员】订单列表
+     */
+    @POST("Api/Shopuser/pickup_orderlist")
+    Observable<MessageTo<DeLiveryOrderListTo>> getPickupOrderlist(@Body PageParam param);
+    /**
      *【送货员】首页
      */
     @POST("Api/Shopuser/delivery_index")
@@ -41,6 +48,17 @@ public interface DeliveryApi {
      */
     @POST("Api/Shopuser/pickup_index")
     Observable<MessageTo<DeLiveryOrderListTo>> getPickupOrderlistMain(@Body PageParam param);
+    /**
+     *【取货员】首页
+     */
+    @POST("Api/Shopuser/feedback_for_user")
+    Observable<MessageTo> FeedBackInfo(@Body FeedBackParam param);
+    /**
+     *【取货员】首页
+     */
+    @POST("Api/Shopuser/feedback_for_back")
+
+    Observable<MessageTo> FeedbackBack(@Body FeedBackParam param);
     /**
      *消息中心
      */
@@ -91,4 +109,9 @@ public interface DeliveryApi {
      */
     @POST("Api/Shopuser/updateUserInfo")
     Observable<MessageTo> updateUserInfo(@Body updateUserInfoParam param);
+    /**
+     *查看个人资料
+     */
+    @POST("Api/Shopuser/getUserInfo")
+    Observable<MessageTo<MainUserInfo>> getUserInfo(@Body BaseParam param);
 }

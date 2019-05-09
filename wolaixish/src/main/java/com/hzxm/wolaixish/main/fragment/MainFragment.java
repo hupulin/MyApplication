@@ -107,5 +107,10 @@ public class MainFragment extends BaseFragment {
     }
 
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        presenter.getOrderList(1);
 
+    }
 }

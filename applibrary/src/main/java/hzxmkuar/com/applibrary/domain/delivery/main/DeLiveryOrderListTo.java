@@ -33,15 +33,27 @@ public class DeLiveryOrderListTo {
          * order_id : 1140
          * order_sn : W20190109015926642
          * status_txt : 已清洗
+         *   "remarks": "小",
          */
-        private String address;
-        private String expect_delivery_time;
-        private Button_listEntity button_list;
-        private int order_amount;
-        private String wardrobe_title;
         private int order_id;
         private String order_sn;
+        private int order_amount;
         private String status_txt;
+        private String remarks;
+        private String deposit_wardrobe_no;
+        private String deposit_wardrobe_name;
+        private String deposit_address;
+        private String delivery_wardrobe_no;
+        private String  delivery_wardrobe_name;
+        private String  delivery_address;
+        private String  order_time;
+        private String  pickup_time;
+
+//
+//        private String wardrobe_title;
+//        private String address;
+//        private String expect_delivery_time;
+        private Button_listEntity button_list;
 
 
         @Data
@@ -55,6 +67,7 @@ public class DeLiveryOrderListTo {
             private int fkgz_btn;
             private int qrqh_btn;
             private int fkth_btn;
+            private int smqh_btn;
 
         }
     }

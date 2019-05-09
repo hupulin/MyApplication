@@ -100,14 +100,40 @@ public class UserInfoTo {
          * order_id : 1
          * order_sn : W238498243791356
          * status_txt : 已完成
+         *
+         *   {
+         *                 "order_id": 1155,
+         *                 "order_sn": "W20190421112847191",
+         *                 "deposit_wardrobe_no": "100015",
+         *                 "deposit_wardrobe_name": "未知",
+         *                 "deposit_address": "未知",
+         *                 "delivery_wardrobe_no": "100015",
+         *                 "delivery_wardrobe_name": "未知",
+         *                 "delivery_address": "未知",
+         *                 "order_time": "2019-04-21",
+         *                 "pickup_time": "2019-05-01",
+         *                 "order_amount": "38.00",
+         *                 "remarks": "haha",
+         *                 "status_txt": "已清洗"
+         *             }
          */
-        private String address;
-        private String expect_delivery_time;
+
         private int order_amount;
-        private String wardrobe_title;
         private int order_id;
         private String order_sn;
         private String status_txt;
+        private String remarks;
+        private String deposit_wardrobe_no;
+        private String deposit_wardrobe_name;
+        private String deposit_address;
+        private String delivery_wardrobe_no;
+        private String  delivery_wardrobe_name;
+        private String  delivery_address;
+        private String  order_time;
+        private String  pickup_time;
+//        private String address;
+//        private String expect_delivery_time;
+//        private String wardrobe_title;
 
     }
 }

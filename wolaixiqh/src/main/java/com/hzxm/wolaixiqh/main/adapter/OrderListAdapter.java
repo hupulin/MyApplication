@@ -44,13 +44,25 @@ public class OrderListAdapter extends BaseAdapter<DeLiveryOrderListTo.ListsEntit
         super.onBindViewHolder(holder, position);
         OrderRecordItemBinding binding = holder.getBinding();
         DeLiveryOrderListTo.ListsEntity mode = mList.get(position);
-        binding.addressLayout.setText(mode.getAddress());
-        binding.orderStatusText.setText(mode.getStatus_txt());
         binding.orderNumText.setText(mode.getOrder_sn());
-        binding.orderNumLayout.setText(mode.getWardrobe_title());
+        binding.orderStatusText.setText(mode.getStatus_txt());
+        binding.orderTime.setText(mode.getOrder_time());
+        binding.pickupTime.setText(mode.getPickup_time());
+        binding.remarks.setText(mode.getRemarks());
+        binding.deliveryWardrobe.setText(mode.getDelivery_wardrobe_name());
+        binding.depositWardrobe.setText(mode.getDeposit_wardrobe_name());
+        binding.depositAddress.setText(mode.getDeposit_address());
+        binding.deliveryAddress.setText(mode.getDelivery_address());
+        binding.orderAmount.setText("￥"+mode.getOrder_amount());
+
+//        binding.orderLayout
+//        binding.addressLayout.setText(mode.getAddress());
+//
+//        binding.orderNumText.setText(mode.getOrder_sn());
+//        binding.orderNumLayout.setText(mode.getWardrobe_title());
 
 
-        binding.sweepAndUnpack.setVisibility(mode.getButton_list().getSmkx_btn()==1?View.VISIBLE:View.GONE);
+        binding.sweepAndUnpack.setVisibility(mode.getButton_list().getSmqh_btn()==1?View.VISIBLE:View.GONE);
         binding.sweepAndUnpack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,12 +76,27 @@ public class OrderListAdapter extends BaseAdapter<DeLiveryOrderListTo.ListsEntit
                 listen.onPickUpTheGoods(mode.getOrder_id());
             }
         });
+        binding.feedbackInform.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listen.feedbackInform(mode.getOrder_id());
+
+            }
+        }); binding.feedbackBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listen.feedbackBack(mode.getOrder_id());
+
+            }
+        });
+
 
     }
     public  interface PickUpTheGoodsListener {
-        // true add; false cancel
-        void onPickUpTheGoods(int id); //传递boolean类型数据给activity
+        void onPickUpTheGoods(int id); //
         void onScanDecode(int id); //
+        void feedbackInform(int id); //
+        void feedbackBack(int id); //
     }
 
     PickUpTheGoodsListener  listen;

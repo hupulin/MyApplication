@@ -1,5 +1,6 @@
 package com.hzxm.wolaixiqh.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -133,8 +134,15 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-        initFragment();
-        fragmentLayout.setCurrentItem(getIntent().getIntExtra("Index",1));
+//        initFragment();
+//        showMessage("Index"+getIntent().getIntExtra("Index",1));
+//        fragmentLayout.setCurrentItem(getIntent().getIntExtra("Index",1));
 
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
 }

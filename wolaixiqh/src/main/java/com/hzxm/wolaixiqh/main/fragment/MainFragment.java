@@ -16,6 +16,7 @@ import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 import com.hzxm.wolaixiqh.R;
 import com.hzxm.wolaixiqh.base.BaseActivity;
 import com.hzxm.wolaixiqh.base.BaseFragment;
+import com.hzxm.wolaixiqh.main.EvaluateActivity;
 import com.hzxm.wolaixiqh.main.ScanDecodeActivity;
 import com.hzxm.wolaixiqh.main.adapter.OrderListAdapter;
 import com.hzxm.wolaixiqh.main.present.MainPresenter;
@@ -66,6 +67,26 @@ public class MainFragment extends BaseFragment {
                 startActivity(intent);
 
             }
+
+            @Override
+            public void feedbackInform(int id) {
+                Intent intent=new Intent(getActivity(),EvaluateActivity.class);
+                intent.putExtra("id",id);
+                intent.putExtra("type","1");
+                startActivity(intent);
+                goToAnimation(1);
+
+            }
+
+            @Override
+            public void feedbackBack(int id) {
+                Intent intent=new Intent(getActivity(),EvaluateActivity.class);
+                intent.putExtra("id",id);
+                intent.putExtra("type","2");
+                startActivity(intent);
+                goToAnimation(1);
+
+            }
         });
         return mView;
     }
@@ -74,7 +95,7 @@ public class MainFragment extends BaseFragment {
         NiftyDialogBuilder dialog = NiftyDialogBuilder.getInstance(baseActivity);
         dialog.setContentView(R.layout.my_dialog_comment_layout);
         TextView title =dialog.findViewById(R.id.title);
-        title.setText("确定已将衣物取出？");
+        title.setText("取货成功后，请关上柜门");
         dialog.show();
         dialog.findViewById(R.id.confirm).setOnClickListener(view1 -> {
             Log.i("222", "showDialog: "+id);
@@ -95,6 +116,11 @@ public class MainFragment extends BaseFragment {
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        presenter.getOrderList(1);
 
+    }
 
 }

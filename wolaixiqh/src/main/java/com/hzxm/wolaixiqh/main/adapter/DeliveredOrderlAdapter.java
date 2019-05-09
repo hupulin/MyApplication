@@ -15,7 +15,7 @@ import com.hzxm.wolaixiqh.databinding.MyOrderDeliveryItemBinding;
 import hzxmkuar.com.applibrary.domain.delivery.main.UserInfoTo;
 
 /**
- * 列表页
+ * 个人中心
  *  Created by Administrator on 2018/12/17.
  */
 
@@ -42,11 +42,19 @@ public class DeliveredOrderlAdapter extends BaseAdapter<UserInfoTo.Latest_orderE
         UserInfoTo.Latest_orderEntity mode = mList.get(position);
         binding.orderStatusText.setText(mode.getStatus_txt());
         binding.orderNumText.setText(mode.getOrder_sn());
-        binding.orderPayLayout.setText("￥"+mode.getOrder_amount());
+        binding.orderTime.setText(mode.getOrder_time());
+        binding.pickupTime.setText(mode.getPickup_time());
+        binding.remarks.setText(mode.getRemarks());
+        binding.deliveryWardrobe.setText(mode.getDelivery_wardrobe_name());
+        binding.depositWardrobe.setText(mode.getDeposit_wardrobe_name());
+        binding.depositAddress.setText(mode.getDeposit_address());
+        binding.deliveryAddress.setText(mode.getDelivery_address());
+        binding.orderAmount.setText("￥"+mode.getOrder_amount());
+//        binding.orderPayLayout.setText("￥"+mode.getOrder_amount());
 //        binding.orderTimeLayout.setText(mode.getExpect_delivery_time());
 //        binding.addressLayout.setText(mode.getAddress());
 
-        binding.orderNumLayout.setText(mode.getWardrobe_title());
+//        binding.orderNumLayout.setText(mode.getWardrobe_title());
     }
 
 }

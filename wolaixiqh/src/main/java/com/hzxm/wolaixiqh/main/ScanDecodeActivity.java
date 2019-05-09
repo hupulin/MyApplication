@@ -57,6 +57,8 @@ public class ScanDecodeActivity extends BaseActivity {
     @Override
     protected void submitDataSuccess(Object data) {
         finish();
+
+
     }
 
     private void setView() {
@@ -79,15 +81,14 @@ public class ScanDecodeActivity extends BaseActivity {
     CodeUtils.AnalyzeCallback analyzeCallback = new CodeUtils.AnalyzeCallback() {
         @Override
         public void onAnalyzeSuccess(Bitmap mBitmap, String result) {
-            if (type == 1) {
 //                Intent intent = new Intent(appContext, VerifyResultActivity.class);
 //                intent.putExtra("Result", result);
 //                startActivity(intent);
 //                finish();
 //                goToAnimation(1);
+//                showMessage(result);
                 openDoorPresent.OpenDoorPresent(id,result);
 
-            }
         }
 
         @Override

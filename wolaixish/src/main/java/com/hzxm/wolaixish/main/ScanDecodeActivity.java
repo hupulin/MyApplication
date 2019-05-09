@@ -80,14 +80,12 @@ public class ScanDecodeActivity extends BaseActivity {
     CodeUtils.AnalyzeCallback analyzeCallback = new CodeUtils.AnalyzeCallback() {
         @Override
         public void onAnalyzeSuccess(Bitmap mBitmap, String result) {
-            if (type == 1) {
 //                Intent intent = new Intent(appContext, MainActivity.class);
 //                intent.putExtra("Result", result);
 //                startActivity(intent);
 //                finish();
 //                goToAnimation(1);
                 openDoorPresent.OpenDoorPresent(id,result);
-            }
         }
 
         @Override

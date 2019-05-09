@@ -30,6 +30,8 @@ public class OpenDoorPresenter extends BasePresenter {
                     public void onNext(MessageTo msg) {
                         if (msg.getCode() == 0) {
                             submitDataSuccess(msg);
+                        }else{
+                            showMessage(msg.getMsg());
                         }
                     }
                 }

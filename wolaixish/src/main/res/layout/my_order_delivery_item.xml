@@ -1,164 +1,252 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
-<com.zhy.autolayout.AutoRelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
     <com.zhy.autolayout.AutoRelativeLayout
-        android:id="@+id/item_layout"
-        android:layout_below="@+id/find_more"
-        android:layout_width="710px"
-        android:layout_height="310px"
-        android:layout_marginTop="6px"
-        android:layout_centerHorizontal="true"
-        android:background="@mipmap/order_list_bg"
-        >
-
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
         <com.zhy.autolayout.AutoRelativeLayout
-            android:id="@+id/order_layout"
-            android:layout_width="650px"
+            android:id="@+id/item_layout"
+            android:layout_below="@+id/find_more"
+            android:layout_width="710px"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6px"
+            android:layout_centerHorizontal="true"
+            android:background="@mipmap/order_list_bg"
+            >
 
-            android:layout_height="73px"
-            android:layout_centerHorizontal="true">
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_marginTop="20px"
+                android:id="@+id/order_layout"
+                android:layout_width="650px"
 
-            <TextView
-                android:id="@+id/order_text"
-                android:layout_width="wrap_content"
+                android:layout_height="73px"
+                android:layout_centerHorizontal="true">
+
+                <TextView
+                    android:id="@+id/order_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/order_id"
+                    android:textColor="@color/black"
+                    android:textSize="24px" />
+
+                <TextView
+                    android:id="@+id/order_num_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10px"
+                    android:layout_toRightOf="@+id/order_text"
+                    android:text="123456789"
+                    android:textColor="@color/gray_80"
+                    android:textSize="24px" />
+
+                <TextView
+                    android:id="@+id/order_status_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="36px"
+                    android:text="待收货"
+                    android:textColor="@color/app_color"
+                    android:textSize="24px" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/gray_f8" />
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:id="@+id/info_layout"
+                android:layout_width="650px"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:text="@string/order_id"
-                android:textColor="@color/black"
-                android:textSize="24px" />
+                android:layout_below="@+id/order_layout"
+                android:layout_centerHorizontal="true">
 
-            <TextView
-                android:id="@+id/order_num_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="10px"
-                android:layout_toRightOf="@+id/order_text"
-                android:text="123456789"
-                android:textColor="@color/gray_80"
-                android:textSize="24px" />
+                <TextView
+                    android:id="@+id/tv_order_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="29px"
+                    android:text="下单时间："
+                    android:textColor="@color/black_23"
+                    android:textSize="24px" />
 
-            <TextView
-                android:id="@+id/order_status_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="36px"
-                android:text="待收货"
-                android:textColor="@color/app_color"
-                android:textSize="24px" />
+                <TextView
+                    android:id="@+id/order_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="29px"
+                    android:layout_marginRight="10px"
+                    android:layout_toRightOf="@+id/tv_order_time"
+                    android:text="2019-05-08"
+                    android:textColor="@color/gray_80"
+                    android:textSize="24px" />
 
+                <TextView
+                    android:id="@+id/tv_deposit_wardrobe"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_order_time"
+                    android:layout_marginTop="16px"
+                    android:text="@string/appointment_wardrobe"
+                    android:textColor="@color/black_23"
+                    android:textSize="24px" />
+
+                <TextView
+
+                    android:id="@+id/deposit_wardrobe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_order_time"
+                    android:layout_marginTop="16px"
+                    android:layout_marginRight="10px"
+                    android:layout_toRightOf="@+id/tv_deposit_wardrobe"
+                    android:text="1号智能柜"
+                    android:textColor="@color/gray_80"
+                    android:textSize="24px" />
+
+                <TextView
+                    android:id="@+id/tv_deposit_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_deposit_wardrobe"
+                    android:layout_marginTop="16px"
+                    android:text="存柜地址："
+                    android:textColor="@color/black_23"
+                    android:textSize="24px" />
+
+                <TextView
+                    android:id="@+id/deposit_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_deposit_wardrobe"
+                    android:layout_marginTop="16px"
+                    android:layout_marginRight="10px"
+                    android:layout_toRightOf="@+id/tv_deposit_address"
+                    android:text="杭州市江干区下沙路699号"
+                    android:textColor="@color/gray_80"
+                    android:textSize="24px" />
+
+                <TextView
+                    android:id="@+id/tv_remarks"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_deposit_address"
+                    android:layout_marginTop="16px"
+                    android:text="备注："
+                    android:textColor="@color/black_23"
+                    android:textSize="24px" />
+
+                <TextView
+                    android:id="@+id/remarks"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_deposit_address"
+                    android:layout_marginTop="16px"
+                    android:layout_marginRight="10px"
+                    android:layout_toRightOf="@+id/tv_remarks"
+                    android:text="搞快点"
+                    android:textColor="@color/gray_80"
+                    android:textSize="24px" />
+
+                <TextView
+                    android:id="@+id/tv_pickup_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_remarks"
+                    android:layout_marginTop="16px"
+                    android:text="预约取回时间："
+                    android:textColor="@color/black_23"
+                    android:textSize="24px" />
+
+                <TextView
+                    android:id="@+id/pickup_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_remarks"
+                    android:layout_marginTop="16px"
+                    android:layout_marginRight="10px"
+                    android:layout_toRightOf="@+id/tv_pickup_time"
+                    android:text="2019-05-08"
+                    android:textColor="@color/gray_80"
+                    android:textSize="24px" />
+
+                <TextView
+                    android:id="@+id/tv_delivery_wardrobe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_pickup_time"
+                    android:layout_marginTop="16px"
+                    android:text="预约取柜："
+                    android:textColor="@color/black_23"
+                    android:textSize="24px" />
+
+                <TextView
+                    android:id="@+id/delivery_wardrobe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_pickup_time"
+                    android:layout_marginTop="16px"
+                    android:layout_marginRight="10px"
+                    android:layout_toRightOf="@+id/tv_delivery_wardrobe"
+                    android:text="2号智能柜"
+                    android:textColor="@color/gray_80"
+                    android:textSize="24px" />
+
+                <TextView
+                    android:id="@+id/tv_delivery_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_delivery_wardrobe"
+                    android:layout_marginTop="16px"
+                    android:text="取柜地址："
+                    android:textColor="@color/black_23"
+                    android:textSize="24px" />
+
+                <TextView
+                    android:id="@+id/delivery_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_delivery_wardrobe"
+                    android:layout_marginTop="16px"
+                    android:layout_marginRight="10px"
+                    android:layout_toRightOf="@+id/tv_delivery_address"
+                    android:text="杭州市"
+                    android:textColor="@color/gray_80"
+                    android:textSize="24px" />
+                <TextView
+                    android:id="@+id/tv_order_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_delivery_address"
+                    android:layout_marginTop="22px"
+                    android:text="订单金额："
+                    android:textColor="@color/black"
+                    android:textSize="24px" />
+
+                <TextView
+                    android:id="@+id/order_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_delivery_address"
+                    android:layout_marginTop="22px"
+                    android:layout_marginRight="10px"
+                    android:layout_toRightOf="@+id/tv_delivery_address"
+                    android:text="14"
+                    android:textColor="@color/black"
+                    android:textSize="24px" />
+            </com.zhy.autolayout.AutoRelativeLayout>
             <View
+                android:layout_below="@+id/info_layout"
                 android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:layout_alignParentBottom="true"
-                android:background="@color/gray_f8" />
+                android:layout_height="35px"/>
+
         </com.zhy.autolayout.AutoRelativeLayout>
-
-        <com.zhy.autolayout.AutoRelativeLayout
-            android:id="@+id/info_layout"
-            android:layout_width="650px"
-            android:layout_height="218px"
-            android:layout_below="@+id/order_layout"
-            android:layout_centerHorizontal="true">
-
-            <TextView
-                android:id="@+id/wardrobe_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="29px"
-                android:text="@string/appointment_wardrobe"
-                android:textColor="@color/black"
-                android:textSize="24px" />
-
-            <TextView
-                android:id="@+id/order_num_layout"
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10px"
-                android:layout_marginTop="29px"
-                android:layout_toRightOf="@+id/wardrobe_text"
-                android:text="1号智能柜"
-                android:textColor="@color/gray_80"
-                android:textSize="24px" />
-
-            <TextView
-                android:id="@+id/address_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/wardrobe_text"
-                android:layout_marginTop="19px"
-                android:text="@string/address"
-                android:textColor="@color/black"
-                android:textSize="24px" />
-            <TextView
-                android:id="@+id/order_pay_layout"
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/wardrobe_text"
-                android:layout_marginRight="10px"
-                android:layout_marginTop="19px"
-                android:layout_toRightOf="@+id/address_text"
-                android:text="杭州市江干区下沙路699号"
-                android:textColor="@color/gray_80"
-                android:textSize="24px" />
-            <TextView
-                android:id="@+id/order_pay_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/address_text"
-                android:layout_marginTop="19px"
-                android:text="@string/order_pay"
-                android:textColor="@color/black"
-                android:textSize="24px" />
-            <TextView
-                android:id="@+id/address_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/address_text"
-                android:layout_marginRight="10px"
-                android:layout_marginTop="19px"
-                android:layout_toRightOf="@+id/order_pay_text"
-                android:text="￥199.00"
-                android:textColor="@color/gray_80"
-                android:textSize="24px" />
-            <TextView
-                android:id="@+id/order_time_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/order_pay_text"
-                android:layout_marginTop="19px"
-                android:text="@string/order_time"
-                android:textColor="@color/black"
-                android:textSize="24px" />
-            <TextView
-                android:id="@+id/order_time_layout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/order_pay_text"
-                android:layout_marginRight="10px"
-                android:layout_marginTop="19px"
-                android:layout_toRightOf="@+id/order_time_text"
-                android:text="2018年11月19日.00"
-                android:textColor="@color/gray_80"
-                android:textSize="24px" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:layout_alignParentBottom="true"
-                android:background="@color/gray_f8" />
-        </com.zhy.autolayout.AutoRelativeLayout>
-
 
     </com.zhy.autolayout.AutoRelativeLayout>
-    <View
-        android:layout_below="@+id/item_layout"
-        android:layout_width="match_parent"
-        android:layout_height="13px"/>
-</com.zhy.autolayout.AutoRelativeLayout>
 </layout>

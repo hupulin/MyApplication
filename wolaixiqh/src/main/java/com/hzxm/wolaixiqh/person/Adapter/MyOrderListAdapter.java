@@ -41,11 +41,22 @@ public class MyOrderListAdapter extends BaseAdapter<DeLiveryOrderListTo.ListsEnt
         MyOrderDeliveryItemBinding binding = holder.getBinding();
         DeLiveryOrderListTo.ListsEntity mode = mList.get(position);
 //        binding.addressLayout.setText(mode.getAddress());
-        binding.orderStatusText.setText(mode.getStatus_txt());
+//        binding.orderStatusText.setText(mode.getStatus_txt());
+//        binding.orderNumText.setText(mode.getOrder_sn());
+//        binding.orderPayLayout.setText("￥"+mode.getOrder_amount());
+////        binding.orderTimeLayout.setText(mode.getExpect_delivery_time());
+//        binding.orderNumLayout.setText(mode.getWardrobe_title());
         binding.orderNumText.setText(mode.getOrder_sn());
-        binding.orderPayLayout.setText("￥"+mode.getOrder_amount());
-//        binding.orderTimeLayout.setText(mode.getExpect_delivery_time());
-        binding.orderNumLayout.setText(mode.getWardrobe_title());
+        binding.orderStatusText.setText(mode.getStatus_txt());
+        binding.orderTime.setText(mode.getOrder_time());
+        binding.pickupTime.setText(mode.getPickup_time());
+        binding.remarks.setText(mode.getRemarks());
+
+        binding.deliveryWardrobe.setText(mode.getDelivery_wardrobe_name());
+        binding.depositWardrobe.setText(mode.getDeposit_wardrobe_name());
+        binding.depositAddress.setText(mode.getDeposit_address());
+        binding.deliveryAddress.setText(mode.getDelivery_address());
+        binding.orderAmount.setText("￥"+mode.getOrder_amount());
     }
 
 

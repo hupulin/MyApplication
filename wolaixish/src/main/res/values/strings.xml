@@ -29,7 +29,7 @@
     <string name="feedback_inform">反馈告知</string>
     <string name="feedback_back">反馈退回</string>
     <string name="pick_up_goods">确认取货</string>
-    <string name="pick_up_the_goods">通知用户取货</string>
+    <string name="pick_up_the_goods">通知取货</string>
     <string name="capture_take_photo">拍照</string>
     <string name="album_upload">相册</string>
 
