@@ -12,6 +12,7 @@ import hzxmkuar.com.applibrary.domain.order.AddOrderParam;
 import hzxmkuar.com.applibrary.domain.order.EditAddressParam;
 import hzxmkuar.com.applibrary.domain.order.MyOrderParam;
 import hzxmkuar.com.applibrary.domain.order.PayParam;
+import hzxmkuar.com.applibrary.domain.order.WeChatPayTo;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
 import rx.Observable;
@@ -71,6 +72,23 @@ public interface OrderApi {
      */
     @POST("Api/Order/goodsPay")
     Observable<MessageTo>getPayInfo(@Body PayParam param);
+
+    /**
+     * 支付
+     */
+    @POST("Api/Order/goodsPay")
+    Observable<MessageTo<WeChatPayTo>>getWxPayInfo(@Body PayParam param);
+  /**
+     * 洗衣支付
+     */
+    @POST("Api/Order/pay_wash")
+    Observable<MessageTo>getWashPayInfo(@Body PayParam param);
+
+    /**
+     * 洗衣支付
+     */
+    @POST("Api/Order/pay_wash")
+    Observable<MessageTo<WeChatPayTo>>getWXWashPayInfo(@Body PayParam param);
 
     /**
      * 我的订单

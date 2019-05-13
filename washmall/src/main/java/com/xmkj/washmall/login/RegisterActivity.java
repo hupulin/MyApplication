@@ -110,7 +110,7 @@ public class RegisterActivity extends BaseActivity {
         });
     }
 
-    @OnClick({R.id.get_verification, R.id.select_address, R.id.login})
+    @OnClick({R.id.get_verification, R.id.select_address, R.id.login,R.id.back})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.get_verification:
@@ -150,6 +150,10 @@ public class RegisterActivity extends BaseActivity {
                 }
 
                 presenter.register(phone.getText().toString(),verification.getText().toString(),password.getText().toString(),confirmPassword.getText().toString(), (String) address.getTag(),detailAddress.getText().toString(),invitationCode.getText().toString());
+                break;
+            case R.id.back:
+                finish();
+                goToAnimation(2);
                 break;
         }
     }

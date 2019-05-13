@@ -16,8 +16,12 @@ import android.widget.TextView;
 import com.alibaba.fastjson.JSON;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
 import com.xmkj.washmall.R;
+import com.xmkj.washmall.base.ActivityManager;
 import com.xmkj.washmall.base.BaseFragment;
+import com.xmkj.washmall.base.Event;
+import com.xmkj.washmall.base.WashAlertDialog;
 import com.xmkj.washmall.base.util.DoubleUtil;
+import com.xmkj.washmall.base.util.SpUtil;
 import com.xmkj.washmall.databinding.SelectWashAddItemBinding;
 import com.xmkj.washmall.databinding.SelectWashTypeItemBinding;
 import com.xmkj.washmall.wash.PlaceOrderActivity;
@@ -25,6 +29,9 @@ import com.xmkj.washmall.wash.SelectWashActivity;
 import com.zhy.view.flowlayout.FlowLayout;
 import com.zhy.view.flowlayout.TagAdapter;
 import com.zhy.view.flowlayout.TagFlowLayout;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,14 +57,14 @@ public class SelectWashFragment extends BaseFragment {
     TagFlowLayout tagLayout;
     @BindView(R.id.type_layout)
     GridLayout typeLayout;
-    @BindView(R.id.select_layout)
-    GridLayout selectLayout;
+
+   public GridLayout selectLayout;
     @BindView(R.id.money)
     TextView money;
 
     private boolean isViewCreate;
     private boolean isUiVisible;
-    private double allMoney = 0;
+    public double allMoney = 0;
     private List<WashJsonDetailTo>jsonDetailList=new ArrayList<>();
 
 
@@ -68,11 +75,14 @@ public class SelectWashFragment extends BaseFragment {
 
         unbinder = ButterKnife.bind(this, rootView);
         isViewCreate = true;
-
+        selectLayout=rootView.findViewById(R.id.select_layout);
+        if ( !  ActivityManager.washFragmentList.contains(this))
+        ActivityManager.washFragmentList.add(this);
         loadData();
-
         return rootView;
     }
+
+
 
 
     @Override
@@ -166,6 +176,7 @@ public class SelectWashFragment extends BaseFragment {
     private void setSelectWash(List<WashInfoTo> washList) {
         selectLayout.removeAllViews();
         jsonDetailList.clear();
+        allMoney=0;
         for (int i = 0; i < washList.size(); i++) {
             WashInfoTo washTo = washList.get(i);
             if (washTo.getNum() > 0) {
@@ -204,6 +215,8 @@ public class SelectWashFragment extends BaseFragment {
                 jsonDetailList.add(detailTo);
             }
         }
+
+        SpUtil.put("WashItemSelect",selectLayout.getChildCount()>0);
     }
 
     @OnClick(R.id.place_order)
@@ -221,4 +234,16 @@ public class SelectWashFragment extends BaseFragment {
         startActivity(intent);
         goToAnimation(1);
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
+
+
+public void cleanSelectLayout(){
+    selectLayout.removeAllViews();
+}
+
 }

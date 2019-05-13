@@ -17,6 +17,8 @@
             android:layout_height="133px"
             android:layout_marginTop="8px"
             android:gravity="center"
+            android:layout_marginLeft="38px"
+            android:layout_marginRight="28px"
             android:text=""
             android:id="@+id/title"
             android:textColor="@color/white"
@@ -27,6 +29,8 @@
 
             android:id="@+id/des"
             android:textSize="30px"
+            android:layout_marginLeft="32px"
+            android:layout_marginRight="32px"
             android:gravity="center"
             android:textColor="@color/black"
             android:layout_gravity="center_horizontal"

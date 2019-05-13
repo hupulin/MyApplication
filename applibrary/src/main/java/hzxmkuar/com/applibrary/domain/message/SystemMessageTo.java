@@ -10,7 +10,8 @@ import lombok.Data;
 @Data
 public class SystemMessageTo {
 
-  private String time="2018年10月9日";
-  private String title="标题";
-  private String content="内容内容内容";
+  private String dateline="2018年10月9日";
+  private String msg_title="标题";
+  private String msg_desc="内容内容内容";
+  private int id;
 }

@@ -60,7 +60,7 @@ public class ForgetPasswordActivity extends BaseActivity {
         }).start();
     }
 
-    @OnClick({R.id.get_verification, R.id.login})
+    @OnClick({R.id.get_verification, R.id.login,R.id.back})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.get_verification:
@@ -87,6 +87,10 @@ public class ForgetPasswordActivity extends BaseActivity {
                     return;
                 }
                 presenter.modifyPassword(phone.getText().toString(),verification.getText().toString(),password.getText().toString(),confirmPassword.getText().toString());
+                break;
+            case R.id.back:
+                finish();
+                goToAnimation(2);
                 break;
         }
     }

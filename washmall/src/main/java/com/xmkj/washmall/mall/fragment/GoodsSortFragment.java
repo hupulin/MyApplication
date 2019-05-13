@@ -1,5 +1,6 @@
 package com.xmkj.washmall.mall.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -11,6 +12,7 @@ import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
 import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.BaseFragment;
+import com.xmkj.washmall.mall.GoodsDetailActivity;
 import com.xmkj.washmall.mall.GoodsSortActivity;
 import com.xmkj.washmall.mall.adapter.GoodsSortAdapter;
 import com.xmkj.washmall.mall.presenter.GoodsSortPresenter;
@@ -22,6 +24,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import hzxmkuar.com.applibrary.domain.main.MallGoodsTo;
 import hzxmkuar.com.applibrary.domain.mall.MallChildTypeTo;
 
 
@@ -88,5 +91,13 @@ public class GoodsSortFragment extends BaseFragment {
     }
 
 
+    @Override
+    public void recycleItemClick(View view, int position, Object data) {
+        MallGoodsTo goodsTo = (MallGoodsTo) data;
+        Intent intent = new Intent(appContext, GoodsDetailActivity.class);
+        intent.putExtra("GoodsTo", goodsTo);
+        startActivity(intent);
+        goToAnimation(1);
+    }
 }
 

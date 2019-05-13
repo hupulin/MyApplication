@@ -130,6 +130,9 @@ public class SelectPayActivity extends BaseActivity {
                      showMessage("请选择支付方式");
                      return;
                  }
+                   if (getIntent().getBooleanExtra("IsWash",false))
+                    presenter.getWashPayInfo(mode==null?getIntent().getIntExtra("OrderId",0):mode.getOrder_id(), payType);
+                else
                     presenter.getPayInfo(mode==null?getIntent().getIntExtra("OrderId",0):mode.getOrder_id(), payType);
                 break;
         }
@@ -155,7 +158,7 @@ public class SelectPayActivity extends BaseActivity {
             payMoney(payInfoTo.getAlipay());
         }
         if (payType == 2) {
-            WeChatPayTo payToInfo = new Gson().fromJson(JSON.toJSONString(data), WeChatPayTo.class);
+            WeChatPayTo payToInfo = (WeChatPayTo) data;
             WeChatPayTo.WxpayBean payTo = payToInfo.getWxpay();
             IWXAPI api = WXAPIFactory.createWXAPI(this, "wx34575f0ea7a2a608");
             PayReq request = new PayReq();

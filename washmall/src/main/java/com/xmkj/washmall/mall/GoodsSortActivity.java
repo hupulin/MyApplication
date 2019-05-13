@@ -65,4 +65,6 @@ public class GoodsSortActivity extends BaseActivity {
         categoryList=typeList;
         setTab(typeList);
     }
+
+
 }

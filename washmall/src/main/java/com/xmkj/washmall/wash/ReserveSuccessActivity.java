@@ -37,6 +37,7 @@ public class ReserveSuccessActivity extends BaseActivity {
                 break;
             case R.id.repair:
                 Intent intent=new Intent(appContext,RepairActivity.class);
+                intent.putExtra("WardrobeNo",getIntent().getStringExtra("WardrobeNo"));
                 startActivity(intent);
                 goToAnimation(1);
                 break;

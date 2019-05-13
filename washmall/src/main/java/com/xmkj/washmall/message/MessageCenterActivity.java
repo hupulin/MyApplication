@@ -13,6 +13,7 @@ import com.xmkj.washmall.message.presenter.MessageCenterPresenter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import hzxmkuar.com.applibrary.domain.message.SystemMessageTo;
 
 /**
  * Created by Administrator on 2018/12/26.
@@ -33,7 +34,9 @@ public class MessageCenterActivity extends BaseActivity {
 
     @Override
     public void recycleItemClick(View view, int position, Object data) {
+        SystemMessageTo mode= (SystemMessageTo) data;
         Intent intent=new Intent(appContext,MessageDetailActivity.class);
+        intent.putExtra("MessageId",mode.getId());
         startActivity(intent);
         goToAnimation(1);
     }

@@ -9,6 +9,7 @@ import com.google.gson.reflect.TypeToken;
 import com.xmkj.washmall.base.BaseFragment;
 import com.xmkj.washmall.base.BasePresenter;
 import com.xmkj.washmall.base.MyObserver;
+import com.xmkj.washmall.main.fragment.CarFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -93,8 +94,10 @@ public class CarPresenter extends BasePresenter {
                 new MyObserver<MessageTo>(this) {
                     @Override
                     public void onNext(MessageTo msg) {
-                        if (msg.getCode()==0)
+                        if (msg.getCode()==0) {
+                            ((CarFragment)mFragment).deleteSuccess();
                             getGoodsList();
+                        }
                         else
                             showMessage(msg.getMsg());
                     }

@@ -54,6 +54,7 @@ public class CarFragment extends BaseFragment {
     private CarPresenter presenter;
     private String selectCarId="";
     private double selectMoeny;
+    private int indexNum;
 
     @Nullable
     @Override
@@ -148,9 +149,20 @@ public class CarFragment extends BaseFragment {
     @SuppressLint("SetTextI18n")
     private void setMoeny(){
         selectMoeny=0;
+        indexNum=0;
         Observable.from(presenter.goodsList).filter(GoodsCarTo::isSelect).subscribe(goodsCarTo -> {
             selectMoeny= DoubleUtil.add(selectMoeny,DoubleUtil.mul(Double.valueOf(goodsCarTo.getGoods_price()),goodsCarTo.getGoods_num()));
+            indexNum++;
         });
         allMoney.setText("￥"+selectMoeny);
+        allSelectIcon.setSelected(indexNum==presenter.goodsList.size());
+        allSelectIcon.setBackgroundResource(allSelectIcon.isSelected()?R.drawable.address_select:R.drawable.address_un_select);
     }
+
+    public void deleteSuccess(){
+        allSelectIcon.setSelected(false);
+        allSelectIcon.setBackgroundResource(allSelectIcon.isSelected()?R.drawable.address_select:R.drawable.address_un_select);
+    }
+
+
 }

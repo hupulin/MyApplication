@@ -85,7 +85,7 @@ public class LoginActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.register, R.id.verification_login, R.id.forget_password, R.id.login, R.id.wechat_login, R.id.qq_login})
+    @OnClick({R.id.register, R.id.verification_login, R.id.forget_password, R.id.login, R.id.wechat_login, R.id.qq_login,R.id.select_icon})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.register:
@@ -180,6 +180,7 @@ public class LoginActivity extends BaseActivity {
         intent.putExtra("IsSplash", true);
         UserInfoTo userInfoTo=userInfoHelp.getUserInfo();
         userInfoTo.setMyselfTo(myselfUserTo);
+        showMessage(myselfUserTo+"");
         userInfoHelp.saveUserInfo(userInfoTo);
         userInfoHelp.saveUserLogin(true);
 
@@ -190,20 +191,23 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     public void loadDataSuccess(Object data) {
-        WechatLoginTo wechatTo = new Gson().fromJson(JSON.toJSONString(data), WechatLoginTo.class);
-        if (wechatTo.getUid() == 0) {
+        MyselfUserTo myselfUserTo = (MyselfUserTo) data;
+        userInfoTo=userInfoHelp.getUserInfo();
+        if (userInfoTo.getUid() == 0) {
             Intent intent = new Intent(appContext, BindPhoneActivity.class);
-            intent.putExtra("OauthId", wechatTo.getOauth_id());
+            intent.putExtra("OauthId", userInfoTo.getOauth_id());
             startActivity(intent);
             goToAnimation(1);
         } else {
             Intent intent = new Intent(appContext, MainActivity.class);
             intent.putExtra("IsSplash", true);
             userInfoHelp.saveUserLogin(true);
-            UserInfoTo userInfoTo = new UserInfoTo();
-            userInfoTo.setUid(wechatTo.getUid());
-            userInfoTo.setHashid(wechatTo.getHashid());
+
+            userInfoTo.setUid(userInfoTo.getUid());
+            userInfoTo.setHashid(userInfoTo.getHashid());
+            userInfoTo.setMyselfTo(myselfUserTo);
             userInfoHelp.saveUserInfo(userInfoTo);
+
             startActivity(intent);
             finish();
             goToAnimation(1);

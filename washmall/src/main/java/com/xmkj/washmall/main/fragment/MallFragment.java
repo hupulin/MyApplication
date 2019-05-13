@@ -27,6 +27,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 import hzxmkuar.com.applibrary.domain.main.MallGoodsTo;
 import hzxmkuar.com.applibrary.domain.mall.MallTypeTo;
@@ -43,7 +44,12 @@ public class MallFragment extends BaseFragment {
     LRecyclerView recyclerView;
     @BindView(R.id.type_layout)
     AutoLinearLayout typeLayout;
+    @BindView(R.id.price_icon)
+    View priceIcon;
+    @BindView(R.id.sale_icon)
+    View saleIcon;
     private MallHeadViewBinding binding;
+    private MallPresenter presenter;
 
     @Nullable
     @Override
@@ -54,8 +60,9 @@ public class MallFragment extends BaseFragment {
 
         headView = View.inflate(appContext, R.layout.mall_head_view, null);
         binding = DataBindingUtil.bind(headView);
-        MallPresenter presenter = new MallPresenter(this);
+        presenter = new MallPresenter(this);
         setRecycleView(new MallGoodsAdapter(getActivity()), recyclerView, presenter, 2, true, true);
+        setScreen();
         setRecycleSmooth();
         return rootView;
     }
@@ -116,7 +123,7 @@ public class MallFragment extends BaseFragment {
 
             @Override
             public void onScrolled(int distanceX, int distanceY) {
-                if (distanceY*750/getScreenWidth()>470)
+                if (distanceY * 750 / getScreenWidth() > 530)
                     typeLayout.setVisibility(View.VISIBLE);
                 else
                     typeLayout.setVisibility(View.GONE);
@@ -126,6 +133,47 @@ public class MallFragment extends BaseFragment {
             public void onScrollStateChanged(int state) {
 
             }
+        });
+    }
+
+    @OnClick({R.id.price_layout, R.id.sale_layout})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.price_layout:
+                priceIcon.setBackgroundResource(priceIcon.isSelected() ? R.drawable.sort_up_icon : R.drawable.sort_down_icon);
+                binding.priceIcon.setBackgroundResource(priceIcon.isSelected() ? R.drawable.sort_up_icon : R.drawable.sort_down_icon);
+
+                presenter.getGoodsList(1, priceIcon.isSelected() ? 2 : 1);
+                priceIcon.setSelected(!priceIcon.isSelected());
+                binding.priceIcon.setSelected(!priceIcon.isSelected());
+                break;
+            case R.id.sale_layout:
+                saleIcon.setBackgroundResource(saleIcon.isSelected() ? R.drawable.sort_up_icon : R.drawable.sort_down_icon);
+                binding.saleIcon.setBackgroundResource(saleIcon.isSelected() ? R.drawable.sort_up_icon : R.drawable.sort_down_icon);
+                presenter.getGoodsList(2, saleIcon.isSelected() ? 2 : 1);
+                saleIcon.setSelected(!saleIcon.isSelected());
+                binding.saleIcon.setSelected(!saleIcon.isSelected());
+
+                break;
+        }
+    }
+
+    public void setScreen() {
+        binding.priceLayout.setOnClickListener(view -> {
+            priceIcon.setBackgroundResource(priceIcon.isSelected() ? R.drawable.sort_up_icon : R.drawable.sort_down_icon);
+            binding.priceIcon.setBackgroundResource(priceIcon.isSelected() ? R.drawable.sort_up_icon : R.drawable.sort_down_icon);
+
+            presenter.getGoodsList(1, priceIcon.isSelected() ? 2 : 1);
+            priceIcon.setSelected(!priceIcon.isSelected());
+            binding.priceIcon.setSelected(!priceIcon.isSelected());
+        });
+
+        binding.saleLayout.setOnClickListener(view -> {
+            saleIcon.setBackgroundResource(saleIcon.isSelected() ? R.drawable.sort_up_icon : R.drawable.sort_down_icon);
+            binding.saleIcon.setBackgroundResource(saleIcon.isSelected() ? R.drawable.sort_up_icon : R.drawable.sort_down_icon);
+            presenter.getGoodsList(2, saleIcon.isSelected() ? 2 : 1);
+            saleIcon.setSelected(!saleIcon.isSelected());
+            binding.saleIcon.setSelected(!saleIcon.isSelected());
         });
     }
 }

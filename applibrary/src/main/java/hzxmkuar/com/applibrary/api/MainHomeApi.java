@@ -1,8 +1,10 @@
 package hzxmkuar.com.applibrary.api;
 
+import hzxmkuar.com.applibrary.IdParam;
 import hzxmkuar.com.applibrary.domain.BaseParam;
 import hzxmkuar.com.applibrary.domain.MessageListTo;
 import hzxmkuar.com.applibrary.domain.MessageTo;
+import hzxmkuar.com.applibrary.domain.integral.PageParam;
 import hzxmkuar.com.applibrary.domain.main.MainAdParent;
 import hzxmkuar.com.applibrary.domain.main.MainWardrobeParam;
 import hzxmkuar.com.applibrary.domain.wardrobe.WardrobeDetailParam;
@@ -33,4 +35,16 @@ public interface MainHomeApi  {
      */
     @POST("Api/Wardrobe/get_detail")
     Observable<MessageTo>getWardrobeDetail(@Body WardrobeDetailParam param);
+
+    /**
+     *获取消息列表
+     */
+    @POST("Api/Message/msgList")
+    Observable<MessageListTo>getMessageList(@Body PageParam param);
+
+    /**
+     *获取消息详情
+     */
+    @POST("Api/Message/msgDetail")
+    Observable<MessageTo>getMessageDetail(@Body IdParam param);
 }

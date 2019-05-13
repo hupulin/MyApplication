@@ -27,10 +27,13 @@ import rx.schedulers.Schedulers;
 
 public class MallPresenter extends BasePresenter {
    private List<MallGoodsTo> goodsList = new ArrayList<>();
+    private int sortType=0;
+    private int sortOrder=2;
+
     public MallPresenter(BaseFragment fragment){
         initContext(fragment);
         getMallTypeList();
-        getGoodsList();
+        getGoodsList(0,2);
     }
 
     public void getMallTypeList(){
@@ -52,11 +55,14 @@ public class MallPresenter extends BasePresenter {
         );
     }
 
-    public void getGoodsList(){
-
+    public void getGoodsList(int sortType,int sortOrder){
+          this.sortType=sortType;
+        this.sortOrder=sortOrder;
 
         MallGoodsListParam param=new MallGoodsListParam();
         param.setPage(recyclePageIndex);
+        param.setSort_type(sortType);
+        param.setSortord(sortOrder);
         param.setHash(getHashStringNoUser(MallGoodsListParam.class,param));
         ApiClient.create(MallApi.class).getGoodsList(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
                 new MyObserver<MessageListTo>(this) {
@@ -81,12 +87,12 @@ public class MallPresenter extends BasePresenter {
     @Override
     public void recycleViewLoadMore() {
         super.recycleViewLoadMore();
-        getGoodsList();
+        getGoodsList(sortType,sortOrder);
     }
 
     @Override
     public void recycleViewRefresh() {
         super.recycleViewRefresh();
-        getGoodsList();
+        getGoodsList(sortType,sortOrder);
     }
 }

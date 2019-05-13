@@ -71,6 +71,7 @@ public class LoginPresenter extends BasePresenter{
                         WechatLoginTo loginTo = new Gson().fromJson(JSON.toJSONString(msg.getData()), WechatLoginTo.class);
                         UserInfoTo userInfoTo = new UserInfoTo();
                         userInfoTo.setUid(loginTo.getUid());
+                        userInfoTo.setOauth_id(loginTo.getOauth_id());
                         userInfoTo.setHashid(loginTo.getHashid());
                         userInfoHelp.saveUserInfo(userInfoTo);
                         getUserInfo();

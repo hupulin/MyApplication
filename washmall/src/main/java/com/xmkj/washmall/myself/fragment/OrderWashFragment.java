@@ -13,11 +13,13 @@ import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.BaseFragment;
 import com.xmkj.washmall.base.WashAlertDialog;
+import com.xmkj.washmall.mall.SelectPayActivity;
 import com.xmkj.washmall.myself.OrderDetailActivity;
 import com.xmkj.washmall.myself.adapter.OrderMallAdapter;
 import com.xmkj.washmall.myself.adapter.OrderWashAdapter;
 import com.xmkj.washmall.myself.presenter.MyOrderPresenter;
 import com.xmkj.washmall.myself.presenter.MyWashOrderPresenter;
+import com.xmkj.washmall.wash.EvaluateWashActivity;
 import com.xmkj.washmall.wash.ScanActivity;
 
 import butterknife.BindView;
@@ -47,7 +49,7 @@ public class OrderWashFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = View.inflate(appContext, R.layout.common_fragment_recyclerview, null);
+         rootView = View.inflate(appContext, R.layout.common_fragment_recyclerview, null);
 
         unbinder = ButterKnife.bind(this, rootView);
         isViewCreate = true;
@@ -91,6 +93,7 @@ public class OrderWashFragment extends BaseFragment {
             public void scan(WashOrderTo mode) {
                 Intent intent=new Intent(appContext, ScanActivity.class);
                 intent.putExtra("OrderId",mode.getOrder_id()+"");
+
                 startActivity(intent);
                 goToAnimation(1);
             }
@@ -101,6 +104,32 @@ public class OrderWashFragment extends BaseFragment {
                     WashAlertDialog.dismiss();
                     presenter.cancelOrder(mode.getOrder_id());
                 });
+            }
+
+            @Override
+            public void pay(WashOrderTo mode) {
+                Intent intent=new Intent(appContext, SelectPayActivity.class);
+                intent.putExtra("OrderId",mode.getOrder_id());
+                intent.putExtra("Money",mode.getOrder_amount());
+                intent.putExtra("IsWash",true);
+                startActivity(intent);
+                goToAnimation(1);
+            }
+
+            @Override
+            public void evaluate(WashOrderTo mode) {
+                Intent intent=new Intent(appContext, EvaluateWashActivity.class);
+                intent.putExtra("OrderId",mode.getOrder_id()+"");
+                startActivity(intent);
+                goToAnimation(1);
+            }
+
+            @Override
+            public void takeWash(WashOrderTo mode) {
+                Intent intent=new Intent(appContext, ScanActivity.class);
+                intent.putExtra("OrderId",mode.getOrder_id()+"");
+                startActivity(intent);
+                goToAnimation(1);
             }
         });
     }

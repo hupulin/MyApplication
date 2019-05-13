@@ -66,6 +66,7 @@ public class WashOrderTo {
         private int smch_btn;
         private int smqh_btn;
         private int qpj_btn;
+        private int pay_btn;
     }
 
 

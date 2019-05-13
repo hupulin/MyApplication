@@ -66,6 +66,7 @@
                 android:layout_height="44px"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="20px"
+                android:id="@+id/message_layout"
                 android:layout_marginRight="24px"
                 android:background="@drawable/main_home_message_icon" />
         </com.zhy.autolayout.AutoLinearLayout>

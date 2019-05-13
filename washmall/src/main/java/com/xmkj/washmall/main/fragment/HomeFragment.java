@@ -29,6 +29,7 @@ import com.xmkj.washmall.base.util.SpUtil;
 import com.xmkj.washmall.databinding.MainWardrobeItemBinding;
 import com.xmkj.washmall.main.SelectPositionActivity;
 import com.xmkj.washmall.main.presenter.MainHomePresenter;
+import com.xmkj.washmall.message.MessageCenterActivity;
 import com.xmkj.washmall.myself.ExchangeActivity;
 import com.xmkj.washmall.myself.MyOrderActivity;
 import com.xmkj.washmall.wash.SelectWashActivity;
@@ -129,7 +130,7 @@ public class HomeFragment extends BaseFragment implements PermissionListener {
         unbinder.unbind();
     }
 
-    @OnClick({R.id.wash, R.id.recharge, R.id.order, R.id.scan, R.id.city_name, R.id.locate_position})
+    @OnClick({R.id.wash, R.id.recharge, R.id.order, R.id.scan, R.id.city_name, R.id.locate_position,R.id.message_layout})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.wash:
@@ -152,6 +153,11 @@ public class HomeFragment extends BaseFragment implements PermissionListener {
             case R.id.city_name:
             case R.id.locate_position:
                 intent = new Intent(appContext, SelectPositionActivity.class);
+                startActivityForResult(intent, 10);
+                goToAnimation(1);
+                break;
+            case R.id.message_layout:
+                intent = new Intent(appContext, MessageCenterActivity.class);
                 startActivityForResult(intent, 10);
                 goToAnimation(1);
                 break;

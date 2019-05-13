@@ -10,6 +10,7 @@
         android:layout_height="44px"
         android:layout_marginLeft="24px"
         android:layout_marginTop="65px"
+        android:id="@+id/back"
         android:background="@drawable/back_icon" />
 
     <com.xmkj.washmall.base.util.PingFangTextView

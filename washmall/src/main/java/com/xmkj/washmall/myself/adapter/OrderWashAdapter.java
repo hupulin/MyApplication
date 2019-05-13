@@ -56,10 +56,19 @@ public class OrderWashAdapter extends BaseAdapter<WashOrderTo, OrderWashItemBind
         binding.orderNumber.setText(mode.getOrder_sn());
         binding.statue.setText(mode.getStatus_txt());
         binding.money.setText("￥"+mode.getOrder_amount());
-        binding.pay.setVisibility(mode.getButton_list().getQxdd_btn()==1?View.VISIBLE:View.GONE);
+        binding.cancel.setVisibility(mode.getButton_list().getQxdd_btn()==1&&mode.getButton_list().getSmch_btn()==0?View.VISIBLE:View.GONE);
+        binding.cancelLeft.setVisibility(mode.getButton_list().getQxdd_btn()==1&&mode.getButton_list().getSmch_btn()==1?View.VISIBLE:View.GONE);
         binding.scan.setVisibility(mode.getButton_list().getSmqh_btn()==1?View.VISIBLE:View.GONE);
+        binding.save.setVisibility(mode.getButton_list().getSmch_btn()==1?View.VISIBLE:View.GONE);
+        binding.pay.setVisibility(mode.getButton_list().getPay_btn()==1?View.VISIBLE:View.GONE);
+        binding.evaluate.setVisibility(mode.getButton_list().getQpj_btn()==1?View.VISIBLE:View.GONE);
 
-       binding.pay.setOnClickListener(view -> {
+
+       binding.cancel.setOnClickListener(view -> {
+           if (listener!=null)
+               listener.cancelOrder(mode);
+       });
+        binding.cancelLeft.setOnClickListener(view -> {
            if (listener!=null)
                listener.cancelOrder(mode);
        });
@@ -68,6 +77,21 @@ public class OrderWashAdapter extends BaseAdapter<WashOrderTo, OrderWashItemBind
             if (listener!=null)
                 listener.scan(mode);
         });
+
+        binding.pay.setOnClickListener(view -> {
+            if (listener!=null)
+                listener.pay(mode);
+        });
+
+        binding.evaluate.setOnClickListener(view -> {
+            if (listener!=null)
+                listener.evaluate(mode);
+        });
+
+        binding.save.setOnClickListener(view -> {
+            if (listener!=null)
+                listener.takeWash(mode);
+        });
     }
 
     public interface  OrderWashAdapterListener{
@@ -75,6 +99,12 @@ public class OrderWashAdapter extends BaseAdapter<WashOrderTo, OrderWashItemBind
         void scan(WashOrderTo mode);
 
         void cancelOrder(WashOrderTo mode);
+
+        void pay(WashOrderTo mode);
+
+        void evaluate(WashOrderTo mode);
+
+        void takeWash(WashOrderTo mode);
 
     }
 

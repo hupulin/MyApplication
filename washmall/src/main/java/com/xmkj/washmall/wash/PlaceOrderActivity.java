@@ -125,6 +125,7 @@ public class PlaceOrderActivity extends BaseActivity implements OnDateSetListene
             textView.setTextSize(10 * getScreenWidth() / 750);
             textView.setOnClickListener(v -> {
                 dialog.dismiss();
+
                 selectText.setText(wardrobeTo.getWardrobe_name());
                 selectText.setTag(wardrobeTo.getId());
             });
@@ -167,6 +168,7 @@ public class PlaceOrderActivity extends BaseActivity implements OnDateSetListene
         OrderIdTo orderIdTo = (OrderIdTo) data;
         Intent intent = new Intent(appContext, ReserveSuccessActivity.class);
         intent.putExtra("OrderId",orderIdTo.getOrder_id());
+        intent.putExtra("WardrobeNo",saveWardrobe.getText().toString()+"");
         startActivity(intent);
         finish();
         goToAnimation(1);

@@ -49,7 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="40px"
+                android:layout_marginLeft="20px"
                 android:text="是否需要加香"
                 android:textColor="@color/black"
                 android:textSize="24px" />
@@ -58,28 +58,34 @@
                 android:id="@+id/need_aroma"
                 android:layout_width="71px"
                 android:layout_height="42px"
-                android:layout_marginLeft="20px"
                 android:layout_gravity="center_vertical"
+                android:layout_marginLeft="20px"
                 android:background="@drawable/wash_need_un_select" />
 
             <View
                 android:id="@+id/un_need_aroma"
                 android:layout_width="71px"
-                android:layout_gravity="center_vertical"
                 android:layout_height="42px"
+                android:layout_gravity="center_vertical"
                 android:background="@drawable/wash_un_need_select"
 
                 />
+
+            <View
+                android:layout_width="0px"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
             <com.xmkj.washmall.base.util.PingFangTextView
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="40px"
-                android:textColor="#FF0000"
+
                 android:text="+"
+                android:textColor="#FF0000"
                 android:textSize="24px" />
+
             <com.xmkj.washmall.base.util.PingFangTextView
                 android:id="@+id/aroma_money"
                 android:layout_width="wrap_content"
@@ -88,14 +94,15 @@
 
                 android:textColor="#FF0000"
                 android:textSize="36px" />
+
             <com.xmkj.washmall.base.util.PingFangTextView
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
 
-                android:textColor="#FF0000"
                 android:text="元"
+                android:textColor="#FF0000"
                 android:textSize="24px" />
         </com.zhy.autolayout.AutoLinearLayout>
 

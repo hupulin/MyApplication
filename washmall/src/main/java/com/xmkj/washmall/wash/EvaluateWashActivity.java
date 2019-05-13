@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.BaseActivity;
-import com.xmkj.washmall.wash.presenter.RepairPresenter;
+import com.xmkj.washmall.wash.presenter.EvaluateWashPresenter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,38 +19,36 @@ import butterknife.OnClick;
  * Created by Administrator on 2018/12/26.
  */
 
-public class RepairActivity extends BaseActivity {
-    @BindView(R.id.confirm)
-    TextView confirm;
+public class EvaluateWashActivity extends BaseActivity {
+
     @BindView(R.id.content)
     EditText content;
-    private RepairPresenter presenter;
+    private EvaluateWashPresenter presenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_repair);
+        setContentView(R.layout.activity_evaluate);
         ButterKnife.bind(this);
-        setTitleName("故障报修");
-        presenter = new RepairPresenter(this);
+        setTitleName("评价订单");
+        presenter = new EvaluateWashPresenter(this);
     }
 
     @OnClick(R.id.confirm)
     public void onViewClicked() {
         if (TextUtils.isEmpty(content.getText().toString())) {
-            showMessage("请填写报修内容");
+            showMessage("请填写评价内容");
             return;
         }
-        presenter.repair(content.getText().toString());
+        presenter.evaluate(content.getText().toString());
     }
 
     @Override
     protected void submitDataSuccess(Object data) {
-        showMessage("报修成功");
+        showMessage("评价成功");
         new Handler().postDelayed(() -> {
             finish();
             goToAnimation(2);
         }, 2500);
     }
-
 }

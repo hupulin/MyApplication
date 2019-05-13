@@ -46,9 +46,9 @@ public class MessageCenterAdapter extends BaseAdapter<SystemMessageTo, SystemMes
         super.onBindViewHolder(holder, position);
         SystemMessageItemBinding binding = holder.getBinding();
         SystemMessageTo mode = mList.get(position);
-        binding.title.setText(mode.getTitle());
-        binding.content.setText(mode.getContent());
-        binding.time.setText(mode.getTime());
+        binding.title.setText(mode.getMsg_title());
+        binding.content.setText(mode.getMsg_desc());
+        binding.time.setText(mode.getDateline());
 
 
     }

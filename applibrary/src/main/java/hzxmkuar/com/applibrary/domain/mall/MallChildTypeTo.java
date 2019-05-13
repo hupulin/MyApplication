@@ -1,12 +1,14 @@
 package hzxmkuar.com.applibrary.domain.mall;
 
+import java.io.Serializable;
+
 import lombok.Data;
 
 /**
  * Created by Administrator on 2019/1/6.
  */
 @Data
-public class MallChildTypeTo {
+public class MallChildTypeTo implements Serializable{
 
     /**
      * cate_id : 92

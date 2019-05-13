@@ -4,10 +4,11 @@ import hzxmkuar.com.applibrary.domain.BaseParam;
 import hzxmkuar.com.applibrary.domain.MessageListTo;
 import hzxmkuar.com.applibrary.domain.MessageTo;
 import hzxmkuar.com.applibrary.domain.mall.OrderIdParam;
-import hzxmkuar.com.applibrary.domain.order.MyOrderParam;
 import hzxmkuar.com.applibrary.domain.wardrobe.OpenWardrobeParam;
 import hzxmkuar.com.applibrary.domain.wash.AddWashOrderParam;
+import hzxmkuar.com.applibrary.domain.wash.EvaluateOrderParam;
 import hzxmkuar.com.applibrary.domain.wash.MyWashOrderParam;
+import hzxmkuar.com.applibrary.domain.wash.RepairParam;
 import hzxmkuar.com.applibrary.domain.wash.WashJsonParam;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
@@ -59,4 +60,16 @@ public interface WashApi {
      */
     @POST("Api/Wash/cancel_order")
     Observable<MessageTo>cancelOrder(@Body OrderIdParam param);
+
+    /**
+     * 评价订单
+     */
+    @POST("Api/Wash/evaluate_order")
+    Observable<MessageTo>evaluateOrder(@Body EvaluateOrderParam param);
+
+    /**
+     * 故障报修
+     */
+    @POST("Api/Wash/add_fault_repair")
+    Observable<MessageTo>repair(@Body RepairParam param);
 }

@@ -231,6 +231,9 @@
             android:screenOrientation="behind"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
+        <activity android:name=".wash.EvaluateWashActivity"
+            android:screenOrientation="portrait"
+            />
 
         <!--环信配置-->
         <meta-data

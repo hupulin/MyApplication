@@ -27,6 +27,7 @@
         <com.zhy.autolayout.AutoRelativeLayout
             android:layout_width="0px"
             android:layout_height="match_parent"
+            android:id="@+id/price_layout"
             android:layout_weight="1">
 
             <com.zhy.autolayout.AutoLinearLayout
@@ -46,6 +47,7 @@
                     android:layout_height="11px"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="8px"
+                    android:id="@+id/price_icon"
                     android:background="@drawable/sort_down_icon" />
             </com.zhy.autolayout.AutoLinearLayout>
         </com.zhy.autolayout.AutoRelativeLayout>
@@ -64,7 +66,9 @@
             <com.zhy.autolayout.AutoLinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true">
+                android:layout_centerInParent="true"
+                android:id="@+id/sale_layout"
+                >
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -78,6 +82,7 @@
                     android:layout_height="11px"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="8px"
+                    android:id="@+id/sale_icon"
                     android:background="@drawable/sort_down_icon" />
             </com.zhy.autolayout.AutoLinearLayout>
         </com.zhy.autolayout.AutoRelativeLayout>
