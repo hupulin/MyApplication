@@ -189,7 +189,7 @@ public class ExchangeActivity extends BaseActivity {
             payMoney(payInfoTo.getAlipay());
         }
         if (payType == 2) {
-            WeChatPayTo payToInfo = new Gson().fromJson(JSON.toJSONString(data), WeChatPayTo.class);
+            WeChatPayTo payToInfo = (WeChatPayTo) data;
             WeChatPayTo.WxpayBean payTo = payToInfo.getWxpay();
             IWXAPI api = WXAPIFactory.createWXAPI(this, "wx34575f0ea7a2a608");
             PayReq request = new PayReq();

@@ -26,15 +26,17 @@ import rx.schedulers.Schedulers;
 
 public class GoodsSortPresenter extends BasePresenter {
     private List<MallGoodsTo> goodsList = new ArrayList<>();
-
+   private int typeId;
+    private int sortType=0;
+    private int sortOrder=2;
     public GoodsSortPresenter(BaseFragment fragment) {
         initContext(fragment);
 
     }
 
-    public void getGoodsList(int typeId) {
+    public void getGoodsList(int typeId,int sortType,int sortOrder) {
 
-
+this.typeId=typeId;
         MallGoodsListParam param = new MallGoodsListParam();
         param.setCate_id(typeId);
         param.setHash(getHashStringNoUser(MallGoodsListParam.class, param));
@@ -51,5 +53,17 @@ public class GoodsSortPresenter extends BasePresenter {
                     }
                 }
         );
+    }
+
+    @Override
+    public void recycleViewRefresh() {
+        super.recycleViewRefresh();
+        getGoodsList(typeId,sortType,sortOrder);
+    }
+
+    @Override
+    public void recycleViewLoadMore() {
+        super.recycleViewLoadMore();
+        getGoodsList(typeId,sortType,sortOrder);
     }
 }

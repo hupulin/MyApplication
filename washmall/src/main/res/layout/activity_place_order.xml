@@ -60,6 +60,7 @@
     <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="100px"
+        android:id="@+id/save_wardrobe_layout"
         android:layout_marginLeft="21px"
         android:layout_marginRight="21px">
 
@@ -136,6 +137,7 @@
     <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="100px"
+        android:id="@+id/pickup_time_layout"
         android:layout_marginLeft="21px"
         android:layout_marginRight="21px">
 
@@ -178,6 +180,7 @@
         android:layout_width="match_parent"
         android:layout_height="100px"
         android:layout_marginLeft="21px"
+        android:id="@+id/pickup_wardrobe_layout"
         android:layout_marginRight="21px">
 
         <TextView
@@ -221,7 +224,7 @@
         android:layout_height="108px"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="67px"
-        android:text="确认"
+        android:text="立即预定"
         android:textColor="@color/white"
         android:textSize="30px"
         android:paddingBottom="10px"

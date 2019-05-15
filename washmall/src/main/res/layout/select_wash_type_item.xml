@@ -28,6 +28,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text=""
+            android:singleLine="true"
+            android:ellipsize="end"
             android:textColor="@color/black"
             android:textSize="22px" />
 

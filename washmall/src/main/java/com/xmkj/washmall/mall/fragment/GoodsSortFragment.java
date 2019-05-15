@@ -23,6 +23,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 import hzxmkuar.com.applibrary.domain.main.MallGoodsTo;
 import hzxmkuar.com.applibrary.domain.mall.MallChildTypeTo;
@@ -40,12 +41,17 @@ public class GoodsSortFragment extends BaseFragment {
 
     private boolean isViewCreate;
     private boolean isUiVisible;
-
+    @BindView(R.id.price_icon)
+    View priceIcon;
+    @BindView(R.id.sale_icon)
+    View saleIcon;
+    private GoodsSortPresenter presenter;
+    private List<MallChildTypeTo> categoryList;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-       rootView = View.inflate(appContext, R.layout.common_fragment_recyclerview, null);
+       rootView = View.inflate(appContext, R.layout.fragment_goods_sort, null);
 
         unbinder = ButterKnife.bind(this, rootView);
         isViewCreate = true;
@@ -73,10 +79,11 @@ public class GoodsSortFragment extends BaseFragment {
 
             isUiVisible = false;
             isViewCreate = false;
-            List<MallChildTypeTo> categoryList = ((GoodsSortActivity) getActivity()).categoryList;
-            GoodsSortPresenter presenter = new GoodsSortPresenter(this);
-            presenter.getGoodsList(categoryList.get(FragmentPagerItem.getPosition(getArguments())).getCate_id());
-            setRecycleView(new GoodsSortAdapter(getActivity()),recyclerView,presenter ,2);
+            categoryList = ((GoodsSortActivity) getActivity()).categoryList;
+            presenter = new GoodsSortPresenter(this);
+            presenter.getGoodsList(categoryList.get(FragmentPagerItem.getPosition(getArguments())).getCate_id(),0,2
+            );
+            setRecycleView(new GoodsSortAdapter(getActivity()),recyclerView, presenter,2,true,true);
 
 
         }
@@ -98,6 +105,24 @@ public class GoodsSortFragment extends BaseFragment {
         intent.putExtra("GoodsTo", goodsTo);
         startActivity(intent);
         goToAnimation(1);
+    }
+
+    @OnClick({R.id.price_layout, R.id.sale_layout})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.price_layout:
+                priceIcon.setBackgroundResource(priceIcon.isSelected() ? R.drawable.sort_up_icon : R.drawable.sort_down_icon);
+
+                presenter.getGoodsList(categoryList.get(FragmentPagerItem.getPosition(getArguments())).getCate_id(),1, priceIcon.isSelected() ? 2 : 1);
+                priceIcon.setSelected(!priceIcon.isSelected());
+                break;
+            case R.id.sale_layout:
+                saleIcon.setBackgroundResource(saleIcon.isSelected() ? R.drawable.sort_up_icon : R.drawable.sort_down_icon);
+                presenter.getGoodsList(categoryList.get(FragmentPagerItem.getPosition(getArguments())).getCate_id(),2, saleIcon.isSelected() ? 2 : 1);
+                saleIcon.setSelected(!saleIcon.isSelected());
+
+                break;
+        }
     }
 }
 

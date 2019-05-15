@@ -76,7 +76,7 @@ public class OrderFragment extends BaseFragment {
             adapter = new OrderMallAdapter(getActivity());
             presenter = new MyOrderPresenter(this);
             presenter.getOrderList(type);
-            setRecycleView(adapter,recyclerView, presenter,false);
+            setRecycleView(adapter,recyclerView, presenter,true,true);
             setAdapterListener();
         }
 
@@ -98,6 +98,7 @@ public class OrderFragment extends BaseFragment {
             public void send(MallOrderTo mode) {
                 WashAlertDialog.show(getActivity(),"提示","催发货").setOnClickListener(view -> {
                     WashAlertDialog.dismiss();
+                    presenter.quickSend(mode.getId()+"");
                 });
             }
 
@@ -106,6 +107,14 @@ public class OrderFragment extends BaseFragment {
                 WashAlertDialog.show(getActivity(),"提示","确认收货").setOnClickListener(view -> {
                     WashAlertDialog.dismiss();
                     presenter.confirmReceiver(mode.getId()+"");
+                });
+            }
+
+            @Override
+            public void cancelOrder(MallOrderTo mode) {
+                WashAlertDialog.show(getActivity(),"提示","确认取消订单").setOnClickListener(view -> {
+                    WashAlertDialog.dismiss();
+                    presenter.cancel(mode.getId()+"");
                 });
             }
         });

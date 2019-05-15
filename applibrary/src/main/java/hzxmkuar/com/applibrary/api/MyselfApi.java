@@ -7,6 +7,8 @@ import hzxmkuar.com.applibrary.domain.integral.PageParam;
 import hzxmkuar.com.applibrary.domain.myself.DeleteCollectParam;
 import hzxmkuar.com.applibrary.domain.myself.ExchangePayParam;
 import hzxmkuar.com.applibrary.domain.myself.FeedbackParam;
+import hzxmkuar.com.applibrary.domain.myself.ModifyPasswordParam;
+import hzxmkuar.com.applibrary.domain.order.WeChatPayTo;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
 import rx.Observable;
@@ -32,7 +34,11 @@ public interface MyselfApi {
      * 充值
      */
     @POST("Api/Order/recharge")
-    Observable<MessageTo>exchange(@Body ExchangePayParam param);
+    Observable<MessageTo>exchange(@Body ExchangePayParam param);/**
+     * 充值微信
+     */
+    @POST("Api/Order/recharge")
+    Observable<MessageTo<WeChatPayTo>>exchangeWx(@Body ExchangePayParam param);
 
     /**
      * 我的收藏
@@ -45,5 +51,11 @@ public interface MyselfApi {
      */
     @POST("Api/Goods/del_collected_goods")
     Observable<MessageTo>deleteCollect(@Body DeleteCollectParam param);
+
+    /**
+     * 修改密码
+     */
+    @POST("Api/user/updatePasswordByOld")
+    Observable<MessageTo>modifyPassword(@Body ModifyPasswordParam param);
 
 }

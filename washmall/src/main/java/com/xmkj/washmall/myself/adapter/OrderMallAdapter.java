@@ -56,6 +56,7 @@ public class OrderMallAdapter extends BaseAdapter<MallOrderTo, MyOrderMallItemBi
         binding.statue.setText(mode.getStatus_txt());
         setGoodsLayout(binding.goodsLayout, mode.getGoods_list());
         binding.pay.setVisibility(mode.getButton_list().getFk_btn() == 1 ? View.VISIBLE : View.GONE);
+        binding.cancel.setVisibility(mode.getButton_list().getQxdd_btn() == 1 ? View.VISIBLE : View.GONE);
         binding.send.setVisibility(mode.getButton_list().getCfh_btn() == 1 ? View.VISIBLE : View.GONE);
         binding.confirmReceiver.setVisibility(mode.getButton_list().getQrsh_btn() == 1 ? View.VISIBLE : View.GONE);
 
@@ -71,6 +72,11 @@ public class OrderMallAdapter extends BaseAdapter<MallOrderTo, MyOrderMallItemBi
         binding.confirmReceiver.setOnClickListener(view -> {
             if (listener!=null)
                 listener.confirmReceiver(mode);
+        });
+
+        binding.cancel.setOnClickListener(view -> {
+            if (listener!=null)
+                listener.cancelOrder(mode);
         });
 
     }
@@ -97,6 +103,10 @@ public class OrderMallAdapter extends BaseAdapter<MallOrderTo, MyOrderMallItemBi
         void send(MallOrderTo mode);
 
         void confirmReceiver(MallOrderTo mode);
+
+        void cancelOrder(MallOrderTo mode);
+
+
     }
 
     private OrderMallAdapterListener listener;

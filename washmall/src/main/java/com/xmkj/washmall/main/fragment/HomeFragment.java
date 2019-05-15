@@ -112,6 +112,7 @@ public class HomeFragment extends BaseFragment implements PermissionListener {
             mView.setOnClickListener(v -> {
                 Intent intent = new Intent(appContext, WardrobeActivity.class);
                 intent.putExtra("WardrobeId", wardrobeTo.getId());
+                intent.putExtra("WardrobeName", wardrobeTo.getWardrobe_name());
                 startActivity(intent);
                 goToAnimation(1);
             });

@@ -64,7 +64,7 @@ public class PlaceOrderActivity extends BaseActivity implements OnDateSetListene
         presenter = new PlaceOrderPresenter(this);
     }
 
-    @OnClick({R.id.pickup_time, R.id.pickup_wardrobe, R.id.confirm, R.id.save_wardrobe, R.id.rule_des})
+    @OnClick({R.id.pickup_time_layout, R.id.pickup_wardrobe_layout, R.id.confirm, R.id.save_wardrobe_layout, R.id.rule_des})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.rule_des:
@@ -74,13 +74,13 @@ public class PlaceOrderActivity extends BaseActivity implements OnDateSetListene
                 startActivity(intent);
                 goToAnimation(1);
                 break;
-            case R.id.save_wardrobe:
+            case R.id.save_wardrobe_layout:
                 presenter.getWardrobeList(saveWardrobe);
                 break;
-            case R.id.pickup_time:
+            case R.id.pickup_time_layout:
                 initTimeDialog();
                 break;
-            case R.id.pickup_wardrobe:
+            case R.id.pickup_wardrobe_layout:
                 presenter.getWardrobeList(pickupWardrobe);
                 break;
             case R.id.confirm:

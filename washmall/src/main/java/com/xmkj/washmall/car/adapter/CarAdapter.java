@@ -48,7 +48,7 @@ public class CarAdapter extends BaseAdapter<GoodsCarTo, CarItemBinding> {
         GoodsCarTo mode=mList.get(position);
         binding.goodsName.setText(mode.getGoods_name());
         disPlayImage(binding.goodsImage,mode.getSpec_image());
-        binding.price.setText(mode.getGoods_price());
+        binding.price.setText("￥"+mode.getGoods_price());
         binding.specification.setText(mode.getSpec_name());
         binding.purchaseNum.setText(mode.getGoods_num()+"");
         binding.select.setBackgroundResource(mode.isSelect()?R.drawable.address_select:R.drawable.address_un_select);

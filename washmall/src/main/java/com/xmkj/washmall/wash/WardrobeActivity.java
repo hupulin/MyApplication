@@ -53,7 +53,7 @@ public class WardrobeActivity extends BaseActivity {
         setContentView(R.layout.activity_wardrobe);
         ButterKnife.bind(this);
         StatueBarUtil.setStatueBarTextWhite(getWindow());
-        setTitleName("1号智能柜");
+        setTitleName(getIntent().getStringExtra("WardrobeName"));
 
         WardrobePresenter presenter = new WardrobePresenter(this);
 

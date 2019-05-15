@@ -88,4 +88,50 @@ public class MyOrderPresenter extends BasePresenter {
                 }
         );
     }
+
+    public void cancel(String orderId){
+        showLoadingDialog();
+        OrderIdParam param=new OrderIdParam();
+        param.setOrder_id(orderId);
+        param.setHash(getHashString(OrderIdParam.class,param));
+        ApiClient.create(OrderApi.class).cancelOrder(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
+                new MyObserver<MessageTo>(this) {
+                    @Override
+                    public void onNext(MessageTo msg) {
+                        if (msg.getCode()==0){
+                            getOrderList(type);
+                            showMessage("取消订单成功");
+                            getOrderList(type);
+                        }else
+                            showMessage(msg.getMsg());
+                    }
+                }
+        );
+    }
+
+    public void quickSend(String orderId){
+        showLoadingDialog();
+        OrderIdParam param=new OrderIdParam();
+        param.setOrder_id(orderId);
+        param.setHash(getHashString(OrderIdParam.class,param));
+        ApiClient.create(OrderApi.class).quickSend(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
+                new MyObserver<MessageTo>(this) {
+                    @Override
+                    public void onNext(MessageTo msg) {
+                        if (msg.getCode()==0){
+                            showMessage("催发货成功");
+                            getOrderList(type);
+                        }else
+                            showMessage(msg.getMsg());
+                    }
+                }
+        );
+    }
+
+    @Override
+    public void recycleViewLoadMore() {
+        super.recycleViewLoadMore();
+        getOrderList(type);
+    }
+
 }

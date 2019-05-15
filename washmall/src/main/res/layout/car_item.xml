@@ -76,12 +76,12 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginBottom="39px"
                 android:layout_marginRight="18px">
-
                 <View
                     android:layout_width="40px"
                     android:layout_height="40px"
-                    android:id="@+id/add"
-                    android:background="@drawable/specification_add" />
+                    android:id="@+id/reduce"
+                    android:background="@drawable/specification_reduce" />
+
 
                 <com.xmkj.washmall.base.util.PingFangTextView
                     android:id="@+id/purchase_num"
@@ -92,12 +92,12 @@
                     android:textColor="@color/black"
                     android:text="1"
                     android:textSize="26px" />
-
                 <View
                     android:layout_width="40px"
                     android:layout_height="40px"
-                    android:id="@+id/reduce"
-                    android:background="@drawable/specification_reduce" />
+                    android:id="@+id/add"
+                    android:background="@drawable/specification_add" />
+
             </com.zhy.autolayout.AutoLinearLayout>
         </com.zhy.autolayout.AutoRelativeLayout>
 

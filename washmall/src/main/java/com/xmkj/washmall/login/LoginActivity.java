@@ -180,7 +180,6 @@ public class LoginActivity extends BaseActivity {
         intent.putExtra("IsSplash", true);
         UserInfoTo userInfoTo=userInfoHelp.getUserInfo();
         userInfoTo.setMyselfTo(myselfUserTo);
-        showMessage(myselfUserTo+"");
         userInfoHelp.saveUserInfo(userInfoTo);
         userInfoHelp.saveUserLogin(true);
 
