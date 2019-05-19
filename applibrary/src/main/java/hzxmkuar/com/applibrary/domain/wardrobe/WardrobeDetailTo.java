@@ -22,6 +22,7 @@ public class WardrobeDetailTo {
     private String wardrobe_name;
     private String wardrobe_img;
     private String address;
+    private String free_grid_num;
     private List<GridListBean> grid_list;
 
 

@@ -23,6 +23,7 @@ import hzxmkuar.com.applibrary.domain.main.MainWardrobeTo;
 import hzxmkuar.com.applibrary.domain.mall.OrderIdTo;
 import hzxmkuar.com.applibrary.domain.mall.OrderInfoTo;
 import hzxmkuar.com.applibrary.domain.wash.AddWashOrderParam;
+import hzxmkuar.com.applibrary.domain.wash.PlaceWashOrderTo;
 import hzxmkuar.com.applibrary.domain.wash.WashJsonParam;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -91,7 +92,7 @@ public class PlaceOrderPresenter extends BasePresenter{
                     @Override
                     public void onNext(MessageTo msg) {
                         if (msg.getCode()==0){
-                            submitDataSuccess(new Gson().fromJson(JSON.toJSONString(msg.getData()), OrderIdTo.class));
+                            submitDataSuccess(new Gson().fromJson(JSON.toJSONString(msg.getData()), PlaceWashOrderTo.class));
                         }else
                             showMessage(msg.getMsg());
                     }

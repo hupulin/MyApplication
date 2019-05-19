@@ -235,6 +235,14 @@
             android:screenOrientation="portrait"
             />
 
+        <activity android:name=".integral.IntegralOrderDetailActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".wash.CanOpenActivity"
+            android:screenOrientation="portrait"
+            />
+
         <!--环信配置-->
         <meta-data
             android:name="EASEMOB_APPKEY"

@@ -82,6 +82,13 @@ public class ScanActivity extends BaseActivity implements PermissionListener {
 
 
 //                showMessage("开柜中");
+            if (getIntent().getBooleanExtra("IsMain",false)){
+                Intent intent=new Intent(appContext,CanOpenActivity.class);
+                intent.putExtra("WardrobeNo",result);
+                startActivity(intent);
+                finish();
+                goToAnimation(1);
+            }else
                 presenter.openWardrobe(result);
 
 

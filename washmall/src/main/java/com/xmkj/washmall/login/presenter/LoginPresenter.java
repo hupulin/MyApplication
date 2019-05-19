@@ -37,7 +37,7 @@ public class LoginPresenter extends BasePresenter{
        param.setJpush_id("android");
        param.setOpenid(openId);
        param.setHeadimgurl(headImage);
-       param.setSex(sex);
+       param.setSex(sex==0?1:sex);
        param.setAuth_type(type);
        param.setNickname(nickName);
        param.setHash(getHashStringNoUser(WechatLoginParam.class,param));
@@ -47,7 +47,17 @@ public class LoginPresenter extends BasePresenter{
                    @Override
                    public void onNext(MessageTo msg) {
                        if (msg.getCode()==0){
-                           getDataSuccess(msg.getData());
+                           WechatLoginTo loginTo = new Gson().fromJson(JSON.toJSONString(msg.getData()), WechatLoginTo.class);
+                           if (loginTo.getUid()==0)
+                           getDataSuccess(loginTo);
+                           else {
+                               UserInfoTo userInfoTo = new UserInfoTo();
+                               userInfoTo.setUid(loginTo.getUid());
+                               userInfoTo.setOauth_id(loginTo.getOauth_id());
+                               userInfoTo.setHashid(loginTo.getHashid());
+                               userInfoHelp.saveUserInfo(userInfoTo);
+                               getUserInfo();
+                           }
                        }else
                            showMessage(msg.getMsg());
                    }

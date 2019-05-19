@@ -190,27 +190,12 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     public void loadDataSuccess(Object data) {
-        MyselfUserTo myselfUserTo = (MyselfUserTo) data;
-        userInfoTo=userInfoHelp.getUserInfo();
-        if (userInfoTo.getUid() == 0) {
+
             Intent intent = new Intent(appContext, BindPhoneActivity.class);
             intent.putExtra("OauthId", userInfoTo.getOauth_id());
             startActivity(intent);
             goToAnimation(1);
-        } else {
-            Intent intent = new Intent(appContext, MainActivity.class);
-            intent.putExtra("IsSplash", true);
-            userInfoHelp.saveUserLogin(true);
 
-            userInfoTo.setUid(userInfoTo.getUid());
-            userInfoTo.setHashid(userInfoTo.getHashid());
-            userInfoTo.setMyselfTo(myselfUserTo);
-            userInfoHelp.saveUserInfo(userInfoTo);
-
-            startActivity(intent);
-            finish();
-            goToAnimation(1);
-        }
     }
 
     public void wechatLogin() {
@@ -231,7 +216,6 @@ public class LoginActivity extends BaseActivity {
     @Subscribe
     public void wechatLoginData(Event<WechatUserInfoTo> event) {
         if ("WechatLoginSuccess".equals(event.getType())) {
-
             WechatUserInfoTo wechatUserInfoTo = event.getData();
             presenter.thirdPartLogin(wechatUserInfoTo.getOpenid(), wechatUserInfoTo.getNickname(), wechatUserInfoTo.getHeadimgurl(), wechatUserInfoTo.getSex(), 2);
         }

@@ -32,6 +32,7 @@ import com.xmkj.washmall.main.presenter.MainHomePresenter;
 import com.xmkj.washmall.message.MessageCenterActivity;
 import com.xmkj.washmall.myself.ExchangeActivity;
 import com.xmkj.washmall.myself.MyOrderActivity;
+import com.xmkj.washmall.wash.ScanActivity;
 import com.xmkj.washmall.wash.SelectWashActivity;
 import com.xmkj.washmall.wash.WardrobeActivity;
 
@@ -150,6 +151,10 @@ public class HomeFragment extends BaseFragment implements PermissionListener {
                 goToAnimation(1);
                 break;
             case R.id.scan:
+                intent = new Intent(appContext, ScanActivity.class);
+                intent.putExtra("IsMain",true);
+                startActivity(intent);
+                goToAnimation(1);
                 break;
             case R.id.city_name:
             case R.id.locate_position:

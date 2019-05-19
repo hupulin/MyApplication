@@ -23,14 +23,16 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="6px"
+                android:singleLine="true"
                 android:textColor="@color/black"
+               android:maxLength="4"
                 android:textSize="24px" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="18px"
+                android:layout_marginLeft="8px"
                 android:text="数量："
                 android:textColor="@color/black"
                 android:textSize="24px" />

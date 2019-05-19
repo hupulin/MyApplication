@@ -1,6 +1,8 @@
 package com.xmkj.washmall.mall;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -18,11 +20,15 @@ import com.tencent.mm.opensdk.modelpay.PayReq;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import com.xmkj.washmall.R;
+import com.xmkj.washmall.base.ActivityManager;
 import com.xmkj.washmall.base.BaseActivity;
 import com.xmkj.washmall.base.Event;
+import com.xmkj.washmall.myself.MallOrderActivity;
+import com.xmkj.washmall.myself.MyOrderActivity;
 import com.xmkj.washmall.myself.presenter.PayPresenter;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.Map;
 
@@ -33,6 +39,7 @@ import hzxmkuar.com.applibrary.domain.order.OrderResultTo;
 import hzxmkuar.com.applibrary.domain.order.PayInfoTo;
 import hzxmkuar.com.applibrary.domain.order.PayResult;
 import hzxmkuar.com.applibrary.domain.order.WeChatPayTo;
+import rx.Observable;
 
 /**
  * Created by Administrator on 2018/12/27.
@@ -64,6 +71,12 @@ public class SelectPayActivity extends BaseActivity {
                         if (TextUtils.equals(resultStatus, "9000")) {
                             Toast.makeText(appContext, "支付成功", Toast.LENGTH_SHORT).show();
                             EventBus.getDefault().post(new Event<>("PayResultData", 10));
+                            Intent intent=new Intent(appContext, MallOrderActivity.class);
+
+                            startActivity(intent);
+                            Observable.from(ActivityManager.activityList).subscribe(activity -> activity.finish());
+                            goToAnimation(1);
+                            finish();
 
                         } else {
                             if (TextUtils.equals(resultStatus, "8000")) {
@@ -93,7 +106,7 @@ public class SelectPayActivity extends BaseActivity {
         ButterKnife.bind(this);
         setTitleName("支付");
         presenter = new PayPresenter(this);
-
+EventBus.getDefault().register(this);
         setView();
     }
 
@@ -173,6 +186,12 @@ public class SelectPayActivity extends BaseActivity {
         }
         if (payType==3){
             showMessage("支付成功");
+            Intent intent=new Intent(appContext, MallOrderActivity.class);
+
+            startActivity(intent);
+            Observable.from(ActivityManager.activityList).subscribe(activity -> activity.finish());
+            goToAnimation(1);
+            finish();
         }
     }
 
@@ -192,5 +211,24 @@ public class SelectPayActivity extends BaseActivity {
         Thread payThread = new Thread(payRunnable);
         payThread.start();
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe
+    public void wxPaySuccess(Event event){
+        if ("PayResultDataWX".equals(event.getType())){
+
+            Intent intent=new Intent(appContext, MallOrderActivity.class);
+
+            startActivity(intent);
+            Observable.from(ActivityManager.activityList).subscribe(Activity::finish);
+            goToAnimation(1);
+            finish();
+        }
     }
 }

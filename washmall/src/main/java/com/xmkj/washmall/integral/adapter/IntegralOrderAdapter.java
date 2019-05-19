@@ -54,7 +54,7 @@ public class IntegralOrderAdapter extends BaseAdapter<IntegralOrderListTo, Integ
         IntegralOrderItemBinding binding = holder.getBinding();
         IntegralOrderListTo mode=mList.get(position);
 
-        binding.orderMoney.setText("￥ "+mode.getTotal_amount());
+        binding.orderMoney.setText(mode.getTotal_amount()+"");
 
         binding.remark.setText(mode.getRemarks());
         binding.orderNumber.setText(mode.getOrder_sn());

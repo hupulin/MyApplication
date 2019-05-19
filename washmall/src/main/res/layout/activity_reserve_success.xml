@@ -40,7 +40,7 @@
                 android:textColor="@color/black"
                 android:textSize="36px" />
 
-            <TextView
+            <com.xmkj.washmall.wash.adapter.CountdownTextView
                 android:id="@+id/rule_des"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

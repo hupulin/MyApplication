@@ -57,6 +57,7 @@
                        app:layout_auto_basewidth="height"
                        android:layout_marginLeft="17px"
                        android:layout_gravity="center_vertical"
+                       android:id="@+id/rule"
                        android:background="@drawable/integral_title_icon"
                        />
                </com.zhy.autolayout.AutoLinearLayout>

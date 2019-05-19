@@ -26,7 +26,7 @@ public class IntegralRecordActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.common_recycler_view);
         ButterKnife.bind(this);
-        setTitleName("积分记录");
+        setTitleName("积分明细");
         setRecycleView(new IntegralRecordAdapter(this),recyclerView,new IntegralRecordPresenter(this));
     }
 }

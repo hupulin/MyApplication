@@ -34,6 +34,7 @@ public class MyselfUserTo implements Serializable{
         private int uid;
         private String face_url;
         private int is_member;
+        private int member_level;
         private String user_tag;
         private String account;
         private String score;

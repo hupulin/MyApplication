@@ -6,6 +6,7 @@ import hzxmkuar.com.applibrary.domain.MessageTo;
 import hzxmkuar.com.applibrary.domain.mall.OrderIdParam;
 import hzxmkuar.com.applibrary.domain.wardrobe.OpenWardrobeParam;
 import hzxmkuar.com.applibrary.domain.wash.AddWashOrderParam;
+import hzxmkuar.com.applibrary.domain.wash.CanOpenParam;
 import hzxmkuar.com.applibrary.domain.wash.EvaluateOrderParam;
 import hzxmkuar.com.applibrary.domain.wash.MyWashOrderParam;
 import hzxmkuar.com.applibrary.domain.wash.RepairParam;
@@ -72,4 +73,11 @@ public interface WashApi {
      */
     @POST("Api/Wash/add_fault_repair")
     Observable<MessageTo>repair(@Body RepairParam param);
+
+
+    /**
+     * 获取可开箱列表
+     */
+    @POST("Api/Wash/scan_order_list")
+    Observable<MessageListTo>getCanOpenList(@Body CanOpenParam param);
 }

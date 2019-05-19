@@ -14,6 +14,7 @@ import com.alibaba.fastjson.JSON;
 import com.google.gson.Gson;
 import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.BaseActivity;
+import com.xmkj.washmall.base.WashAlertDialog;
 import com.xmkj.washmall.databinding.ConfirmOrderGoodsItemBinding;
 import com.xmkj.washmall.integral.presenter.IntegralOrderPresenter;
 import com.xmkj.washmall.mall.AddressActivity;
@@ -148,9 +149,18 @@ public class IntegralOrderActivity extends BaseActivity {
     protected void submitDataSuccess(Object data) {
         OrderResultTo resultTo=new Gson().fromJson(JSON.toJSONString(data),OrderResultTo.class);
 
-        Intent intent=new Intent(appContext, SelectPayActivity.class);
-        intent.putExtra("OrderResultTo",resultTo);
-        startActivity(intent);
-        goToAnimation(1);
+        WashAlertDialog.show(this,"提示","兑换成功！ 请耐心等待商品的到来！","立即前往").setOnClickListener(view -> {
+            WashAlertDialog.dismiss();
+            Intent intent=new Intent(appContext, IntegralOrderDetailActivity.class);
+            intent.putExtra("OrderId",resultTo.getOrder_id()+"");
+            startActivity(intent);
+            goToAnimation(1);
+        });
+
+    }
+
+    private void showSuccessDialog(){
+
+
     }
 }

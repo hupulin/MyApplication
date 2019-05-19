@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.BaseFragment;
+import com.xmkj.washmall.base.util.PingFangTextView;
 import com.xmkj.washmall.myself.ExchangeActivity;
 
 import butterknife.BindView;
@@ -31,12 +32,17 @@ public class VipCardFragment extends BaseFragment {
     View vipBg;
     @BindView(R.id.discount)
     TextView discount;
+    @BindView(R.id.exchange)
+    View exchange;
+    @BindView(R.id.tip)
+    PingFangTextView tip;
     private boolean isViewCreate;
     private boolean isUiVisible;
 
     private int type;
-    public VipCardFragment(int type){
-        this.type=type;
+
+    public VipCardFragment(int type) {
+        this.type = type;
     }
 
     @Nullable
@@ -69,9 +75,10 @@ public class VipCardFragment extends BaseFragment {
 
             isUiVisible = false;
             isViewCreate = false;
-          vipBg.setBackgroundResource(type==1?R.drawable.vip_card_bg:type==2?R.drawable.vip_card_gold_bg:R.drawable.vip_card_masonry_bg);
-            discount.setText(type==1?"下单9折":type==2?"下单8折":"下单7折");
-
+            vipBg.setBackgroundResource(type == 1 ? R.drawable.vip_card_bg : type == 2 ? R.drawable.vip_card_gold_bg : R.drawable.vip_card_masonry_bg);
+            discount.setText(type == 1 ? "下单9折" : type == 2 ? "下单8折" : "下单7折");
+            exchange.setVisibility(userInfoTo.getMyselfTo().getUser_info().getMember_level()>=type?View.GONE:View.VISIBLE);
+            tip.setText(userInfoTo.getMyselfTo().getUser_info().getMember_level()>=type?"已生效权益":"待生效权益");
         }
 
 

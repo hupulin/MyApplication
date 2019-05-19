@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.exceptions.HyphenateException;
 import com.makeramen.roundedimageview.RoundedImageView;
+import com.ruffian.library.RTextView;
 import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.ActivityManager;
 import com.xmkj.washmall.base.BaseFragment;
@@ -22,7 +23,6 @@ import com.xmkj.washmall.base.WashAlertDialog;
 import com.xmkj.washmall.base.WebActivity;
 import com.xmkj.washmall.base.util.AppUtil;
 import com.xmkj.washmall.base.util.PingFangTextView;
-import com.xmkj.washmall.integral.IntegralActivity;
 import com.xmkj.washmall.integral.IntegralDetailActivity;
 import com.xmkj.washmall.login.LoginActivity;
 import com.xmkj.washmall.main.presenter.MyselfPresenter;
@@ -56,8 +56,6 @@ public class MyselfFragment extends BaseFragment {
     @BindView(R.id.user_name)
     PingFangTextView userName;
 
-    @BindView(R.id.vip_center)
-    View vipCenter;
     @BindView(R.id.user_tag)
     TextView userTag;
     @BindView(R.id.my_collect_num)
@@ -69,6 +67,8 @@ public class MyselfFragment extends BaseFragment {
     @BindView(R.id.my_balance_num)
     PingFangTextView myBalanceNum;
     Unbinder unbinder;
+    @BindView(R.id.vip_center)
+    RTextView vipCenter;
     private MyselfUserTo mode;
 
     @Nullable
@@ -95,7 +95,7 @@ public class MyselfFragment extends BaseFragment {
 
     @OnClick({R.id.user_image, R.id.user_name, R.id.vip_center, R.id.collect_layout, R.id.balance_layout, R.id.coupon_layout,
             R.id.wash_order_layout, R.id.wash_order_1, R.id.wash_order_2, R.id.wash_order_3, R.id.wash_order_4, R.id.mall_order_layout, R.id.mall_order_1, R.id.mall_order_2, R.id.mall_order_3, R.id.mall_order_4,
-            R.id.address, R.id.help, R.id.feed_back, R.id.custom_service, R.id.platform, R.id.about, R.id.login_out,R.id.exchange_layout
+            R.id.address, R.id.help, R.id.feed_back, R.id.custom_service, R.id.platform, R.id.about, R.id.login_out, R.id.exchange_layout
     })
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -208,7 +208,7 @@ public class MyselfFragment extends BaseFragment {
                 goToAnimation(1);
                 break;
             case R.id.platform:
-               setCall();
+                setCall();
                 break;
             case R.id.about:
                 intent = new Intent(appContext, WebActivity.class);
@@ -223,7 +223,7 @@ public class MyselfFragment extends BaseFragment {
                     userInfoHelp.saveUserInfo(null);
                     userInfoHelp.saveUserLogin(false);
                     Observable.from(ActivityManager.activityList).subscribe(Activity::finish);
-                    Intent intent1=new Intent(appContext, LoginActivity.class);
+                    Intent intent1 = new Intent(appContext, LoginActivity.class);
                     startActivity(intent1);
                     goToAnimation(2);
 
@@ -255,17 +255,20 @@ public class MyselfFragment extends BaseFragment {
     public void loadDataSuccess(Object data) {
         mode = (MyselfUserTo) data;
         userName.setText(mode.getUser_info().getUsername());
-        userInfoTo=userInfoHelp.getUserInfo();
+        userInfoTo = userInfoHelp.getUserInfo();
         userInfoTo.setMyselfTo(mode);
         userInfoHelp.saveUserInfo(userInfoTo);
         disPlayRoundImage(userImage, mode.getUser_info().getFace_url());
         userTag.setText(mode.getUser_info().getUser_tag());
         myBalanceNum.setText(mode.getUser_info().getAccount());
         myCollectNum.setText(mode.getUser_info().getCollection_num());
+        vipCenter.setVisibility(mode.getUser_info().getMember_level()!=0?View.VISIBLE:View.GONE);
+        vipCenter.setText(mode.getUser_info().getUser_tag());
 
-        myScoreNum.setText(mode.getUser_info().getScore().contains(".")? mode.getUser_info().getScore().split(".")[0]: mode.getUser_info().getScore());
+        myScoreNum.setText(mode.getUser_info().getScore().contains(".") ? mode.getUser_info().getScore().split(".")[0] : mode.getUser_info().getScore());
         myCouponNum.setText(mode.getUser_info().getCoupon_num());
     }
+
     public void setCall() {
         WashAlertDialog.show(getActivity(), "联系热线", "请联系我们，客服电话\n" + userInfoTo.getMyselfTo().getMore_service().getKf_tel()).setOnClickListener(v -> {
             WashAlertDialog.dismiss();

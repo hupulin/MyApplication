@@ -132,7 +132,7 @@ public class GoodsDetailActivity extends BaseActivity {
         specificationLayout.setMaxSelectCount(1);
         TextView purchaseNum = dialog.findViewById(R.id.purchase_num);
         specificationLayout.setTag(specificationList.get(0).getSpec_id() + "");
-        ((TextView) dialog.findViewById(R.id.specification_price)).setText("￥188.00");
+        ((TextView) dialog.findViewById(R.id.specification_price)).setText(mode.getGoods_price()+"");
         displayImage(dialog.findViewById(R.id.goods_image), specificationList.get(0).getSpec_image());
         specificationLayout.setAdapter(new TagAdapter<SpecificationTo>(specificationList) {
             @Override
@@ -145,6 +145,7 @@ public class GoodsDetailActivity extends BaseActivity {
             }
         });
         specificationLayout.setOnTagClickListener((view, position, parent) -> {
+            displayImage(dialog.findViewById(R.id.goods_image), specificationList.get(position).getSpec_image());
             Observable.from(tagList).subscribe(textView -> {
                 specificationLayout.setTag(specificationList.get(position).getSpec_id() + "");
                 textView.setTextColor(Color.parseColor("#6868FF"));

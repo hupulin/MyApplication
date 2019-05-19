@@ -63,7 +63,7 @@ public class IntegralDetailActivity extends BaseActivity {
         setContentView(R.layout.activity_integral_detail);
         ButterKnife.bind(this);
         StatueBarUtil.setStatueBarTextWhite(getWindow());
-        setTitleName("积分明细");
+        setTitleName("积分余额");
         presenter = new IntegralDetailPresenter(this);
 
         setViewPager();
@@ -119,7 +119,7 @@ public class IntegralDetailActivity extends BaseActivity {
 
 
 
-    @OnClick({R.id.all, R.id.waite_send, R.id.already_send, R.id.rule_des})
+    @OnClick({R.id.all, R.id.waite_send, R.id.already_send, R.id.rule_des,R.id.rule})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.all:
@@ -133,6 +133,12 @@ public class IntegralDetailActivity extends BaseActivity {
                 break;
             case R.id.rule_des:
                 Intent intent=new Intent(appContext,IntegralRecordActivity.class);
+                startActivity(intent);
+                goToAnimation(1);
+                break;
+            case R.id.rule:
+                intent=new Intent(appContext,WebActivity.class);
+                intent.putExtra("Title","积分说明");
                 startActivity(intent);
                 goToAnimation(1);
                 break;

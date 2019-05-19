@@ -37,6 +37,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import hzxmkuar.com.applibrary.domain.main.MainWardrobeTo;
 import hzxmkuar.com.applibrary.domain.mall.OrderIdTo;
+import hzxmkuar.com.applibrary.domain.wash.PlaceWashOrderTo;
 import rx.Observable;
 
 /**
@@ -165,10 +166,10 @@ public class PlaceOrderActivity extends BaseActivity implements OnDateSetListene
 
     @Override
     protected void submitDataSuccess(Object data) {
-        OrderIdTo orderIdTo = (OrderIdTo) data;
+        PlaceWashOrderTo orderIdTo = (PlaceWashOrderTo) data;
         Intent intent = new Intent(appContext, ReserveSuccessActivity.class);
         intent.putExtra("OrderId",orderIdTo.getOrder_id());
-        intent.putExtra("WardrobeNo",saveWardrobe.getText().toString()+"");
+        intent.putExtra("WardrobeNo",orderIdTo.getWardrobe_no());
         startActivity(intent);
         finish();
         goToAnimation(1);

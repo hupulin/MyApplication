@@ -57,7 +57,7 @@ public class IntegralOrderPresenter extends BasePresenter {
                     @Override
                     public void onNext(MessageTo msg) {
                         if (msg.getCode()==0)
-                            showMessage("提交成功");
+                           submitDataSuccess(msg);
                         else
                             showMessage(msg.getMsg());
                     }

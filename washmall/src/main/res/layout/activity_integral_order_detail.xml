@@ -99,7 +99,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="2px"
+        android:layout_height="20px"
         android:layout_marginLeft="20px"
         android:layout_marginRight="20px"
         android:background="#F8F8F8" />
@@ -149,15 +149,14 @@
             android:textColor="@color/black"
             android:textSize="24px" />
 
-        <EditText
+        <TextView
             android:id="@+id/remark"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-
             android:background="@color/transparent"
-            android:hint="请输入您需要备注的信息"
+
             android:textColor="@color/black"
             android:gravity="end|center_vertical"
             android:textColorHint="#C7C7C7"
@@ -174,7 +173,7 @@
     <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="78px"
-        android:visibility="gone"
+
         android:layout_marginLeft="20px"
         android:layout_marginRight="20px">
 
@@ -182,7 +181,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:text="商品金额："
+            android:text="商品积分："
             android:textColor="@color/black"
             android:textSize="24px" />
 
@@ -196,91 +195,69 @@
             android:textSize="24px" />
     </com.zhy.autolayout.AutoRelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2px"
-        android:layout_marginLeft="20px"
-        android:layout_marginRight="20px"
-        android:background="#F8F8F8" />
 
-    <com.zhy.autolayout.AutoRelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="78px"
-        android:layout_marginLeft="20px"
-        android:visibility="gone"
-        android:layout_marginRight="20px">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:text="快递费用："
-            android:textColor="@color/black"
-            android:textSize="24px" />
 
-        <TextView
-            android:id="@+id/express_money"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:textColor="@color/black"
-            android:textSize="24px" />
-    </com.zhy.autolayout.AutoRelativeLayout>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="2px"
-        android:layout_marginLeft="20px"
-        android:layout_marginRight="20px"
-        android:background="#F8F8F8" />
+        android:layout_height="20px"
 
+        android:background="#F8F8F8" />
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginLeft="20px"
+       android:textSize="24px"
+       android:textColor="@color/black"
+       android:layout_marginTop="30px"
+       android:id="@+id/order_num"
+       />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20px"
+        android:textSize="24px"
+        android:textColor="@color/black"
+        android:layout_marginTop="38px"
+        android:id="@+id/create_time"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20px"
+        android:textSize="24px"
+        android:textColor="@color/black"
+        android:layout_marginTop="38px"
+        android:id="@+id/pay_time"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20px"
+        android:textSize="24px"
+        android:textColor="@color/black"
+        android:layout_marginTop="38px"
+        android:id="@+id/send_time"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20px"
+        android:textSize="24px"
+        android:textColor="@color/black"
+        android:layout_marginTop="38px"
+        android:id="@+id/pick_time"
+        />
     <View
         android:layout_width="match_parent"
         android:layout_height="0px"
         android:layout_weight="1" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2px"
-        android:background="#F8F8F8" />
 
-    <com.zhy.autolayout.AutoLinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="88px">
 
-        <com.zhy.autolayout.AutoRelativeLayout
-            android:layout_width="476px"
-            android:layout_height="match_parent">
 
-            <com.zhy.autolayout.AutoLinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:text="合计金额:"
-                    android:textColor="@color/black"
-                    android:textSize="26px" />
-
-                <TextView
-                    android:id="@+id/all_money"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="26px"
-                    android:textColor="#FF0000"
-                    android:textSize="26px" />
-            </com.zhy.autolayout.AutoLinearLayout>
-        </com.zhy.autolayout.AutoRelativeLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/confirm"
-            android:background="@drawable/integral_exchange_icon" />
-    </com.zhy.autolayout.AutoLinearLayout>
 </com.zhy.autolayout.AutoLinearLayout>

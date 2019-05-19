@@ -69,7 +69,7 @@ public class WXEntryActivity extends BaseActivity implements IWXAPIEventHandler 
 
     private void getToken(String code) {
         HttpUtils httpUtils = new HttpUtils();
-        httpUtils.send(HttpRequest.HttpMethod.GET, "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx34575f0ea7a2a608&secret=09db52c27bb92480e90659c723a45032&code=" + code + "&grant_type=authorization_code",
+        httpUtils.send(HttpRequest.HttpMethod.GET, "https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx34575f0ea7a2a608&secret=ad7f7bcaee98e6a3f4463c63c784ef19&code=" + code + "&grant_type=authorization_code",
                 new RequestCallBack<String>() {
                     @Override
                     public void onSuccess(ResponseInfo<String> responseInfo) {

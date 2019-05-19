@@ -34,6 +34,24 @@ public  class WashAlertDialog {
 
         return confirm;
     }
+
+    public static TextView show(Context context, String title, String des,String confirmText){
+
+        dialogBuilder = NiftyDialogBuilder.getInstance(context);
+        dialogBuilder.setContentView(R.layout.dialog_wash_alert);
+        TextView confirm=  dialogBuilder.findViewById(R.id.confirm);
+        confirm.setText(confirmText);
+        cancel = dialogBuilder.findViewById(R.id.cancel);
+        TextView tipText= dialogBuilder.findViewById(R.id.title);
+        ((TextView)dialogBuilder.findViewById(R.id.des)).setText(des);
+        tipText.setText(title);
+        dialogBuilder.show();
+        cancel.setOnClickListener(v -> dialogBuilder.dismiss());
+
+        dialogBuilder.findViewById(R.id.parent).setOnClickListener(v -> dialogBuilder.dismiss());
+
+        return confirm;
+    }
     public static Button show(Context context, String title){
 
         dialogBuilder = NiftyDialogBuilder.getInstance(context);

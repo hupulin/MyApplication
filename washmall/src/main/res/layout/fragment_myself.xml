@@ -58,13 +58,20 @@
                         android:textColor="@color/black"
                         android:textSize="30px" />
 
-                    <View
+                    <com.ruffian.library.RTextView
                         android:id="@+id/vip_center"
                         android:layout_width="145px"
                         android:layout_height="64px"
                         android:layout_alignParentEnd="true"
+                        android:background="#E96CFF"
+                        app:corner_radius_bottom_left="64px"
+                        app:corner_radius_top_left="64px"
+                        android:textSize="26px"
+                        android:textColor="@color/white"
+                        android:text="会员中心"
+                        android:gravity="center"
                         android:layout_marginTop="5px"
-                        android:background="@drawable/myself_vip_center" />
+                     />
 
                     <TextView
                         android:id="@+id/user_tag"

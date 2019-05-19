@@ -40,6 +40,7 @@
             android:layout_marginLeft="24px"
             android:layout_marginTop="26px"
             android:text="待生效权益"
+            android:id="@+id/tip"
             android:textColor="@color/white"
             android:textSize="24px" />
 
