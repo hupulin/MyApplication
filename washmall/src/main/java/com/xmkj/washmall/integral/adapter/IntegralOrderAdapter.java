@@ -61,7 +61,14 @@ public class IntegralOrderAdapter extends BaseAdapter<IntegralOrderListTo, Integ
         binding.statue.setText(mode.getStatus_txt());
         setGoodsLayout(binding.goodsLayout,mode);
 //        binding.pay.setText(mode.getPayStr());
-        binding.pay.setVisibility(type!=2? View.GONE:View.VISIBLE);
+//        binding.pay.setVisibility(type!=2? View.GONE:View.VISIBLE);
+//        binding.pay.setVisibility("已收货".equals(mode.getStatus_txt())? View.GONE:View.VISIBLE);
+        if(type==2&&"待发货".equals(mode.getStatus_txt())){
+            binding.pay.setVisibility(View.VISIBLE);
+        }else {
+            binding.pay.setVisibility(View.GONE);
+
+        }
 
         binding.pay.setOnClickListener(view -> {
             if (listener!=null)

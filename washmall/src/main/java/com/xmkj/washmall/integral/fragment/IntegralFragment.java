@@ -24,7 +24,7 @@ import butterknife.Unbinder;
 import hzxmkuar.com.applibrary.domain.integral.IntegralOrderListTo;
 
 /**
- * Created by Administrator on 2019/1/12.
+ *  Created by Administrator on 2019/1/12.
  */
 
 @SuppressLint("ValidFragment")

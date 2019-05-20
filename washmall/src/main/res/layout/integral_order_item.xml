@@ -8,10 +8,11 @@
 
         <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="724px"
-            android:layout_height="499px"
+            android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="22px"
-            android:background="@drawable/my_order_mall_bg"
+            android:background="@drawable/order_bg"
+            android:elevation="8dp"
             android:orientation="vertical">
 
             <com.zhy.autolayout.AutoLinearLayout
@@ -125,7 +126,10 @@
                 android:id="@+id/pay"
                 android:layout_marginTop="18px"
                 />
-
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20px"
+               />
         </com.zhy.autolayout.AutoLinearLayout>
     </com.zhy.autolayout.AutoRelativeLayout>
 </layout>
