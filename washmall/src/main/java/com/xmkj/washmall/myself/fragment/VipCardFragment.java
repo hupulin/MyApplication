@@ -36,6 +36,10 @@ public class VipCardFragment extends BaseFragment {
     View exchange;
     @BindView(R.id.tip)
     PingFangTextView tip;
+    @BindView(R.id.opening_discount)
+    TextView openingDiscount;
+    @BindView(R.id.discount_text)
+    TextView discountText;
     private boolean isViewCreate;
     private boolean isUiVisible;
 
@@ -76,9 +80,12 @@ public class VipCardFragment extends BaseFragment {
             isUiVisible = false;
             isViewCreate = false;
             vipBg.setBackgroundResource(type == 1 ? R.drawable.vip_card_bg : type == 2 ? R.drawable.vip_card_gold_bg : R.drawable.vip_card_masonry_bg);
+            discountText.setText(type == 1 ?"下单9折优惠、全场包邮等特权": type == 2 ? "下单8折优惠、全场包邮等特权" : "下单7折优惠、全场包邮等特权");
             discount.setText(type == 1 ? "下单9折" : type == 2 ? "下单8折" : "下单7折");
+            userInfoTo=userInfoHelp.getUserInfo();
             exchange.setVisibility(userInfoTo.getMyselfTo().getUser_info().getMember_level()>=type?View.GONE:View.VISIBLE);
             tip.setText(userInfoTo.getMyselfTo().getUser_info().getMember_level()>=type?"已生效权益":"待生效权益");
+            openingDiscount.setVisibility(userInfoTo.getMyselfTo().getUser_info().getMember_level()>=type?View.GONE:View.VISIBLE);
         }
 
 

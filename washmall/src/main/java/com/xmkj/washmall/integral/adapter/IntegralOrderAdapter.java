@@ -63,6 +63,10 @@ public class IntegralOrderAdapter extends BaseAdapter<IntegralOrderListTo, Integ
 //        binding.pay.setText(mode.getPayStr());
         binding.pay.setVisibility(type!=2? View.GONE:View.VISIBLE);
 
+        binding.pay.setOnClickListener(view -> {
+            if (listener!=null)
+                listener.confirmReceiver(mode);
+        });
 
 
     }
@@ -82,5 +86,19 @@ public class IntegralOrderAdapter extends BaseAdapter<IntegralOrderListTo, Integ
               goodsLayout.addView(mView);
           }
       }
+    public interface  OrderMallAdapterListener{
+
+
+        void confirmReceiver(IntegralOrderListTo mode);
+
+
+
+    }
+    private OrderMallAdapterListener listener;
+
+    public void setOrderMallAdapterListener(OrderMallAdapterListener listener){
+        this.listener=listener;
+    }
+
 
 }

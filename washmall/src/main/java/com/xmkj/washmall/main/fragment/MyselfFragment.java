@@ -263,7 +263,7 @@ public class MyselfFragment extends BaseFragment {
         myBalanceNum.setText(mode.getUser_info().getAccount());
         myCollectNum.setText(mode.getUser_info().getCollection_num());
         vipCenter.setVisibility(mode.getUser_info().getMember_level()!=0?View.VISIBLE:View.GONE);
-        vipCenter.setText(mode.getUser_info().getUser_tag());
+//        vipCenter.setText(mode.getUser_info().getUser_tag());
 
         myScoreNum.setText(mode.getUser_info().getScore().contains(".") ? mode.getUser_info().getScore().split(".")[0] : mode.getUser_info().getScore());
         myCouponNum.setText(mode.getUser_info().getCoupon_num());

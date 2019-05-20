@@ -151,8 +151,8 @@ public class IntegralOrderActivity extends BaseActivity {
 
         WashAlertDialog.show(this,"提示","兑换成功！ 请耐心等待商品的到来！","立即前往").setOnClickListener(view -> {
             WashAlertDialog.dismiss();
-            Intent intent=new Intent(appContext, IntegralOrderDetailActivity.class);
-            intent.putExtra("OrderId",resultTo.getOrder_id()+"");
+            Intent intent=new Intent(appContext, IntegralDetailActivity.class);
+//            intent.putExtra("OrderId",resultTo.getOrder_id()+"");
             startActivity(intent);
             goToAnimation(1);
         });

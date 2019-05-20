@@ -34,6 +34,8 @@ public class LoginActivity extends BaseActivity {
     EditText account;
     @BindView(R.id.password)
     EditText password;
+    @BindView(R.id.select_icon)
+    View selectIcon;
    private LoginPresenter presenter;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,7 +53,7 @@ public class LoginActivity extends BaseActivity {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
     }
-    @OnClick({R.id.login})
+    @OnClick({R.id.login,R.id.select_icon})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.login:
@@ -63,6 +65,10 @@ public class LoginActivity extends BaseActivity {
                     return;
                 }
                 presenter.login(account.getText().toString(),password.getText().toString());
+                break;
+            case R.id.select_icon:
+                selectIcon.setSelected(!selectIcon.isSelected());
+                selectIcon.setBackgroundResource(selectIcon.isSelected()?R.mipmap.login_agree_icon:R.mipmap.address_un_select);
                 break;
         }
     }
