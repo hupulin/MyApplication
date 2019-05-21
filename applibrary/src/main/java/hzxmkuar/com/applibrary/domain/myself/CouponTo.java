@@ -21,8 +21,8 @@ public class CouponTo {
     private String amount;
     private String cate_name;
     private String cate_desc;
-    private int start_time;
-    private int end_time;
+    private String start_time;
+    private String end_time;
 
 
 }

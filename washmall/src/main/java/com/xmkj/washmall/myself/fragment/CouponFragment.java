@@ -50,7 +50,7 @@ public class CouponFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = View.inflate(appContext, R.layout.common_fragment_recyclerview, null);
+         rootView = View.inflate(appContext, R.layout.common_fragment_recyclerview, null);
 
         unbinder = ButterKnife.bind(this, rootView);
         isViewCreate = true;

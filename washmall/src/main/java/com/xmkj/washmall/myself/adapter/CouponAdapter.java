@@ -55,6 +55,10 @@ public class CouponAdapter extends BaseAdapter<CouponTo, CouponItemBinding> {
         binding.time.setText(mode.getEnd_time()+"");
         binding.name.setText(mode.getCate_name());
         binding.money.setText(mode.getAmount());
+        if (mode.getAmount()!=null&&mode.getAmount().length()>0&&Double.valueOf(mode.getAmount()).intValue()>1)
+            binding.money.setText(Double.valueOf(mode.getAmount()).intValue()+"");
+        else
+            binding.money.setText(mode.getAmount());
         binding.couponIcon.setBackgroundResource(type==2?R.drawable.already_use_icon:R.drawable.out_time_icon);
         binding.couponIcon.setVisibility(type==1? View.GONE:View.VISIBLE);
         setTextViewStyles(binding.name);

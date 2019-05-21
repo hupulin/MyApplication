@@ -190,9 +190,9 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     public void loadDataSuccess(Object data) {
-
+        WechatLoginTo mode= (WechatLoginTo) data;
             Intent intent = new Intent(appContext, BindPhoneActivity.class);
-            intent.putExtra("OauthId", userInfoTo.getOauth_id());
+            intent.putExtra("OauthId", mode.getOauth_id());
             startActivity(intent);
             goToAnimation(1);
 
