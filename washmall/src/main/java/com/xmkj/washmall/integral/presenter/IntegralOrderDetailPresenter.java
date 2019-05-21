@@ -30,6 +30,8 @@ public class IntegralOrderDetailPresenter extends BasePresenter {
     private void getGoodsDetail() {
     showLoadingDialog();
         OrderIdParam param=new OrderIdParam();
+        param.setUid(userInfoTo.getUid());
+        param.setHashid(userInfoTo.getHashid());
         param.setOrder_id(activity.getIntent().getStringExtra("OrderId"));
         param.setHash(getHashString(OrderIdParam.class,param));
         ApiClient.create(IntegralApi.class).getOrderDetail(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(

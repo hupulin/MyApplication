@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zhy.autolayout.AutoLinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
+
     <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="726px"
         android:layout_height="wrap_content"
@@ -12,10 +11,32 @@
         android:layout_marginTop="20px">
 
         <View
-            android:layout_width="match_parent"
-            android:layout_height="358px"
             android:id="@+id/vip_bg"
-         />
+            android:background="@drawable/vip_card_bg"
+            android:layout_width="match_parent"
+            android:layout_height="358px" />
+
+        <com.xmkj.washmall.base.util.PingFangTextView
+            android:id="@+id/opening_discount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="56px"
+            android:layout_marginTop="170px"
+            android:text="开通立即尊享"
+            android:textColor="@color/white"
+            android:textSize="36px" />
+
+        <com.xmkj.washmall.base.util.PingFangTextView
+            android:id="@+id/discount_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="56px"
+            android:layout_marginTop="225px"
+
+            android:text="下单9折优惠、全场包邮等特权"
+
+            android:textColor="@color/white"
+            android:textSize="27px" />
 
         <View
             android:id="@+id/exchange"
@@ -29,18 +50,18 @@
     <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="714px"
         android:layout_height="306px"
-        android:orientation="vertical"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="14px"
         android:background="@drawable/vip_right_bg"
-        android:layout_marginTop="14px">
+        android:orientation="vertical">
 
         <com.xmkj.washmall.base.util.PingFangTextView
+            android:id="@+id/tip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="24px"
             android:layout_marginTop="26px"
             android:text="待生效权益"
-            android:id="@+id/tip"
             android:textColor="@color/white"
             android:textSize="24px" />
 
@@ -62,12 +83,12 @@
                     android:background="@drawable/vip_on_sale" />
 
                 <TextView
+                    android:id="@+id/discount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="14px"
                     android:text="下单9折"
-                    android:id="@+id/discount"
                     android:textColor="#535353" />
             </com.zhy.autolayout.AutoLinearLayout>
 

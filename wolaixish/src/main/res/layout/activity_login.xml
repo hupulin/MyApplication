@@ -103,7 +103,31 @@
         android:background="@mipmap/login_icon"
         android:layout_width="568px"
         android:layout_height="120px" />
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="31px"
+        android:layout_below="@+id/login"
+        android:layout_centerHorizontal="true">
+
+        <View
+            android:layout_width="44px"
+            android:layout_height="44px"
+            android:id="@+id/select_icon"
+            android:background="@mipmap/login_agree_icon"
+            app:layout_auto_basewidth="height" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="我已经阅读并同意电子协议内容"
+            android:id="@+id/agree"
+            android:textColor="#232323"
+            android:textSize="22px" />
+    </com.zhy.autolayout.AutoLinearLayout>
     <TextView
+        android:visibility="gone"
         android:drawableLeft="@mipmap/login_agree_icon"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="31px"

@@ -104,6 +104,12 @@ public interface OrderApi {
     Observable<MessageTo>confirmReceiver(@Body OrderIdParam param);
 
     /**
+     * 确认收货
+     */
+    @POST("Api/Integralgoods/confirmCompleted")
+    Observable<MessageTo>confirmIntegralgoodsReceiver(@Body OrderIdParam param);
+
+    /**
      * 取消订单
      */
     @POST("Api/Order/cancelOrderForUser")
