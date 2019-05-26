@@ -72,7 +72,7 @@ public class MallFragment extends BaseFragment {
         MallTypeTo typeTo = new MallTypeTo();
         typeTo.setCate_id(1000000);
         typeTo.setCate_name("积分商城");
-        typeList.add(0, typeTo);
+        typeList.add(7, typeTo);
         List<List<MallTypeTo>> bannerList = new ArrayList<>();
         for (int i = 0; i < (typeList.size() / 8 + (typeList.size() % 8 == 0 ? 0 : 1)); i++) {
             List<MallTypeTo> bannerChildList = new ArrayList<>();

@@ -60,12 +60,13 @@ public class SelectWashFragment extends BaseFragment {
 
    public GridLayout selectLayout;
     @BindView(R.id.money)
-    TextView money;
+   public TextView money;
 
     private boolean isViewCreate;
     private boolean isUiVisible;
     public double allMoney = 0;
     private List<WashJsonDetailTo>jsonDetailList=new ArrayList<>();
+    public List<TextView>numList=new ArrayList<>();
 
 
     @Nullable
@@ -154,6 +155,7 @@ public class SelectWashFragment extends BaseFragment {
             View mView = View.inflate(appContext, R.layout.select_wash_type_item, null);
             SelectWashTypeItemBinding bind = DataBindingUtil.bind(mView);
             bind.typeName.setText(washTo.getService_name());
+            numList.add(bind.num);
             displayImage(bind.washImage, washTo.getService_img());
             typeLayout.addView(mView);
             bind.add.setOnClickListener(v -> {

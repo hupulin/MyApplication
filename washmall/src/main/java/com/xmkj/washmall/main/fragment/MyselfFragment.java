@@ -204,6 +204,7 @@ public class MyselfFragment extends BaseFragment {
                 break;
             case R.id.custom_service:
                 intent = new Intent(appContext, ChatActivity.class);
+                intent.putExtra("Phone",mode.getMore_service().getKf_tel());
                 startActivity(intent);
                 goToAnimation(1);
                 break;

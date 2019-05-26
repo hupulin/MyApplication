@@ -21,7 +21,7 @@ public class EaseCompat {
 
     public static Uri getUriForFile(Context context, File file) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            return FileProvider.getUriForFile(context, "com.hzxmkuar.wumeihui.fileProvider", file);
+            return FileProvider.getUriForFile(context, "com.xmkj.washmall.fileProvider", file);
         } else {
             return Uri.fromFile(file);
         }

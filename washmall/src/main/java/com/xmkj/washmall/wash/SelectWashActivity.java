@@ -137,7 +137,11 @@ public class SelectWashActivity extends BaseActivity {
             WashAlertDialog.show(this, "提示", "您正在更换洗衣类目，确定更换已选选项将不保留",false).setOnClickListener(view -> {
                 WashAlertDialog.dismiss();
                 isFirst=true;
-                Observable.from(ActivityManager.washFragmentList).subscribe(fragment->fragment.selectLayout.removeAllViews());
+                Observable.from(ActivityManager.washFragmentList).subscribe(fragment->{
+                    fragment.selectLayout.removeAllViews();
+                    fragment.money.setText("");
+                    Observable.from(fragment.numList).subscribe(textView -> textView.setText("0"));
+                });
             });
             WashAlertDialog.getCancelClick().setOnClickListener(view -> {
                 WashAlertDialog.dismiss();

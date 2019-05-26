@@ -179,6 +179,9 @@ public class GoodsDetailActivity extends BaseActivity {
             }
             purchaseNum.setText(Integer.valueOf(purchaseNum.getText().toString()) - 1 + "");
         });
+
+        dialog.setCanceledOnTouchOutside(true);
+        dialog.findViewById(R.id.parent).setOnClickListener(v -> dialog.dismiss());
     }
 
     @Override

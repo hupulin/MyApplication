@@ -36,7 +36,7 @@ public class ChatActivity extends BaseActivity {
                             Bundle args = new Bundle();
 
                             args.putInt(EaseConstant.EXTRA_CHAT_TYPE, EaseConstant.CHATTYPE_SINGLE);
-                            args.putString(EaseConstant.EXTRA_USER_ID, "15168234206");
+                            args.putString(EaseConstant.EXTRA_USER_ID, getIntent().getStringExtra("Phone"));
                             args.putString("Name", "在线客服");
                             fragment.setArguments(args);
                             getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commitAllowingStateLoss();
