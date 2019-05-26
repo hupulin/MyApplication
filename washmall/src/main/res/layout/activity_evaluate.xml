@@ -71,7 +71,7 @@
         android:paddingTop="32px"
         android:textColorHint="#B5B5B5"
         android:paddingBottom="32px"
-        android:hint="请输入具体故障情况..."
+        android:hint="请输入评价内容..."
         android:id="@+id/content"
         />
 </com.zhy.autolayout.AutoLinearLayout>

@@ -14,4 +14,5 @@ public class SystemMessageTo {
   private String msg_title="标题";
   private String msg_desc="内容内容内容";
   private int id;
+  private int is_read;
 }

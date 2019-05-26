@@ -14,6 +14,7 @@
           android:layout_height="26px"
           app:corner_radius="26px"
           android:background="#8273EF"
+          android:id="@+id/read"
           android:layout_marginLeft="30px"
           android:layout_centerVertical="true"
           />

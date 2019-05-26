@@ -41,81 +41,11 @@
         android:layout_width="match_parent"
         android:layout_height="2px"
         android:background="#ededed" />
-<com.zhy.autolayout.AutoLinearLayout
+<com.github.jdsjlzx.recyclerview.LRecyclerView
     android:layout_width="match_parent"
-    android:layout_height="180px">
-    <com.zhy.autolayout.AutoLinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginLeft="54px"
-        android:orientation="vertical"
-        >
-      <View
-          android:layout_width="76px"
-          android:layout_height="76px"
-          android:background="@drawable/help_order_icon"
-          android:layout_gravity="center_horizontal"
-          />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15px"
-            android:textSize="22px"
-            android:textColor="@color/black"
-            android:text="关于订单"
-            />
-    </com.zhy.autolayout.AutoLinearLayout>
-    <View
-        android:layout_width="2px"
-        android:layout_height="101px"
-        android:layout_marginLeft="27px"
-        android:layout_gravity="center_vertical"
-        />
-    <com.zhy.autolayout.AutoLinearLayout
-        android:layout_width="438px"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center_vertical"
-        android:layout_marginLeft="16px"
-        >
-       <TextView
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="已确认收货的订单失效了？"
-           android:textSize="22px"
-           android:textColor="#808080"
-           />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2px"
-            android:background="#ededed"
-            android:layout_marginTop="20px"
-            android:layout_marginBottom="15px"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="有订单笔数却没有佣金显示?"
-            android:textSize="22px"
-            android:textColor="#808080"
-            />
-    </com.zhy.autolayout.AutoLinearLayout>
-    <View
-        android:layout_width="0px"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        />
-    <View
-        android:layout_width="40px"
-        android:layout_height="40px"
-        android:layout_gravity="center_vertical"
-        android:background="@drawable/myself_arrow"
-        android:layout_marginRight="50px"
-        />
-</com.zhy.autolayout.AutoLinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2px"
-        android:background="#ededed" />
+    android:layout_height="match_parent"
+    android:id="@+id/recycler_view"
+    >
+
+</com.github.jdsjlzx.recyclerview.LRecyclerView>
 </com.zhy.autolayout.AutoLinearLayout>

@@ -4,10 +4,9 @@ import hzxmkuar.com.applibrary.domain.BaseParam;
 import lombok.Data;
 
 /**
- * Created by Administrator on 2018/9/26.
+ * Created by 1ONE on 2019/5/26.
  */
 @Data
-public class KeyWordParam extends BaseParam {
-    private String keyword="";
-
+public class HelpCenterParam extends BaseParam{
+    private String keywords;
 }

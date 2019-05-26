@@ -54,4 +54,16 @@ public class MessageCenterPresenter extends BasePresenter {
         );
 
     }
+
+    @Override
+    public void recycleViewLoadMore() {
+        super.recycleViewLoadMore();
+        getMessageList();
+    }
+
+    @Override
+    public void recycleViewRefresh() {
+        super.recycleViewRefresh();
+        getMessageList();
+    }
 }

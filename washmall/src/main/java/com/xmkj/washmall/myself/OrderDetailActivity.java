@@ -25,6 +25,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import hzxmkuar.com.applibrary.domain.mall.OrderDetailTo;
 import hzxmkuar.com.applibrary.domain.order.OrderResultTo;
+import rx.Observable;
 
 /**
  * Created by Administrator on 2018/12/27.
@@ -93,17 +94,19 @@ public class OrderDetailActivity extends BaseActivity {
 
     @SuppressLint("SetTextI18n")
     public void setGoodsLayout() {
+        Observable.from(mode.getGoods_list()).subscribe(goodsTo -> {
+            View mView = View.inflate(appContext, R.layout.confirm_order_goods_item, null);
+            ConfirmOrderGoodsItemBinding bind = DataBindingUtil.bind(mView);
+            displayImage(bind.goodsImage, goodsTo.getSpec_image());
+            bind.goodsName.setText(goodsTo.getGoods_name());
+            bind.specification.setText(goodsTo.getSpec_name());
+            bind.goodsNum.setText("x" + goodsTo.getGoods_num());
+            bind.price.setText("￥" + goodsTo.getGoods_price());
 
-        OrderDetailTo.GoodsListBean goodsTo = mode.getGoods_list().get(0);
-        View mView = View.inflate(appContext, R.layout.confirm_order_goods_item, null);
-        ConfirmOrderGoodsItemBinding bind = DataBindingUtil.bind(mView);
-        displayImage(bind.goodsImage, goodsTo.getSpec_image());
-        bind.goodsName.setText(goodsTo.getGoods_name());
-        bind.specification.setText(goodsTo.getSpec_name());
-        bind.goodsNum.setText("x" + goodsTo.getGoods_num());
-        bind.price.setText("￥" + goodsTo.getGoods_price());
+            goodsLayout.addView(mView);
+        });
 
-        goodsLayout.addView(mView);
+
 
     }
 

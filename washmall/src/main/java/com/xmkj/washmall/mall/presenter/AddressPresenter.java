@@ -89,7 +89,7 @@ public class AddressPresenter extends BasePresenter {
                     @Override
                     public void onNext(MessageTo msg) {
                         if (msg.getCode()==0){
-                            showMessage("删除成功");
+                            showMessage("设置默认地址成功");
                             getAddressList();
                         }else
                             showMessage(msg.getMsg());

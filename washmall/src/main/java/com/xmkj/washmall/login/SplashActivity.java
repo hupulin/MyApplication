@@ -12,6 +12,8 @@ import com.xmkj.washmall.mall.AbortOrderActivity;
 
 import com.xmkj.washmall.mall.PayOrderActivity;
 
+import cn.jpush.android.api.JPushInterface;
+
 /**
  * Created by Administrator on 2018/12/24.
  **/
@@ -22,6 +24,8 @@ public class SplashActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        JPushInterface.setDebugMode(true);
+        JPushInterface.init(this);
         handler.postDelayed(() ->{
             if (userInfoHelp.getUserLogin()){
                 Intent intent=new Intent(appContext,MainActivity.class);

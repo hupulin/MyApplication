@@ -52,6 +52,7 @@ public class CarPresenter extends BasePresenter {
                             goodsList = new Gson().fromJson(JSON.toJSONString(msg.getDataList()), new TypeToken<List<GoodsCarTo>>() {
                             }.getType());
                             setRecycleList(goodsList);
+
                         } else
                             showMessage(msg.getMsg());
                     }
@@ -59,7 +60,7 @@ public class CarPresenter extends BasePresenter {
         );
     }
 
-    public void modifyNum(int carId, int goodsNum) {
+    public void modifyNum(int carId, int goodsNum,GoodsCarTo carTo) {
         ModifyCarNumParam param = new ModifyCarNumParam();
         param.setUid(userInfoTo.getUid());
         param.setHashid(userInfoTo.getHashid());
@@ -71,8 +72,10 @@ public class CarPresenter extends BasePresenter {
                 new MyObserver<MessageTo>(this) {
                     @Override
                     public void onNext(MessageTo msg) {
-                        if (msg.getCode() == 0)
-                            getGoodsList();
+                        if (msg.getCode() == 0) {
+                            carTo.setGoods_num(goodsNum);
+                            ((CarFragment) mFragment).setMoeny();
+                        }
                         else
                             showMessage(msg.getMsg());
                     }

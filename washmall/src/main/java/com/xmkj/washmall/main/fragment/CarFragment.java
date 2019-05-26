@@ -72,7 +72,7 @@ public class CarFragment extends BaseFragment {
         adapter.setCarModifyListener(new CarAdapter.CarModifyListener() {
             @Override
             public void modifyNum(GoodsCarTo mode, int goodsNum) {
-                presenter.modifyNum(mode.getCart_id(), goodsNum);
+                presenter.modifyNum(mode.getCart_id(), goodsNum,mode);
             }
 
             @SuppressLint("SetTextI18n")
@@ -126,7 +126,7 @@ public class CarFragment extends BaseFragment {
             case R.id.all_select_layout:
                 allSelectIcon.setSelected(!allSelectIcon.isSelected());
                 allSelectIcon.setBackgroundResource(allSelectIcon.isSelected()?R.drawable.address_select:R.drawable.address_un_select);
-                allSelectText.setText(allSelectIcon.isSelected()?"取消全选":"全选");
+                allSelectText.setText(allSelectIcon.isSelected()?"全选":"全选");
                 for (int i=0;i<presenter.goodsList.size();i++)
                  presenter.goodsList.get(i).setSelect(allSelectIcon.isSelected());
                 adapter.notifyDataSetChanged();
@@ -147,7 +147,7 @@ public class CarFragment extends BaseFragment {
     }
 
     @SuppressLint("SetTextI18n")
-    private void setMoeny(){
+    public void setMoeny(){
         selectMoeny=0;
         indexNum=0;
         Observable.from(presenter.goodsList).filter(GoodsCarTo::isSelect).subscribe(goodsCarTo -> {

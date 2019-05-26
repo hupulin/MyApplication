@@ -23,8 +23,8 @@ android {
             // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
         }
         manifestPlaceholders = [
-                JPUSH_PKGNAME: "com.xmkj.washmall",
-                JPUSH_APPKEY : "b62b6927fd9c4497a8a63b02",
+                JPUSH_PKGNAME: "com.hzxm.wolaixish",
+                JPUSH_APPKEY : "b22d26b423630c5a35a4728a",
                 JPUSH_CHANNEL: "developer-default"
         ]
 

@@ -9,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 
 import com.xmkj.washmall.R;
+import com.xmkj.washmall.base.ActivityManager;
 import com.xmkj.washmall.base.BaseActivity;
 import com.xmkj.washmall.base.util.PingFangTextView;
 import com.xmkj.washmall.base.util.StatueBarUtil;
@@ -54,6 +55,7 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         StatueBarUtil.setStatueBarTextWhite(getWindow());
         ButterKnife.bind(this);
+        ActivityManager.activityList.remove(this);
         initFragment();
         MainPresenter presenter=new MainPresenter(this);
     }

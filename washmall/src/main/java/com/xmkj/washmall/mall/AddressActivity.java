@@ -90,7 +90,7 @@ public class AddressActivity extends BaseActivity {
     public void recycleItemClick(View view, int position, Object data) {
        AddressTo addressTo= (AddressTo) data;
         Intent intent=new Intent();
-        intent.putExtra("AddressId",addressTo.getId());
+        intent.putExtra("AddressTo",addressTo);
         setResult(10,intent);
         finish();
         goToAnimation(2);

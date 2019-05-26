@@ -20,8 +20,10 @@ public class SplashActivity extends BaseActivity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
+        JPushInterface.setDebugMode(true);
         JPushInterface.init(this);
+        setContentView(R.layout.activity_splash);
+
         new Handler().postDelayed(() -> {
             if (userInfoHelp.getUserLogin()){
 

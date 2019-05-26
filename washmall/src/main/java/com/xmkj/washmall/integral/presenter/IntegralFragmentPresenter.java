@@ -71,4 +71,15 @@ public class IntegralFragmentPresenter extends BasePresenter{
     }
 
 
+    @Override
+    public void recycleViewLoadMore() {
+        super.recycleViewLoadMore();
+        getOrderList(type);
+    }
+
+    @Override
+    public void recycleViewRefresh() {
+        super.recycleViewRefresh();
+        getOrderList(type);
+    }
 }

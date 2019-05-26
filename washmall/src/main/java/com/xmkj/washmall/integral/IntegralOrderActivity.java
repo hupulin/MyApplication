@@ -25,6 +25,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import hzxmkuar.com.applibrary.domain.integral.IntegralOrderInfoTo;
+import hzxmkuar.com.applibrary.domain.order.AddressTo;
 import hzxmkuar.com.applibrary.domain.order.ConfirmOrderInfoTo;
 import hzxmkuar.com.applibrary.domain.order.OrderResultTo;
 
@@ -141,7 +142,11 @@ public class IntegralOrderActivity extends BaseActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode==10){
-           addressId=data.getIntExtra("AddressId",0);
+            AddressTo addressTo= (AddressTo) data.getSerializableExtra("AddressTo");
+           addressId=addressTo.getId();
+            detailAddress.setText("收货地址："+addressTo.getAddress());
+            phoneNumber.setText(addressTo.getTelephone());
+            contactName.setText(addressTo.getConsignee());
         }
     }
 

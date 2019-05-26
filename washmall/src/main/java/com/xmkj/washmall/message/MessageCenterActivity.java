@@ -22,6 +22,8 @@ import hzxmkuar.com.applibrary.domain.message.SystemMessageTo;
 public class MessageCenterActivity extends BaseActivity {
     @BindView(R.id.recycler_view)
     LRecyclerView recyclerView;
+    private MessageCenterPresenter presenter;
+    private MessageCenterAdapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,15 +31,21 @@ public class MessageCenterActivity extends BaseActivity {
         setContentView(R.layout.activity_message);
         ButterKnife.bind(this);
         setTitleName("消息中心");
-        setRecycleView(new MessageCenterAdapter(this),recyclerView,new MessageCenterPresenter(this));
+        presenter = new MessageCenterPresenter(this);
+        adapter = new MessageCenterAdapter(this);
+        setRecycleView(adapter,recyclerView,presenter);
     }
 
     @Override
     public void recycleItemClick(View view, int position, Object data) {
         SystemMessageTo mode= (SystemMessageTo) data;
         Intent intent=new Intent(appContext,MessageDetailActivity.class);
+        mode.setIs_read(1);
+        adapter.notifyDataSetChanged();
         intent.putExtra("MessageId",mode.getId());
         startActivity(intent);
         goToAnimation(1);
     }
+
+
 }

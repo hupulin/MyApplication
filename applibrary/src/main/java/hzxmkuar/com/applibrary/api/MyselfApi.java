@@ -1,8 +1,11 @@
 package hzxmkuar.com.applibrary.api;
 
+import hzxmkuar.com.applibrary.IdParam;
 import hzxmkuar.com.applibrary.domain.BaseParam;
 import hzxmkuar.com.applibrary.domain.MessageListTo;
 import hzxmkuar.com.applibrary.domain.MessageTo;
+import hzxmkuar.com.applibrary.domain.inquery.HelpCenterParam;
+import hzxmkuar.com.applibrary.domain.inquery.KeyWordParam;
 import hzxmkuar.com.applibrary.domain.integral.PageParam;
 import hzxmkuar.com.applibrary.domain.myself.DeleteCollectParam;
 import hzxmkuar.com.applibrary.domain.myself.ExchangePayParam;
@@ -57,5 +60,16 @@ public interface MyselfApi {
      */
     @POST("Api/user/updatePasswordByOld")
     Observable<MessageTo>modifyPassword(@Body ModifyPasswordParam param);
+
+    /**
+     * 获取帮助中心
+     */
+    @POST("Api/Helps/index")
+    Observable<MessageListTo>getHelpData(@Body HelpCenterParam param);
+    /**
+     * 获取帮助中心详情
+     */
+    @POST("api/Helps/help_detail")
+    Observable<MessageTo>getHelpDetail(@Body IdParam param);
 
 }

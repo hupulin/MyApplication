@@ -77,25 +77,17 @@ public class IntegralFragment extends BaseFragment {
             isUiVisible = false;
             isViewCreate = false;
             presenter.getOrderList(type);
-            setRecycleView(adapter,recyclerView, presenter);
+            setRecycleView(adapter,recyclerView, presenter,true,true);
         }
     }
         private void setAdapterListener() {
 
             adapter=   new IntegralOrderAdapter(getActivity(),type);
 
-            adapter.setOrderMallAdapterListener(new IntegralOrderAdapter.OrderMallAdapterListener() {
-
-
-                @Override
-                public void confirmReceiver(IntegralOrderListTo mode) {
-                    WashAlertDialog.show(getActivity(),"提示","确认收货").setOnClickListener(view -> {
-                        WashAlertDialog.dismiss();
-                        presenter.confirmReceiver(mode.getOrder_id()+"");
-                    });
-                }
-
-            });
+            adapter.setOrderMallAdapterListener(mode -> WashAlertDialog.show(getActivity(),"提示","确认收货").setOnClickListener(view -> {
+                WashAlertDialog.dismiss();
+                presenter.confirmReceiver(mode.getOrder_id()+"");
+            }));
         }
 
 

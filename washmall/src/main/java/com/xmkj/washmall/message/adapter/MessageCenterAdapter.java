@@ -49,7 +49,7 @@ public class MessageCenterAdapter extends BaseAdapter<SystemMessageTo, SystemMes
         binding.title.setText(mode.getMsg_title());
         binding.content.setText(mode.getMsg_desc());
         binding.time.setText(mode.getDateline());
-
+        binding.read.setVisibility(mode.getIs_read()==1?View.GONE:View.VISIBLE);
 
     }
 
