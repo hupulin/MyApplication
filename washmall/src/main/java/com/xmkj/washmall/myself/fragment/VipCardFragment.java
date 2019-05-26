@@ -79,10 +79,11 @@ public class VipCardFragment extends BaseFragment {
 
             isUiVisible = false;
             isViewCreate = false;
-            vipBg.setBackgroundResource(type == 1 ? R.drawable.vip_card_bg : type == 2 ? R.drawable.vip_card_gold_bg : R.drawable.vip_card_masonry_bg);
-            discountText.setText(type == 1 ?"下单9折优惠、全场包邮等特权": type == 2 ? "下单8折优惠、全场包邮等特权" : "下单7折优惠、全场包邮等特权");
-            discount.setText(type == 1 ? "下单9折" : type == 2 ? "下单8折" : "下单7折");
             userInfoTo=userInfoHelp.getUserInfo();
+
+            vipBg.setBackgroundResource(type == 1 ? R.drawable.vip_card_bg : type == 2 ? R.drawable.vip_card_gold_bg : R.drawable.vip_card_masonry_bg);
+            discountText.setText(type == 1 ?"下单"+userInfoTo.getMyselfTo().getMember_levels().getBaiyin()+"折优惠、全场包邮等特权": type == 2 ? "下单"+userInfoTo.getMyselfTo().getMember_levels().getHuangjin()+"折优惠、全场包邮等特权" : "下单"+userInfoTo.getMyselfTo().getMember_levels().getZuanshi()+"折优惠、全场包邮等特权");
+            discount.setText(type == 1 ? "下单"+userInfoTo.getMyselfTo().getMember_levels().getBaiyin()+"折" : type == 2 ? "下单"+userInfoTo.getMyselfTo().getMember_levels().getHuangjin()+"折" : "下单"+userInfoTo.getMyselfTo().getMember_levels().getZuanshi()+"折");
             exchange.setVisibility(userInfoTo.getMyselfTo().getUser_info().getMember_level()>=type?View.GONE:View.VISIBLE);
             tip.setText(userInfoTo.getMyselfTo().getUser_info().getMember_level()>=type?"已生效权益":"待生效权益");
             openingDiscount.setVisibility(userInfoTo.getMyselfTo().getUser_info().getMember_level()>=type?View.GONE:View.VISIBLE);

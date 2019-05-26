@@ -134,7 +134,7 @@ public class SelectWashActivity extends BaseActivity {
 
     private void setCleanDialog() {
 
-            WashAlertDialog.show(this, "提示", "您正在更换洗衣类目，确定更换已选选项将不保留").setOnClickListener(view -> {
+            WashAlertDialog.show(this, "提示", "您正在更换洗衣类目，确定更换已选选项将不保留",false).setOnClickListener(view -> {
                 WashAlertDialog.dismiss();
                 isFirst=true;
                 Observable.from(ActivityManager.washFragmentList).subscribe(fragment->fragment.selectLayout.removeAllViews());

@@ -80,7 +80,7 @@
                     android:layout_width="80px"
                     android:layout_height="80px"
                     android:layout_gravity="center_horizontal"
-                    android:background="@drawable/vip_on_sale" />
+                    android:background="@drawable/vip_on_sale_bg" />
 
                 <TextView
                     android:id="@+id/discount"

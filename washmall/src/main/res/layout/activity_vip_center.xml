@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="砖石会员"
+                android:text="钻石会员"
                 android:id="@+id/platinum"
                 android:textColor="#EEE8FF"
                 android:textSize="30px" />

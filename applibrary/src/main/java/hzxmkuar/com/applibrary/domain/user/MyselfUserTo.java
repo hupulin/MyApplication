@@ -15,6 +15,7 @@ public class MyselfUserTo implements Serializable{
     private MyWashOrderBean my_wash_order;
     private MyMallOrderBean my_mall_order;
     private MoreServiceBean more_service;
+    private MemberLevels member_levels;
 
 
     @Data
@@ -88,4 +89,20 @@ public class MyselfUserTo implements Serializable{
         private String kf_tel;
 
     }
+    @Data
+    public static class MemberLevels implements Serializable{
+        /**"member_levels": {
+         "baiyin": 9,
+         "huangjin": 8,
+         "zuanshi": 7
+         */
+
+        private String baiyin;
+        private String huangjin;
+        private String zuanshi;
+
+    }
+
+
+
 }

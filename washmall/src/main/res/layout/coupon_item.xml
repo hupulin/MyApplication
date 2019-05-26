@@ -43,14 +43,19 @@
                     android:textSize="24px" />
             </com.zhy.autolayout.AutoRelativeLayout>
 
-            <com.zhy.autolayout.AutoLinearLayout
+            <com.zhy.autolayout.AutoRelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+                <com.zhy.autolayout.AutoLinearLayout
+                    android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
 
                 <com.xmkj.washmall.base.util.PingFangTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30px"
                     android:textColor="@color/white"
                     android:text="￥"
                     android:layout_gravity="center_vertical"
@@ -60,9 +65,11 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
                     android:id="@+id/money"
+                    android:text="333"
                     android:layout_gravity="center_vertical"
                     android:textSize="90px" />
-            </com.zhy.autolayout.AutoLinearLayout>
+                </com.zhy.autolayout.AutoLinearLayout>
+            </com.zhy.autolayout.AutoRelativeLayout>
 
         </com.zhy.autolayout.AutoLinearLayout>
     </com.zhy.autolayout.AutoRelativeLayout>
