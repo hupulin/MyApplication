@@ -3,6 +3,8 @@ package com.hzxm.wolaixish.main;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
+import android.os.RemoteException;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -15,6 +17,11 @@ import com.hzxm.wolaixish.base.BaseActivity;
 import com.hzxm.wolaixish.base.NoSlideViewPager;
 import com.hzxm.wolaixish.main.fragment.MainFragment;
 import com.hzxm.wolaixish.main.fragment.MyselfFragment;
+import com.sunmi.peripheral.printer.ICallback;
+import com.sunmi.peripheral.printer.InnerPrinterCallback;
+import com.sunmi.peripheral.printer.InnerPrinterException;
+import com.sunmi.peripheral.printer.InnerPrinterManager;
+import com.sunmi.peripheral.printer.SunmiPrinterService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,14 +49,18 @@ public class MainActivity extends BaseActivity {
     private Handler handler = new Handler();
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         initFragment();
-
     }
+
+
+
+
     private void initFragment() {
         myselfFragment=new MyselfFragment(this);
         mainFragment=new MainFragment(this);

@@ -7,14 +7,15 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.google.gson.Gson;
+import com.ruffian.library.RTextView;
 import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.BaseActivity;
+import com.xmkj.washmall.base.WashAlertDialog;
 import com.xmkj.washmall.databinding.ConfirmOrderGoodsItemBinding;
 import com.xmkj.washmall.mall.AddressActivity;
 import com.xmkj.washmall.mall.SelectPayActivity;
@@ -44,8 +45,7 @@ public class OrderDetailActivity extends BaseActivity {
     @BindView(R.id.remark)
     TextView remark;
 
-    @BindView(R.id.all_money)
-    TextView allMoney;
+
     @BindView(R.id.goods_layout)
     GridLayout goodsLayout;
     @BindView(R.id.goods_money)
@@ -62,6 +62,14 @@ public class OrderDetailActivity extends BaseActivity {
     TextView sendTime;
     @BindView(R.id.pick_time)
     TextView pickTime;
+    @BindView(R.id.cancel)
+    RTextView cancel;
+    @BindView(R.id.pay)
+    RTextView pay;
+    @BindView(R.id.send)
+    RTextView send;
+    @BindView(R.id.confirm_receiver)
+    RTextView confirmReceiver;
     private OrderDetailTo mode;
     private OrderDetailPresenter presenter;
     private int addressId;
@@ -81,15 +89,22 @@ public class OrderDetailActivity extends BaseActivity {
     private void setView() {
 
 
-  remark.setText(mode.getRemarks());
+        remark.setText(mode.getRemarks());
 
         setGoodsLayout();
         setAddressLayout();
         setSettlement();
         setInfoView();
+        setButtonLayout();
 
     }
 
+    private void setButtonLayout() {
+        pay.setVisibility(mode.getButton_list().getFk_btn() == 1 ? View.VISIBLE : View.GONE);
+        cancel.setVisibility(mode.getButton_list().getQxdd_btn() == 1 ? View.VISIBLE : View.GONE);
+        send.setVisibility(mode.getButton_list().getCfh_btn() == 1 ? View.VISIBLE : View.GONE);
+        confirmReceiver.setVisibility(mode.getButton_list().getQrsh_btn() == 1 ? View.VISIBLE : View.GONE);
+    }
 
 
     @SuppressLint("SetTextI18n")
@@ -107,7 +122,6 @@ public class OrderDetailActivity extends BaseActivity {
         });
 
 
-
     }
 
     @SuppressLint("SetTextI18n")
@@ -123,29 +137,12 @@ public class OrderDetailActivity extends BaseActivity {
         OrderDetailTo.SettlementInfoBean settlementInfo = mode.getSettlement_info();
         if (settlementInfo != null) {
             express.setText(settlementInfo.getDistribution());
-            expressMoney.setText("￥"+settlementInfo.getExpress_amount());
+            expressMoney.setText("￥" + settlementInfo.getExpress_amount());
 
-            goodsMoney.setText("￥"+settlementInfo.getGoods_amount());
+            goodsMoney.setText("￥" + settlementInfo.getGoods_amount());
         }
     }
 
-    @OnClick({R.id.contact_layout, R.id.confirm})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.contact_layout:
-                Intent intent = new Intent(appContext, AddressActivity.class);
-                startActivityForResult(intent, 10);
-                goToAnimation(1);
-                break;
-            case R.id.confirm:
-                if (addressId == 0) {
-                    showMessage("请选择地址");
-                    return;
-                }
-//                presenter.addOrder(remark.getText().toString(),addressId);
-                break;
-        }
-    }
 
     @Override
     public void loadDataSuccess(Object data) {
@@ -174,13 +171,44 @@ public class OrderDetailActivity extends BaseActivity {
 
     @SuppressLint("SetTextI18n")
     private void setInfoView() {
-       orderNum.setText("订单编号:        "+mode.getOrder_sn());
-        createTime.setText("创建时间:        "+mode.getAdd_time());
-        payTime.setText("付款时间:        "+mode.getPay_time());
-        sendTime.setText("发货时间:        "+mode.getSend_time());
-        pickTime.setText("取货时间:        "+mode.getFinish_time());
-       payTime.setVisibility(TextUtils.isEmpty(mode.getPay_time())?View.GONE:View.VISIBLE);
-       sendTime.setVisibility(TextUtils.isEmpty(mode.getSend_time())?View.GONE:View.VISIBLE);
-       pickTime.setVisibility(TextUtils.isEmpty(mode.getFinish_time())?View.GONE:View.VISIBLE);
+        orderNum.setText("订单编号:        " + mode.getOrder_sn());
+        createTime.setText("创建时间:        " + mode.getAdd_time());
+        payTime.setText("付款时间:        " + mode.getPay_time());
+        sendTime.setText("发货时间:        " + mode.getSend_time());
+        pickTime.setText("取货时间:        " + mode.getFinish_time());
+        payTime.setVisibility(TextUtils.isEmpty(mode.getPay_time()) ? View.GONE : View.VISIBLE);
+        sendTime.setVisibility(TextUtils.isEmpty(mode.getSend_time()) ? View.GONE : View.VISIBLE);
+        pickTime.setVisibility(TextUtils.isEmpty(mode.getFinish_time()) ? View.GONE : View.VISIBLE);
+    }
+
+    @OnClick({R.id.cancel, R.id.pay, R.id.send, R.id.confirm_receiver})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.cancel:
+                WashAlertDialog.show(this,"提示","确认取消订单").setOnClickListener(view2 -> {
+                    WashAlertDialog.dismiss();
+                    presenter.cancel(mode.getOrder_id()+"");
+                });
+                break;
+            case R.id.pay:
+                Intent intent=new Intent(appContext, SelectPayActivity.class);
+                intent.putExtra("OrderId",mode.getOrder_id());
+                intent.putExtra("Money",mode.getSettlement_info().getOrder_amount());
+                startActivity(intent);
+                goToAnimation(1);
+                break;
+            case R.id.send:
+                WashAlertDialog.show(this,"提示","催发货").setOnClickListener(view2 -> {
+                    WashAlertDialog.dismiss();
+                    presenter.quickSend(mode.getOrder_id()+"");
+                });
+                break;
+            case R.id.confirm_receiver:
+                WashAlertDialog.show(this,"提示","确认收货").setOnClickListener(view2 -> {
+                    WashAlertDialog.dismiss();
+                    presenter.confirmReceiver(mode.getOrder_id()+"");
+                });
+                break;
+        }
     }
 }

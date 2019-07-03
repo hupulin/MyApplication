@@ -20,7 +20,7 @@ import hzxmkuar.com.applibrary.api.ApiClient;
 
 public class MainApp extends Application {
 public static Context appContext;
-    public static String webBaseUrl="http://m.wumeihui.net/h5/page/";
+    public static String webBaseUrl="http://xmap18100040.php.hzxmnet.com/h5/page/";
     public static String shareUrl="http://m.wumeihui.net/download.html?tdsourcetag=s_pctim_aiomsg#";
     @Override
     public void onCreate() {

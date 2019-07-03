@@ -332,8 +332,8 @@ public class BaseActivity<T> extends FragmentActivity implements FragmentPermiss
                 intent.putExtra("CurrentPath", (String) view.getTag());
                if (imagePathString.length()>0)
                 intent.putExtra("PathList", imagePathString.substring(0,imagePathString.length()-1));
-//                startActivity(intent);
-//                goToAnimation(1);
+                startActivity(intent);
+                goToAnimation(1);
             });
             imageLayout.addView(imageView);
 

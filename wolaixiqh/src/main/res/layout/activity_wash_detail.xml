@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_layout" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#ededed" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20px"
+        android:layout_marginTop="28px"
+        android:text="商品信息"
+        android:textColor="@color/black"
+        android:textSize="30px" />
+
+    <GridLayout
+        android:id="@+id/wash_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="1">
+
+    </GridLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:layout_marginLeft="20px"
+        android:layout_marginRight="20px"
+        android:layout_marginTop="46px"
+        android:background="#F8F8F8" />
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="82px"
+        android:layout_marginLeft="20px"
+        android:layout_marginRight="20px">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textColor="@color/black"
+            android:text="订单金额"
+            android:textSize="24px" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:textColor="@color/black"
+            android:id="@+id/money"
+            android:textSize="24px" />
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="15px"
+        android:background="#F8F8F8"
+        android:layout_marginTop="43px"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20px"
+        android:layout_marginTop="30px"
+        android:text="订单信息"
+        android:textColor="@color/black"
+        android:textSize="30px" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:textColor="@color/black"
+        android:layout_marginTop="30px"
+        android:layout_marginLeft="20px"
+        android:id="@+id/order_num"
+        android:textSize="24px" />
+
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerVertical="true"
+    android:textColor="@color/black"
+    android:layout_marginTop="20px"
+    android:layout_marginLeft="20px"
+    android:id="@+id/create_time"
+    android:textSize="24px" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:textColor="@color/black"
+        android:layout_marginTop="20px"
+        android:layout_marginLeft="20px"
+        android:id="@+id/save_wardrobe"
+        android:textSize="24px" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:textColor="@color/black"
+        android:layout_marginTop="20px"
+        android:layout_marginLeft="20px"
+        android:id="@+id/save_address"
+        android:textSize="24px" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:textColor="@color/black"
+        android:layout_marginTop="20px"
+        android:layout_marginLeft="20px"
+        android:id="@+id/pick_time"
+        android:textSize="24px" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:textColor="@color/black"
+        android:layout_marginTop="20px"
+        android:layout_marginLeft="20px"
+        android:id="@+id/pickup_wardrobe"
+        android:textSize="24px" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:textColor="@color/black"
+        android:layout_marginTop="20px"
+        android:layout_marginLeft="20px"
+        android:id="@+id/pick_address"
+        android:textSize="24px" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="15px"
+        android:background="#F8F8F8"
+        android:layout_marginTop="24px"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20px"
+        android:layout_marginTop="37px"
+        android:text="顾客信息"
+        android:textColor="@color/black"
+        android:textSize="30px" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:textColor="@color/black"
+        android:layout_marginTop="25px"
+        android:layout_marginLeft="20px"
+        android:id="@+id/contact_name"
+        android:textSize="24px" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:textColor="@color/black"
+        android:layout_marginTop="25px"
+        android:layout_marginLeft="20px"
+        android:id="@+id/contact_phone"
+        android:textSize="24px" />
+</com.zhy.autolayout.AutoLinearLayout>

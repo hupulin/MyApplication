@@ -1,12 +1,14 @@
 package hzxmkuar.com.applibrary.domain.myself;
 
+import java.io.Serializable;
+
 import lombok.Data;
 
 /**
  * Created by Administrator on 2018/12/28.
  */
 @Data
-public class CouponTo {
+public class CouponTo implements Serializable{
 
     /**
      * id : 3

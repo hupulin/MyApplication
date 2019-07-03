@@ -59,6 +59,8 @@ public class PayOrderActivity extends BaseActivity {
                 break;
             case R.id.select_coupon_layout:
                 Intent intent=new Intent(appContext,SelectCouponActivity.class);
+                intent.putExtra("UseType",1);
+//                intent.putExtra("OrderId",)
                 startActivityForResult(intent,20);
                 goToAnimation(1);
                 break;

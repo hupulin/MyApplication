@@ -8,9 +8,9 @@ import lombok.Data;
  */
 @Data
 public class MainWardrobeParam extends BaseParam {
-    private String lat="120.13";
-    private String lng="30.27";
+    private String lat;
+    private String lng;
     private String keywords="";
     private int page=1;
-    private int pos_city=934;
+    private int pos_city;
 }

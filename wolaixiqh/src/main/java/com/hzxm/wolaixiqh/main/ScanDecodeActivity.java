@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.hardware.Camera;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -56,7 +57,12 @@ public class ScanDecodeActivity extends BaseActivity {
 
     @Override
     protected void submitDataSuccess(Object data) {
-        finish();
+        showMessage("开箱成功");
+        new Handler().postDelayed(() ->{
+            finish();
+            goToAnimation(2);
+        } ,2500);
+
 
 
     }

@@ -80,4 +80,16 @@ public interface WashApi {
      */
     @POST("Api/Wash/scan_order_list")
     Observable<MessageListTo>getCanOpenList(@Body CanOpenParam param);
+
+    /**
+     * 订单详情
+     */
+    @POST("Api/Wash/order_detail")
+    Observable<MessageTo>getOrderDetail(@Body OrderIdParam param);
+
+    /**
+     * 订单详情送货员取货员
+     */
+    @POST("Api/Shopuser/order_detail")
+    Observable<MessageTo>getOrderDetailSend(@Body OrderIdParam param);
 }

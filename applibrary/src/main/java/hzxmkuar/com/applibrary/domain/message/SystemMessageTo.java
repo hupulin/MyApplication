@@ -13,6 +13,7 @@ public class SystemMessageTo {
   private String dateline="2018年10月9日";
   private String msg_title="标题";
   private String msg_desc="内容内容内容";
+  private String msg_pic="";
   private int id;
   private int is_read;
 }

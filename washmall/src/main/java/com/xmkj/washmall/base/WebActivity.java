@@ -84,7 +84,7 @@ public class WebActivity extends BaseActivity {
             public void onPageFinished(WebView webView, String s) {
                 super.onPageFinished(webView, s);
                 System.out.println(s);
-
+                setTitleName(webView.getTitle());
             }
 
             @Override

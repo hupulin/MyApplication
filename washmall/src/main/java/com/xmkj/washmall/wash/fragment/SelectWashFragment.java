@@ -156,6 +156,8 @@ public class SelectWashFragment extends BaseFragment {
             SelectWashTypeItemBinding bind = DataBindingUtil.bind(mView);
             bind.typeName.setText(washTo.getService_name());
             numList.add(bind.num);
+            bind.num.setText((washTo.getId()+"").equals(getActivity().getIntent().getStringExtra("TypeId"))?"1":"0");
+
             displayImage(bind.washImage, washTo.getService_img());
             typeLayout.addView(mView);
             bind.add.setOnClickListener(v -> {
@@ -179,6 +181,7 @@ public class SelectWashFragment extends BaseFragment {
         selectLayout.removeAllViews();
         jsonDetailList.clear();
         allMoney=0;
+        userInfoTo=userInfoHelp.getUserInfo();
         for (int i = 0; i < washList.size(); i++) {
             WashInfoTo washTo = washList.get(i);
             if (washTo.getNum() > 0) {
@@ -191,7 +194,7 @@ public class SelectWashFragment extends BaseFragment {
                 bind.num.setText(washTo.getNum() + "件");
                 bind.aromaMoney.setText(washTo.getSweet_price());
                 allMoney = DoubleUtil.add(allMoney, DoubleUtil.mul(washTo.getPrice(), washTo.getNum()));
-                money.setText("￥" + allMoney);
+                money.setText("￥" +DoubleUtil.mul(allMoney,userInfoTo.getMyselfTo().getUser_info().getDiscount()));
                 selectLayout.addView(mView);
                 bind.needAroma.setOnClickListener(v -> {
 
@@ -230,7 +233,7 @@ public class SelectWashFragment extends BaseFragment {
 
         Intent intent=new Intent(appContext, PlaceOrderActivity.class);
         WashJsonParentParam param=new WashJsonParentParam();
-        param.setClassid("1");
+        param.setClassid(((SelectWashActivity) getActivity()).classId+"");
         param.setService_data(jsonDetailList);
         intent.putExtra("WashJson", JSON.toJSONString(param));
         startActivity(intent);

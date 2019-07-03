@@ -52,7 +52,10 @@ public class HelpCenterAdapter extends BaseAdapter<HelpCenterTo, HelpCenterItemB
         HelpCenterTo mode = mList.get(position);
         binding.name.setText(mode.getCate_name());
         disPlayImage(binding.image,mode.getCate_img());
+        if (mode.getList2()!=null&&mode.getList2().size()>0)
         binding.titleName.setText(mode.getList2().get(0).getDoc_title());
+        if (mode.getList2()!=null&&mode.getList2().size()>1)
+            binding.titleDes.setText(mode.getList2().get(1).getDoc_title());
     }
 
 

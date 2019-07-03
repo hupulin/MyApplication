@@ -20,23 +20,81 @@ import rx.schedulers.Schedulers;
 
 public class OrderDetailPresenter extends BasePresenter {
 
-    public OrderDetailPresenter(BaseActivity activity){
+    public OrderDetailPresenter(BaseActivity activity) {
         initContext(activity);
         getGoodsDetail();
     }
 
     private void getGoodsDetail() {
-    showLoadingDialog();
-        OrderIdParam param=new OrderIdParam();
+        showLoadingDialog();
+        OrderIdParam param = new OrderIdParam();
         param.setOrder_id(activity.getIntent().getStringExtra("OrderId"));
-        param.setHash(getHashString(OrderIdParam.class,param));
+        param.setHash(getHashString(OrderIdParam.class, param));
         ApiClient.create(OrderApi.class).orderDetail(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
                 new MyObserver<MessageTo>(this) {
                     @Override
                     public void onNext(MessageTo msg) {
-                        if (msg.getCode()==0)
+                        if (msg.getCode() == 0)
                             getDataSuccess(new Gson().fromJson(JSON.toJSONString(msg.getData()), OrderDetailTo.class));
                         else
+                            showMessage(msg.getMsg());
+                    }
+                }
+        );
+    }
+
+    public void quickSend(String orderId) {
+        showLoadingDialog();
+        OrderIdParam param = new OrderIdParam();
+        param.setOrder_id(orderId);
+        param.setHash(getHashString(OrderIdParam.class, param));
+        ApiClient.create(OrderApi.class).quickSend(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
+                new MyObserver<MessageTo>(this) {
+                    @Override
+                    public void onNext(MessageTo msg) {
+                        if (msg.getCode() == 0) {
+                            showMessage("催发货成功");
+                            getGoodsDetail();
+                        } else
+                            showMessage(msg.getMsg());
+                    }
+                }
+        );
+    }
+
+    public void confirmReceiver(String orderId) {
+        showLoadingDialog();
+        OrderIdParam param = new OrderIdParam();
+        param.setOrder_id(orderId);
+        param.setHash(getHashString(OrderIdParam.class, param));
+        ApiClient.create(OrderApi.class).confirmReceiver(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
+                new MyObserver<MessageTo>(this) {
+                    @Override
+                    public void onNext(MessageTo msg) {
+                        if (msg.getCode() == 0) {
+                            showMessage("确认收货成功");
+                            getGoodsDetail();
+                        } else
+                            showMessage(msg.getMsg());
+                    }
+                }
+        );
+    }
+
+    public void cancel(String orderId) {
+        showLoadingDialog();
+        OrderIdParam param = new OrderIdParam();
+        param.setOrder_id(orderId);
+        param.setHash(getHashString(OrderIdParam.class, param));
+        ApiClient.create(OrderApi.class).cancelOrder(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
+                new MyObserver<MessageTo>(this) {
+                    @Override
+                    public void onNext(MessageTo msg) {
+                        if (msg.getCode() == 0) {
+                            getGoodsDetail();
+                            showMessage("取消订单成功");
+
+                        } else
                             showMessage(msg.getMsg());
                     }
                 }

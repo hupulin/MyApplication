@@ -3,6 +3,8 @@ package com.xmkj.washmall.main.fragment;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -16,9 +18,18 @@ import com.hyphenate.chat.EMClient;
 import com.hyphenate.exceptions.HyphenateException;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.ruffian.library.RTextView;
+import com.tencent.connect.share.QQShare;
+import com.tencent.mm.opensdk.modelmsg.SendMessageToWX;
+import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
+import com.tencent.mm.opensdk.modelmsg.WXWebpageObject;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mm.opensdk.openapi.WXAPIFactory;
+import com.tencent.tauth.Tencent;
+import com.xmkj.washmall.MainApp;
 import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.ActivityManager;
 import com.xmkj.washmall.base.BaseFragment;
+import com.xmkj.washmall.base.CommonDialog;
 import com.xmkj.washmall.base.WashAlertDialog;
 import com.xmkj.washmall.base.WebActivity;
 import com.xmkj.washmall.base.util.AppUtil;
@@ -70,6 +81,7 @@ public class MyselfFragment extends BaseFragment {
     @BindView(R.id.vip_center)
     RTextView vipCenter;
     private MyselfUserTo mode;
+    private CommonDialog dialog;
 
     @Nullable
     @Override
@@ -77,7 +89,7 @@ public class MyselfFragment extends BaseFragment {
         View rootView = View.inflate(appContext, R.layout.fragment_myself, null);
         unbinder = ButterKnife.bind(this, rootView);
         setView();
-        chatRegister("15168234206");
+
         MyselfPresenter presenter = new MyselfPresenter(this);
         return rootView;
     }
@@ -95,7 +107,7 @@ public class MyselfFragment extends BaseFragment {
 
     @OnClick({R.id.user_image, R.id.user_name, R.id.vip_center, R.id.collect_layout, R.id.balance_layout, R.id.coupon_layout,
             R.id.wash_order_layout, R.id.wash_order_1, R.id.wash_order_2, R.id.wash_order_3, R.id.wash_order_4, R.id.mall_order_layout, R.id.mall_order_1, R.id.mall_order_2, R.id.mall_order_3, R.id.mall_order_4,
-            R.id.address, R.id.help, R.id.feed_back, R.id.custom_service, R.id.platform, R.id.about, R.id.login_out, R.id.exchange_layout
+            R.id.address, R.id.help, R.id.feed_back, R.id.custom_service, R.id.platform, R.id.about, R.id.login_out, R.id.exchange_layout,R.id.share_layout
     })
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -215,6 +227,7 @@ public class MyselfFragment extends BaseFragment {
                 intent = new Intent(appContext, WebActivity.class);
                 intent.putExtra("Type", 1);
                 intent.putExtra("Title", "关于我们");
+                intent.putExtra("Url", MainApp.webBaseUrl+"2");
                 startActivity(intent);
                 goToAnimation(1);
                 break;
@@ -236,6 +249,9 @@ public class MyselfFragment extends BaseFragment {
                 startActivity(intent);
                 goToAnimation(1);
                 break;
+            case R.id.share_layout:
+                showShare();
+                break;
 
         }
     }
@@ -254,7 +270,11 @@ public class MyselfFragment extends BaseFragment {
 
     @Override
     public void loadDataSuccess(Object data) {
+
         mode = (MyselfUserTo) data;
+        userInfoTo=userInfoHelp.getUserInfo();
+
+        chatRegister(mode.getMore_service().getKf_tel());
         userName.setText(mode.getUser_info().getUsername());
         userInfoTo = userInfoHelp.getUserInfo();
         userInfoTo.setMyselfTo(mode);
@@ -292,4 +312,82 @@ public class MyselfFragment extends BaseFragment {
         });
     }
 
+    public void showShare() {
+
+        dialog = new CommonDialog(getActivity(), getScreenWidth(), (int) (getScreenWidth() * 180.0 / 750), R.layout.dialog_share_moment, R.style.DialogDown);
+        dialog.show();
+        dialog.findViewById(R.id.wechat_layout).setOnClickListener(view1 -> {
+            wChatShare();
+            dialog.dismiss();
+        });
+        dialog.findViewById(R.id.qq_layout).setOnClickListener(view1 -> {
+            qqShare();
+            dialog.dismiss();
+        });
+        dialog.findViewById(R.id.moment_layout).setOnClickListener(view1 -> {
+            momentShare();
+
+            dialog.dismiss();
+        });
+        dialog.findViewById(R.id.parent).setOnClickListener(view -> dialog.dismiss());
+
+    }
+
+    public void qqShare() {
+
+        Tencent  mTencent = Tencent.createInstance("1108049746", appContext);
+        final Bundle params = new Bundle();
+        params.putInt(QQShare.SHARE_TO_QQ_KEY_TYPE, QQShare.SHARE_TO_QQ_TYPE_DEFAULT);//分享的类型
+        params.putString(QQShare.SHARE_TO_QQ_TITLE, "我俫洗");//分享标题
+        params.putString(QQShare.SHARE_TO_QQ_SUMMARY,"邀请好友有积分奖励哦");//要分享的内容摘要
+        params.putString(QQShare.SHARE_TO_QQ_TARGET_URL,"http://xmap18100040.h5.hzxmnet.com/h5/downloadPage/index.html?invite_code="+userInfoTo.getMyselfTo().getUser_info().getInvite_code());//内容地址
+        params.putInt(QQShare.SHARE_TO_QQ_IMAGE_LOCAL_URL,R.drawable.ic_launcher);//分享的图片URL
+        params.putString(QQShare.SHARE_TO_QQ_APP_NAME, "我俫洗");//应用名称
+        mTencent.shareToQQ(getActivity(), params,null);
+
+
+    }
+
+    public void wChatShare() {
+        IWXAPI wxapi = WXAPIFactory.createWXAPI(appContext, "wx34575f0ea7a2a608");
+        if (!wxapi.isWXAppInstalled()) {
+          showMessage("您还没有安装微信");
+            return;
+        }
+        WXWebpageObject webpageObject = new WXWebpageObject();
+        webpageObject.webpageUrl = "http://xmap18100040.h5.hzxmnet.com/h5/downloadPage/index.html?invite_code="+userInfoTo.getMyselfTo().getUser_info().getInvite_code();;
+        WXMediaMessage msg = new WXMediaMessage(webpageObject);
+        msg.title = "我俫洗";
+        msg.description = "邀请好友有积分奖励哦";
+        Bitmap bitmap = ((BitmapDrawable)getResources().getDrawable(R.drawable.ic_launcher)).getBitmap();
+        msg.setThumbImage(bitmap);
+        SendMessageToWX.Req req = new SendMessageToWX.Req();
+        req.transaction = "webpage";
+        req.message = msg;
+        req.scene = SendMessageToWX.Req.WXSceneSession;
+        wxapi.sendReq(req);
+
+
+    }
+
+
+    public void momentShare() {
+        IWXAPI wxapi = WXAPIFactory.createWXAPI(appContext, "wx34575f0ea7a2a608");
+        if (!wxapi.isWXAppInstalled()) {
+            showMessage("您还没有安装微信");
+            return;
+        }
+        WXWebpageObject webpageObject = new WXWebpageObject();
+        webpageObject.webpageUrl = "http://xmap18100040.h5.hzxmnet.com/h5/downloadPage/index.html?invite_code="+userInfoTo.getMyselfTo().getUser_info().getInvite_code();
+        WXMediaMessage msg = new WXMediaMessage(webpageObject);
+        msg.title = "我俫洗";
+        msg.description = "邀请好友有积分奖励哦";
+        Bitmap bitmap = ((BitmapDrawable)getResources().getDrawable(R.drawable.ic_launcher)).getBitmap();
+        msg.setThumbImage(bitmap);
+        SendMessageToWX.Req req = new SendMessageToWX.Req();
+        req.transaction = "webpage";
+        req.message = msg;
+        req.scene = SendMessageToWX.Req.WXSceneTimeline;
+        wxapi.sendReq(req);
+    }
 }

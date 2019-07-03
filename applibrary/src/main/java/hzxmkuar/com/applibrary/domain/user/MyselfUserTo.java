@@ -1,5 +1,7 @@
 package hzxmkuar.com.applibrary.domain.user;
 
+import android.text.TextUtils;
+
 import java.io.Serializable;
 
 import lombok.Data;
@@ -42,7 +44,19 @@ public class MyselfUserTo implements Serializable{
         private String collection_num;
         private String coupon_num;
         private String username;
+        private String privilege;
+        private String invite_code;
 
+        public double getDiscount(){
+            double discount=1;
+            if (TextUtils.isEmpty(privilege)||"0".equals(privilege))
+              return 1;
+
+            discount=Double.valueOf(privilege)/10;
+
+            return discount;
+
+        }
 
     }
 

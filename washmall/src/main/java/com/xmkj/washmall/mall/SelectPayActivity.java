@@ -23,8 +23,9 @@ import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.ActivityManager;
 import com.xmkj.washmall.base.BaseActivity;
 import com.xmkj.washmall.base.Event;
+import com.xmkj.washmall.base.util.DoubleUtil;
 import com.xmkj.washmall.myself.MallOrderActivity;
-import com.xmkj.washmall.myself.MyOrderActivity;
+import com.xmkj.washmall.myself.WashOrderActivity;
 import com.xmkj.washmall.myself.presenter.PayPresenter;
 
 import org.greenrobot.eventbus.EventBus;
@@ -35,6 +36,7 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import hzxmkuar.com.applibrary.domain.myself.CouponTo;
 import hzxmkuar.com.applibrary.domain.order.OrderResultTo;
 import hzxmkuar.com.applibrary.domain.order.PayInfoTo;
 import hzxmkuar.com.applibrary.domain.order.PayResult;
@@ -56,6 +58,8 @@ public class SelectPayActivity extends BaseActivity {
     TextView money;
     @BindView(R.id.account)
     TextView account;
+    @BindView(R.id.coupon_name)
+    TextView couponName;
     private int payType;
     private PayPresenter presenter;
     private OrderResultTo mode;
@@ -71,8 +75,12 @@ public class SelectPayActivity extends BaseActivity {
                         if (TextUtils.equals(resultStatus, "9000")) {
                             Toast.makeText(appContext, "支付成功", Toast.LENGTH_SHORT).show();
                             EventBus.getDefault().post(new Event<>("PayResultData", 10));
-                            Intent intent=new Intent(appContext, MallOrderActivity.class);
-
+                            Intent intent;
+                            if (getIntent().getBooleanExtra("IsWash", false))
+                                intent = new Intent(appContext, WashOrderActivity.class);
+                            else
+                                intent = new Intent(appContext, MallOrderActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
                             Observable.from(ActivityManager.activityList).subscribe(activity -> activity.finish());
                             goToAnimation(1);
@@ -98,6 +106,7 @@ public class SelectPayActivity extends BaseActivity {
             }
         }
     };
+    private CouponTo selectCoupon;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -106,18 +115,20 @@ public class SelectPayActivity extends BaseActivity {
         ButterKnife.bind(this);
         setTitleName("支付");
         presenter = new PayPresenter(this);
-EventBus.getDefault().register(this);
+        EventBus.getDefault().register(this);
         setView();
     }
 
     @SuppressLint("SetTextI18n")
     private void setView() {
         mode = (OrderResultTo) getIntent().getSerializableExtra("OrderResultTo");
-        money.setText("￥" + (mode==null?getIntent().getStringExtra("Money"):mode.getTotal_amount()));
-        account.setText("当前可用余额："+userInfoTo.getMyselfTo().getUser_info().getAccount());
+        money.setText("￥" + (mode == null ? getIntent().getStringExtra("Money") : mode.getTotal_amount()));
+        account.setText("当前可用余额：" + userInfoTo.getMyselfTo().getUser_info().getAccount());
+        if (getIntent().getBooleanExtra("IsWash", false))
+            money.setText("￥" + DoubleUtil.mul(Long.valueOf(getIntent().getStringExtra("Money")), userInfoTo.getMyselfTo().getUser_info().getDiscount()));
     }
 
-    @OnClick({R.id.balance_layout, R.id.ali_layout, R.id.wechat_layout, R.id.confirm})
+    @OnClick({R.id.balance_layout, R.id.ali_layout, R.id.wechat_layout, R.id.confirm, R.id.select_coupon_layout})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.balance_layout:
@@ -139,14 +150,21 @@ EventBus.getDefault().register(this);
                 payType = 2;
                 break;
             case R.id.confirm:
-                 if (payType==0){
-                     showMessage("请选择支付方式");
-                     return;
-                 }
-                   if (getIntent().getBooleanExtra("IsWash",false))
-                    presenter.getWashPayInfo(mode==null?getIntent().getIntExtra("OrderId",0):mode.getOrder_id(), payType);
+                if (payType == 0) {
+                    showMessage("请选择支付方式");
+                    return;
+                }
+                if (getIntent().getBooleanExtra("IsWash", false))
+                    presenter.getWashPayInfo(mode == null ? getIntent().getIntExtra("OrderId", 0) : mode.getOrder_id(), payType, selectCoupon == null ? 0 : selectCoupon.getId());
                 else
-                    presenter.getPayInfo(mode==null?getIntent().getIntExtra("OrderId",0):mode.getOrder_id(), payType);
+                    presenter.getPayInfo(mode == null ? getIntent().getIntExtra("OrderId", 0) : mode.getOrder_id(), payType, selectCoupon == null ? 0 : selectCoupon.getId());
+                break;
+            case R.id.select_coupon_layout:
+                Intent intent = new Intent(appContext, SelectCouponActivity.class);
+                intent.putExtra("UseType", getIntent().getBooleanExtra("IsWash", false) ? 1 : 2);
+                intent.putExtra("OrderId", mode == null ? getIntent().getIntExtra("OrderId", 0) : mode.getOrder_id());
+                startActivityForResult(intent,20);
+                goToAnimation(1);
                 break;
         }
     }
@@ -184,10 +202,14 @@ EventBus.getDefault().register(this);
             request.sign = payTo.getSign();
             api.sendReq(request);
         }
-        if (payType==3){
+        if (payType == 3) {
             showMessage("支付成功");
-            Intent intent=new Intent(appContext, MallOrderActivity.class);
-
+            Intent intent;
+            if (getIntent().getBooleanExtra("IsWash", false))
+                intent = new Intent(appContext, WashOrderActivity.class);
+            else
+                intent = new Intent(appContext, MallOrderActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
             Observable.from(ActivityManager.activityList).subscribe(activity -> activity.finish());
             goToAnimation(1);
@@ -220,15 +242,28 @@ EventBus.getDefault().register(this);
     }
 
     @Subscribe
-    public void wxPaySuccess(Event event){
-        if ("PayResultDataWX".equals(event.getType())){
+    public void wxPaySuccess(Event event) {
+        if ("PayResultDataWX".equals(event.getType())) {
 
-            Intent intent=new Intent(appContext, MallOrderActivity.class);
-
+            Intent intent;
+            if (getIntent().getBooleanExtra("IsWash", false))
+                intent = new Intent(appContext, WashOrderActivity.class);
+            else
+                intent = new Intent(appContext, MallOrderActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
             Observable.from(ActivityManager.activityList).subscribe(Activity::finish);
             goToAnimation(1);
             finish();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == 20) {
+            selectCoupon = (CouponTo) data.getSerializableExtra("CouponTo");
+            couponName.setText(selectCoupon.getCate_name());
         }
     }
 }

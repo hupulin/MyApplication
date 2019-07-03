@@ -62,9 +62,10 @@ public class HelpActivity extends BaseActivity {
     @Override
     public void recycleItemClick(View view, int position, Object data) {
         HelpCenterTo mode = (HelpCenterTo) data;
-        Intent intent = new Intent(appContext, HelpDetailActivity.class);
-        intent.putExtra("Id", mode.getCate_id());
+        Intent intent=new Intent(appContext,HelpListActivity.class);
+        intent.putExtra("HelpCenterTo",mode);
         startActivity(intent);
         goToAnimation(1);
+
     }
 }

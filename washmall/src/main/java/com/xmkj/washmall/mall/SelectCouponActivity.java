@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.BaseActivity;
+import com.xmkj.washmall.mall.adapter.SelectCouponAdapter;
 import com.xmkj.washmall.mall.presenter.SelectCouponPresenter;
 import com.xmkj.washmall.myself.adapter.CouponAdapter;
 
@@ -21,10 +22,11 @@ import hzxmkuar.com.applibrary.domain.myself.CouponTo;
  */
 
 public class SelectCouponActivity extends BaseActivity {
-    @BindView(R.id.coupon_title)
-    TextView couponTitle;
+
     @BindView(R.id.recycler_view)
     LRecyclerView recyclerView;
+    @BindView(R.id.coupon_title)
+    TextView couponTitle;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,16 +35,21 @@ public class SelectCouponActivity extends BaseActivity {
         ButterKnife.bind(this);
         setTitleName("选择优惠券");
         SelectCouponPresenter presenter = new SelectCouponPresenter(this);
-//        setRecycleView(new CouponAdapter(this),recyclerView,presenter);
-        presenter.getCouponList(2);
+        setRecycleView(new SelectCouponAdapter(this, 1), recyclerView, presenter);
+        presenter.getCouponList(getIntent().getIntExtra("OrderId", 0), getIntent().getIntExtra("UseType", 2));
     }
 
     @Override
     public void recycleItemClick(View view, int position, Object data) {
-        CouponTo couponTo= (CouponTo) data;
-        Intent intent=new Intent();
-//        intent.putExtra("Discount",couponTo.getMoney());
-        setResult(20,intent);
+        CouponTo couponTo = (CouponTo) data;
+        Intent intent = new Intent();
+        intent.putExtra("CouponTo", couponTo);
+        setResult(20, intent);
         finish();
+    }
+
+    @Override
+    public void loadDataSuccess(Object data) {
+couponTitle.setText("可使用红包("+data+"张)");
     }
 }

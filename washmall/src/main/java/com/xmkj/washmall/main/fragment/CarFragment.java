@@ -157,6 +157,7 @@ public class CarFragment extends BaseFragment {
         allMoney.setText("￥"+selectMoeny);
         allSelectIcon.setSelected(indexNum==presenter.goodsList.size());
         allSelectIcon.setBackgroundResource(allSelectIcon.isSelected()?R.drawable.address_select:R.drawable.address_un_select);
+        adapter.notifyDataSetChanged();
     }
 
     public void deleteSuccess(){

@@ -117,6 +117,15 @@ public class OrderFragment extends BaseFragment {
                     presenter.cancel(mode.getId()+"");
                 });
             }
+
+            @Override
+            public void evaluate(MallOrderTo mode) {
+//                Intent intent=new Intent(appContext, EvaAc.class);
+//                intent.putExtra("OrderId",mode.getId());
+//                intent.putExtra("Money",mode.getTotal_amount());
+//                startActivity(intent);
+//                goToAnimation(1);
+            }
         });
     }
 

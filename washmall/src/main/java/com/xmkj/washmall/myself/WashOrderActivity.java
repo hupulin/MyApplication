@@ -52,7 +52,7 @@ public class WashOrderActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wash_order);
         ButterKnife.bind(this);
-        setTitleName("我徕洗订单");
+        setTitleName("我俫洗订单");
         initFragment();
     }
 

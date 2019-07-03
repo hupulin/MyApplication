@@ -10,4 +10,5 @@ import lombok.Data;
 public class PayParam extends BaseParam {
     private int order_id;
     private int pay_type;
+    private int coupon_id;
 }

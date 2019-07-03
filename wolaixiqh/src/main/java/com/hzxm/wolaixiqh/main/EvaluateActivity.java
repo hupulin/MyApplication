@@ -40,7 +40,7 @@ public class EvaluateActivity extends BaseActivity {
         setPostImageLayout(imageLayout);
         presenter = new EvaluatePresenter(this);
 
-        setRightAndTitleText("确定", type == "1" ? "反馈告知" : "反馈退回");
+        setRightAndTitleText("确定", "1".equals(type)  ? "反馈告知" : "反馈退回");
     }
 
     @OnClick({R.id.right_text,})

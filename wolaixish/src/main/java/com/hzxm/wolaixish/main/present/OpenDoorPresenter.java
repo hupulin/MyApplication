@@ -31,7 +31,9 @@ public class OpenDoorPresenter extends BasePresenter {
                         if (msg.getCode() == 0) {
                             submitDataSuccess(msg);
                         }else{
+                            submitDataSuccess(msg);
                             showMessage(msg.getMsg());
+
                         }
                     }
                 }

@@ -184,6 +184,23 @@
                 android:visibility="gone"
                 android:layout_marginTop="18px"
                 />
+
+                <com.ruffian.library.RTextView
+                    android:layout_width="150px"
+                    android:layout_height="58px"
+                    android:gravity="center"
+                    android:textColor="#827CDE"
+                    app:border_color_normal="#827CDE"
+                    app:border_width_normal="2px"
+                    app:corner_radius="58px"
+                    android:layout_marginRight="24px"
+                    android:text="评价"
+                    android:layout_marginBottom="30px"
+                    android:textSize="26px"
+                    android:id="@+id/evaluate"
+                    android:visibility="gone"
+                    android:layout_marginTop="18px"
+                    />
             </com.zhy.autolayout.AutoLinearLayout>
         </com.zhy.autolayout.AutoLinearLayout>
     </com.zhy.autolayout.AutoRelativeLayout>

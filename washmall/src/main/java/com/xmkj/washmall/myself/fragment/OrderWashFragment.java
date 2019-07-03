@@ -15,6 +15,7 @@ import com.xmkj.washmall.base.BaseFragment;
 import com.xmkj.washmall.base.WashAlertDialog;
 import com.xmkj.washmall.mall.SelectPayActivity;
 import com.xmkj.washmall.myself.OrderDetailActivity;
+import com.xmkj.washmall.myself.WashDetailActivity;
 import com.xmkj.washmall.myself.adapter.OrderMallAdapter;
 import com.xmkj.washmall.myself.adapter.OrderWashAdapter;
 import com.xmkj.washmall.myself.presenter.MyOrderPresenter;
@@ -140,5 +141,12 @@ public class OrderWashFragment extends BaseFragment {
         unbinder.unbind();
     }
 
-
+    @Override
+    public void recycleItemClick(View view, int position, Object data) {
+        Intent intent=new Intent(appContext, WashDetailActivity.class);
+        WashOrderTo mode= (WashOrderTo) data;
+        intent.putExtra("OrderId",mode.getOrder_id());
+        startActivity(intent);
+        goToAnimation(1);
+    }
 }

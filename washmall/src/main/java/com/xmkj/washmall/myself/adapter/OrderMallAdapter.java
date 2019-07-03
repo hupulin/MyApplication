@@ -59,6 +59,7 @@ public class OrderMallAdapter extends BaseAdapter<MallOrderTo, MyOrderMallItemBi
         binding.cancel.setVisibility(mode.getButton_list().getQxdd_btn() == 1 ? View.VISIBLE : View.GONE);
         binding.send.setVisibility(mode.getButton_list().getCfh_btn() == 1 ? View.VISIBLE : View.GONE);
         binding.confirmReceiver.setVisibility(mode.getButton_list().getQrsh_btn() == 1 ? View.VISIBLE : View.GONE);
+        binding.evaluate.setVisibility(mode.getButton_list().getQpj_btn() == 1 ? View.VISIBLE : View.GONE);
 
         binding.pay.setOnClickListener(view -> {
             if (listener!=null)
@@ -78,7 +79,10 @@ public class OrderMallAdapter extends BaseAdapter<MallOrderTo, MyOrderMallItemBi
             if (listener!=null)
                 listener.cancelOrder(mode);
         });
-
+        binding.evaluate.setOnClickListener(view -> {
+            if (listener!=null)
+                listener.evaluate(mode);
+        });
     }
 
     private void setGoodsLayout(GridLayout goodsLayout, List<MallOrderTo.GoodsListBean> goodsList) {
@@ -105,6 +109,8 @@ public class OrderMallAdapter extends BaseAdapter<MallOrderTo, MyOrderMallItemBi
         void confirmReceiver(MallOrderTo mode);
 
         void cancelOrder(MallOrderTo mode);
+
+        void evaluate(MallOrderTo mode);
 
 
     }

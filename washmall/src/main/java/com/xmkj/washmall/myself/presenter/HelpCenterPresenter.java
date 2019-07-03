@@ -46,4 +46,10 @@ public class HelpCenterPresenter extends BasePresenter {
                 }
         );
     }
+
+    @Override
+    public void recycleViewRefresh() {
+        super.recycleViewRefresh();
+        getHelpData("",true);
+    }
 }

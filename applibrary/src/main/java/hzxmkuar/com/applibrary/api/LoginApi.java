@@ -8,6 +8,7 @@ import hzxmkuar.com.applibrary.domain.login.BindPhoneParam;
 import hzxmkuar.com.applibrary.domain.login.LoginParam;
 import hzxmkuar.com.applibrary.domain.login.ModifyPasswordParam;
 import hzxmkuar.com.applibrary.domain.login.RegisterParam;
+import hzxmkuar.com.applibrary.domain.login.SendLoginParam;
 import hzxmkuar.com.applibrary.domain.login.UploadImageParam;
 import hzxmkuar.com.applibrary.domain.login.UserLoginParam;
 import hzxmkuar.com.applibrary.domain.login.VerificationLoginParam;
@@ -81,4 +82,10 @@ public interface LoginApi {
      */
     @POST("Api/Shopuser/passwdLogin")
     Observable<MessageTo>userLogin(@Body UserLoginParam param);
+
+    /**
+     * 发送验证码
+     */
+    @POST("sms/verifycode/login")
+    Observable<MessageTo>sendCode(@Body SendLoginParam param);
 }

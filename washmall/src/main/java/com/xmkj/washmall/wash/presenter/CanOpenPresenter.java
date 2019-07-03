@@ -7,6 +7,7 @@ import com.xmkj.washmall.base.BaseActivity;
 import com.xmkj.washmall.base.BaseFragment;
 import com.xmkj.washmall.base.BasePresenter;
 import com.xmkj.washmall.base.MyObserver;
+import com.xmkj.washmall.base.utils.Base64;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,7 @@ import hzxmkuar.com.applibrary.domain.mall.OrderIdParam;
 import hzxmkuar.com.applibrary.domain.order.WashOrderTo;
 import hzxmkuar.com.applibrary.domain.wardrobe.OpenWardrobeParam;
 import hzxmkuar.com.applibrary.domain.wash.CanOpenParam;
+import hzxmkuar.com.applibrary.domain.wash.DeviceSnTo;
 import hzxmkuar.com.applibrary.domain.wash.MyWashOrderParam;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -37,7 +39,8 @@ public class CanOpenPresenter extends BasePresenter {
 
     public void getOrderList() {
         CanOpenParam param = new CanOpenParam();
-        param.setWardrobe_no(activity.getIntent().getStringExtra("WardrobeNo"));
+        DeviceSnTo snTo=new Gson().fromJson(new String(Base64.decode(activity.getIntent().getStringExtra("WardrobeNo"))),DeviceSnTo.class);
+        param.setWardrobe_no(snTo.getDeviceSn());
         param.setPage(recyclePageIndex);
         param.setHash(getHashString(CanOpenParam.class, param));
         showLoadingDialog();
@@ -79,6 +82,7 @@ public class CanOpenPresenter extends BasePresenter {
         showLoadingDialog();
         OpenWardrobeParam param=new OpenWardrobeParam();
         param.setOrder_id(orderId);
+
         param.setWardrobe_no(activity.getIntent().getStringExtra("WardrobeNo"));
         param.setHash(getHashString(OpenWardrobeParam.class,param));
         ApiClient.create(WashApi.class).openWardrobe(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(

@@ -8,6 +8,7 @@ import android.view.View;
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.BaseActivity;
+import com.xmkj.washmall.myself.adapter.OpenWashAdapter;
 import com.xmkj.washmall.myself.adapter.OrderWashAdapter;
 import com.xmkj.washmall.wash.presenter.CanOpenPresenter;
 
@@ -33,11 +34,13 @@ public class CanOpenActivity extends BaseActivity {
         ButterKnife.bind(this);
         setTitleName("开柜订单");
         presenter = new CanOpenPresenter(this);
-        setRecycleView(new OrderWashAdapter(this),recyclerView,presenter);
+        setRecycleView(new OpenWashAdapter(this),recyclerView,presenter);
+
     }
 
     @Override
     public void loadDataSuccess(Object data) {
+
         List<WashOrderTo> orderList = (List<WashOrderTo>) data;
         if (orderList==null||orderList.size()==0){
             showMessage("暂无可开柜订单");

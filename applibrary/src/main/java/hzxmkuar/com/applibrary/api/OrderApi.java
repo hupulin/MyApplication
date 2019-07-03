@@ -4,6 +4,7 @@ import hzxmkuar.com.applibrary.IdParam;
 import hzxmkuar.com.applibrary.domain.BaseParam;
 import hzxmkuar.com.applibrary.domain.MessageListTo;
 import hzxmkuar.com.applibrary.domain.MessageTo;
+import hzxmkuar.com.applibrary.domain.mall.CanUseCouponParam;
 import hzxmkuar.com.applibrary.domain.mall.OrderIdParam;
 import hzxmkuar.com.applibrary.domain.mall.SettlementIdParam;
 import hzxmkuar.com.applibrary.domain.message.IdsParam;
@@ -126,4 +127,11 @@ public interface OrderApi {
      */
     @POST("Api/Order/orderDetailForUser")
     Observable<MessageTo>orderDetail(@Body OrderIdParam param);
+
+
+    /**
+     * 可以使用优惠券列表
+     */
+    @POST("Api/Coupon/can_use_list")
+    Observable<MessageListTo>selectCouponList(@Body CanUseCouponParam param);
 }

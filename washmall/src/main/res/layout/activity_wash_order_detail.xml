@@ -16,6 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="none"
+        android:layout_weight="1"
         >
 
 
@@ -306,44 +307,86 @@
         android:layout_height="2px"
         android:background="#F8F8F8" />
 
-    <com.zhy.autolayout.AutoLinearLayout
+    <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="88px"
-        android:visibility="gone"
+        android:layout_height="wrap_content"
+       android:layout_marginTop="24px"
+        android:layout_marginBottom="24px"
         >
 
-        <com.zhy.autolayout.AutoRelativeLayout
-            android:layout_width="476px"
-            android:layout_height="match_parent">
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+          android:layout_alignParentEnd="true"
 
-            <com.zhy.autolayout.AutoLinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true">
+            >
+            <com.ruffian.library.RTextView
+                android:layout_width="150px"
+                android:layout_height="58px"
+                android:gravity="center"
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:text="合计金额:"
-                    android:textColor="@color/black"
-                    android:textSize="26px" />
+                android:textColor="#827CDE"
+                app:border_color_normal="#827CDE"
+                app:border_width_normal="2px"
+                app:corner_radius="58px"
+                android:text="取消订单"
 
-                <TextView
-                    android:id="@+id/all_money"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="26px"
-                    android:textColor="#FF0000"
-                    android:textSize="26px" />
-            </com.zhy.autolayout.AutoLinearLayout>
-        </com.zhy.autolayout.AutoRelativeLayout>
+                android:textSize="26px"
+                android:id="@+id/cancel"
+                android:layout_marginRight="24px"
+                android:visibility="gone"
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/confirm"
-            android:background="@drawable/integral_exchange_icon" />
-    </com.zhy.autolayout.AutoLinearLayout>
+                />
+
+            <com.ruffian.library.RTextView
+                android:layout_width="150px"
+                android:layout_height="58px"
+                android:gravity="center"
+                android:textColor="#827CDE"
+                app:border_color_normal="#827CDE"
+                app:border_width_normal="2px"
+                app:corner_radius="58px"
+                android:layout_marginRight="24px"
+                android:text="付款"
+
+                android:textSize="26px"
+                android:id="@+id/pay"
+                android:visibility="gone"
+
+                />
+            <com.ruffian.library.RTextView
+                android:layout_width="150px"
+                android:layout_height="58px"
+                android:gravity="center"
+                android:textColor="#827CDE"
+                app:border_color_normal="#827CDE"
+                app:border_width_normal="2px"
+                app:corner_radius="58px"
+                android:layout_marginRight="24px"
+                android:text="催发货"
+                android:textSize="26px"
+
+                android:id="@+id/send"
+
+
+                />
+
+            <com.ruffian.library.RTextView
+                android:layout_width="150px"
+                android:layout_height="58px"
+                android:gravity="center"
+                android:textColor="#827CDE"
+                app:border_color_normal="#827CDE"
+                app:border_width_normal="2px"
+                app:corner_radius="58px"
+                android:layout_marginRight="24px"
+                android:text="确认收货"
+
+                android:textSize="26px"
+                android:id="@+id/confirm_receiver"
+                android:visibility="gone"
+
+                />
+        </com.zhy.autolayout.AutoLinearLayout>
+    </com.zhy.autolayout.AutoRelativeLayout>
 </com.zhy.autolayout.AutoLinearLayout>

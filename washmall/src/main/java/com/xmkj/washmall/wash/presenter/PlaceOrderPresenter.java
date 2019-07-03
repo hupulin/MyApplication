@@ -1,5 +1,6 @@
 package com.xmkj.washmall.wash.presenter;
 
+import android.text.TextUtils;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
@@ -8,6 +9,7 @@ import com.google.gson.reflect.TypeToken;
 import com.xmkj.washmall.base.BaseActivity;
 import com.xmkj.washmall.base.BasePresenter;
 import com.xmkj.washmall.base.MyObserver;
+import com.xmkj.washmall.base.util.SpUtil;
 import com.xmkj.washmall.main.fragment.HomeFragment;
 import com.xmkj.washmall.wash.PlaceOrderActivity;
 
@@ -64,6 +66,9 @@ public class PlaceOrderPresenter extends BasePresenter{
         MainWardrobeParam param=new MainWardrobeParam();
         param.setHashid(userInfoTo.getHashid());
         param.setUid(userInfoTo.getUid());
+        param.setPos_city(SpUtil.getInt("SelectCityId"));
+        param.setLat(SpUtil.getString("Lat"));
+        param.setLng(SpUtil.getString("Lng"));
         param.setHash(getHashString(MainWardrobeParam.class,param));
         showLoadingDialog();
         ApiClient.create(MainHomeApi.class).getWardrobeList(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(

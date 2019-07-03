@@ -16,6 +16,7 @@
     <com.zhy.autolayout.AutoLinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12px"
         android:layout_gravity="center_horizontal">
 
         <View
@@ -28,6 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="可使用红包(2张)"
+
             android:textColor="#9F9F9F"
             android:layout_marginLeft="20px"
             android:id="@+id/coupon_title"

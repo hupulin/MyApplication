@@ -10,10 +10,14 @@ import com.hyphenate.easeui.EaseConstant;
 import com.hyphenate.easeui.ui.EaseChatFragment;
 
 import com.tbruyelle.rxpermissions.RxPermissions;
+import com.tencent.connect.UserInfo;
 import com.xmkj.washmall.R;
 import com.xmkj.washmall.base.BaseActivity;
 import com.xmkj.washmall.base.util.StatueBarUtil;
+import com.xmkj.washmall.login.presenter.LoginPresenter;
+import com.xmkj.washmall.message.presenter.ChatPresenter;
 
+import hzxmkuar.com.applibrary.domain.login.UserInfoTo;
 import hzxmkuar.com.applibrary.impl.PermissionListener;
 
 /**
@@ -28,20 +32,30 @@ public class ChatActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         StatueBarUtil.setStatueBarColor(getWindow(), "#3FB9FF");
         setContentView(R.layout.activity_chat);
-        EMClient.getInstance().login("15168234205", "123456", new EMCallBack() {
+       new ChatPresenter(this);
+
+
+    }
+
+
+    @Override
+    public void loadDataSuccess(Object data) {
+        UserInfoTo mode= (UserInfoTo) data;
+
+        EMClient.getInstance().login(mode.getMobile(), "123456", new EMCallBack() {
             @Override
             public void onSuccess() {
-              runOnUiThread(() -> {
-                  EaseChatFragment fragment = new EaseChatFragment();
-                            Bundle args = new Bundle();
+                runOnUiThread(() -> {
+                    EaseChatFragment fragment = new EaseChatFragment();
+                    Bundle args = new Bundle();
 
-                            args.putInt(EaseConstant.EXTRA_CHAT_TYPE, EaseConstant.CHATTYPE_SINGLE);
-                            args.putString(EaseConstant.EXTRA_USER_ID, getIntent().getStringExtra("Phone"));
-                            args.putString("Name", "在线客服");
-                            fragment.setArguments(args);
-                            getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commitAllowingStateLoss();
+                    args.putInt(EaseConstant.EXTRA_CHAT_TYPE, EaseConstant.CHATTYPE_SINGLE);
+                    args.putString(EaseConstant.EXTRA_USER_ID, getIntent().getStringExtra("Phone"));
+                    args.putString("Name", "在线客服");
+                    fragment.setArguments(args);
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commitAllowingStateLoss();
 
-              });
+                });
             }
 
             @Override
@@ -54,24 +68,22 @@ public class ChatActivity extends BaseActivity {
 
             }
         });
-//        init();
-//        new RxPermissions(this).requestEach(
-//                Manifest.permission.RECORD_AUDIO
-//        )
-//                .subscribe(permission -> {
-//                    if (permission.granted) {
-//                        // 用户已经同意该权限
-//                        init();
-//
-//                    } else if (permission.shouldShowRequestPermissionRationale) {
-//                        init();
-//                    } else {
-//                        showMessage("请手动打开录音权限");
-//
-//                    }
-//                });
+        init();
+        new RxPermissions(this).requestEach(
+                Manifest.permission.RECORD_AUDIO
+        )
+                .subscribe(permission -> {
+                    if (permission.granted) {
+                        // 用户已经同意该权限
+                        init();
 
+                    } else if (permission.shouldShowRequestPermissionRationale) {
+                        init();
+                    } else {
+                        showMessage("请手动打开录音权限");
 
+                    }
+                });
     }
 
     public void init() {
@@ -83,8 +95,8 @@ public class ChatActivity extends BaseActivity {
                     @Override
                     public void onSuccess() {
 
-                        runOnUiThread(() -> {
-                           showMessage("登录成功");
+//                        runOnUiThread(() -> {
+//                           showMessage("登录成功");
 
 //                            EaseChatFragment fragment = new EaseChatFragment();
 //                            Bundle args = new Bundle();
@@ -95,7 +107,7 @@ public class ChatActivity extends BaseActivity {
 //                            fragment.setArguments(args);
 //                            getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commitAllowingStateLoss();
 
-                        });
+//                        });
                     }
 
                     @Override

@@ -63,32 +63,12 @@ public class OrderListAdapter extends BaseAdapter<DeLiveryOrderListTo.ListsEntit
 
 
         binding.sweepAndUnpack.setVisibility(mode.getButton_list().getSmqh_btn()==1?View.VISIBLE:View.GONE);
-        binding.sweepAndUnpack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listen.onScanDecode(mode.getOrder_id());
-
-            }
-        });
-        binding.pickUpGoods.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listen.onPickUpTheGoods(mode.getOrder_id());
-            }
-        });
-        binding.feedbackInform.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listen.feedbackInform(mode.getOrder_id());
-
-            }
-        }); binding.feedbackBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listen.feedbackBack(mode.getOrder_id());
-
-            }
-        });
+        binding.sweepAndUnpack.setOnClickListener(view -> listen.onScanDecode(mode.getOrder_id()));
+        binding.pickUpGoods.setVisibility(mode.getButton_list().getQrqh_btn()==1?View.VISIBLE:View.GONE);
+        binding.pickUpGoods.setOnClickListener(view -> listen.onPickUpTheGoods(mode.getOrder_id()));
+        binding.feedbackInform.setOnClickListener(v -> listen.feedbackInform(mode.getOrder_id()));
+        binding.feedbackBack.setOnClickListener(v -> listen.feedbackBack(mode.getOrder_id()));
+        binding.print.setOnClickListener(v -> listen.print(mode));
 
 
     }
@@ -97,6 +77,7 @@ public class OrderListAdapter extends BaseAdapter<DeLiveryOrderListTo.ListsEntit
         void onScanDecode(int id); //
         void feedbackInform(int id); //
         void feedbackBack(int id); //
+        void print(DeLiveryOrderListTo.ListsEntity mode); //
     }
 
     PickUpTheGoodsListener  listen;

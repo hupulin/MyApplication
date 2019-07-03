@@ -89,10 +89,7 @@ public class PlaceOrderActivity extends BaseActivity implements OnDateSetListene
                     showMessage("请选择存货衣柜");
                     return;
                 }
-                if (TextUtils.isEmpty(remark.getText().toString())) {
-                    showMessage("请填写备注");
-                    return;
-                }
+
                 if (TextUtils.isEmpty(pickupTime.getText().toString())) {
                     showMessage("请选择取货时间");
                     return;
@@ -101,6 +98,10 @@ public class PlaceOrderActivity extends BaseActivity implements OnDateSetListene
                     showMessage("请选择取货衣柜");
                     return;
                 }
+//                if (TextUtils.isEmpty(remark.getText().toString())) {
+//                    showMessage("请填写备注");
+//                    return;
+//                }
                 presenter.addOrder((int) saveWardrobe.getTag(), (int) pickupWardrobe.getTag(), pickupTime.getText().toString(), remark.getText().toString());
                 break;
         }
@@ -129,6 +130,10 @@ public class PlaceOrderActivity extends BaseActivity implements OnDateSetListene
 
                 selectText.setText(wardrobeTo.getWardrobe_name());
                 selectText.setTag(wardrobeTo.getId());
+                if (pickupWardrobe.getTag()==null){
+                    pickupWardrobe.setText(wardrobeTo.getWardrobe_name());
+                    pickupWardrobe.setTag(wardrobeTo.getId());
+                }
             });
             gridLayout.addView(textView);
         });
@@ -150,7 +155,7 @@ public class PlaceOrderActivity extends BaseActivity implements OnDateSetListene
                 .setWheelItemTextSize(14)
 
                 .setCyclic(false)
-                .setMinMillseconds(System.currentTimeMillis())
+                .setMinMillseconds(System.currentTimeMillis()+72*3600*1000)
                 .buildNew();
         mimePickerExpect.show(getSupportFragmentManager(), "year_month_day");
     }

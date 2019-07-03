@@ -44,6 +44,45 @@
     <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="90px"
+        android:id="@+id/select_coupon_layout"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="24px"
+            android:text="优惠券："
+            android:textSize="30px" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/coupon_name"
+            android:layout_marginRight="64px"
+            android:text="2张优惠券"
+            android:textColor="#808080"
+            android:textSize="30px" />
+        <View
+            android:layout_width="40px"
+            android:layout_height="40px"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="12px"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/myself_arrow"
+            />
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20px"
+        android:background="#EDEDED" />
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="90px"
         android:id="@+id/balance_layout"
         >
 

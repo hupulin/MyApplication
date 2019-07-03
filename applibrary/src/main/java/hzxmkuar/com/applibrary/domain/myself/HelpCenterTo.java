@@ -1,5 +1,6 @@
 package hzxmkuar.com.applibrary.domain.myself;
 
+import java.io.Serializable;
 import java.util.List;
 
 import lombok.Data;
@@ -8,7 +9,7 @@ import lombok.Data;
  * Created by 1ONE on 2019/5/26.
  */
 @Data
-public class HelpCenterTo {
+public class HelpCenterTo implements Serializable{
 
     /**
      * list2 : [{"doc_title":"已确认收货的订单失效了？","id":1}]
@@ -23,7 +24,7 @@ public class HelpCenterTo {
 
 
     @Data
-    public class List2Entity {
+    public class List2Entity implements Serializable{
         /**
          * doc_title : 已确认收货的订单失效了？
          * id : 1

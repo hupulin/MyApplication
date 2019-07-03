@@ -1,0 +1,66 @@
+package com.xmkj.washmall.myself.presenter;
+
+import com.alibaba.fastjson.JSON;
+import com.google.gson.Gson;
+import com.xmkj.washmall.base.BaseActivity;
+import com.xmkj.washmall.base.BasePresenter;
+import com.xmkj.washmall.base.MyObserver;
+
+import hzxmkuar.com.applibrary.api.ApiClient;
+import hzxmkuar.com.applibrary.api.WashApi;
+import hzxmkuar.com.applibrary.domain.MessageTo;
+import hzxmkuar.com.applibrary.domain.mall.OrderIdParam;
+import hzxmkuar.com.applibrary.domain.wash.WashDetailTo;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
+
+/**
+ * Created by 1ONE on 2019/5/29.
+ */
+
+public class WashDetailPresenter extends BasePresenter {
+
+    public WashDetailPresenter(BaseActivity activity){
+        initContext(activity);
+        getOrderDetail();
+    }
+
+    private void getOrderDetail() {
+       showLoadingDialog();
+        OrderIdParam param=new OrderIdParam();
+        param.setOrder_id(activity.getIntent().getIntExtra("OrderId",0)+"");
+        param.setHash(getHashString(OrderIdParam.class,param));
+        ApiClient.create(WashApi.class).getOrderDetail(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
+                new MyObserver<MessageTo>(this) {
+                    @Override
+                    public void onNext(MessageTo msg) {
+                        if (msg.getCode()==0) {
+                            WashDetailTo detailTo = new Gson().fromJson(JSON.toJSONString(msg.getData()), WashDetailTo.class);
+                           getDataSuccess(detailTo);
+                        }else
+                            showMessage(msg.getMsg());
+                    }
+                }
+        );
+    }
+
+    public void cancelOrder(int orderId){
+        OrderIdParam param=new OrderIdParam();
+        param.setOrder_id(orderId+"");
+        param.setHash(getHashString(OrderIdParam.class,param));
+        showLoadingDialog();
+        ApiClient.create(WashApi.class).cancelOrder(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
+                new MyObserver<MessageTo>(this) {
+                    @Override
+                    public void onNext(MessageTo msg) {
+                        if (msg.getCode()==0){
+
+                            showMessage("取消订单成功");
+                            getOrderDetail();
+                        }else
+                            showMessage(msg.getMsg());
+                    }
+                }
+        );
+    }
+}

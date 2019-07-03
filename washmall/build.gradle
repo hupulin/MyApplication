@@ -87,3 +87,4 @@ dependencies {
     compile project(':applibrary')
     compile project(':easeui')
 }
+

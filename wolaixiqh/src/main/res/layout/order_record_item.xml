@@ -262,11 +262,22 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/view"
                 android:layout_marginTop="20px">
-
+                <TextView
+                    android:id="@+id/print"
+                    android:layout_width="118px"
+                    android:layout_height="64px"
+                    android:background="@mipmap/shape_bg"
+                    android:gravity="center"
+                    android:layout_marginLeft="20px"
+                    android:text="打印"
+                    android:textColor="@color/app_color"
+                    android:textSize="26px" />
                 <com.zhy.autolayout.AutoRelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true">
+
+
 
                     <TextView
                         android:id="@+id/sweep_and_unpack"

@@ -71,8 +71,9 @@ public class HomeFragment extends BaseFragment implements PermissionListener {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = View.inflate(container.getContext(), R.layout.fragment_home, null);
         unbinder = ButterKnife.bind(this, rootView);
-        presenter = new MainHomePresenter(this);
         getPermission(Manifest.permission.ACCESS_FINE_LOCATION, this);
+        presenter = new MainHomePresenter(this);
+
          setSearch();
         return rootView;
     }
@@ -86,7 +87,7 @@ public class HomeFragment extends BaseFragment implements PermissionListener {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-             presenter.getWardrobeList(lat,lng,searchContent.getText().toString());
+             presenter.getWardrobeList(lat,lng,searchContent.getText().toString(),SpUtil.getString("PosCity"));
             }
 
             @Override
@@ -186,7 +187,7 @@ public class HomeFragment extends BaseFragment implements PermissionListener {
         mLocationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
         mLocationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Battery_Saving);
         mLocationClient.setLocationOption(mLocationOption);
-        mLocationClient.startLocation();
+//        mLocationClient.startLocation();
     }
 
     AMapLocationListener mAMapLocationListener = amapLocation -> {
@@ -195,11 +196,12 @@ public class HomeFragment extends BaseFragment implements PermissionListener {
             if (amapLocation.getErrorCode() == 0) {
                 cityName.setText(amapLocation.getStreet());
                 mLocationClient.stopLocation();
-                presenter.getWardrobeList(amapLocation.getLatitude() + "", amapLocation.getLongitude() + "",searchContent.getText().toString());
+                presenter.getWardrobeList(amapLocation.getLatitude() + "", amapLocation.getLongitude() + "",searchContent.getText().toString(),amapLocation.getCity());
                 lat = amapLocation.getLatitude() + "";
                 lng = amapLocation.getLongitude() + "";
                 SpUtil.put("Lat", lat);
                 SpUtil.put("Lng", lng);
+                SpUtil.put("PosCity",amapLocation.getCity());
             }
         }
     };
@@ -222,10 +224,11 @@ public class HomeFragment extends BaseFragment implements PermissionListener {
 
             String poi = data.getStringExtra("Result");
             cityName.setText(poi + "");
-            presenter.getWardrobeList(data.getStringExtra("lat"), data.getStringExtra("lng"),searchContent.getText().toString());
+            presenter.getWardrobeList(data.getStringExtra("lat"), data.getStringExtra("lng"),searchContent.getText().toString(),SpUtil.getString("PosCity"));
             lat = data.getStringExtra("lat");
             lng = data.getStringExtra("lng");
-
+            SpUtil.put("Lat", lat);
+            SpUtil.put("Lng", lng);
         }
     }
 }

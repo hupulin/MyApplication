@@ -94,40 +94,6 @@
             android:background="@drawable/login_address_arrow" />
     </com.zhy.autolayout.AutoRelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2px"
-        android:background="#ededed" />
-
-    <com.zhy.autolayout.AutoRelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="100px"
-        android:layout_marginLeft="21px"
-        android:layout_marginRight="21px">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:gravity="center_vertical"
-            android:text="备注"
-            android:textColor="@color/black"
-            android:textSize="28px" />
-
-        <EditText
-            android:id="@+id/remark"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentEnd="true"
-            android:background="@color/transparent"
-            android:gravity="center_vertical|end"
-            android:hint="请输入衣服的款式等信息"
-            android:textColorHint="#808080"
-
-            android:textColor="@color/black"
-            android:textSize="24px" />
-
-    </com.zhy.autolayout.AutoRelativeLayout>
 
     <View
         android:layout_width="match_parent"
@@ -213,6 +179,40 @@
             android:background="@drawable/login_address_arrow" />
     </com.zhy.autolayout.AutoRelativeLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="#ededed" />
+
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100px"
+        android:layout_marginLeft="21px"
+        android:layout_marginRight="21px">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:text="备注"
+            android:textColor="@color/black"
+            android:textSize="28px" />
+
+        <EditText
+            android:id="@+id/remark"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:background="@color/transparent"
+            android:gravity="center_vertical|end"
+            android:hint="请输入衣服的款式等信息"
+            android:textColorHint="#808080"
+
+            android:textColor="@color/black"
+            android:textSize="24px" />
+
+    </com.zhy.autolayout.AutoRelativeLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="2px"

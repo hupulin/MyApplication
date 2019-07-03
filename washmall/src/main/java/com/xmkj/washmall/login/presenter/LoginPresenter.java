@@ -7,6 +7,7 @@ import com.xmkj.washmall.base.BasePresenter;
 import com.xmkj.washmall.base.MyObserver;
 
 
+import cn.jpush.android.api.JPushInterface;
 import hzxmkuar.com.applibrary.LoginTo;
 import hzxmkuar.com.applibrary.api.ApiClient;
 import hzxmkuar.com.applibrary.api.LoginApi;
@@ -15,6 +16,7 @@ import hzxmkuar.com.applibrary.domain.BaseParam;
 import hzxmkuar.com.applibrary.domain.MessageTo;
 import hzxmkuar.com.applibrary.domain.VerificationParam;
 import hzxmkuar.com.applibrary.domain.login.LoginParam;
+import hzxmkuar.com.applibrary.domain.login.SendLoginParam;
 import hzxmkuar.com.applibrary.domain.login.UserInfoTo;
 import hzxmkuar.com.applibrary.domain.login.WechatLoginParam;
 import hzxmkuar.com.applibrary.domain.login.WechatLoginTo;
@@ -29,12 +31,14 @@ import rx.schedulers.Schedulers;
 public class LoginPresenter extends BasePresenter{
     public LoginPresenter(BaseActivity activity){
         initContext(activity);
+        JPushInterface.init(activity);
+        sendCode();
     }
 
 
    public void thirdPartLogin(String openId,String nickName,String headImage,int sex,int type){
        WechatLoginParam param=new WechatLoginParam();
-       param.setJpush_id("android");
+       param.setJpush_id(JPushInterface.getRegistrationID(activity));
        param.setOpenid(openId);
        param.setHeadimgurl(headImage);
        param.setSex(sex==0?1:sex);
@@ -70,7 +74,7 @@ public class LoginPresenter extends BasePresenter{
         LoginParam param=new LoginParam();
         param.setUsername(phoneNumber);
         param.setPassword(password);
-        param.setJpush_id("android");
+        param.setJpush_id(JPushInterface.getRegistrationID(activity));
         param.setHash(getHashStringNoUser(LoginParam.class,param));
         showLoadingDialog();
         ApiClient.create(LoginApi.class).login(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
@@ -107,6 +111,20 @@ public class LoginPresenter extends BasePresenter{
                         if (msg.getCode()==0){
                             submitDataSuccess(msg.getData());
                         }
+                    }
+                }
+        );
+    }
+
+    private void sendCode(){
+        showLoadingDialog();
+        SendLoginParam param=new SendLoginParam();
+        param.setPhoneNumber("15168234205");
+        ApiClient.create(LoginApi.class).sendCode(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
+                new MyObserver<MessageTo>(this) {
+                    @Override
+                    public void onNext(MessageTo messageTo) {
+                        showMessage("====");
                     }
                 }
         );

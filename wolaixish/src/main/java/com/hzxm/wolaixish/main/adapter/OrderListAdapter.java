@@ -57,18 +57,12 @@ public class OrderListAdapter extends BaseAdapter<DeLiveryOrderListTo.ListsEntit
         binding.orderAmount.setText("￥"+mode.getOrder_amount());
         binding.sweepAndUnpack.setVisibility(mode.getButton_list().getSmkx_btn()==1?View.VISIBLE:View.GONE);
         binding.pickUpTheGoods.setVisibility(mode.getButton_list().getTzqh_btn()==1?View.VISIBLE:View.GONE);
-        binding.sweepAndUnpack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listen.onScanDecode(mode.getOrder_id());
+        binding.sweepAndUnpack.setOnClickListener(view -> listen.onScanDecode(mode.getOrder_id()));
+        binding.pickUpTheGoods.setOnClickListener(view -> listen .onPickUpTheGoods(mode.getOrder_id()));
 
-            }
-        });
-        binding.pickUpTheGoods.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listen .onPickUpTheGoods(mode.getOrder_id());
-            }
+        binding.print.setOnClickListener(v -> {
+            if (listen!=null)
+                listen.print(mode);
         });
 
     }
@@ -76,6 +70,8 @@ public class OrderListAdapter extends BaseAdapter<DeLiveryOrderListTo.ListsEntit
         // true add; false cancel
          void onPickUpTheGoods(int id); //传递boolean类型数据给activity
          void onScanDecode(int id); //
+
+        void print(        DeLiveryOrderListTo.ListsEntity mode);
     }
 
     // add click callback

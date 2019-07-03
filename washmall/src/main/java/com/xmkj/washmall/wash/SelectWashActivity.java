@@ -44,28 +44,32 @@ public class SelectWashActivity extends BaseActivity {
     SmartTabLayout tab;
     @BindView(R.id.view_pager)
     ViewPager viewPager;
-    public List<String>typeList=new ArrayList<>();
-    public HashMap<String,List<WashInfoTo>>washItemMap=new HashMap<>();
-    public HashMap<String,List<WashInfoTo>>washInfoMap=new HashMap<>();
-    private int selectIndex=0;
+    public List<String> typeList = new ArrayList<>();
+    public HashMap<String, List<WashInfoTo>> washItemMap = new HashMap<>();
+    public HashMap<String, List<WashInfoTo>> washInfoMap = new HashMap<>();
+    private int selectIndex = 0;
     private GridLayout selectLayout;
-    private boolean isFirst=true;
-    private boolean isBack=false;
+    private boolean isFirst = true;
+    private boolean isBack = false;
     int lastIndex;
+    private int index;
+    private int position;
+    private List<WashInfoTo> washList;
+    public int classId;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_wash);
         ButterKnife.bind(this);
         setTitleName("选择下单种类");
-        SpUtil.put("WashItemSelect",false);
+        SpUtil.put("WashItemSelect", false);
 
 
-
-        SelectWashPresenter presenter=new SelectWashPresenter(this);
+        SelectWashPresenter presenter = new SelectWashPresenter(this);
     }
 
-    public void setTab(List<String> paymentTypeList) {
+    public void setTab(List<String> paymentTypeList,int index) {
 
         FragmentPagerItems.Creator creator = FragmentPagerItems.with(this);
         Observable.from(paymentTypeList).subscribe(paymentTypeTo -> {
@@ -83,7 +87,6 @@ public class SelectWashActivity extends BaseActivity {
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
 
-
             @Override
             public void onPageScrolled(int i, float v, @Px int i1) {
 
@@ -91,21 +94,22 @@ public class SelectWashActivity extends BaseActivity {
 
             @Override
             public void onPageSelected(int i) {
-                lastIndex=selectIndex;
+                lastIndex = selectIndex;
+                classId=washList.get(i).getId();
 
-                new Handler().postDelayed(() ->{
+                new Handler().postDelayed(() -> {
 
-                     selectLayout = ActivityManager.washFragmentList.get(selectIndex).selectLayout;
+                    selectLayout = ActivityManager.washFragmentList.get(selectIndex).selectLayout;
 
-                    if (selectLayout.getChildCount()>0&&isFirst&&!isBack){
-                        isFirst=false;
+                    if (selectLayout.getChildCount() > 0 && isFirst && !isBack) {
+                        isFirst = false;
 
                         setCleanDialog();
                     }
-                    selectIndex=i;
+                    selectIndex = i;
 
-                } ,100);
-                new Handler().postDelayed(() -> isBack=false,500);
+                }, 100);
+                new Handler().postDelayed(() -> isBack = false, 500);
             }
 
             @Override
@@ -114,44 +118,57 @@ public class SelectWashActivity extends BaseActivity {
             }
         });
 
+        viewPager.setCurrentItem(index);
+
     }
 
     @Override
     public void loadDataSuccess(Object data) {
-        List<WashInfoTo>washList=new Gson().fromJson(JSON.toJSONString(data),new TypeToken<List<WashInfoTo>>(){}.getType());
-        Observable.from(washList).subscribe(washInfoTo -> {
+        washList = new Gson().fromJson(JSON.toJSONString(data), new TypeToken<List<WashInfoTo>>() {
+        }.getType());
+        index = 0;
+        for (int i = 0; i < washList.size(); i++) {
+            index=i;
+            WashInfoTo washInfoTo = washList.get(i);
+            typeList.add(washInfoTo.getService_name());
+            washItemMap.put(washInfoTo.getService_name(), washInfoTo.getList2());
+            Observable.from(washInfoTo.getList2()).subscribe(washInfoTo1 -> {
+                washInfoMap.put(washInfoTo1.getService_name(), washInfoTo1.getList3());
+                Observable.from( washInfoTo1.getList3()).subscribe(washInfoTo2 -> {
+                    if ((washInfoTo2.getId()+"").equals(getIntent().getStringExtra("TypeId"))) {
+                        position = index;
 
-                typeList.add(washInfoTo.getService_name());
-                washItemMap.put(washInfoTo.getService_name(),washInfoTo.getList2());
-                Observable.from(washInfoTo.getList2()).subscribe(washInfoTo1 -> washInfoMap.put(washInfoTo1.getService_name(),washInfoTo1.getList3()));
-                setTab(typeList);
+                    }
+                });
+            });
 
-        });
 
+
+        }
+        classId=washList.get(0).getId();
+        setTab(typeList, position);
     }
-
 
 
     private void setCleanDialog() {
 
-            WashAlertDialog.show(this, "提示", "您正在更换洗衣类目，确定更换已选选项将不保留",false).setOnClickListener(view -> {
-                WashAlertDialog.dismiss();
-                isFirst=true;
-                Observable.from(ActivityManager.washFragmentList).subscribe(fragment->{
-                    fragment.selectLayout.removeAllViews();
-                    fragment.money.setText("");
-                    Observable.from(fragment.numList).subscribe(textView -> textView.setText("0"));
-                });
+        WashAlertDialog.show(this, "提示", "您正在更换洗衣类目，确定更换已选选项将不保留", false).setOnClickListener(view -> {
+            WashAlertDialog.dismiss();
+            isFirst = true;
+            Observable.from(ActivityManager.washFragmentList).subscribe(fragment -> {
+                fragment.selectLayout.removeAllViews();
+                fragment.money.setText("");
+                Observable.from(fragment.numList).subscribe(textView -> textView.setText("0"));
             });
-            WashAlertDialog.getCancelClick().setOnClickListener(view -> {
-                WashAlertDialog.dismiss();
+        });
+        WashAlertDialog.getCancelClick().setOnClickListener(view -> {
+            WashAlertDialog.dismiss();
 
-                isBack=true;
-                viewPager.setCurrentItem(lastIndex);
-                isBack=true;
-                isFirst=true;
-            });
-
+            isBack = true;
+            viewPager.setCurrentItem(lastIndex);
+            isBack = true;
+            isFirst = true;
+        });
 
 
     }

@@ -52,7 +52,7 @@ public class CouponAdapter extends BaseAdapter<CouponTo, CouponItemBinding> {
         super.onBindViewHolder(holder, position);
         CouponItemBinding binding = holder.getBinding();
         CouponTo mode=mList.get(position);
-        binding.time.setText(mode.getEnd_time()+"");
+        binding.time.setText(mode.getStart_time()+"-"+mode.getEnd_time());
         binding.name.setText(mode.getCate_name());
         binding.money.setText(mode.getAmount());
         if (mode.getAmount()!=null&&mode.getAmount().length()>0&&Double.valueOf(mode.getAmount()).intValue()>=1)

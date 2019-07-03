@@ -27,11 +27,11 @@ public class MainPresenter extends BasePresenter {
         initContext(activity);
     }
 
-    public void getOrderList(int page) {
+    public void getOrderList() {
         PageParam param = new PageParam();
         param.setUid(userInfoTo.getUid());
         param.setHashid(userInfoTo.getHashid());
-        param.setPage(page);
+        param.setPage(recyclePageIndex);
         param.setHash(getHashString(PageParam.class, param));
         showLoadingDialog();
         ApiClient.create(DeliveryApi.class).getPickupOrderlistMain(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
@@ -63,6 +63,7 @@ public class MainPresenter extends BasePresenter {
                     public void onNext(MessageTo msg) {
                         if (msg.getCode() == 0) {
                             showMessage("已确认取货");
+                            getOrderList();
                         }else{
                             showMessage(msg.getMsg());
                         }
@@ -74,13 +75,13 @@ public class MainPresenter extends BasePresenter {
     @Override
     public void recycleViewLoadMore() {
         super.recycleViewLoadMore();
-        getOrderList(recyclePageIndex);
+        getOrderList();
     }
 
     @Override
     public void recycleViewRefresh() {
         super.recycleViewRefresh();
-        getOrderList(recyclePageIndex);
+        getOrderList();
     }
 
 

@@ -74,6 +74,7 @@ public class CarPresenter extends BasePresenter {
                     public void onNext(MessageTo msg) {
                         if (msg.getCode() == 0) {
                             carTo.setGoods_num(goodsNum);
+
                             ((CarFragment) mFragment).setMoeny();
                         }
                         else
