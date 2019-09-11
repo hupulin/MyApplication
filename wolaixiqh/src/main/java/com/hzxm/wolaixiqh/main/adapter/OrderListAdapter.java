@@ -17,6 +17,7 @@ import com.hzxm.wolaixiqh.databinding.OrderRecordItemBinding;
 import com.hzxm.wolaixiqh.main.ScanDecodeActivity;
 
 import hzxmkuar.com.applibrary.domain.delivery.main.DeLiveryOrderListTo;
+import util.SystemUtil;
 
 /**
  * Created by Administrator on 2018/12/15. 首页adapter
@@ -54,7 +55,7 @@ public class OrderListAdapter extends BaseAdapter<DeLiveryOrderListTo.ListsEntit
         binding.depositAddress.setText(mode.getDeposit_address());
         binding.deliveryAddress.setText(mode.getDelivery_address());
         binding.orderAmount.setText("￥"+mode.getOrder_amount());
-
+        System.out.println(SystemUtil.getDeviceBrand()+"=="+SystemUtil.getSystemModel());
 //        binding.orderLayout
 //        binding.addressLayout.setText(mode.getAddress());
 //
@@ -69,7 +70,7 @@ public class OrderListAdapter extends BaseAdapter<DeLiveryOrderListTo.ListsEntit
         binding.feedbackInform.setOnClickListener(v -> listen.feedbackInform(mode.getOrder_id()));
         binding.feedbackBack.setOnClickListener(v -> listen.feedbackBack(mode.getOrder_id()));
         binding.print.setOnClickListener(v -> listen.print(mode));
-
+     binding.print.setVisibility(SystemUtil.getDeviceBrand().contains("SUNMI")?View.VISIBLE:View.GONE);
 
     }
     public  interface PickUpTheGoodsListener {

@@ -1,5 +1,7 @@
 package hzxmkuar.com.applibrary.api;
 
+import java.util.List;
+
 import hzxmkuar.com.applibrary.LoginTo;
 import hzxmkuar.com.applibrary.domain.BaseParam;
 import hzxmkuar.com.applibrary.domain.MessageTo;
@@ -9,6 +11,7 @@ import hzxmkuar.com.applibrary.domain.login.LoginParam;
 import hzxmkuar.com.applibrary.domain.login.ModifyPasswordParam;
 import hzxmkuar.com.applibrary.domain.login.RegisterParam;
 import hzxmkuar.com.applibrary.domain.login.SendLoginParam;
+import hzxmkuar.com.applibrary.domain.login.TestTo;
 import hzxmkuar.com.applibrary.domain.login.UploadImageParam;
 import hzxmkuar.com.applibrary.domain.login.UserLoginParam;
 import hzxmkuar.com.applibrary.domain.login.VerificationLoginParam;
@@ -19,6 +22,7 @@ import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
+import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
@@ -88,4 +92,10 @@ public interface LoginApi {
      */
     @POST("sms/verifycode/login")
     Observable<MessageTo>sendCode(@Body SendLoginParam param);
+
+    /**
+     * 获取测试数据
+     */
+    @GET("advertisement/query")
+    Observable<List<TestTo>>getTestData(@Query("appKey")String appKey);
 }

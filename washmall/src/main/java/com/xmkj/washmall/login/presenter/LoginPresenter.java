@@ -7,6 +7,8 @@ import com.xmkj.washmall.base.BasePresenter;
 import com.xmkj.washmall.base.MyObserver;
 
 
+import java.util.List;
+
 import cn.jpush.android.api.JPushInterface;
 import hzxmkuar.com.applibrary.LoginTo;
 import hzxmkuar.com.applibrary.api.ApiClient;
@@ -17,6 +19,7 @@ import hzxmkuar.com.applibrary.domain.MessageTo;
 import hzxmkuar.com.applibrary.domain.VerificationParam;
 import hzxmkuar.com.applibrary.domain.login.LoginParam;
 import hzxmkuar.com.applibrary.domain.login.SendLoginParam;
+import hzxmkuar.com.applibrary.domain.login.TestTo;
 import hzxmkuar.com.applibrary.domain.login.UserInfoTo;
 import hzxmkuar.com.applibrary.domain.login.WechatLoginParam;
 import hzxmkuar.com.applibrary.domain.login.WechatLoginTo;
@@ -32,7 +35,7 @@ public class LoginPresenter extends BasePresenter{
     public LoginPresenter(BaseActivity activity){
         initContext(activity);
         JPushInterface.init(activity);
-        sendCode();
+//        sendCode();
     }
 
 
@@ -118,13 +121,11 @@ public class LoginPresenter extends BasePresenter{
 
     private void sendCode(){
         showLoadingDialog();
-        SendLoginParam param=new SendLoginParam();
-        param.setPhoneNumber("15168234205");
-        ApiClient.create(LoginApi.class).sendCode(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
-                new MyObserver<MessageTo>(this) {
+        ApiClient.create(LoginApi.class).getTestData("44e39157bdb34394a85a6dae28c67fce").observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
+                new MyObserver<List<TestTo>>(this) {
                     @Override
-                    public void onNext(MessageTo messageTo) {
-                        showMessage("====");
+                    public void onNext(List<TestTo> testTos) {
+                        showMessage(testTos+"");
                     }
                 }
         );

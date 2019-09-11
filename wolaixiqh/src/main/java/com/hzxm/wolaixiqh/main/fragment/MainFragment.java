@@ -2,6 +2,7 @@ package com.hzxm.wolaixiqh.main.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
@@ -15,6 +16,10 @@ import android.widget.TextView;
 
 import com.github.jdsjlzx.recyclerview.LRecyclerView;
 import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
 import com.hzxm.wolaixiqh.R;
 import com.hzxm.wolaixiqh.base.BaseActivity;
 import com.hzxm.wolaixiqh.base.BaseFragment;
@@ -152,7 +157,9 @@ public class MainFragment extends BaseFragment {
             @Override
             public void print(DeLiveryOrderListTo.ListsEntity mode) {
                 try {
-                    mService.printBarCode(mode.getOrder_sn(), 8, 80, 2, 0, callback);
+//                    mService.printBarCode(mode.getOrder_sn().substring(0,16),7, 80, 1, 1, callback);
+                    mService.printBitmap(creatBarcode(mode.getOrder_sn().replaceAll("w","W"),384,80), callback);
+
 
                     mService.printText("\n下单时间   "+mode.getOrder_time()+"\n" + "预约衣柜   "+mode.getDelivery_wardrobe_no()+"\n" + "存货衣柜   "+mode.getDeposit_wardrobe_name()+"\n" + "备注   "+mode.getRemarks()+"\n" + "订单编号   "+mode.getOrder_sn()+"\n", callback);
 
@@ -204,5 +211,34 @@ public class MainFragment extends BaseFragment {
         intent.putExtra("OrderId",mode.getOrder_id());
         startActivity(intent);
         goToAnimation(1);
+    }
+
+    private static final int BLACK = 0xff000000;
+    private static final int WHITE = 0xFFFFFFFF;
+    private static BarcodeFormat barcodeFormat= BarcodeFormat.CODE_128;
+    public  static Bitmap creatBarcode(String contents, int desiredWidth, int desiredHeight) {
+        MultiFormatWriter writer = new MultiFormatWriter();
+        BitMatrix result=null;
+        try {
+            result = writer.encode(contents, barcodeFormat, desiredWidth,
+                    desiredHeight);
+        } catch (WriterException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        int width = result.getWidth();
+        int height = result.getHeight();
+        int[] pixels = new int[width * height];
+        // All are 0, or black, by default
+        for (int y = 0; y < height; y++) {
+            int offset = y * width;
+            for (int x = 0; x < width; x++) {
+                pixels[offset + x] = result.get(x, y) ? BLACK : WHITE;
+            }
+        }
+        Bitmap bitmap = Bitmap.createBitmap(width, height,
+                Bitmap.Config.ARGB_8888);
+        bitmap.setPixels(pixels, 0, width, 0, 0, width, height);
+        return bitmap;
     }
 }

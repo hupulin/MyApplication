@@ -117,6 +117,7 @@ public class SelectPayActivity extends BaseActivity {
         presenter = new PayPresenter(this);
         EventBus.getDefault().register(this);
         setView();
+        presenter.getCouponList(mode == null ? getIntent().getIntExtra("OrderId", 0) : mode.getOrder_id(), getIntent().getBooleanExtra("IsWash", false) ? 1 : 2);
     }
 
     @SuppressLint("SetTextI18n")
@@ -125,7 +126,9 @@ public class SelectPayActivity extends BaseActivity {
         money.setText("￥" + (mode == null ? getIntent().getStringExtra("Money") : mode.getTotal_amount()));
         account.setText("当前可用余额：" + userInfoTo.getMyselfTo().getUser_info().getAccount());
         if (getIntent().getBooleanExtra("IsWash", false))
-            money.setText("￥" + DoubleUtil.mul(Long.valueOf(getIntent().getStringExtra("Money")), userInfoTo.getMyselfTo().getUser_info().getDiscount()));
+            money.setText("￥" + DoubleUtil.mul(Double.valueOf(getIntent().getStringExtra("Money")), userInfoTo.getMyselfTo().getUser_info().getDiscount()));
+
+
     }
 
     @OnClick({R.id.balance_layout, R.id.ali_layout, R.id.wechat_layout, R.id.confirm, R.id.select_coupon_layout})
@@ -265,5 +268,9 @@ public class SelectPayActivity extends BaseActivity {
             selectCoupon = (CouponTo) data.getSerializableExtra("CouponTo");
             couponName.setText(selectCoupon.getCate_name());
         }
+    }
+
+    public void getCouponSuccess(int size) {
+      couponName.setText(size==0?"暂无可使用优惠券":(size+"张优惠券"));
     }
 }

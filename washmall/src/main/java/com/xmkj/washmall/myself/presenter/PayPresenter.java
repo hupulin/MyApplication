@@ -1,13 +1,21 @@
 package com.xmkj.washmall.myself.presenter;
 
+import com.alibaba.fastjson.JSON;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.xmkj.washmall.base.BaseActivity;
 import com.xmkj.washmall.base.BasePresenter;
 import com.xmkj.washmall.base.MyObserver;
+import com.xmkj.washmall.mall.SelectPayActivity;
+
+import java.util.List;
 
 import hzxmkuar.com.applibrary.api.ApiClient;
 import hzxmkuar.com.applibrary.api.OrderApi;
+import hzxmkuar.com.applibrary.domain.MessageListTo;
 import hzxmkuar.com.applibrary.domain.MessageTo;
 import hzxmkuar.com.applibrary.domain.mall.CanUseCouponParam;
+import hzxmkuar.com.applibrary.domain.myself.CouponTo;
 import hzxmkuar.com.applibrary.domain.order.PayParam;
 import hzxmkuar.com.applibrary.domain.order.WeChatPayTo;
 import rx.android.schedulers.AndroidSchedulers;
@@ -98,5 +106,27 @@ public class PayPresenter extends BasePresenter {
         }
     }
 
+    public void getCouponList(int orderId,int type){
+        showLoadingDialog();
+        CanUseCouponParam param=new CanUseCouponParam();
+        param.setOrder_id(orderId);
+        param.setUser_type(type);
+        param.setHash(getHashString(CanUseCouponParam.class,param));
+        ApiClient.create(OrderApi.class).selectCouponList(param).observeOn(AndroidSchedulers.mainThread()).subscribeOn(Schedulers.newThread()).subscribe(
+                new MyObserver<MessageListTo>(this) {
+                    @Override
+                    public void onNext(MessageListTo msg) {
+                        if (msg.getCode()==0) {
+                            List<CouponTo> couponList=new Gson().fromJson(JSON.toJSONString(msg.getDataList()), new TypeToken<List<CouponTo>>() {
+                            }.getType());
 
+
+                            ((SelectPayActivity)activity).getCouponSuccess(couponList==null?0:couponList.size());
+
+                        }  else
+                            showMessage(msg.getMsg());
+                    }
+                }
+        );
+    }
 }

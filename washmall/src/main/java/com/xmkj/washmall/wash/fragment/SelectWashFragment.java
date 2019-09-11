@@ -67,6 +67,7 @@ public class SelectWashFragment extends BaseFragment {
     public double allMoney = 0;
     private List<WashJsonDetailTo>jsonDetailList=new ArrayList<>();
     public List<TextView>numList=new ArrayList<>();
+    private List<WashInfoTo> allwashList=new ArrayList<>();
 
 
     @Nullable
@@ -107,6 +108,9 @@ public class SelectWashFragment extends BaseFragment {
             List<WashInfoTo> washTypeTo = ((SelectWashActivity) getActivity()).washItemMap.get(((SelectWashActivity) getActivity()).typeList.get(FragmentPagerItem.getPosition(getArguments())));
             setFlowLayout(washTypeTo);
             setWash(washTypeTo.get(0).getList3());
+            Observable.from(washTypeTo).subscribe(washInfoTo -> {
+                allwashList.addAll(washInfoTo.getList3());
+            });
         }
 
 
@@ -182,8 +186,8 @@ public class SelectWashFragment extends BaseFragment {
         jsonDetailList.clear();
         allMoney=0;
         userInfoTo=userInfoHelp.getUserInfo();
-        for (int i = 0; i < washList.size(); i++) {
-            WashInfoTo washTo = washList.get(i);
+        for (int i = 0; i < allwashList.size(); i++) {
+            WashInfoTo washTo = allwashList.get(i);
             if (washTo.getNum() > 0) {
                 WashJsonDetailTo detailTo=new WashJsonDetailTo();
                 detailTo.setSid(washTo.getId());

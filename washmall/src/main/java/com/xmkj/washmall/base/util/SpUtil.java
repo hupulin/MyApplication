@@ -13,7 +13,7 @@ public class SpUtil {
     private Context context = MainApp.appContext;
 
     private static SharedPreferences getSharedPreferences(Context context) {
-        return context.getSharedPreferences("wash", Context.MODE_PRIVATE);
+        return context.getSharedPreferences("WashOnLine", Context.MODE_PRIVATE);
     }
 
     public static int getInt(String key) {
