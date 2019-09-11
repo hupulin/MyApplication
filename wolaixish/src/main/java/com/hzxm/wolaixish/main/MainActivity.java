@@ -17,11 +17,7 @@ import com.hzxm.wolaixish.base.BaseActivity;
 import com.hzxm.wolaixish.base.NoSlideViewPager;
 import com.hzxm.wolaixish.main.fragment.MainFragment;
 import com.hzxm.wolaixish.main.fragment.MyselfFragment;
-import com.sunmi.peripheral.printer.ICallback;
-import com.sunmi.peripheral.printer.InnerPrinterCallback;
-import com.sunmi.peripheral.printer.InnerPrinterException;
-import com.sunmi.peripheral.printer.InnerPrinterManager;
-import com.sunmi.peripheral.printer.SunmiPrinterService;
+
 
 import java.util.ArrayList;
 import java.util.List;

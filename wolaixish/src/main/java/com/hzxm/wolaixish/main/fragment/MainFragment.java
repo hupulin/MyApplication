@@ -28,11 +28,7 @@ import com.hzxm.wolaixish.main.present.MainPresenter;
 import com.hzxm.wolaixish.news.NewActivity;
 import com.hzxm.wolaixish.person.ChangeInfoActivity;
 import com.hzxm.wolaixish.person.MyOrderListActivity;
-import com.sunmi.peripheral.printer.ICallback;
-import com.sunmi.peripheral.printer.InnerPrinterCallback;
-import com.sunmi.peripheral.printer.InnerPrinterException;
-import com.sunmi.peripheral.printer.InnerPrinterManager;
-import com.sunmi.peripheral.printer.SunmiPrinterService;
+
 
 import java.util.List;
 
@@ -56,62 +52,14 @@ public class MainFragment extends BaseFragment {
     private BaseActivity baseActivity;
     private MainPresenter presenter;
     private OrderListAdapter adapter;
-    private SunmiPrinterService mService;
+
     private DeLiveryOrderListTo.ListsEntity selectMode;
 
     //    private Context context;
     public MainFragment(BaseActivity activity) {
         this.baseActivity = activity;
-        try {
-            InnerPrinterManager.getInstance().bindService(appContext, innerPrinterCallback);
-
-        } catch (InnerPrinterException e) {
-            showMessage(e + "");
-            e.printStackTrace();
-        }
     }
 
-    ICallback callback = new ICallback() {
-        @Override
-        public IBinder asBinder() {
-            return null;
-        }
-
-        @Override
-        public void onRunResult(boolean isSuccess) throws RemoteException {
-
-        }
-
-        @Override
-        public void onReturnString(String result) throws RemoteException {
-            showMessage(result + "result");
-        }
-
-        @Override
-        public void onRaiseException(int code, String msg) throws RemoteException {
-            showMessage(msg + "msg");
-        }
-
-        @Override
-        public void onPrintResult(int code, String msg) throws RemoteException {
-            showMessage(msg + "result======");
-        }
-    };
-
-
-    InnerPrinterCallback innerPrinterCallback = new InnerPrinterCallback() {
-
-        @Override
-        protected void onConnected(SunmiPrinterService service) {
-              mService=service;
-        }
-
-        @Override
-        protected void onDisconnected() {
-            System.out.println("连接失败");
-            showMessage("连接失败");
-        }
-    };
 
 
     @Nullable
@@ -141,15 +89,7 @@ public class MainFragment extends BaseFragment {
             @Override
             public void print(DeLiveryOrderListTo.ListsEntity mode) {
                 selectMode=mode;
-                try {
-                    mService.printBarCode(mode.getOrder_sn(), 8, 80, 2, 0, callback);
 
-                    mService.printText("\n下单时间   "+mode.getOrder_time()+"\n" + "预约衣柜   "+mode.getDelivery_wardrobe_no()+"\n" + "存货衣柜   "+mode.getDeposit_wardrobe_name()+"\n" + "备注   "+mode.getRemarks()+"\n" + "订单编号   "+mode.getOrder_sn()+"\n", callback);
-
-
-                } catch (RemoteException e) {
-                    e.printStackTrace();
-                }
 
             }
 
